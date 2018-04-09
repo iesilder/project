@@ -18,7 +18,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>dataController</servlet-name>
-		<url-pattern>*.data</url-pattern>
+		<url-pattern>/data</url-pattern>
 	</servlet-mapping>
 
 </web-app>
