@@ -5,15 +5,26 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>내용 출력</title>
+<!-- DataTable css start-->
+
+<!-- DataTable css end -->
+<title>몽고디비내용 출력</title>
+<!-- jquery start -->
+
+<!-- jquery end -->
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#example').DataTable();
+	});
+</script>
 </head>
 <body>
 	<table>
 		<tbody>
-		<c:forEach var="data" items="${list }">
-			<tr>
-				<td>${data['TRDAR_CD_NM'] }</td>
-			</tr>
+			<c:forEach var="data" items="${list }">
+				<tr>
+					<td>${data['TRDAR_CD_NM'] }</td>
+				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
