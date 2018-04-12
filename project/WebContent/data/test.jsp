@@ -5,16 +5,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<!-- DataTable css start-->
 
-<!-- DataTable css end -->
-<title>Insert title here</title>
-<!-- jquery start -->
-<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!-- jquery end -->
+<title>데이터테이블 적용 테스트</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../js/DataTables/datatables.min.css">
+<script type="text/javascript" src="../js/DataTables/datatables.min.js"></script>
 <script type="text/javascript">
-	$(document).ready(function() {
-		$('#example').DataTable();
+	$(function() {
+		$('#example').dataTable();
 	});
 </script>
 </head>
