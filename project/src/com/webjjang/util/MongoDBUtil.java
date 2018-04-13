@@ -22,7 +22,7 @@ public class MongoDBUtil {
 	static MongoClientURI uri = new MongoClientURI("mongodb://192.168.137.75:27017/seoulpopulation?maxPoolSize=500",
 			options());
 	// 로컬 접속 시 사용할 MongoClient 객체
-	static MongoClient mongoClient = new MongoClient(uri);
+	public static MongoClient mongoClient = new MongoClient(uri);
 	// // mLab을 이용하여 접속 할 때 이용할 uri와 MongoClient 객체
 
 	// 접속 시 필요한 자료
