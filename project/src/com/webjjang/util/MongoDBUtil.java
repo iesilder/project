@@ -27,7 +27,7 @@ public class MongoDBUtil {
 
 	// 접속 시 필요한 자료
 	// 접속 시 databaseName을 파라메터로 넘겨서 접속한다.
-	public static MongoDatabase getConnection(String databaseName) throws Exception {
+	public static MongoDatabase getConnection(String databaseName) {
 		return mongoClient.getDatabase(databaseName);
 	}// end of getConnection()
 
