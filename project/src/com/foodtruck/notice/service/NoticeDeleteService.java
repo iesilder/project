@@ -1,12 +1,33 @@
+/*
+ * NoticeDeleteService
+ * 20180416 유태선
+ */
 package com.foodtruck.notice.service;
 
 import com.foodtruck.notice.dao.NoticeDAO;
+import com.foodtruck.notice.dto.NoticeDTO;
+import com.foodtruck.util.ServiceInterface;
 
-public class NoticeDeleteService {
-	public void process(int no) {
-		System.out.println("BoardDeleteService.process()");
-		// 객체 생성하고 호출
-		NoticeDAO boardDAO = new NoticeDAO();
-		boardDAO.delete(no);
+public class NoticeDeleteService implements ServiceInterface {
+
+	private NoticeDAO noticeDAO;
+
+	@Override
+	public void setDAO(Object obj) {
+		// TODO Auto-generated method stub
+		this.noticeDAO = (NoticeDAO) obj;
+	}
+
+	@Override
+	public Object execute(Object obj) throws Exception {
+		// TODO Auto-generated method stub
+		System.out.println(getClass().getName() + "execute()");
+
+		// 전달 받은 데이터를 DAO로 넘겨주기 위해서 Object를 캐스팅
+		NoticeDTO noticeDTO = (NoticeDTO) obj;
+		// DAO로 넘겨 삭제를 진행한다.
+		noticeDAO.delete(noticeDTO);
+
+		return null;
 	}
 }

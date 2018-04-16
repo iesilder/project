@@ -15,7 +15,7 @@ public class NoticeDAO {
 
 	// 글 리스트를 가져오는 메서드
 	public List<NoticeDTO> list() {
-		System.out.println("BoardDAO.list()");
+		System.out.println("NoticeDAO.list()");
 		List<NoticeDTO> list = null;
 
 		// 필요한 객체 선언
@@ -63,7 +63,7 @@ public class NoticeDAO {
 
 	// 글번호에 맞는 글보기 데이터를 가져오는 메서드.
 	public NoticeDTO view(int no) {
-		System.out.println("BoardDAO.view()");
+		System.out.println("NoticeDAO.view()");
 		NoticeDTO boardDTO = null;
 		// 오라클에서 데이터를 가져와서 채우는 프로그램 작성.
 		// 필요한 객체 선언
@@ -101,7 +101,7 @@ public class NoticeDAO {
 
 	// 조회수를 1 증가시키는 메서드. -> 글번호를 받아서 글번호에 맞는 조회수 증가.
 	public void increase(int no) {
-		System.out.println("BoardDAO.increase()");
+		System.out.println("NoticeDAO.increase()");
 		// 오라클에서 데이터를 가져와서 채우는 프로그램 작성.
 		// 필요한 객체 선언
 		Connection con = null; // 연결 객체
@@ -131,7 +131,7 @@ public class NoticeDAO {
 
 	// 게시판 글쓰기 처리
 	public void write(NoticeDTO boardDTO) {
-		System.out.println("BoardDAO.write()");
+		System.out.println("NoticeDAO.write()");
 		// 오라클에서 데이터를 가져와서 채우는 프로그램 작성.
 		// 필요한 객체 선언
 		Connection con = null; // 연결 객체
@@ -163,7 +163,7 @@ public class NoticeDAO {
 
 	// 게시판 글수정 처리
 	public void update(NoticeDTO boardDTO) {
-		System.out.println("BoardDAO.update()");
+		System.out.println("NoticeDAO.update()");
 		// 오라클에서 데이터를 가져와서 채우는 프로그램 작성.
 		// 필요한 객체 선언
 		Connection con = null; // 연결 객체
@@ -195,8 +195,8 @@ public class NoticeDAO {
 	}
 
 	// 게시판 글삭제 처리
-	public void delete(int no) {
-		System.out.println("BoardDAO.delete()");
+	public void delete(NoticeDTO noticeDTO) {
+		System.out.println("NoticeDAO.delete()");
 		// 오라클에서 데이터를 가져와서 채우는 프로그램 작성.
 		// 필요한 객체 선언
 		Connection con = null; // 연결 객체
@@ -208,7 +208,7 @@ public class NoticeDAO {
 			String sql = "delete from board where no = ? ";
 			// 4. 처리 객체 생성
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(4, no); // 첫번재 ?에 no 세팅
+			pstmt.setInt(1, noticeDTO.getNo()); // 첫번재 ?에 no 세팅
 			// 5. 처리 객체 실행 -> select: executeQuery(), 그 외: executeUpdate()
 			pstmt.executeUpdate();
 			// 6. 표시 -> 오류가 없으면 정상처리
