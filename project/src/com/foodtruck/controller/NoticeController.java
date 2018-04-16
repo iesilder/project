@@ -13,13 +13,13 @@ import com.foodtruck.util.Beans;
  * Servlet implementation class DataController
  */
 @WebServlet("/DataController")
-public class DataController extends HttpServlet {
+public class NoticeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public DataController() {
+	public NoticeController() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -38,19 +38,19 @@ public class DataController extends HttpServlet {
 
 		switch (command) {
 
-		case "/data/admin.do":
+		case "/notice/noticeList.do":
 			jsp = Beans.getJsp(command);
 			System.out.println(jsp);
 			break;
-		case "/data/HuffGravityModelPrint.do":
+		case "/notice/noticeView.do":
 			jsp = Beans.getJsp(command);
 			System.out.println(jsp);
 			break;
-		case "/data/MapPrint.do":
+		case "/notice/noticeWrite.do":
 			jsp = Beans.getJsp(command);
 			System.out.println(jsp);
 			break;
-		case "/data/MongodbDataPrint.do":
+		case "/notice/noticeWriteForm.do":
 			jsp = Beans.getJsp(command);
 			System.out.println(jsp);
 			break;
@@ -77,19 +77,19 @@ public class DataController extends HttpServlet {
 
 		switch (command) {
 
-		case "/data/admin.do":
+		case "/notice/noticeList.do":
 			jsp = Beans.getJsp(command);
 			System.out.println(jsp);
 			break;
-		case "/data/HuffGravityModelPrint.do":
+		case "/notice/noticeView.do":
 			jsp = Beans.getJsp(command);
 			System.out.println(jsp);
 			break;
-		case "/data/MapPrint.do":
+		case "/notice/noticeWrite.do":
 			jsp = Beans.getJsp(command);
 			System.out.println(jsp);
 			break;
-		case "/data/MongodbDataPrint.do":
+		case "/notice/noticeWriteForm.do":
 			jsp = Beans.getJsp(command);
 			System.out.println(jsp);
 			break;
