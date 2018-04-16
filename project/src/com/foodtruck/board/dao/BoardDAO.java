@@ -1,4 +1,4 @@
-package com.webjjang.board.dao;
+package com.foodtruck.board.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,8 +6,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.webjjang.board.dto.BoardDTO;
-import com.webjjang.util.DBUtil;
+import com.foodtruck.board.dto.BoardDTO;
+import com.foodtruck.util.DBUtil;
 
 public class BoardDAO {
 	// 오라클에 접속 할 때 필요한 정보들

@@ -1,6 +1,6 @@
-package com.webjjang.board.service;
+package com.foodtruck.board.service;
 
-import com.webjjang.board.dao.BoardDAO;
+import com.foodtruck.board.dao.BoardDAO;
 
 public class BoardDeleteService {
 	public void process(int no) {

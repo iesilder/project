@@ -1,4 +1,4 @@
-package com.webjjang.util;
+package com.foodtruck.util;
 
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientOptions.Builder;

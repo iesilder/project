@@ -1,4 +1,4 @@
-package com.webjjang.board.dto;
+package com.foodtruck.board.dto;
 
 /*
  * 게시판 데이터를 저장하는 객체

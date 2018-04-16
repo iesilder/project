@@ -1,4 +1,4 @@
-package com.webjjang.board.controller;
+package com.foodtruck.board.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

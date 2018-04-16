@@ -1,14 +1,14 @@
-package com.webjjang.main;
+package com.foodtruck.main;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.bson.Document;
 
+import com.foodtruck.util.GetJsonData;
+import com.foodtruck.util.MongoDBUtil;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import com.webjjang.util.GetJsonData;
-import com.webjjang.util.MongoDBUtil;
 
 public class Main {
 

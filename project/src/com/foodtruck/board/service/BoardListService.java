@@ -1,9 +1,9 @@
-package com.webjjang.board.service;
+package com.foodtruck.board.service;
 
 import java.util.List;
 
-import com.webjjang.board.dao.BoardDAO;
-import com.webjjang.board.dto.BoardDTO;
+import com.foodtruck.board.dao.BoardDAO;
+import com.foodtruck.board.dto.BoardDTO;
 
 public class BoardListService {
 	

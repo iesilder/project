@@ -1,4 +1,4 @@
-package com.webjjang.util;
+package com.foodtruck.util;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

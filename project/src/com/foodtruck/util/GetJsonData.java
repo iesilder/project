@@ -4,7 +4,7 @@
 
  */
 
-package com.webjjang.util;
+package com.foodtruck.util;
 
 import java.io.BufferedInputStream;
 import java.net.URL;
