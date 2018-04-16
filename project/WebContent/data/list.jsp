@@ -1,14 +1,14 @@
-<%@page import="com.webjjang.board.dto.BDTO"%>
-<%@page import="java.util.List"%>
-<%@page import="com.webjjang.Reviewboard.service.Blist"%>
-<%@page import="com.webjjang.board.dto.BDAO"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    <% Blist blist =new Blist();
-    List<BDTO> list = blist.process();
-    request.setAttribute("list", list);
-    %>
+<%-- <%@page import="com.webjjang.board.dto.BDTO"%> --%>
+<%-- <%@page import="java.util.List"%> --%>
+<%-- <%@page import="com.webjjang.Reviewboard.service.Blist"%> --%>
+<%-- <%@page import="com.webjjang.board.dto.BDAO"%> --%>
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8" --%>
+<%--     pageEncoding="UTF-8"%> --%>
+<%--     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> --%>
+<%--     <% Blist blist =new Blist(); --%>
+//     List<BDTO> list = blist.process();
+//     request.setAttribute("list", list);
+<%--     %> --%>
 <!DOCTYPE html>
 <html>
 <head>
