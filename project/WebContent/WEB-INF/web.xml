@@ -9,7 +9,7 @@
 	</welcome-file-list>
 	<servlet>
 		<servlet-name>dataController</servlet-name>
-		<servlet-class>com.webjjang.board.controller.DataController</servlet-class>
+		<servlet-class>com.foodtruck.board.controller.DataController</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>dataController</servlet-name>
@@ -18,7 +18,7 @@
 	<filter>
     <filter-name>encoding</filter-name>
     <filter-class>
-  		com.webjjang.filter.EncodingFilter
+  		com.foodtruck.filter.EncodingFilter
   	</filter-class>
   </filter>
   <filter-mapping>
