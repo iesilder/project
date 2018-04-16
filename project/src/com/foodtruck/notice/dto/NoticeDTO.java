@@ -6,7 +6,7 @@ package com.foodtruck.notice.dto;
  * 유태선
  * 번호, 제목, 내용, 작성자, 작성일, 조회수
  */
-public class BoardDTO {
+public class NoticeDTO {
 
 	private int no;
 	private String title;
@@ -28,13 +28,13 @@ public class BoardDTO {
 
 	// 생성자 선언
 	// case1:생성을 먼저 하고 값은 나중에 넣겠다.
-	public BoardDTO() {
+	public NoticeDTO() {
 		// System.out.println("기본 생성자 실행");
 		no = 50;
 	} // 기본생성자를 직접 만들었다. new BoardDTO()로 호출.
 
 	// case2:데이터를 넣을 때, 데이터가 다 준비 되어 있는 경우. -> 게시판 글보기 할 때 사용
-	public BoardDTO(int no, String title, String content, String writer, String writeDate, int hit) {
+	public NoticeDTO(int no, String title, String content, String writer, String writeDate, int hit) {
 		super(); // 부모 클래스를 생성한다. Object를 뜻함. 빼도 자동으로 들어간다. 무조건 제일 위에 있어야한다.
 		this.no = no;
 		this.title = title;
@@ -45,7 +45,7 @@ public class BoardDTO {
 	}
 
 	// case3:게시판 글쓰기 - 제목, 내용, 작성자, 데이터가 다 준비 되어 있는 경우.
-	public BoardDTO(String title, String content, String writer) {
+	public NoticeDTO(String title, String content, String writer) {
 		// 위에 있는 this.가 붙은 변수를 불러오는 this()
 		// 일종의 프로그램 재활용.
 		this(0, title, content, writer, null, 0);

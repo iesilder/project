@@ -6,17 +6,17 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.foodtruck.notice.dto.BoardDTO;
+import com.foodtruck.notice.dto.NoticeDTO;
 import com.foodtruck.util.DBUtil;
 
-public class BoardDAO {
+public class NoticeDAO {
 	// 오라클에 접속 할 때 필요한 정보들
 	// DBUtil에 다 선언.
 
 	// 글 리스트를 가져오는 메서드
-	public List<BoardDTO> list() {
+	public List<NoticeDTO> list() {
 		System.out.println("BoardDAO.list()");
-		List<BoardDTO> list = null;
+		List<NoticeDTO> list = null;
 
 		// 필요한 객체 선언
 		Connection con = null; // 연결 객체
@@ -38,7 +38,7 @@ public class BoardDAO {
 				if (list == null)
 					list = new ArrayList<>();
 				// 데이터 하나를 담을 수 있는 BoardDTO객체를 생성한다.
-				BoardDTO boardDTO = new BoardDTO();
+				NoticeDTO boardDTO = new NoticeDTO();
 				// 데이터를 rs에서 꺼내서 boardDTO에 담는다.
 				boardDTO.setNo(rs.getInt("no"));
 				boardDTO.setTitle(rs.getString("title"));
@@ -62,9 +62,9 @@ public class BoardDAO {
 	}
 
 	// 글번호에 맞는 글보기 데이터를 가져오는 메서드.
-	public BoardDTO view(int no) {
+	public NoticeDTO view(int no) {
 		System.out.println("BoardDAO.view()");
-		BoardDTO boardDTO = null;
+		NoticeDTO boardDTO = null;
 		// 오라클에서 데이터를 가져와서 채우는 프로그램 작성.
 		// 필요한 객체 선언
 		Connection con = null; // 연결 객체
@@ -83,7 +83,7 @@ public class BoardDAO {
 			// 6. 표시 rs에서 꺼내서 boardDTO에 담는다.
 			if (rs.next()) {
 				// 생성자가 만들어져 있어야 한다.
-				boardDTO = new BoardDTO(rs.getInt("no"), rs.getString("title"), rs.getString("content"),
+				boardDTO = new NoticeDTO(rs.getInt("no"), rs.getString("title"), rs.getString("content"),
 						rs.getString("writer"), rs.getString("writeDate"), rs.getInt("hit"));
 			}
 		} catch (Exception e) {
@@ -130,7 +130,7 @@ public class BoardDAO {
 	}
 
 	// 게시판 글쓰기 처리
-	public void write(BoardDTO boardDTO) {
+	public void write(NoticeDTO boardDTO) {
 		System.out.println("BoardDAO.write()");
 		// 오라클에서 데이터를 가져와서 채우는 프로그램 작성.
 		// 필요한 객체 선언
@@ -162,7 +162,7 @@ public class BoardDAO {
 	}
 
 	// 게시판 글수정 처리
-	public void update(BoardDTO boardDTO) {
+	public void update(NoticeDTO boardDTO) {
 		System.out.println("BoardDAO.update()");
 		// 오라클에서 데이터를 가져와서 채우는 프로그램 작성.
 		// 필요한 객체 선언

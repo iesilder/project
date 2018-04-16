@@ -2,17 +2,17 @@ package com.foodtruck.notice.service;
 
 import java.util.List;
 
-import com.foodtruck.notice.dao.BoardDAO;
-import com.foodtruck.notice.dto.BoardDTO;
+import com.foodtruck.notice.dao.NoticeDAO;
+import com.foodtruck.notice.dto.NoticeDTO;
 
-public class BoardListService {
+public class NoticeListService {
 	
-	public List<BoardDTO> process() {
+	public List<NoticeDTO> process() {
 		System.out.println("BoardListService.process()");
-		List<BoardDTO> list = null;
+		List<NoticeDTO> list = null;
 		// list에 데이터를 가져와서 채우는 프로그램 작성.
 		// 객체 생성하고 호출
-		BoardDAO boardDAO = new BoardDAO();
+		NoticeDAO boardDAO = new NoticeDAO();
 		list = boardDAO.list();
 		return list;
 	}
