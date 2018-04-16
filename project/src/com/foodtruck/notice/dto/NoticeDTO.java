@@ -11,52 +11,31 @@ public class NoticeDTO {
 	private int no;
 	private String title;
 	private String content;
-	private String writer;
+	private String id;
 	private String writeDate;
 	private int hit;
-
-	{
-		// 초기화 블럭- 생성될 때 자동으로 한 번 실행된다.
-		// 주로 기본값을 셋팅할 때 사용.
-		// System.out.println("기본 초기화 블럭");
-		no = 100;
-	}
-	static {
-		// System.out.println("static 초기화 블럭");
-		// no=50;
-	}
-
-	// 생성자 선언
-	// case1:생성을 먼저 하고 값은 나중에 넣겠다.
+	
 	public NoticeDTO() {
-		// System.out.println("기본 생성자 실행");
-		no = 50;
-	} // 기본생성자를 직접 만들었다. new BoardDTO()로 호출.
+		super();
+	}
 
-	// case2:데이터를 넣을 때, 데이터가 다 준비 되어 있는 경우. -> 게시판 글보기 할 때 사용
-	public NoticeDTO(int no, String title, String content, String writer, String writeDate, int hit) {
-		super(); // 부모 클래스를 생성한다. Object를 뜻함. 빼도 자동으로 들어간다. 무조건 제일 위에 있어야한다.
+	public NoticeDTO(int no, String title, String content, String id, String writeDate, int hit) {
+		super();
 		this.no = no;
 		this.title = title;
 		this.content = content;
-		this.writer = writer;
+		this.id = id;
 		this.writeDate = writeDate;
 		this.hit = hit;
 	}
 
-	// case3:게시판 글쓰기 - 제목, 내용, 작성자, 데이터가 다 준비 되어 있는 경우.
-	public NoticeDTO(String title, String content, String writer) {
-		// 위에 있는 this.가 붙은 변수를 불러오는 this()
-		// 일종의 프로그램 재활용.
-		this(0, title, content, writer, null, 0);
-
-		// 위에 모든 데이터를 받아서 처리하는 부분에서 중복이 된다.
-		// this.title = title;
-		// this.content = content;
-		// this.writer = writer;
+	public NoticeDTO(String title, String content, String id) {
+		super();
+		this.title = title;
+		this.content = content;
+		this.id = id;
 	}
 
-	// 데이터를 꺼내고 넣는 getter, setter를 작성
 	public int getNo() {
 		return no;
 	}
@@ -81,12 +60,12 @@ public class NoticeDTO {
 		this.content = content;
 	}
 
-	public String getWriter() {
-		return writer;
+	public String getId() {
+		return id;
 	}
 
-	public void setWriter(String writer) {
-		this.writer = writer;
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getWriteDate() {
@@ -107,8 +86,10 @@ public class NoticeDTO {
 
 	@Override
 	public String toString() {
-		return "BoardDTO [no=" + no + ", title=" + title + ", content=" + content + ", writer=" + writer
-				+ ", writeDate=" + writeDate + ", hit=" + hit + "]";
+		return "NoticeDTO [no=" + no + ", title=" + title + ", content=" + content + ", id=" + id + ", writeDate="
+				+ writeDate + ", hit=" + hit + "]";
 	}
+
+	
 
 }

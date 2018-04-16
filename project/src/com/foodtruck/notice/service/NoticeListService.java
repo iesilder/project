@@ -12,16 +12,6 @@ import com.foodtruck.util.ServiceInterface;
 
 public class NoticeListService implements ServiceInterface {
 
-	public List<NoticeDTO> process() {
-		System.out.println("BoardListService.process()");
-		List<NoticeDTO> list = null;
-		// list에 데이터를 가져와서 채우는 프로그램 작성.
-		// 객체 생성하고 호출
-		NoticeDAO boardDAO = new NoticeDAO();
-		list = boardDAO.list();
-		return list;
-	}
-
 	private NoticeDAO noticeDAO;
 
 	@Override

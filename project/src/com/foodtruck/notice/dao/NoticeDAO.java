@@ -27,7 +27,7 @@ public class NoticeDAO {
 			// 1. 드라이버 확인 //2. 연결
 			con = DBUtil.getConnection();
 			// 3. sql
-			String sql = "select no, title, writer, writedate, hit from board order by no desc ";
+			String sql = "select no, title, id, writedate, hit from board order by no desc ";
 			// 4. 처리문 객체 생성.
 			pstmt = con.prepareStatement(sql);
 			// 5. 처리문 객체 실행 --> rs가 나온다.
@@ -42,7 +42,7 @@ public class NoticeDAO {
 				// 데이터를 rs에서 꺼내서 boardDTO에 담는다.
 				boardDTO.setNo(rs.getInt("no"));
 				boardDTO.setTitle(rs.getString("title"));
-				boardDTO.setWriter(rs.getString("writer"));
+				boardDTO.setId(rs.getString("id"));
 				boardDTO.setWriteDate(rs.getString("writedate"));
 				boardDTO.setHit(rs.getInt("hit"));
 				// list에 boardDTO를 담는다.
@@ -62,7 +62,7 @@ public class NoticeDAO {
 	}
 
 	// 글번호에 맞는 글보기 데이터를 가져오는 메서드.
-	public NoticeDTO view(int no) {
+	public NoticeDTO view(NoticeDTO noticeDTO) {
 		System.out.println("NoticeDAO.view()");
 		NoticeDTO boardDTO = null;
 		// 오라클에서 데이터를 가져와서 채우는 프로그램 작성.
@@ -74,17 +74,17 @@ public class NoticeDAO {
 			// 1.드라이버 확인 //2.연결
 			con = DBUtil.getConnection();
 			// 3. sql 작성 - 변하는 데이터 대신 ?를 사용한다.
-			String sql = "select no, title, content, writer, writedate, hit from board where no = ? ";
+			String sql = "select no, title, content, id, writedate, hit from board where no = ? ";
 			// 4. 처리 객체 생성
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, no); // 첫번재 ?에 no를 int로 세팅
+			pstmt.setInt(1, noticeDTO.getNo()); // 첫번재 ?에 no를 int로 세팅
 			// 5. 처리 객체 실행
 			rs = pstmt.executeQuery();
 			// 6. 표시 rs에서 꺼내서 boardDTO에 담는다.
 			if (rs.next()) {
 				// 생성자가 만들어져 있어야 한다.
 				boardDTO = new NoticeDTO(rs.getInt("no"), rs.getString("title"), rs.getString("content"),
-						rs.getString("writer"), rs.getString("writeDate"), rs.getInt("hit"));
+						rs.getString("id"), rs.getString("writeDate"), rs.getInt("hit"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -100,7 +100,7 @@ public class NoticeDAO {
 	}
 
 	// 조회수를 1 증가시키는 메서드. -> 글번호를 받아서 글번호에 맞는 조회수 증가.
-	public void increase(int no) {
+	public void increase(NoticeDTO noticeDTO) {
 		System.out.println("NoticeDAO.increase()");
 		// 오라클에서 데이터를 가져와서 채우는 프로그램 작성.
 		// 필요한 객체 선언
@@ -113,7 +113,7 @@ public class NoticeDAO {
 			String sql = "update board set hit = hit + 1 where no = ? ";
 			// 4. 처리 객체 생성
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, no); // 첫번재 ?에 no를 int로 세팅
+			pstmt.setInt(1, noticeDTO.getNo()); // 첫번재 ?에 no를 int로 세팅
 			// 5. 처리 객체 실행 -> select: executeQuery(), 그 외: executeUpdate()
 			pstmt.executeUpdate();
 			// 6. 표시 -> 오류가 없으면 정상처리
@@ -140,12 +140,12 @@ public class NoticeDAO {
 			// 1.드라이버 확인 //2.연결
 			con = DBUtil.getConnection();
 			// 3. sql 작성 - 변하는 데이터 대신 ?를 사용한다.
-			String sql = "insert into board(no, title, content, writer) values(board_seq.nextval, ?, ?, ?) ";
+			String sql = "insert into board(no, title, content, id) values(board_seq.nextval, ?, ?, ?) ";
 			// 4. 처리 객체 생성
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, boardDTO.getTitle()); // 첫번재 ?에 no 세팅
 			pstmt.setString(2, boardDTO.getContent()); // 첫번재 ?에 no 세팅
-			pstmt.setString(3, boardDTO.getWriter()); // 첫번재 ?에 no 세팅
+			pstmt.setString(3, boardDTO.getId()); // 첫번재 ?에 no 세팅
 			// 5. 처리 객체 실행 -> select: executeQuery(), 그 외: executeUpdate()
 			pstmt.executeUpdate();
 			// 6. 표시 -> 오류가 없으면 정상처리
@@ -172,13 +172,12 @@ public class NoticeDAO {
 			// 1.드라이버 확인 //2.연결
 			con = DBUtil.getConnection();
 			// 3. sql 작성 - 변하는 데이터 대신 ?를 사용한다.
-			String sql = "update board set title=?, content=?, writer=? where no = ? ";
+			String sql = "update board set title=?, content=? where no = ? ";
 			// 4. 처리 객체 생성
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, boardDTO.getTitle()); // 첫번재 ?에 title 세팅
 			pstmt.setString(2, boardDTO.getContent()); // 두번재 ?에 content 세팅
-			pstmt.setString(3, boardDTO.getWriter()); // 세번재 ?에 writer 세팅
-			pstmt.setInt(4, boardDTO.getNo()); // 네번재 ?에 no 세팅
+			pstmt.setInt(3, boardDTO.getNo()); // 네번재 ?에 no 세팅
 			// 5. 처리 객체 실행 -> select: executeQuery(), 그 외: executeUpdate()
 			pstmt.executeUpdate();
 			// 6. 표시 -> 오류가 없으면 정상처리
