@@ -1,11 +1,14 @@
 package com.foodtruck.festboard.dto;
 
+import java.util.Date;
+
 public class FestCustBoardDTO {
 
 	private int custno;
 	private String applyname, applytel;
 	private int applyno;
-	private String applyloc, applytime;
+	private String applyloc;
+	private Date applytime;
 	private int hit;
 
 	// 초기화 블럭
@@ -22,8 +25,8 @@ public class FestCustBoardDTO {
 	}
 
 	// 행사일정 글보기용
-	public FestCustBoardDTO(int custno, String applyname, String applytel, int applyno, String applyloc,
-			String applytime, int hit) {
+	public FestCustBoardDTO(int custno, String applyname, String applytel, int applyno, String applyloc, Date applytime,
+			int hit) {
 		this.custno = custno;
 		this.applyname = applyname;
 		this.applytel = applytel;
@@ -34,7 +37,7 @@ public class FestCustBoardDTO {
 	}
 
 	// 행사일정 글등록 및 수정용
-	public FestCustBoardDTO(String applyname, String applytel, int applyno, String applyloc, String applytime) {
+	public FestCustBoardDTO(String applyname, String applytel, int applyno, String applyloc, Date applytime) {
 		this.applyname = applyname;
 		this.applytel = applytel;
 		this.applyno = applyno;
@@ -82,11 +85,11 @@ public class FestCustBoardDTO {
 		this.applyloc = applyloc;
 	}
 
-	public String getApplytime() {
+	public Date getApplytime() {
 		return applytime;
 	}
 
-	public void setApplytime(String applytime) {
+	public void setApplytime(Date applytime) {
 		this.applytime = applytime;
 	}
 
