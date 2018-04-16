@@ -1,6 +1,6 @@
-package com.foodtruck.board.service;
+package com.foodtruck.notice.service;
 
-import com.foodtruck.board.dao.BoardDAO;
+import com.foodtruck.notice.dao.BoardDAO;
 
 public class BoardDeleteService {
 	public void process(int no) {

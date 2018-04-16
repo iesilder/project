@@ -1,4 +1,4 @@
-package com.foodtruck.board.dao;
+package com.foodtruck.notice.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.foodtruck.board.dto.BoardDTO;
+import com.foodtruck.notice.dto.BoardDTO;
 import com.foodtruck.util.DBUtil;
 
 public class BoardDAO {

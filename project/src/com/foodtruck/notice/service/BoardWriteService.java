@@ -1,7 +1,7 @@
-package com.foodtruck.board.service;
+package com.foodtruck.notice.service;
 
-import com.foodtruck.board.dao.BoardDAO;
-import com.foodtruck.board.dto.BoardDTO;
+import com.foodtruck.notice.dao.BoardDAO;
+import com.foodtruck.notice.dto.BoardDTO;
 
 public class BoardWriteService {
 	public void process(BoardDTO boardDTO) {

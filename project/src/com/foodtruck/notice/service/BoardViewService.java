@@ -1,7 +1,7 @@
-package com.foodtruck.board.service;
+package com.foodtruck.notice.service;
 
-import com.foodtruck.board.dao.BoardDAO;
-import com.foodtruck.board.dto.BoardDTO;
+import com.foodtruck.notice.dao.BoardDAO;
+import com.foodtruck.notice.dto.BoardDTO;
 
 public class BoardViewService {
 	// 1. 글번호에 맞는 글의 조회수를 1증가시킨다.
