@@ -8,6 +8,8 @@
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
 	
+	<!-- Beans -->
+	<!-- 각자 작성 -->
 	<servlet>
 		<servlet-name>beans</servlet-name>
 		<servlet-class>com.webjjang.util.Beans</servlet-class>
@@ -18,21 +20,35 @@
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	
+	<!-- Controller servlet mapping -->
+	<!-- Notice, Data 담당 : 유태선	20180419-->
 	<servlet>
 		<servlet-name>dataController</servlet-name>
 		<servlet-class>com.foodtruck.board.controller.DataController</servlet-class>
+		<load-on-startup>2</load-on-startup>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>dataController</servlet-name>
 		<url-pattern>/data/*</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>noticeController</servlet-name>
+		<servlet-class>com.foodtruck.notice.controller.NoticeController</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>noticeController</servlet-name>
+		<url-pattern>/notice/*</url-pattern>
+	</servlet-mapping>
+
+	<!-- Filter -->
 	<filter>
     <filter-name>encoding</filter-name>
     <filter-class>
   		com.foodtruck.filter.EncodingFilter
   	</filter-class>
   </filter>
-  
   <filter-mapping>
     <filter-name>encoding</filter-name>
     <url-pattern>/*</url-pattern>

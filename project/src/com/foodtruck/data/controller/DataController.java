@@ -1,4 +1,4 @@
-package com.foodtruck.controller;
+package com.foodtruck.data.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
