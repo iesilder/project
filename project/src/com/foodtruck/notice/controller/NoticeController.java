@@ -38,7 +38,7 @@ public class NoticeController extends HttpServlet {
 		try {
 			switch (command) {
 			// 리스트
-			case "/notice/list.do":
+			case "/notice/noticeList.do":
 				// 리스트에 부릴 데이터를 가져오자. - BoardListService가 필요하다.
 				service = Beans.getService(command);
 				int page = 1;
@@ -63,13 +63,13 @@ public class NoticeController extends HttpServlet {
 				System.out.println(jsp);
 				break;
 			// 글쓰기 폼 - get
-			case "/notice/write.do":
+			case "/notice/noticeWrite.do":
 				jsp = Beans.getJsp(command);
 				System.out.println(jsp);
 				break;
 
 			// 글보기 - get
-			case "/notice/view.do":
+			case "/notice/noticeView.do":
 				int no = Integer.parseInt(request.getParameter("no"));
 				service = Beans.getService(command); // BoardViewService
 				// service를 실행해서 DB에서 BoardDTO를 가져와서 request에 담는다.
@@ -85,7 +85,7 @@ public class NoticeController extends HttpServlet {
 				break;
 
 			// 글수정 폼
-			case "/notice/update.do":
+			case "/notice/noticeUpdate.do":
 				// viewService에서
 				int no2 = Integer.parseInt(request.getParameter("no"));
 				service = Beans.getService("/notice/view.do"); // BoardViewService
@@ -102,7 +102,7 @@ public class NoticeController extends HttpServlet {
 				break;
 
 			// 리스트
-			case "/notice/delete.do":
+			case "/notice/noticeDelete.do":
 				// 삭제 처리할 서비스를 가져오자. - BoardDeleteService가 필요하다.
 				service = Beans.getService(command);
 				// 처리를해서 DB에 있는 데이터를 받아와서 request에 담아 둔다.
@@ -148,7 +148,7 @@ public class NoticeController extends HttpServlet {
 		try {
 			switch (command) {
 			// 글쓰기 처리
-			case "/notice/write.do":
+			case "/notice/noticeWrite.do":
 				// 넘어오는 데이터를 BoardDTO에 담는다.
 				NoticeDTO noticeDTO = new NoticeDTO(request.getParameter("title"), request.getParameter("content"),
 						request.getParameter("id"));
@@ -160,7 +160,7 @@ public class NoticeController extends HttpServlet {
 				System.out.println(jsp);
 				break;
 			// 글수정
-			case "/notice/update.do":
+			case "/notice/noticeUpdate.do":
 				service = Beans.getService(command);
 				System.out.println(service);
 				NoticeDTO noticeDTO2 = new NoticeDTO(Integer.parseInt(request.getParameter("no")),
