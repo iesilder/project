@@ -4,6 +4,8 @@
  */
 package com.foodtruck.notice.service;
 
+import java.util.ArrayList;
+
 import com.foodtruck.notice.dao.NoticeDAO;
 import com.foodtruck.notice.dto.NoticeDTO;
 import com.foodtruck.util.ServiceInterface;
@@ -19,18 +21,25 @@ public class NoticeViewService implements ServiceInterface {
 	}
 
 	@Override
-	public Object execute(Object obj) throws Exception {
+	public NoticeDTO execute(Object objs) throws Exception {
 		// TODO Auto-generated method stub
 		System.out.println(getClass().getName() + ".execute()");
 
-		// obj를 캐스팅하여 넘긴다.
-		NoticeDTO noticeDTO = (NoticeDTO) obj;
-
-		// 숫자를 하나 올린다.
-		noticeDAO.increase(noticeDTO);
-
+		// 담아온 객체를 캐스팅해준다.
+		@SuppressWarnings("unchecked")
+		ArrayList<Object> list = (ArrayList<Object>) objs;
+		
+		// 담아온 no isView를 꺼내준다.
+		// noticeDTO 객체를 만든다.
+		int no =(int) list.get(0);
+		boolean isView = (boolean) list.get(1);
+		NoticeDTO noticeDTO = null;
+		
+		// view로 들어왔을 때는 hit를 1 올린다. update인 경우에는 안 올린다.
+		if(isView) noticeDAO.increase(no);
+	
 		// dao에서 담아온다.
-		noticeDTO = noticeDAO.view(noticeDTO);
+		noticeDTO = noticeDAO.view(no);
 
 		return noticeDTO;
 	}

@@ -9,6 +9,7 @@ import java.util.List;
 import com.foodtruck.notice.dao.NoticeDAO;
 import com.foodtruck.notice.dto.NoticeDTO;
 import com.foodtruck.util.ServiceInterface;
+import com.webjjang.util.PageObject2;
 
 public class NoticeListService implements ServiceInterface {
 
@@ -21,7 +22,7 @@ public class NoticeListService implements ServiceInterface {
 	}
 
 	@Override
-	public Object execute(Object obj) throws Exception {
+	public List<NoticeDTO> execute(Object obj) throws Exception {
 		// TODO Auto-generated method stub
 		System.out.println(getClass().getName()+".execute()");
 		
@@ -31,7 +32,7 @@ public class NoticeListService implements ServiceInterface {
 		List<NoticeDTO> list = null;
 		
 		// DAO에서 list를 받아온다.
-		list = noticeDAO.list();
+		list = noticeDAO.list((PageObject2) obj);
 		
 		return list;
 	}

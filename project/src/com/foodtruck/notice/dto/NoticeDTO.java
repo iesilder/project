@@ -19,6 +19,7 @@ public class NoticeDTO {
 		super();
 	}
 
+	// 전부 다
 	public NoticeDTO(int no, String title, String content, String id, String writeDate, int hit) {
 		super();
 		this.no = no;
@@ -29,6 +30,7 @@ public class NoticeDTO {
 		this.hit = hit;
 	}
 
+	// 글쓰기
 	public NoticeDTO(String title, String content, String id) {
 		super();
 		this.title = title;

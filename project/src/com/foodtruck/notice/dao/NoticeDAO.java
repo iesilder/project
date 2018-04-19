@@ -8,13 +8,14 @@ import java.util.List;
 
 import com.foodtruck.notice.dto.NoticeDTO;
 import com.foodtruck.util.DBUtil;
+import com.webjjang.util.PageObject2;
 
 public class NoticeDAO {
 	// 오라클에 접속 할 때 필요한 정보들
 	// DBUtil에 다 선언.
 
 	// 글 리스트를 가져오는 메서드
-	public List<NoticeDTO> list() {
+	public List<NoticeDTO> list(PageObject2 pageObject) {
 		System.out.println("NoticeDAO.list()");
 		List<NoticeDTO> list = null;
 
@@ -27,9 +28,16 @@ public class NoticeDAO {
 			// 1. 드라이버 확인 //2. 연결
 			con = DBUtil.getConnection();
 			// 3. sql
+			// 1) 원래 데이터를 순서에 맞게 가져온다.
 			String sql = "select no, title, id, writedate, hit from board order by no desc ";
+			sql = " select rownum rnum, no, title, id, writedate, hit from (" + sql + ")";
+			sql = " select * from (" + sql + ")" + "where rnum between ? and ? ";
+
+			// 2) 순서에 맞게 가져온 데이터에 rownum rnum을 붙인다.
 			// 4. 처리문 객체 생성.
 			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, pageObject.getStartRow());
+			pstmt.setInt(2, pageObject.getEndRow());
 			// 5. 처리문 객체 실행 --> rs가 나온다.
 			rs = pstmt.executeQuery();
 			// 6. 표시 --> 데이터 담기
@@ -38,15 +46,15 @@ public class NoticeDAO {
 				if (list == null)
 					list = new ArrayList<>();
 				// 데이터 하나를 담을 수 있는 BoardDTO객체를 생성한다.
-				NoticeDTO boardDTO = new NoticeDTO();
+				NoticeDTO noticeDTO = new NoticeDTO();
 				// 데이터를 rs에서 꺼내서 boardDTO에 담는다.
-				boardDTO.setNo(rs.getInt("no"));
-				boardDTO.setTitle(rs.getString("title"));
-				boardDTO.setId(rs.getString("id"));
-				boardDTO.setWriteDate(rs.getString("writedate"));
-				boardDTO.setHit(rs.getInt("hit"));
+				noticeDTO.setNo(rs.getInt("no"));
+				noticeDTO.setTitle(rs.getString("title"));
+				noticeDTO.setId(rs.getString("id"));
+				noticeDTO.setWriteDate(rs.getString("writedate"));
+				noticeDTO.setHit(rs.getInt("hit"));
 				// list에 boardDTO를 담는다.
-				list.add(boardDTO);
+				list.add(noticeDTO);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -62,9 +70,9 @@ public class NoticeDAO {
 	}
 
 	// 글번호에 맞는 글보기 데이터를 가져오는 메서드.
-	public NoticeDTO view(NoticeDTO noticeDTO) {
+	public NoticeDTO view(int no) {
 		System.out.println("NoticeDAO.view()");
-		NoticeDTO boardDTO = null;
+		NoticeDTO noticeDTO = null;
 		// 오라클에서 데이터를 가져와서 채우는 프로그램 작성.
 		// 필요한 객체 선언
 		Connection con = null; // 연결 객체
@@ -77,13 +85,13 @@ public class NoticeDAO {
 			String sql = "select no, title, content, id, writedate, hit from board where no = ? ";
 			// 4. 처리 객체 생성
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, noticeDTO.getNo()); // 첫번재 ?에 no를 int로 세팅
+			pstmt.setInt(1, no); // 첫번재 ?에 no를 int로 세팅
 			// 5. 처리 객체 실행
 			rs = pstmt.executeQuery();
 			// 6. 표시 rs에서 꺼내서 boardDTO에 담는다.
 			if (rs.next()) {
 				// 생성자가 만들어져 있어야 한다.
-				boardDTO = new NoticeDTO(rs.getInt("no"), rs.getString("title"), rs.getString("content"),
+				noticeDTO = new NoticeDTO(rs.getInt("no"), rs.getString("title"), rs.getString("content"),
 						rs.getString("id"), rs.getString("writeDate"), rs.getInt("hit"));
 			}
 		} catch (Exception e) {
@@ -96,11 +104,11 @@ public class NoticeDAO {
 				e.printStackTrace();
 			}
 		}
-		return boardDTO;
+		return noticeDTO;
 	}
 
 	// 조회수를 1 증가시키는 메서드. -> 글번호를 받아서 글번호에 맞는 조회수 증가.
-	public void increase(NoticeDTO noticeDTO) {
+	public void increase(int no) {
 		System.out.println("NoticeDAO.increase()");
 		// 오라클에서 데이터를 가져와서 채우는 프로그램 작성.
 		// 필요한 객체 선언
@@ -113,7 +121,7 @@ public class NoticeDAO {
 			String sql = "update board set hit = hit + 1 where no = ? ";
 			// 4. 처리 객체 생성
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, noticeDTO.getNo()); // 첫번재 ?에 no를 int로 세팅
+			pstmt.setInt(1, no); // 첫번재 ?에 no를 int로 세팅
 			// 5. 처리 객체 실행 -> select: executeQuery(), 그 외: executeUpdate()
 			pstmt.executeUpdate();
 			// 6. 표시 -> 오류가 없으면 정상처리
@@ -130,7 +138,7 @@ public class NoticeDAO {
 	}
 
 	// 게시판 글쓰기 처리
-	public void write(NoticeDTO boardDTO) {
+	public void write(NoticeDTO noticeDTO) {
 		System.out.println("NoticeDAO.write()");
 		// 오라클에서 데이터를 가져와서 채우는 프로그램 작성.
 		// 필요한 객체 선언
@@ -143,9 +151,9 @@ public class NoticeDAO {
 			String sql = "insert into board(no, title, content, id) values(board_seq.nextval, ?, ?, ?) ";
 			// 4. 처리 객체 생성
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, boardDTO.getTitle()); // 첫번재 ?에 no 세팅
-			pstmt.setString(2, boardDTO.getContent()); // 첫번재 ?에 no 세팅
-			pstmt.setString(3, boardDTO.getId()); // 첫번재 ?에 no 세팅
+			pstmt.setString(1, noticeDTO.getTitle()); // 첫번재 ?에 no 세팅
+			pstmt.setString(2, noticeDTO.getContent()); // 첫번재 ?에 no 세팅
+			pstmt.setString(3, noticeDTO.getId()); // 첫번재 ?에 no 세팅
 			// 5. 처리 객체 실행 -> select: executeQuery(), 그 외: executeUpdate()
 			pstmt.executeUpdate();
 			// 6. 표시 -> 오류가 없으면 정상처리
@@ -162,7 +170,7 @@ public class NoticeDAO {
 	}
 
 	// 게시판 글수정 처리
-	public void update(NoticeDTO boardDTO) {
+	public void update(NoticeDTO noticeDTO) {
 		System.out.println("NoticeDAO.update()");
 		// 오라클에서 데이터를 가져와서 채우는 프로그램 작성.
 		// 필요한 객체 선언
@@ -175,9 +183,9 @@ public class NoticeDAO {
 			String sql = "update board set title=?, content=? where no = ? ";
 			// 4. 처리 객체 생성
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, boardDTO.getTitle()); // 첫번재 ?에 title 세팅
-			pstmt.setString(2, boardDTO.getContent()); // 두번재 ?에 content 세팅
-			pstmt.setInt(3, boardDTO.getNo()); // 네번재 ?에 no 세팅
+			pstmt.setString(1, noticeDTO.getTitle()); // 첫번재 ?에 title 세팅
+			pstmt.setString(2, noticeDTO.getContent()); // 두번재 ?에 content 세팅
+			pstmt.setInt(3, noticeDTO.getNo()); // 네번재 ?에 no 세팅
 			// 5. 처리 객체 실행 -> select: executeQuery(), 그 외: executeUpdate()
 			pstmt.executeUpdate();
 			// 6. 표시 -> 오류가 없으면 정상처리

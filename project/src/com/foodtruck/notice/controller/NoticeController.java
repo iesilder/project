@@ -52,7 +52,7 @@ public class NoticeController extends HttpServlet {
 					page = Integer.parseInt(rowPerPageStr);
 
 				// 페이지 처리를 하기 위한 객체 생성 -> 다른 데이터는 자동 계산 된다.
-				PageObject2 pageObject = new PageObject2(DBUtil.getConnection(), "board", page, rowPerPage, 10, null,
+				PageObject2 pageObject = new PageObject2(DBUtil.getConnection(), "noticeboard", page, rowPerPage, 10, null,
 						null);
 				System.out.println(pageObject);
 				// 요청을 처리해서 DB에 있는 데이터를 받아와서 request에 담는다.
@@ -151,7 +151,7 @@ public class NoticeController extends HttpServlet {
 			case "/notice/write.do":
 				// 넘어오는 데이터를 BoardDTO에 담는다.
 				NoticeDTO noticeDTO = new NoticeDTO(request.getParameter("title"), request.getParameter("content"),
-						request.getParameter("writer"));
+						request.getParameter("id"));
 				// 처리할 서비스를 받아온다. - BoardWriteService
 				service = Beans.getService(command);
 				System.out.println(service);
@@ -164,7 +164,7 @@ public class NoticeController extends HttpServlet {
 				service = Beans.getService(command);
 				System.out.println(service);
 				NoticeDTO noticeDTO2 = new NoticeDTO(Integer.parseInt(request.getParameter("no")),
-						request.getParameter("title"), request.getParameter("content"), request.getParameter("writer"),
+						request.getParameter("title"), request.getParameter("content"), request.getParameter("id"),
 						null, 0); // hit는 int이므로 0을 넣어야 한다.
 				// 실행해서 수정처리
 				service.execute(noticeDTO2);
