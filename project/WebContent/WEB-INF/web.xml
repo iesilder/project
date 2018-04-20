@@ -49,8 +49,8 @@
   		com.foodtruck.filter.EncodingFilter
   	</filter-class>
   	 <init-param>
-            <param-name>encoding</param-name>
-            <param-value>UTF-8</param-value>
+       <param-name>encoding</param-name>
+       <param-value>UTF-8</param-value>
      </init-param>
   </filter>
   <filter-mapping>
