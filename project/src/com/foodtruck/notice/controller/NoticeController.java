@@ -46,15 +46,14 @@ public class NoticeController extends HttpServlet {
 				String pageStr = request.getParameter("page");
 				String rowPerPageStr = request.getParameter("rowPerPage");
 				// 처음에는 페이지, rowPerPage 데이터가 넘어오지 않아 null이다. null이면 page=1, rowPerPage = 10
-				if (pageStr != null)
+				if (pageStr != null && pageStr != "")
 					page = Integer.parseInt(pageStr);
-				if (rowPerPageStr != null)
+				if (rowPerPageStr != null && rowPerPageStr != "")
 					page = Integer.parseInt(rowPerPageStr);
 
 				// 페이지 처리를 하기 위한 객체 생성 -> 다른 데이터는 자동 계산 된다.
 				PageObject2 pageObject = new PageObject2(DBUtil.getConnection(), "noticeboard", page, rowPerPage, 10, null,
 						null);
-				System.out.println(pageObject);
 				// 요청을 처리해서 DB에 있는 데이터를 받아와서 request에 담는다.
 				request.setAttribute("list", service.execute(pageObject));
 				request.setAttribute("pageInfo", pageObject);
