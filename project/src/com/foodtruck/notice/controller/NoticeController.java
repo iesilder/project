@@ -20,7 +20,6 @@ import com.webjjang.util.PageObject2;
 public class NoticeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -52,8 +51,8 @@ public class NoticeController extends HttpServlet {
 					page = Integer.parseInt(rowPerPageStr);
 
 				// 페이지 처리를 하기 위한 객체 생성 -> 다른 데이터는 자동 계산 된다.
-				PageObject2 pageObject = new PageObject2(DBUtil.getConnection(), "noticeboard", page, rowPerPage, 10, null,
-						null);
+				PageObject2 pageObject = new PageObject2(DBUtil.getConnection(), "noticeboard", page, rowPerPage, 10,
+						null, null);
 				System.out.println(pageObject);
 				// 요청을 처리해서 DB에 있는 데이터를 받아와서 request에 담는다.
 				request.setAttribute("list", service.execute(pageObject));
