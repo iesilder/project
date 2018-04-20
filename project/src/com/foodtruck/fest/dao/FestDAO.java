@@ -6,8 +6,9 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.foodtruck.fest.dto.FestDTO;
 import com.foodtruck.util.DBUtil;
-import com.foodtruck.util.PageObject2;
+import com.webjjang.util.PageObject2;
 
 public class FestDAO {
 
@@ -30,9 +31,9 @@ public class FestDAO {
 			con = DBUtil.getConnection();
 			// 3. sql
 			// 3-1. 원래 데이터를 순서에 맞게 가져온다.
-			String sql = "select no, title, writer, writedate, hit from board order by no desc ";
+			String sql = "select festno, festname, to_char(festdate, 'yyyy-mm-dd') festdate, festloc, hit from FESTBOARD order by festno desc ";
 			// 3-2. 순서에 맞게 가져온 데이터에 rowNum을 붙인다.
-			sql = "select rownum rnum, no, title, writer, writedate, hit from (" + sql + ")";
+			sql = "select rownum rnum, festno, festname, festdate, festloc, hit from (" + sql + ")";
 			// 3-3. 페이지에 맞는 startRow, endRow를 설정한다.
 			sql = "select * from (" + sql + ") where rnum between ? and ?";
 			// 4. 처리문 객체
@@ -46,16 +47,16 @@ public class FestDAO {
 				// 데이터가 있는데 list가 null이면 생성한다.
 				if (list == null)
 					list = new ArrayList<>();
-				// 데이터 하나를 담을 수 있는 BoardDTO 객체를 생성한다.
-				FestDAO boardDTO = new FestDAO();
-				// 데이터를 rs에서 꺼내서 boardDTO에 담는다.
-				boardDTO.setNo(rs.getInt("no"));
-				boardDTO.setTitle(rs.getString("title"));
-				boardDTO.setWriter(rs.getString("writer"));
-				boardDTO.setWriteDate(rs.getString("writedate"));
-				boardDTO.setHit(rs.getInt("hit"));
-				// list에 boardDTO를 담는다.
-				list.add(boardDTO);
+				// 데이터 하나를 담을 수 있는 FestDTO 객체를 생성한다.
+				FestDTO festDTO = new FestDTO();
+				// 데이터를 rs에서 꺼내서 festDTO에 담는다.
+				festDTO.setNo(rs.getInt("no"));
+				festDTO.setFestname(rs.getString("festname"));
+				festDTO.setFestdate(rs.getDate("festdate"));
+				festDTO.setWriteDate(rs.getString("writedate"));
+				festDTO.setHit(rs.getInt("hit"));
+				// list에 festDTO를 담는다.
+				list.add(festDTO);
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -76,7 +77,7 @@ public class FestDAO {
 	// 글번호에 맞는 글보기 데이터를 가져오는 메서드
 	public FestDAO view(int no) {
 		System.out.println("BoardDAO.view()");
-		FestDAO boardDTO = null;
+		FestDAO festDTO = null;
 		// 오라클에서 데이터를 가져와서 채우는 프로그램 작성(생략)
 		// 사용한 객체 선언
 		Connection con = null; // 연결 객체
@@ -96,10 +97,10 @@ public class FestDAO {
 			pstmt.setInt(1, no); // 첫번째 ?에 no를 int로 셋팅
 			// 5. 실행
 			rs = pstmt.executeQuery();
-			// 6. 표시 rs에서 꺼내서 BoardDTO에 담는다.
+			// 6. 표시 rs에서 꺼내서 FestDTO에 담는다.
 			if (rs.next()) {
 				// 생성자가 만들어져 있어야 한다.
-				boardDTO = new FestDAO(rs.getInt("no"), rs.getString("title"), rs.getString("content"),
+				festDTO = new FestDAO(rs.getInt("no"), rs.getString("title"), rs.getString("content"),
 						rs.getString("writer"), rs.getString("writeDate"), rs.getInt("hit"));
 			}
 
@@ -115,11 +116,11 @@ public class FestDAO {
 				e.printStackTrace();
 			}
 		}
-		return boardDTO;
+		return festDTO;
 	}
 
 	// 게시판 글쓰기 처리.
-	public void write(FestDAO boardDTO) {
+	public void write(FestDTO festDTO) {
 		System.out.println("BoardDAO.write()");
 		// 사용한 객체 선언
 		Connection con = null; // 연결 객체
@@ -132,9 +133,9 @@ public class FestDAO {
 					+ " ?, ?, ?) "; // 변하는 데이터 대신 ? 사용
 			// 4. 처리문 객체
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, boardDTO.getTitle());
-			pstmt.setString(2, boardDTO.getContent());
-			pstmt.setString(3, boardDTO.getWriter());
+			pstmt.setString(1, festDTO.getTitle());
+			pstmt.setString(2, festDTO.getContent());
+			pstmt.setString(3, festDTO.getWriter());
 			// 5. 실행 -> select: executeQuery()
 			// insert, update, delete:executeUpdate()
 			pstmt.executeUpdate();
@@ -186,7 +187,7 @@ public class FestDAO {
 	}
 
 	// 게시판 글수정 처리.
-	public void update(FestDAO boardDTO) {
+	public void update(FestDTO festDTO) {
 		System.out.println("BoardDAO.update()");
 		// 사용한 객체 선언
 		Connection con = null; // 연결 객체
@@ -199,10 +200,10 @@ public class FestDAO {
 																											// ? 사용
 			// 4. 처리문 객체
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, boardDTO.getTitle());
-			pstmt.setString(2, boardDTO.getContent());
-			pstmt.setString(3, boardDTO.getWriter());
-			pstmt.setInt(4, boardDTO.getNo());
+			pstmt.setString(1, festDTO.getTitle());
+			pstmt.setString(2, festDTO.getContent());
+			pstmt.setString(3, festDTO.getWriter());
+			pstmt.setInt(4, festDTO.getNo());
 			// 5. 실행 -> select: executeQuery()
 			// insert, update, delete:executeUpdate()
 			pstmt.executeUpdate();
@@ -223,7 +224,7 @@ public class FestDAO {
 
 	// 게시판 글삭제 처리
 	public void delete(int no) {
-		System.out.println("BoardDAO.delete()");
+		System.out.println("FestDTO.delete()");
 		// 사용한 객체 선언
 		Connection con = null; // 연결 객체
 		PreparedStatement pstmt = null; // 처리문 객체

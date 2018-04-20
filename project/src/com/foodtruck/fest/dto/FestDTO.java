@@ -1,9 +1,14 @@
 package com.foodtruck.fest.dto;
 
+import java.util.Date;
+
 public class FestDTO {
 
 	private int festno;
-	private String festname, festcomp, festdate, festloc, festtime;
+	private String festname, festcomp;
+	private Date festdate;
+	private String festloc;
+	private Date festtime;
 	private int hit;
 
 	// 초기화 블럭
@@ -12,7 +17,7 @@ public class FestDTO {
 	}
 
 	// 행사일정 리스트용
-	public FestDTO(int festno, String festname, String festdate, String festloc, int hit) {
+	public FestDTO(int festno, String festname, Date festdate, String festloc, int hit) {
 		this.festno = festno;
 		this.festname = festname;
 		this.festdate = festdate;
@@ -21,7 +26,7 @@ public class FestDTO {
 	}
 
 	// 행사일정 글보기용
-	public FestDTO(int festno, String festname, String festcomp, String festdate, String festloc, String festtime,
+	public FestDTO(int festno, String festname, String festcomp, Date festdate, String festloc, Date festtime,
 			int hit) {
 		this.festno = festno;
 		this.festname = festname;
@@ -33,7 +38,7 @@ public class FestDTO {
 	}
 
 	// 행사일정 글등록 및 수정용
-	public FestDTO(String festname, String festcomp, String festdate, String festloc, String festtime) {
+	public FestDTO(String festname, String festcomp, Date festdate, String festloc, Date festtime) {
 		this.festname = festname;
 		this.festcomp = festcomp;
 		this.festdate = festdate;
@@ -65,11 +70,11 @@ public class FestDTO {
 		this.festcomp = festcomp;
 	}
 
-	public String getFestdate() {
+	public Date getFestdate() {
 		return festdate;
 	}
 
-	public void setFestdate(String festdate) {
+	public void setFestdate(Date festdate) {
 		this.festdate = festdate;
 	}
 
@@ -81,11 +86,11 @@ public class FestDTO {
 		this.festloc = festloc;
 	}
 
-	public String getFesttime() {
+	public Date getFesttime() {
 		return festtime;
 	}
 
-	public void setFesttime(String festtime) {
+	public void setFesttime(Date festtime) {
 		this.festtime = festtime;
 	}
 
