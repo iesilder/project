@@ -6,14 +6,14 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Properties;
 
+import javax.servlet.Servlet;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 
-import com.foodtruck.data.dao.DataDAO;
+import com.foodtruck.fest.dao.FestDAO;
 import com.foodtruck.notice.dao.NoticeDAO;
-
 
 /**
  * Servlet implementation class Beans
@@ -60,9 +60,11 @@ public class Beans extends HttpServlet {
 	public void init() throws ServletException {
 		// TODO Auto-generated method stub
 		// =====dao 생성해서 저장하는 처리문. - 모든 DAO 프로그램을 다 생성해 놓는다. =====
-//		daoBeans.put("memberDAO", new MemberDAO());
-//		daoBeans.put("dataDAO", new DataDAO());
+		// daoBeans.put("memberDAO", new MemberDAO());
+		// daoBeans.put("dataDAO", new DataDAO());
 		daoBeans.put("noticeDAO", new NoticeDAO());
+		// 행사 일정에 대한 DAO 생성 및 저장 처리문 - 홍다운 - 20180420
+		daoBeans.put("festDAO", new FestDAO());
 		// ========= service를 생성해서 저장하는 프로그램 작성 ==========
 		/* 설정된 파일을 불러오자 */
 		// web.xml에 init-param tag로 정의되어 있는 값을 받아 온다.
