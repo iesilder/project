@@ -114,20 +114,20 @@ $(document).ready(function(){
             <div class="control-group form-group">
               <div class="controls">
                 <label>제목:</label>
-                <input type="text" class="form-control" id="name" required data-validation-required-message="Please enter your name.">
-                <p class="help-block"></p>
+                <input type="text" class="form-control" id="title" placeholder="제목을 입력하세요." required data-validation-required-message="제목을 입력하세요." required="required">
+                <p class="help-block"></p> 
               </div>
             </div>
             <div class="control-group form-group">
               <div class="controls">
                 <label>작성자:</label>
-                <input type="email" class="form-control" id="email" required data-validation-required-message="Please enter your email address.">
+                <input type="text" class="form-control" id="writer" placeholder="작성자 성함을 입력하세요." required data-validation-required-message="작성작를 입력하세요." required="required">
               </div>
             </div>
             <div class="control-group form-group">
               <div class="controls">
                 <label>내용:</label>
-                <textarea rows="10" cols="100" class="form-control" id="message" required data-validation-required-message="Please enter your message" maxlength="999" style="resize:none"></textarea>
+                <textarea rows="10" cols="100" class="form-control" id="content" placeholder="공지사항 내용을 입력하세요." required data-validation-required-message="공지사항 내용을 입력하세요." maxlength="999" style="resize:none"></textarea>
               </div>
             </div>
             <div id="success"></div>
