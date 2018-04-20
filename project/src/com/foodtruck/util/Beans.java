@@ -61,7 +61,7 @@ public class Beans extends HttpServlet {
 		// TODO Auto-generated method stub
 		// =====dao 생성해서 저장하는 처리문. - 모든 DAO 프로그램을 다 생성해 놓는다. =====
 //		daoBeans.put("memberDAO", new MemberDAO());
-		daoBeans.put("dataDAO", new DataDAO());
+//		daoBeans.put("dataDAO", new DataDAO());
 		daoBeans.put("noticeDAO", new NoticeDAO());
 		// ========= service를 생성해서 저장하는 프로그램 작성 ==========
 		/* 설정된 파일을 불러오자 */
@@ -69,7 +69,6 @@ public class Beans extends HttpServlet {
 		String configFile = getInitParameter("configFile");
 		// 컴퓨터 하드에 위치하는 실제적인 위치가 필요하다.
 		String configFilePath = getServletContext().getRealPath(configFile);
-
 		/* 실제적인 위치의 파일을 Properties 객체에서 읽어오자. */
 		// key = value 값을 받아올 수 있는 객체 Properties를 이용해서 문자열로 받아낸다.
 		Properties prop = new Properties();
@@ -82,7 +81,6 @@ public class Beans extends HttpServlet {
 			// TODO: handle exception
 			System.out.println("읽기 오류");
 		} // end of try-catch
-
 		/* Properties에 있는 내용으로 객체를 자동생성하게 하자. */
 		// prop객체에서 키 -> set -> iterator : 선언된 모든 객체 생성
 		Iterator<Object> keyIter = prop.keySet().iterator();
@@ -106,7 +104,6 @@ public class Beans extends HttpServlet {
 				e.printStackTrace();
 			} // end of try - catch;;
 		} // end of while;
-
 	}// end of init()
 
 }// end of class Beans{}

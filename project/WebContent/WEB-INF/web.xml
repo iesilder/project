@@ -12,7 +12,7 @@
 	<!-- 각자 작성 -->
 	<servlet>
 		<servlet-name>beans</servlet-name>
-		<servlet-class>com.webjjang.util.Beans</servlet-class>
+		<servlet-class>com.foodtruck.util.Beans</servlet-class>
 		<init-param>
 			<param-name>configFile</param-name>
 			<param-value>/WEB-INF/command.properties</param-value>
@@ -25,7 +25,7 @@
 	<servlet>
 		<servlet-name>dataController</servlet-name>
 		<servlet-class>com.foodtruck.board.controller.DataController</servlet-class>
-		<load-on-startup>2</load-on-startup>
+<!-- 		<load-on-startup>2</load-on-startup> -->
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>dataController</servlet-name>
