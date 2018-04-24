@@ -1,6 +1,6 @@
 package com.foodtruck.fest.dto;
 
-public class FestFirmDTO {
+public class FestTruckDTO {
 
 	private int truckno;
 	private String country, maindish;
@@ -9,12 +9,12 @@ public class FestFirmDTO {
 	private int hit;
 
 	// 초기화 블럭
-	public FestFirmDTO() {
+	public FestTruckDTO() {
 
 	}
 
 	// 행사일정 리스트용
-	public FestFirmDTO(int truckno, String country, String maindish, String mngrname, String mngrtel, int hit) {
+	public FestTruckDTO(int truckno, String country, String maindish, String mngrname, String mngrtel, int hit) {
 		this.truckno = truckno;
 		this.country = country;
 		this.maindish = maindish;
@@ -24,7 +24,7 @@ public class FestFirmDTO {
 	}
 
 	// 행사일정 글보기용
-	public FestFirmDTO(int truckno, String country, String maindish, int predppl, int applyppl, int readyfood,
+	public FestTruckDTO(int truckno, String country, String maindish, int predppl, int applyppl, int readyfood,
 			String mngrname, String mngrtel, int hit) {
 		this.truckno = truckno;
 		this.country = country;
@@ -38,7 +38,7 @@ public class FestFirmDTO {
 	}
 
 	// 행사일정 글등록 및 수정용
-	public FestFirmDTO(String country, String maindish, int predppl, int applyppl, int readyfood, String mngrname,
+	public FestTruckDTO(String country, String maindish, int predppl, int applyppl, int readyfood, String mngrname,
 			String mngrtel) {
 		this.country = country;
 		this.maindish = maindish;
