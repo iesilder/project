@@ -44,7 +44,7 @@
 <!-- 	조량래 멤버컨트롤러  -->
 	<servlet>
     <servlet-name>memberController</servlet-name>
-    <servlet-class>com.webjjang.member.controller.MemberController</servlet-class>
+    <servlet-class>com.foodtruck.member.controller.MemberController</servlet-class>
     <load-on-startup>2</load-on-startup>
   </servlet>
   <servlet-mapping>
