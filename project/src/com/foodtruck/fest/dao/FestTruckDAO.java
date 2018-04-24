@@ -6,19 +6,19 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.foodtruck.fest.dto.FestFirmDTO;
+import com.foodtruck.fest.dto.FestTruckDTO;
 import com.foodtruck.util.DBUtil;
 import com.webjjang.util.PageObject2;
 
-public class FestFirmDAO {
+public class FestTruckDAO {
 
 	// 오라클에 접속할때 필요한 정보들
 	// DBUtil에 다 선언함.
 
 	// 글리스트를 가져오는 메서드
-	public List<FestFirmDTO> list(PageObject2 pgObj) {
+	public List<FestTruckDTO> list(PageObject2 pgObj) {
 		System.out.println(getClass().getName() + ".list()");
-		List<FestFirmDTO> list = null;
+		List<FestTruckDTO> list = null;
 		// RDBMS에서 데이터를 가져 오는 프로그램 작성
 
 		// 필요한 객체 선언
@@ -48,7 +48,7 @@ public class FestFirmDAO {
 				if (list == null)
 					list = new ArrayList<>();
 				// 데이터 하나를 담을 수 있는 FestDTO 객체를 생성한다.
-				FestFirmDTO festFirmDTO = new FestFirmDTO();
+				FestTruckDTO festFirmDTO = new FestTruckDTO();
 				// 데이터를 rs에서 꺼내서 festFirmDTO에 담는다.
 				festFirmDTO.setTruckno(rs.getInt("truckno"));
 				festFirmDTO.setCountry(rs.getString("country"));
@@ -76,9 +76,9 @@ public class FestFirmDAO {
 	}
 
 	// 글번호에 맞는 글보기 데이터를 가져오는 메서드
-	public FestFirmDTO view(int festno) {
+	public FestTruckDTO view(int festno) {
 		System.out.println(getClass().getName() + ".view()");
-		FestFirmDTO festFirmDTO = null;
+		FestTruckDTO festFirmDTO = null;
 		// 오라클에서 데이터를 가져와서 채우는 프로그램 작성(생략)
 		// 사용한 객체 선언
 		Connection con = null; // 연결 객체
@@ -99,7 +99,7 @@ public class FestFirmDAO {
 			// 6. 표시 rs에서 꺼내서 FestDTO에 담는다.
 			if (rs.next()) {
 				// 생성자가 만들어져 있어야 한다.
-				festFirmDTO = new FestFirmDTO(rs.getInt("truckno"), rs.getString("country"), rs.getString("maindish"),
+				festFirmDTO = new FestTruckDTO(rs.getInt("truckno"), rs.getString("country"), rs.getString("maindish"),
 						rs.getInt("predppl"), rs.getInt("applyppl"), rs.getInt("readyfood"), rs.getString("mngrname"),
 						rs.getString("mngrtel"), rs.getInt("hit"));
 			}
@@ -120,7 +120,7 @@ public class FestFirmDAO {
 	}
 
 	// 게시판 글쓰기 처리.
-	public void write(FestFirmDTO festFirmDTO) {
+	public void write(FestTruckDTO festFirmDTO) {
 		System.out.println(getClass().getName() + ".write()");
 		// 사용한 객체 선언
 		Connection con = null; // 연결 객체
@@ -191,7 +191,7 @@ public class FestFirmDAO {
 	}
 
 	// 게시판 글수정 처리.
-	public void update(FestFirmDTO festFirmDTO) {
+	public void update(FestTruckDTO festFirmDTO) {
 		System.out.println(getClass().getName() + ".update()");
 		// 사용한 객체 선언
 		Connection con = null; // 연결 객체
