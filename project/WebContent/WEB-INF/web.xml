@@ -41,6 +41,7 @@
 		<servlet-name>noticeController</servlet-name>
 		<url-pattern>/notice/*</url-pattern>
 	</servlet-mapping>
+<!-- 	조량래 멤버컨트롤러  -->
 	<servlet>
     <servlet-name>memberController</servlet-name>
     <servlet-class>com.webjjang.member.controller.MemberController</servlet-class>
