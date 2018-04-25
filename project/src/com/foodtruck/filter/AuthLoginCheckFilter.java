@@ -50,6 +50,10 @@ public class AuthLoginCheckFilter implements Filter {
 		Integer grade = (Integer) req.getSession().getAttribute("grade");
 		// 1. Login 확인
 		if (Auth.isGoLogin(uri, grade)) { // 로그인이 필요하다.
+			// 뒤에 넘어오는 데이터들을 붙인다.
+			String query = req.getQueryString();
+			if (query != null && !query.equals(""))
+				uri += "?" + query;
 			// 요청한 URI를 저장한다. ->> login.jsp가서 "reqURI" 설정하기
 			req.getSession().setAttribute("reqURI", uri);
 			;
