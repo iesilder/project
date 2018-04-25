@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 
 import com.foodtruck.fest.dao.FestDAO;
+import com.foodtruck.member.controller.Auth;
 import com.foodtruck.notice.dao.NoticeDAO;
 
 /**
@@ -92,6 +93,10 @@ public class Beans extends HttpServlet {
 			String handlerClassName[] = ((String) prop.get(command)).split(":");
 			// 클래스 이름을 알아내면 자동으로 객체를 생성할 수 있다.
 			try {
+				// 클래스 이름을 확인하는 명령문: forName
+				// 클래스 객체로 저장이 가능
+				// 따라서 command.properties에 저장되어있지 않는 서비스들은 실행이 불가능.
+				// [0]은 command.properties의 value 첫번째 값을 부르는 것
 				Class<?> handlerClass = Class.forName(handlerClassName[0]);
 				// 자동으로 객체를 생성해서 저장한다.
 				ServiceInterface handlerInstance = (ServiceInterface) handlerClass.newInstance();
@@ -101,6 +106,8 @@ public class Beans extends HttpServlet {
 				// 의존성 주입 - 사용하는 프로그램을 넣어준다.(setter, 생성자)
 				// 생성이 된 service(handlerInstance)에 필요한 DAO를 가져와서 넣는다.
 				handlerInstance.setDAO(daoBeans.get(handlerClassName[1]));
+				// 권한 filter에 관련되어서 command.properties의 권한 번호로 구분하는 선언문
+				Auth.addAuth(command, Integer.parseInt(handlerClassName[2]));
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
