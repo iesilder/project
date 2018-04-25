@@ -51,7 +51,18 @@
     <servlet-name>memberController</servlet-name>
     <url-pattern>/member/*</url-pattern>
   </servlet-mapping>
-
+  
+  <!-- review 담당 : 조현일-->
+	<servlet>
+		<servlet-name>reviewController</servlet-name>
+		<servlet-class>com.foodtruck.review.controller.ReviewController</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>reviewController</servlet-name>
+		<url-pattern>/review/*</url-pattern>
+	</servlet-mapping>
+	
 	<!-- Filter -->
 	<filter>
     <filter-name>encoding</filter-name>
