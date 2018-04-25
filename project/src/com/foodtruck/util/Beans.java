@@ -113,6 +113,7 @@ public class Beans extends HttpServlet {
 				e.printStackTrace();
 			} // end of try - catch;;
 		} // end of while;
+		System.out.println("객체생성과 연결, 권한 자료 로딩 완료!");
 	}// end of init()
 
 }// end of class Beans{}
