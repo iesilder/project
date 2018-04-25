@@ -51,8 +51,18 @@
     <servlet-name>memberController</servlet-name>
     <url-pattern>/member/*</url-pattern>
   </servlet-mapping>
+  
+<!--   권한 필터 -->
+    <filter>
+    <filter-name>authLoginCheck</filter-name>
+    <filter-class>com.webjjang.filter.AuthLoginCheckFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>authLoginCheck</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
 
-	<!-- Filter -->
+	<!-- Encoding Filter -->
 	<filter>
     <filter-name>encoding</filter-name>
     <filter-class>
@@ -65,6 +75,19 @@
   </filter>
   <filter-mapping>
     <filter-name>encoding</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+<!--   sitemesh: html의 메뉴 및 레이아웃을 중복 선언하지 않게 해주는 것  -->
+    <filter>
+    <description>사이트에 레이아웃을 잡는 필터 처리</description>
+    <filter-name>sitemesh</filter-name>
+    <filter-class>
+   com.opensymphony.sitemesh.webapp.SiteMeshFilter
+   </filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>sitemesh</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
   
