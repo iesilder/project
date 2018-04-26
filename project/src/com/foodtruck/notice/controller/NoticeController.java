@@ -161,7 +161,7 @@ public class NoticeController extends HttpServlet {
 				service = Beans.getService(command);
 				System.out.println(service);
 				service.execute(noticeDTO);
-				jsp = "list.do"; // 현재위치이므로 /board/list.do 가 아니다.
+				jsp = "noticeList.do"; // 현재위치이므로 /notice/noticeList.do 가 아니다.
 				System.out.println(jsp);
 				break;
 			// 글수정
@@ -174,8 +174,8 @@ public class NoticeController extends HttpServlet {
 				// 실행해서 수정처리
 				service.execute(noticeDTO2);
 				// 글보기로 이동시키는데 글번호와 함께 이동시킨다.
-				jsp = "view.do?no=" + noticeDTO2.getNo();
-				System.out.println(jsp);
+				jsp = "view.do?no=" + noticeDTO2.getNo() + "&page=" + request.getParameter("page") + "&rowPerPage="
+						+ request.getParameter("rowPerPage");
 				break;
 
 			default:
