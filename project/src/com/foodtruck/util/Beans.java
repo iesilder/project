@@ -16,6 +16,7 @@ import com.foodtruck.fest.dao.FestCustDAO;
 import com.foodtruck.fest.dao.FestDAO;
 import com.foodtruck.fest.dao.FestTruckDAO;
 import com.foodtruck.member.controller.Auth;
+import com.foodtruck.member.dao.MemberDAO;
 import com.foodtruck.notice.dao.NoticeDAO;
 import com.foodtruck.review.dao.ReviewDAO;
 
@@ -76,6 +77,8 @@ public class Beans extends HttpServlet {
 		daoBeans.put("custDAO", new FestCustDAO());
 		// 푸드트럭 신청 DAO
 		daoBeans.put("truckDAO", new FestTruckDAO());
+		// 회원관리 DAO
+		daoBeans.put("memberDAO", new MemberDAO());
 //>>>>>>> branch 'master' of https://github.com/iesilder/project.git
 		// ========= service를 생성해서 저장하는 프로그램 작성 ==========
 		/* 설정된 파일을 불러오자 */
