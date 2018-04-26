@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -42,7 +43,7 @@ public class ReviewController extends HttpServlet {
 			switch (command) {
 			// 리스트
 			case "/review/reviewlist.do":
-				System.out.println("둥가둥가");
+				System.out.println("리뷰스타트둥가둥가");
 
 				// 리스트에 뿌릴 데이터를 가져오자. - BoardListService가 필요하다.
 				service = Beans.getService(command);
@@ -64,21 +65,20 @@ public class ReviewController extends HttpServlet {
 				PageObject2 pageObject 	= new PageObject2(DBUtil.getConnection(), "reviewboardtest",
 						page, rowPerPage, 10, searchKey, searchWord);
 				System.out.println(pageObject);
+				
 				// 처리를해서 DB에 있는 데이터를 받아와서 request에 담아 둔다.
 				request.setAttribute("list", service.execute(pageObject));
 				request.setAttribute("pageObject", pageObject);
-				System.out.println(service.execute(pageObject));
-				System.out.println("둥가둥가");
-
+				System.out.println(request.getAttribute("list"));
 				// jsp 이름을 만들어 내고 밑에서 forward 시킨다.
 				jsp = Beans.getJsp(command);
 				System.out.println(jsp);
 				System.out.println("둥가둥가");
 				
-				RequestDispatcher a = request.getRequestDispatcher(jsp);
-				System.out.println(a);
-				a.forward(request, response);
-				
+
+			RequestDispatcher a = request.getRequestDispatcher("reviewlist");
+			a.forward(request, response);
+			
 				
 //				ReviewListService reviewlistservice = new ReviewListService();
 //				Object obj = null;
@@ -146,7 +146,7 @@ public class ReviewController extends HttpServlet {
 				break;
 
 			default:
-				System.out.println("존재하지 않는 자원을 요청");
+			System.out.println("존재하지 않는 자원을 요청");
 				jsp = "/WEB-INF/views/error/404.jsp";
 				break;
 			}
