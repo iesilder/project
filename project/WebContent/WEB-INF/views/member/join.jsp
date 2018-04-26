@@ -36,7 +36,8 @@
   		});
   	});
   </script>
- 
+<title>회원가입</title>
+</head>
 <body>
 <div class="container">
   <div class="panel panel-primary">
