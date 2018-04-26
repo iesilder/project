@@ -23,14 +23,14 @@ public class ReviewDAO {
 		Connection con = null; // 연결 객체
 		PreparedStatement pstmt = null; // 처리문 객체
 		ResultSet rs = null; // 결과 객체
+		System.out.println("zezeze");
 
 		try {
 			// 1. 드라이버 확인 //2. 연결
 			con = DBUtil.getConnection();
 			// 3. sql
 			// 1) 원래 데이터를 순서에 맞게 가져온다.
-			String sql = "select festloc,fname,maindish,festdate,starscore,score,content,hit"
-					+ " from reviewboard order by no desc ";
+			String sql = "select festloc,fname,festdate,maindish,starscore,score,hit from reviewboard";
 //			sql = " select rownum rnum, no, title, id, writedate, hit from (" + sql + ")";
 //			sql = " select * from (" + sql + ")" + "where rnum between ? and ? ";
 
@@ -54,11 +54,13 @@ public class ReviewDAO {
 				ReviewDTO.setFestdate(rs.getString("festdate"));
 				ReviewDTO.setMaindish(rs.getString("maindish"));
 				ReviewDTO.setStarscore(rs.getString("starscore"));
+				ReviewDTO.setStarscore(rs.getString("score"));
 				ReviewDTO.setHit(rs.getInt("hit"));
 //				ReviewDTO.setContent(rs.getString("content"));
 
 				// list에 boardDTO를 담는다.
 				list.add(ReviewDTO);
+				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

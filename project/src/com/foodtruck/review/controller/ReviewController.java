@@ -24,9 +24,11 @@ public class ReviewController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+
 		System.out.println(getClass().getName() + ".doGet()");
 		String command = Beans.getURI(request);
 		// 기본으로는 forward 시킨 jsp 파일명을 저장한다. 앞에 redirect:이라고 붙이면 redirect 시킨 uri를 저장한다.
@@ -37,7 +39,7 @@ public class ReviewController extends HttpServlet {
 		try {
 			switch (command) {
 			// 리스트
-			case "/review/reviewList.do":
+			case "/review/list.do":
 				// 리스트에 부릴 데이터를 가져오자. - BoardListService가 필요하다.
 				service = Beans.getService(command);
 				int page = 1;
@@ -51,11 +53,9 @@ public class ReviewController extends HttpServlet {
 					page = Integer.parseInt(rowPerPageStr);
 
 				// 페이지 처리를 하기 위한 객체 생성 -> 다른 데이터는 자동 계산 된다.
-				// <<<<<<< HEAD
 				PageObject2 pageObject = new PageObject2(DBUtil.getConnection(), "reviewboard", page, rowPerPage, 10,
 						null, null);
 				System.out.println(pageObject);
-				// =======
 				// PageObject2 pageObject = new PageObject2(DBUtil.getConnection(),
 				// "reviewboard", page, rowPerPage, 10, null,
 				// null);
@@ -64,13 +64,15 @@ public class ReviewController extends HttpServlet {
 				request.setAttribute("list", service.execute(pageObject));
 				request.setAttribute("pageInfo", pageObject);
 				// jsp 이름을 만들어 내고 밑에서 forward 시킨다.
+
 				jsp = Beans.getJsp(command);
 				System.out.println(jsp);
 				break;
 			// 글쓰기 폼 - get
-			case "/review/reviewWrite.do":
+			case "/review/Write.do":
 				jsp = Beans.getJsp(command);
 				System.out.println(jsp);
+				
 				break;
 
 //			// 글보기 - get
@@ -90,7 +92,7 @@ public class ReviewController extends HttpServlet {
 //				break;
 
 			// 글수정 폼
-			case "/review/reviewUpdate.do":
+			case "/review/Update.do":
 				// viewService에서
 				int no2 = Integer.parseInt(request.getParameter("no"));
 				service = Beans.getService("/review/view.do"); // BoardViewService
@@ -107,7 +109,7 @@ public class ReviewController extends HttpServlet {
 				break;
 
 			// 리스트
-			case "/review/reviewDelete.do":
+			case "/review/Delete.do":
 				// 삭제 처리할 서비스를 가져오자. - BoardDeleteService가 필요하다.
 				service = Beans.getService(command);
 				// 처리를해서 DB에 있는 데이터를 받아와서 request에 담아 둔다.
@@ -153,7 +155,7 @@ public class ReviewController extends HttpServlet {
 		try {
 			switch (command) {
 			// 글쓰기 처리
-			case "/review/reviewWrite.do":
+			case "/review/Write.do":
 				// 넘어오는 데이터를 BoardDTO에 담는다.
 				ReviewDTO reviewDTO = new ReviewDTO(request.getParameter("title"), request.getParameter("content"),
 						request.getParameter("id"));
@@ -165,7 +167,7 @@ public class ReviewController extends HttpServlet {
 				System.out.println(jsp);
 				break;
 			// 글수정
-			case "/review/reviewUpdate.do":
+			case "/review/Update.do":
 				service = Beans.getService(command);
 				System.out.println(service);
 				ReviewDTO reviewDTO2 = new ReviewDTO(request.getParameter("id"),

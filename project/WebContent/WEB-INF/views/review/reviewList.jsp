@@ -5,7 +5,7 @@
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <% ReviewListService reviewlistservice =new ReviewListService();
-Object obj = null;
+    Object obj = null;
     List<ReviewDTO> list = reviewlistservice.execute(obj);
     request.setAttribute("list", list);
     %>
@@ -17,32 +17,33 @@ Object obj = null;
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
-	$(document).ready(function() {
-		// 	alert("OK");
-		$(".data").click(function() {
-			//         $(this).hide();
-			var no = $(this).find("td:first").text();
-			// 		alert("click");
-			alert(no);
-			location = "view.do?no=" + no;
-		});
-		$("#write").click(function() {
-			location = "write.do";
-		});
-	});
+// 	$(document).ready(function() {
+// 		// 	alert("OK");
+// 		$(".data").click(function() {
+// 			//         $(this).hide();
+// 			var no = $(this).find("td:first").text();
+// 			// 		alert("click");
+// 			alert(no);
+// 			location = "view.do?no=" + no;
+// 		});
+// 		$("#write").click(function() {
+// 			location = "write.do";
+// 		});
+// 	});
 </script>
-<link rel="stylesheet" href="../css/board.css" />
+<!-- <link rel="stylesheet" href="../css/board.css" /> -->
 </head>
 <body>
 	<h1>리뷰게시판 리스트</h1>
 	<table class="table">
 		<thead>
 			<tr>
-				<th>행사명</th>
 				<th>행사지역</th>
+				<th>행사명</th>
 				<th>행사날짜</th>
 				<th>메인요리</th>
 				<th>별점</th>
+				<th>평점</th>
 				<th>조회수</th>
 			</tr>
 		</thead>
@@ -55,6 +56,7 @@ Object obj = null;
 					<td>${reviewDTO.festdate }</td>
 					<td>${reviewDTO.maindish }</td>
 					<td>${reviewDTO.starscore }</td>
+					<td>${reviewDTO.score }</td>
 					<td>${reviewDTO.hit }</td>
 				</tr>
 			</c:forEach>
