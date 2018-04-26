@@ -41,6 +41,15 @@
 		<servlet-name>noticeController</servlet-name>
 		<url-pattern>/notice/*</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>mainController</servlet-name>
+		<servlet-class>com.foodtruck.main.controller.MainController</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>mainController</servlet-name>
+		<url-pattern>/main</url-pattern>
+	</servlet-mapping>
 <!-- 	조량래 멤버컨트롤러  -->
 	<servlet>
     <servlet-name>memberController</servlet-name>
