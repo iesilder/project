@@ -30,7 +30,7 @@ public class MainController extends HttpServlet {
 		System.out.println(command);
 		switch (command) {
 		// main
-		case "/main/boardMain.do":
+		case "/main/main.do":
 			// jsp 이름을 만들어 내고 밑에서 forward 시킨다.
 			viewJSP = Beans.getJsp(command);
 			System.out.println(viewJSP);
