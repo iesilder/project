@@ -49,7 +49,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>festController</servlet-name>
-		<url-pattern>/fest/*</url-pattern>
+		<url-pattern>/fest/FestMngr/*</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>festCustController</servlet-name>
@@ -58,7 +58,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>festCustController</servlet-name>
-		<url-pattern>/fest/*</url-pattern>
+		<url-pattern>/fest/FestCust/*</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>festTruckController</servlet-name>
@@ -67,7 +67,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>festTruckController</servlet-name>
-		<url-pattern>/fest/*</url-pattern>
+		<url-pattern>/fest/FestTruck/*</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
