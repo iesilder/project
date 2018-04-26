@@ -15,8 +15,9 @@ public class ReviewDTO {
 		
 	}
 	
-	public ReviewDTO(int score, int hit, String fname, String maindish, String festloc,
+	public ReviewDTO( int score, int hit, String fname, String maindish, String festloc,
 			String starscore) {
+		
 		this.score = score;
 		this.hit = hit;
 		this.fname = fname;
