@@ -14,29 +14,29 @@
 <body>
 <div class="container">
   <div class="panel panel-primary">
-	<div class="panel-heading">
-	  <h2>로그인</h2>
-	  <c:if test="${!empty reqURI }">
-	  	<p style="color:red">요청하신 자원은 Login이 필요합니다.</p>
-	  </c:if>
-	 </div>
-	 <div class="panel-body">
-	<!--   action 속성을 생략하면 같은 uri를 호출한다. 구분하기 위해 꼭 POST방식 전송하자. -->
-	  <form method="post" id="loginForm">
-	    <div class="form-group">
-	      <label for="id">아이디</label>
-	      <input type="text" class="form-control" id="id" name="id" required="required"
-	      pattern="^[A-Za-z][A-Za-z0-9]{3,49}" placeholder="아이디 입력" />
-	    </div>
-	    <div class="form-group">
-	      <label for="password">암호</label>
-	      <input type="password" class="form-control" id="password" name="password"
-	      required="required" pattern=".{4,10}" maxlength="10">
-	    </div>
-	    <button type="submit" class="btn btn-default">로그인</button>
-	  </form>
-	 </div>
-	</div>
+   <div class="panel-heading">
+     <h2>로그인</h2>
+     <c:if test="${!empty reqURI }">
+        <p style="color:red">요청하신 자원은 Login이 필요합니다.</p>
+     </c:if>
+    </div>
+    <div class="panel-body">
+   <!--   action 속성을 생략하면 같은 uri를 호출한다. 구분하기 위해 꼭 POST방식 전송하자. -->
+     <form method="post" id="loginForm">
+       <div class="form-group">
+         <label for="id">아이디</label>
+         <input type="text" class="form-control" id="id" name="id" required="required"
+         pattern="^[A-Za-z][A-Za-z0-9]{3,49}" placeholder="아이디 입력" />
+       </div>
+       <div class="form-group">
+         <label for="pw">암호</label>
+         <input type="password" class="form-control" id="pw" name="pw"
+         required="required" pattern=".{4,10}" maxlength="10">
+       </div>
+       <button type="submit" class="btn btn-default">로그인</button>
+     </form>
+    </div>
+   </div>
 </div>
 
 </body>
