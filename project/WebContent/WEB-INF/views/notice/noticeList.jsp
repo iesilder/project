@@ -9,19 +9,21 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
-	$(document).ready(function() {
-		// 	alert("OK");
-		$(".data").click(function() {
-			//         $(this).hide();
-			var no = $(this).find("td:first").text();
-			// 		alert("click");
-			alert(no);
-			location = "view.do?no=" + no;
-		});
-		$("#write").click(function() {
-			location = "write.do";
-		});
-	});
+$(document).ready(function(){
+// 	alert("OK");
+    $(".data").click(function(){
+//         $(this).hide();
+        var no = $(this).find("td:first").text();
+// 		alert("click");
+// 		alert(no);
+		location = "noticeView.do?no="+no
+				+"&page=${pageObject.page}"
+				+'&rowPerPage=${(empty param.rowPerPage)?"10":param.rowPerPage}';
+    });
+    $("#write").click(function(){
+    	location = "noticeWrite.do";
+    });
+});
 </script>
 <link rel="stylesheet" href="../css/board.css" />
 </head>
@@ -51,10 +53,33 @@
 		</tbody>
 		<tfoot>
 			<tr>
-				<td colspan="5">
-					<button id="write" class="btn btn-primary">글쓰기</button>
-				</td>
-			</tr>
+		<td colspan="3">
+			<ul class="pagination">
+			<c:if test="${pageObject.startPage > 1 }">
+			  <li>
+			  	<a href='noticeList.do?page=${pageObject.startPage - 1 }&rowPerPage=${(empty param.rowPerPage)?"10":param.rowPerPage}'>
+			  	<i class="glyphicon glyphicon-step-backward"></i></a></li>
+			 </c:if>
+			<c:forEach begin="${pageObject.startPage }" end="${pageObject.endPage }"
+			var="idx">
+			  <li ${(pageObject.page == idx)?"class='active'":"" }>
+			  	<a href='noticeList.do?page=${idx }&rowPerPage=${(empty param.rowPerPage)?"10":param.rowPerPage}'>
+			  	${idx }</a></li>
+			</c:forEach>
+			<c:if test="${pageObject.endPage != pageObject.totalPage }">
+			  <li>
+			  	<a href='noticeList.do?page=${pageObject.endPage + 1 }&rowPerPage=${(empty param.rowPerPage)?"10":param.rowPerPage}'>
+			  	<i class="glyphicon glyphicon-step-forward"></i></a></li>
+			 </c:if>
+			</ul> 
+		</td>
+		<td colspan="2">
+			<div class="btn-group">
+				<button id="write" class="btn btn-primary">글쓰기</button>
+				<button id="reload" class="btn btn-info">새로고침</button>
+			</div>
+		</td>
+	</tr>
 		</tfoot>
 	</table>
 </body>
