@@ -43,7 +43,7 @@ public class FestController extends HttpServlet {
 		try {
 
 			switch (command) {
-			// 리스트
+			// [행사일정 ]리스트
 			case "/fest/FestMngr/FestList.do":
 				// list에 뿌릴 데이터를 가져와야 한다. - BoardListService 필요함
 				// 이미 생성해서 저장해 놓은 곳에서 가져오기. getService() in Beans -> BoardListService에 있는
@@ -76,7 +76,6 @@ public class FestController extends HttpServlet {
 				viewJSP = Beans.getJsp(command);
 				System.out.println(viewJSP);
 				break;
-
 			// [행사일정]글쓰기 폼 - get방식으로 데이터가 들어온다.
 			case "/fest/FestMngr/FestWrite.do":
 				// jsp 이름을 만들어 내고, 밑에서 forward 시킨다.
@@ -91,7 +90,7 @@ public class FestController extends HttpServlet {
 				// command.properties의 BoardViewService 필요함
 				service = Beans.getService("/fest/FestMngr/FestView.do");
 				// service를 실행해서 DB에서 FestDTO를 가져와서 request에 담기
-				// 번호로 넘어오니까 festNo로 선언
+				// 번호로 넘어오니까 festNo로 선언s
 				// 넘길 때 ArrayList<>로 캐스팅해서 사용함으로 0번째:festNo[int], 1번째:isView[boolean]를 넣는다.
 				ArrayList<Object> executeObj2 = new ArrayList<>();
 				executeObj2.add(festNo2);
@@ -115,42 +114,6 @@ public class FestController extends HttpServlet {
 				executeObj.add(festNo);
 				executeObj.add(true); // 조회수를 1 증가 시킨다!
 				request.setAttribute("festDTO", service.execute(executeObj));
-				// jsp 이름을 만들어 내고, 밑에서 forward 시킨다.
-				viewJSP = Beans.getJsp(command);
-				System.out.println(viewJSP);
-				break;
-
-			// [푸드트럭 신청서] 글보기 - get방식으로 데이터가 들어온다.
-			case "/fest/FestMngr/FestTruckView.do":
-				// 글번호로 넘어오기 때문에 int festNo를 받는다.
-				int truckNo = Integer.parseInt(request.getParameter("truckNo"));
-				// command.properties의 BoardViewService 필요함
-				service = Beans.getService(command);
-				// service를 실행해서 DB에서 FestDTO를 가져와서 request에 담기
-				// 번호로 넘어오니까 festNo로 선언
-				// 넘길 때 ArrayList<>로 캐스팅해서 사용함으로 0번째:festNo[int], 1번째:isView[boolean]를 넣는다.
-				ArrayList<Object> executeObj1 = new ArrayList<>();
-				executeObj1.add(truckNo);
-				executeObj1.add(true); // 조회수를 1 증가 시킨다!
-				request.setAttribute("truckDTO", service.execute(executeObj1));
-				// jsp 이름을 만들어 내고, 밑에서 forward 시킨다.
-				viewJSP = Beans.getJsp(command);
-				System.out.println(viewJSP);
-				break;
-
-			// [소비자 신청서] 글보기 - get방식으로 데이터가 들어온다.
-			case "/fest/FestMngr/FestCustView.do":
-				// 글번호로 넘어오기 때문에 int festNo를 받는다.
-				int custNo = Integer.parseInt(request.getParameter("festNo"));
-				// command.properties의 BoardViewService 필요함
-				service = Beans.getService(command);
-				// service를 실행해서 DB에서 FestDTO를 가져와서 request에 담기
-				// 번호로 넘어오니까 festNo로 선언
-				// 넘길 때 ArrayList<>로 캐스팅해서 사용함으로 0번째:festNo[int], 1번째:isView[boolean]를 넣는다.
-				ArrayList<Object> executeObj3 = new ArrayList<>();
-				executeObj3.add(custNo);
-				executeObj3.add(true); // 조회수를 1 증가 시킨다!
-				request.setAttribute("custDTO", service.execute(executeObj3));
 				// jsp 이름을 만들어 내고, 밑에서 forward 시킨다.
 				viewJSP = Beans.getJsp(command);
 				System.out.println(viewJSP);
