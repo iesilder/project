@@ -1,7 +1,7 @@
 <!-- sitemesh 사용을 위한 설정 파일 -->
-<!-- 작성자 : 김승준 -->
-<!-- 작성일 : 2017-01-12 -->
-<!-- 최종수정일 : 2017-01-16 -->
+<!-- 사이드바 자료 -->
+<!-- 작성자 : 유태선 -->
+<!-- 작성일 : 2018-04-26 -->
 
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -18,7 +18,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Modern Business - Start Bootstrap Template</title>
+    <title>사이드바 자료</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -33,20 +33,26 @@
     <!-- Navigation -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+        <a class="navbar-brand" href="index.html">푸드트럭 둥가둥가</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="about.html">About</a>
+              <a class="nav-link" href="about.html">회원관리</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="services.html">Services</a>
+              <a class="nav-link" href="services.html">행사 일정</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact</a>
+              <a class="nav-link" href="contact.html">리뷰게시판</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">공지사항</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">통계처리</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -140,7 +146,7 @@
     <!-- Footer -->
     <footer class="py-5 bg-dark">
       <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+        <p class="m-0 text-center text-white">Copyright &copy; 푸드트럭 2018</p>
       </div>
       <!-- /.container -->
     </footer>
