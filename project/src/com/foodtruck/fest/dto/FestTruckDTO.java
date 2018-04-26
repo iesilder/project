@@ -1,11 +1,14 @@
 package com.foodtruck.fest.dto;
 
+import java.util.Date;
+
 public class FestTruckDTO {
 
 	private int truckno;
 	private String country, maindish;
 	private int predppl, applyppl, readyfood;
 	private String mngrname, mngrtel;
+	private Date applydate;
 	private int hit;
 
 	// 초기화 블럭
@@ -13,19 +16,21 @@ public class FestTruckDTO {
 
 	}
 
-	// 행사일정 리스트용
-	public FestTruckDTO(int truckno, String country, String maindish, String mngrname, String mngrtel, int hit) {
+	// 푸드트럭 신청서 리스트용
+	public FestTruckDTO(int truckno, String country, String maindish, String mngrname, String mngrtel, Date applydate,
+			int hit) {
 		this.truckno = truckno;
 		this.country = country;
 		this.maindish = maindish;
 		this.mngrname = mngrname;
 		this.mngrtel = mngrtel;
+		this.applydate = applydate;
 		this.hit = hit;
 	}
 
-	// 행사일정 글보기용
+	// 푸드트럭 신청서 글보기용
 	public FestTruckDTO(int truckno, String country, String maindish, int predppl, int applyppl, int readyfood,
-			String mngrname, String mngrtel, int hit) {
+			String mngrname, String mngrtel, Date applydate, int hit) {
 		this.truckno = truckno;
 		this.country = country;
 		this.maindish = maindish;
@@ -34,10 +39,11 @@ public class FestTruckDTO {
 		this.readyfood = readyfood;
 		this.mngrname = mngrname;
 		this.mngrtel = mngrtel;
+		this.applydate = applydate;
 		this.hit = hit;
 	}
 
-	// 행사일정 글등록 및 수정용
+	// 푸드트럭 신청서 글등록 및 수정용
 	public FestTruckDTO(String country, String maindish, int predppl, int applyppl, int readyfood, String mngrname,
 			String mngrtel) {
 		this.country = country;
@@ -113,6 +119,14 @@ public class FestTruckDTO {
 		this.mngrtel = mngrtel;
 	}
 
+	public Date getApplydate() {
+		return applydate;
+	}
+
+	public void setApplydate(Date applydate) {
+		this.applydate = applydate;
+	}
+
 	public int getHit() {
 		return hit;
 	}
@@ -123,9 +137,9 @@ public class FestTruckDTO {
 
 	@Override
 	public String toString() {
-		return "FestFirmBoardDTO [truckno=" + truckno + ", country=" + country + ", maindish=" + maindish + ", predppl="
+		return "FestTruckDTO [truckno=" + truckno + ", country=" + country + ", maindish=" + maindish + ", predppl="
 				+ predppl + ", applyppl=" + applyppl + ", readyfood=" + readyfood + ", mngrname=" + mngrname
-				+ ", mngrtel=" + mngrtel + ", hit=" + hit + "]";
+				+ ", mngrtel=" + mngrtel + ",applydate=" + applydate + ", hit=" + hit + "]";
 	}
 
 }

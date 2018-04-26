@@ -6,9 +6,10 @@ public class FestDTO {
 
 	private int festno;
 	private String festname, festcomp;
-	private Date festdate;
+	private String festdate;
 	private String festloc;
-	private Date festtime;
+	private String festtime;
+	private Date applydate;
 	private int hit;
 
 	// 초기화 블럭
@@ -17,28 +18,30 @@ public class FestDTO {
 	}
 
 	// 행사일정 리스트용
-	public FestDTO(int festno, String festname, Date festdate, String festloc, int hit) {
+	public FestDTO(int festno, String festname, String festdate, String festloc, Date applydate, int hit) {
 		this.festno = festno;
 		this.festname = festname;
 		this.festdate = festdate;
 		this.festloc = festloc;
+		this.applydate = applydate;
 		this.hit = hit;
 	}
 
 	// 행사일정 글보기용
-	public FestDTO(int festno, String festname, String festcomp, Date festdate, String festloc, Date festtime,
-			int hit) {
+	public FestDTO(int festno, String festname, String festcomp, String festdate, String festloc, String festtime,
+			Date applydate, int hit) {
 		this.festno = festno;
 		this.festname = festname;
 		this.festcomp = festcomp;
 		this.festdate = festdate;
 		this.festloc = festloc;
 		this.festtime = festtime;
+		this.applydate = applydate;
 		this.hit = hit;
 	}
 
 	// 행사일정 글등록 및 수정용
-	public FestDTO(String festname, String festcomp, Date festdate, String festloc, Date festtime) {
+	public FestDTO(String festname, String festcomp, String festdate, String festloc, String festtime) {
 		this.festname = festname;
 		this.festcomp = festcomp;
 		this.festdate = festdate;
@@ -46,11 +49,11 @@ public class FestDTO {
 		this.festtime = festtime;
 	}
 
-	public int getNo() {
+	public int getFestNo() {
 		return festno;
 	}
 
-	public void setNo(int festno) {
+	public void setFestNo(int festno) {
 		this.festno = festno;
 	}
 
@@ -70,11 +73,11 @@ public class FestDTO {
 		this.festcomp = festcomp;
 	}
 
-	public Date getFestdate() {
+	public String getFestdate() {
 		return festdate;
 	}
 
-	public void setFestdate(Date festdate) {
+	public void setFestdate(String festdate) {
 		this.festdate = festdate;
 	}
 
@@ -86,12 +89,20 @@ public class FestDTO {
 		this.festloc = festloc;
 	}
 
-	public Date getFesttime() {
+	public String getFesttime() {
 		return festtime;
 	}
 
-	public void setFesttime(Date festtime) {
+	public void setFesttime(String festtime) {
 		this.festtime = festtime;
+	}
+
+	public Date getApplydate() {
+		return applydate;
+	}
+
+	public void setApplydate(Date applydate) {
+		this.applydate = applydate;
 	}
 
 	public int getHit() {
@@ -104,7 +115,7 @@ public class FestDTO {
 
 	@Override
 	public String toString() {
-		return "FestBoardDTO [no=" + festno + ", festname=" + festname + ", festcomp=" + festcomp + ", festdate="
-				+ festdate + ", festloc=" + festloc + ", festtime=" + festtime + ", hit=" + hit + "]";
+		return "FestDTO [no=" + festno + ", festname=" + festname + ", festcomp=" + festcomp + ", festdate=" + festdate
+				+ ", festloc=" + festloc + ", festtime=" + festtime + ", applydate=" + applydate + ", hit=" + hit + "]";
 	}
 }
