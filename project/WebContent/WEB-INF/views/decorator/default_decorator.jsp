@@ -9,6 +9,10 @@
 <%@taglib prefix="decorator"
 	uri="http://www.opensymphony.com/sitemesh/decorator"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+System.out.println("default_decorator.jsp:"+request.getContextPath());
+pageContext.setAttribute("absUri", request.getContextPath());
+%>
 <!DOCTYPE html>
 <html>
 <head>
