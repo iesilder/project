@@ -137,12 +137,13 @@ article {
 	<article>
 		<decorator:body />
 	</article>
-    <!-- Footer -->
+    Footer
     <footer class="py-5 bg-dark">
       <div class="container">
         <p class="m-0 text-center text-white">Copyright 둥가둥가 푸드트럭 2018</p>
       </div>
-      <!-- /.container -->
+<!--       /.container -->
     </footer>
+  
 </body>
 </html>
