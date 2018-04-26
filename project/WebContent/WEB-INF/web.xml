@@ -79,7 +79,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>mainController</servlet-name>
-		<url-pattern>/main</url-pattern>
+		<url-pattern>/main/*</url-pattern>
 	</servlet-mapping>
 <!-- 	조량래 멤버컨트롤러  -->
 	<servlet>
