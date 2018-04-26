@@ -29,7 +29,7 @@ pageContext.setAttribute("absUri", request.getContextPath());
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>웹짱:<decorator:title /></title>
+<title>둥가둥가:<decorator:title /></title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -91,7 +91,7 @@ article {
 		      <a class="navbar-brand" href="#">둥가둥가</a>
 		    </div>
 		    <ul class="nav navbar-nav">
-		        <li class="active"><a href="../main/main.do">Home</a></li>
+		        <li class="active"><a href="../main/main.do">홈</a></li>
 		       <li><a href="#">행사일정</a></li>
 		      <li><a href="#">리뷰</a></li>
 		      <li><a href="#">공지사항</a></li>
