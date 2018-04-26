@@ -85,19 +85,42 @@ article {
 </head>
 <body>
 	<header>
-		<nav class="navbar navbar-inverse">
-		  <div class="container-fluid">
-		    <div class="navbar-header">
-		      <a class="navbar-brand" href="#">둥가둥가</a>
-		    </div>
-		    <ul class="nav navbar-nav">
-		        <li class="active"><a href="../main/main.do">홈</a></li>
-		       <li><a href="#">행사일정</a></li>
-		      <li><a href="#">리뷰</a></li>
-		      <li><a href="#">공지사항</a></li>
-		      <li><a href="#">트렌드</a></li>
-		      </ul>
-		    <ul class="nav navbar-nav navbar-right">
+	 <!-- Navigation -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">둥가둥가</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+          	<li class="active"><a href="../main/main.do">홈</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                행사일정
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+                <a class="dropdown-item" href="portfolio-1-col.html">행사일정 보러가기</a>
+                <a class="dropdown-item" href="portfolio-2-col.html">푸드트럭 행사 신청하러 가기</a>
+                <a class="dropdown-item" href="portfolio-3-col.html">소비자 행사 신청하러 가기</a>
+              </div>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link" href="about.html">리뷰</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="services.html">공지사항</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                트렌드
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
+                <a class="dropdown-item" href="blog-home-1.html">상권분석 보러가기</a>
+                <a class="dropdown-item" href="blog-home-2.html">공공데이터 보러가기</a>
+                <a class="dropdown-item" href="blog-post.html">푸드트럭 위치표시 보러가기</a>
+              </div>
+            </li>
 		      <c:if test="${ empty id }">
 		      	<li><a href="../member/login.do"><span class="glyphicon glyphicon-log-in"></span>로그인</a></li>
 		      	<li><a href="../member/join.do"><span class="glyphicon glyphicon-user"></span> 회원가입</a></li>
@@ -105,15 +128,21 @@ article {
 		      <c:if test="${ !empty id }">
 		      	<li><a href="../member/logout.do"><span class="glyphicon glyphicon-log-out"> </span>로그아웃</a></li>
 		      </c:if>
-		    </ul>
-		  </div>
-		</nav>
+          </ul>
+        </div>
+      </div>
+    </nav>
+		  
 	</header>
 	<article>
 		<decorator:body />
 	</article>
-	<footer class="container-fluid text-center">
-		<p>이 홈페이지의 저작권은 나훈주에게 있습니다.</p>
-	</footer>
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright 둥가둥가 푸드트럭 2018</p>
+      </div>
+      <!-- /.container -->
+    </footer>
 </body>
 </html>
