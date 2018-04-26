@@ -76,7 +76,7 @@
 <!--   권한 필터 -->
     <filter>
     <filter-name>authLoginCheck</filter-name>
-    <filter-class>com.webjjang.filter.AuthLoginCheckFilter</filter-class>
+    <filter-class>com.foodtruck.filter.AuthLoginCheckFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>authLoginCheck</filter-name>

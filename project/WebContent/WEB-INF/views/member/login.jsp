@@ -29,8 +29,8 @@
 	      pattern="^[A-Za-z][A-Za-z0-9]{3,49}" placeholder="아이디 입력" />
 	    </div>
 	    <div class="form-group">
-	      <label for="password">암호</label>
-	      <input type="password" class="form-control" id="password" name="password"
+	      <label for="pw">암호</label>
+	      <input type="pw" class="form-control" id="pw" name="pw"
 	      required="required" pattern=".{4,10}" maxlength="10">
 	    </div>
 	    <button type="submit" class="btn btn-default">로그인</button>
