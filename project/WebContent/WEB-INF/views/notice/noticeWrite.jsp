@@ -57,7 +57,7 @@
 						<div class="controls">
 							<label>작성자:</label> <input type="text" class="form-control"
 								id="writer" data-validation-required-message="작성자를 입력하세요."
-								required="required" value="관리자">
+								required="required" value="${noticeDTO.id} }">
 						</div>
 					</div>
 					<div class="control-group form-group">
