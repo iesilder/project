@@ -26,8 +26,10 @@ public class MemberDAO {
 			//1. 확인, 2.연결
 			con = DBUtil.getConnection();
 			//3. sql 작성
-			String sql = "select memberid, name, password, regdate, grade "
-					+ " from member where memberid = ?";
+			String sql = "select id, pw, name, birthDate, gender, "
+					+ " mobile, email, address, add2, regdate, add2, regDate,"
+					+ " idupdate, gradeno"
+					+ " from memberboard where id = ?";
 			//4. 처리객체
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
@@ -37,11 +39,19 @@ public class MemberDAO {
 			
 			//6. 표시 -> jsp : 데이터를 담아서 넘긴다.
 			if(rs.next()) { // 데이터가 있으면
-				memberDTO = new MemberDTO(rs.getString("memberid"),
+				memberDTO = new MemberDTO(
+						rs.getString("id"),
+						rs.getString("pw"),
 						rs.getString("name"),
-						rs.getString("password"),
+						rs.getString("birthate"),
+						rs.getString("gender"),
+						rs.getString("mobile"),
+						rs.getString("email"),
+						rs.getString("address"),
+						rs.getString("add2"),
 						rs.getDate("regdate"),
-						rs.getInt("grade")
+						rs.getDate("idupdate"),
+						rs.getInt("gradeno")
 						);
 				
 			}
@@ -69,12 +79,12 @@ public class MemberDAO {
 			//1. 확인, 2.연결
 			con = DBUtil.getConnection();
 			//3. sql 작성
-			String sql = "select memberid, name, grade "
-					+ " from member where memberid = ? and password = ?";
+			String sql = "select id, name, gradeno "
+					+ " from memberboard where id = ? and pw = ?";
 			//4. 처리객체
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, memberDTO.getId());
-			pstmt.setString(2, memberDTO.getPassword());
+			pstmt.setString(2, memberDTO.getPw());
 			
 			//5. 실행  - select : executeQuery() - resultSet이 결과로 나온다.
 			//      - insert, update, delete : executeUpdate() - int 가 나온다.
@@ -83,7 +93,7 @@ public class MemberDAO {
 			//6. 표시 -> jsp : 데이터를 담아서 넘긴다.
 			if(rs.next()) { // 데이터가 있으면 로그인 처리를 위한 정보를 담는다.
 				memberDTO.setName(rs.getString("name"));
-				memberDTO.setGrade(rs.getInt("grade"));
+				memberDTO.setGradeno(rs.getInt("grade"));
 				System.out.println(memberDTO);
 			}else { memberDTO = null; System.out.println("MemberDAO.login().else.memberDTO:"+memberDTO);}
 			return memberDTO;
@@ -110,8 +120,8 @@ public class MemberDAO {
 			//1. 확인, 2.연결
 			con = DBUtil.getConnection();
 			//3. sql 작성
-			String sql = "select memberid "
-					+ " from member where memberid = ?";
+			String sql = "select id "
+					+ " from memberboard where id = ?";
 			//4. 처리객체
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
@@ -142,14 +152,21 @@ public class MemberDAO {
 //		Connection con = null;
 //		PreparedStatement pstmt = null;
 		//3. sql 작성
-		String sql = "insert into member(memberid, name, password) "
-				+ " values(?,?,?)";
+		String sql = "insert into memberboard(id, pw, name, birthdate, gender, "
+				+ " mobile, email, address, add2,) "
+				+ " values(?,?,?,?,?,?,?,?,?)";
 		try(Connection con = DBUtil.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql)) {
 			//4. 처리객체
 			pstmt.setString(1, memberDTO.getId());
-			pstmt.setString(2, memberDTO.getName());
-			pstmt.setString(3, memberDTO.getPassword());
+			pstmt.setString(2, memberDTO.getPw());
+			pstmt.setString(3, memberDTO.getName());
+			pstmt.setString(4, memberDTO.getBirthDate());
+			pstmt.setString(5, memberDTO.getGender());
+			pstmt.setString(6, memberDTO.getMobile());
+			pstmt.setString(7, memberDTO.getEmail());
+			pstmt.setString(8, memberDTO.getAddress());
+			pstmt.setString(9, memberDTO.getAdd2());
 			
 			//5. 실행
 			pstmt.executeUpdate();

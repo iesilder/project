@@ -100,9 +100,15 @@ public class MemberController extends HttpServlet {
 				// 넘어오는 데이터를 MemberDTO에 담는다.
 				MemberDTO memberDTO = new MemberDTO(
 						request.getParameter("id"),
+						request.getParameter("pw"),
 						request.getParameter("name"),
-						request.getParameter("password"),
-						null,1);
+						request.getParameter("birthDate"),
+						request.getParameter("gender"),
+						request.getParameter("moblie"),
+						request.getParameter("email"),
+						request.getParameter("address"),
+						request.getParameter("add2"),
+						null, null, 1);
 				service = Beans.getService(command);
 				System.out.println(service);
 				service.execute(memberDTO);
@@ -117,16 +123,15 @@ public class MemberController extends HttpServlet {
 				// 넘어오는 데이터를 MemberDTO에 담고 서비스를 실행한다.
 				MemberDTO memberDTO2 = (MemberDTO) service.execute(new MemberDTO(
 						request.getParameter("id"),
-						null,
-						request.getParameter("password"),
-						null,0));
+						request.getParameter("pw"),
+						null,null,null,null,null,null,null,null,null,0));
 				// application -> session -> request -> page
 				HttpSession session = request.getSession();
 				if(memberDTO2 != null) { // 정상적인 아이디와 암호를 입력한 경우
 					// id, name -> session : 로그인 처리
 					session.setAttribute("id", memberDTO2.getId());
 					session.setAttribute("name", memberDTO2.getName());
-					session.setAttribute("grade", memberDTO2.getGrade());
+					session.setAttribute("gradeno", memberDTO2.getGradeno());
 					String reqURI = (String) session.getAttribute("reqURI");
 					if(reqURI != null) { // 요청한 자원이 있는 경우 로그인으로 들어 왔으면 그쪽으로 이동
 						jsp = request.getContextPath()+reqURI;

@@ -3,6 +3,7 @@ package com.foodtruck.review.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -28,7 +29,6 @@ public class ReviewController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
 		System.out.println(getClass().getName() + ".doGet()");
 		String command = Beans.getURI(request);
 		// 기본으로는 forward 시킨 jsp 파일명을 저장한다. 앞에 redirect:이라고 붙이면 redirect 시킨 uri를 저장한다.
@@ -36,35 +36,61 @@ public class ReviewController extends HttpServlet {
 		// 실행할 Service를 담는 객체 선언
 		ServiceInterface service = null;
 		System.out.println(command);
+		System.out.println("둥가둥가");
+
 		try {
 			switch (command) {
 			// 리스트
-			case "/review/list.do":
-				// 리스트에 부릴 데이터를 가져오자. - BoardListService가 필요하다.
+			case "/review/reviewlist.do":
+				System.out.println("둥가둥가");
+
+				// 리스트에 뿌릴 데이터를 가져오자. - BoardListService가 필요하다.
 				service = Beans.getService(command);
 				int page = 1;
 				int rowPerPage = 10;
 				String pageStr = request.getParameter("page");
 				String rowPerPageStr = request.getParameter("rowPerPage");
-				// 처음에는 페이지, rowPerPage 데이터가 넘어오지 않아 null이다. null이면 page=1, rowPerPage = 10
-				if (pageStr != null && pageStr != "")
+				// 검색 데이터를 받는다.
+				String searchKey = request.getParameter("searchKey");
+				String searchWord = request.getParameter("searchWord");
+				// 처음에는 페이지, rowPerPage 데이터가 넘어오지 않아 null이다. null이면 page=1, rowPerPage=10
+				if(pageStr != null && pageStr !="")
 					page = Integer.parseInt(pageStr);
-				if (rowPerPageStr != null && rowPerPageStr != "")
-					page = Integer.parseInt(rowPerPageStr);
+				if(rowPerPageStr != null && rowPerPageStr != "")
+					rowPerPage = Integer.parseInt(rowPerPageStr);
+				// 페이지 처리를 하기 위한 객체 생성  -> 다른 데이터는 자동 계산 된다.
+				
 
-				// 페이지 처리를 하기 위한 객체 생성 -> 다른 데이터는 자동 계산 된다.
-				PageObject2 pageObject = new PageObject2(DBUtil.getConnection(), "reviewboard", page, rowPerPage, 10,
-						null, null);
+				PageObject2 pageObject 	= new PageObject2(DBUtil.getConnection(), "reviewboardtest",
+						page, rowPerPage, 10, searchKey, searchWord);
 				System.out.println(pageObject);
-				// PageObject2 pageObject = new PageObject2(DBUtil.getConnection(),
-				// "reviewboard", page, rowPerPage, 10, null,
-				// null);
-				// >>>>>>> branch 'master' of https://github.com/iesilder/project.git
-				// 요청을 처리해서 DB에 있는 데이터를 받아와서 request에 담는다.
+				// 처리를해서 DB에 있는 데이터를 받아와서 request에 담아 둔다.
 				request.setAttribute("list", service.execute(pageObject));
-				request.setAttribute("pageInfo", pageObject);
-				// jsp 이름을 만들어 내고 밑에서 forward 시킨다.
+				request.setAttribute("pageObject", pageObject);
+				System.out.println(service.execute(pageObject));
+				System.out.println("둥가둥가");
 
+				// jsp 이름을 만들어 내고 밑에서 forward 시킨다.
+				jsp = Beans.getJsp(command);
+				System.out.println(jsp);
+				System.out.println("둥가둥가");
+				
+				RequestDispatcher a = request.getRequestDispatcher(jsp);
+				System.out.println(a);
+				a.forward(request, response);
+				
+				
+//				ReviewListService reviewlistservice = new ReviewListService();
+//				Object obj = null;
+//				List<ReviewDTO> list = reviewlistservice.execute(obj);
+//				request.setAttribute("list", list);
+				
+				
+				
+				break;
+			// 글쓰기 폼 - get
+			case "/board/write.do":
+				// jsp 이름을 만들어 내고 밑에서 forward 시킨다.
 				jsp = Beans.getJsp(command);
 				System.out.println(jsp);
 				break;

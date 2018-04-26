@@ -14,6 +14,23 @@ public class ReviewDTO {
 	public ReviewDTO() {
 		
 	}
+	
+	public ReviewDTO(int score, int hit, String fname, String maindish, String festloc,
+			String starscore) {
+		this.score = score;
+		this.hit = hit;
+		this.fname = fname;
+		this.maindish = maindish;
+		this.festloc = festloc;
+		
+		this.starscore = starscore;
+	}
+
+	
+	
+	
+	
+	
 ////데이터를 넣을 때, 데이터가 다 준비 되어 있는 경우. -> 게시판 글보기 할 때 사용
 	public ReviewDTO(int no, int festtime, int hit, String id, String fname, String maindish,
 			String festloc, String content, String writedate, String festdate, String starscore) {
@@ -31,7 +48,14 @@ public class ReviewDTO {
 		this.starscore = starscore;
 	}
 
-	// 게시판 글쓰기
+
+
+
+
+
+
+
+		// 게시판 글쓰기
 		public ReviewDTO( String id, String content, String starscore) {
 		super();
 		
@@ -136,9 +160,8 @@ public class ReviewDTO {
 		}
 		@Override
 		public String toString() {
-			return "ReviewDTO [no=" + no + ", festtime=" + festtime + ", score=" + score + ", hit=" + hit + ", id=" + id
-					+ ", fname=" + fname + ", maindish=" + maindish + ", festloc=" + festloc + ", content=" + content
-					+ ", writedate=" + writedate + ", festdate=" + festdate + ", starscore=" + starscore + "]";
+			return "ReviewDTO [score=" + score + ", hit=" + hit + ", fname=" + fname + ", maindish=" + maindish
+					+ ", festloc=" + festloc + ", festdate=" + festdate + ", starscore=" + starscore + "]";
 		}
 		
 		

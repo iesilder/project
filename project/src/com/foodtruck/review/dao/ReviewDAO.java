@@ -23,16 +23,16 @@ public class ReviewDAO {
 		Connection con = null; // 연결 객체
 		PreparedStatement pstmt = null; // 처리문 객체
 		ResultSet rs = null; // 결과 객체
-		System.out.println("zezeze");
+		System.out.println("다오둥가둥가");
 
 		try {
 			// 1. 드라이버 확인 //2. 연결
 			con = DBUtil.getConnection();
 			// 3. sql
 			// 1) 원래 데이터를 순서에 맞게 가져온다.
-			String sql = "select festloc,fname,festdate,maindish,starscore,score,hit from reviewboard";
-//			sql = " select rownum rnum, no, title, id, writedate, hit from (" + sql + ")";
-//			sql = " select * from (" + sql + ")" + "where rnum between ? and ? ";
+			String sql = "select no,festloc,fname,maindish,starscore,score,hit from reviewboardtest";
+			sql = " select no rnum, festloc,fname,maindish,starscore,score,hit from (" + sql + ")";
+			sql = " select * from (" + sql + ")" + "where rnum between ? and ? ";
 
 			// 2) 순서에 맞게 가져온 데이터에 rownum rnum을 붙인다.
 			// 4. 처리문 객체 생성.
@@ -47,21 +47,28 @@ public class ReviewDAO {
 				if (list == null)
 					list = new ArrayList<>();
 				// 데이터 하나를 담을 수 있는 BoardDTO객체를 생성한다.
-				ReviewDTO ReviewDTO = new ReviewDTO();
+				ReviewDTO reviewDTO = new ReviewDTO(rs.getInt("score"), rs.getInt("hit"),  
+						rs.getString("fname"), rs.getString("maindish"), rs.getString("festloc"),
+						 rs.getString("starscore"));
+						
+//	
 				// 데이터를 rs에서 꺼내서 boardDTO에 담는다.
-				ReviewDTO.setFestloc(rs.getString("festloc"));
-				ReviewDTO.setFname(rs.getString("fname"));
-				ReviewDTO.setFestdate(rs.getString("festdate"));
-				ReviewDTO.setMaindish(rs.getString("maindish"));
-				ReviewDTO.setStarscore(rs.getString("starscore"));
-				ReviewDTO.setStarscore(rs.getString("score"));
-				ReviewDTO.setHit(rs.getInt("hit"));
+//				ReviewDTO.setFestloc(rs.getString("festloc"));
+//				ReviewDTO.setFname(rs.getString("fname"));
+//				ReviewDTO.setFestdate(rs.getString("festdate"));
+//				ReviewDTO.setMaindish(rs.getString("maindish"));
+//				ReviewDTO.setStarscore(rs.getString("starscore"));
+//				ReviewDTO.setScore(rs.getInt("score"));
+//				ReviewDTO.setHit(rs.getInt("hit"));
 //				ReviewDTO.setContent(rs.getString("content"));
 
 				// list에 boardDTO를 담는다.
-				list.add(ReviewDTO);
+				list.add(reviewDTO);
 				
+
 			}
+			System.out.println("다오둥가둥가");
+		
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -72,6 +79,7 @@ public class ReviewDAO {
 				e.printStackTrace();
 			}
 		}
+		System.out.println(list);
 		return list;
 	}
 

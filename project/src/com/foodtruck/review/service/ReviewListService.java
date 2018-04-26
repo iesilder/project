@@ -29,7 +29,9 @@ public class ReviewListService implements ServiceInterface {
 		
 		// DAO에서 list를 받아온다.
 		list = ReviewDAO.list((PageObject2) obj);
-		
+		System.out.println("값 잘넘어오나?");
+		System.out.println(list);
 		return list;
+
 	}
 }
