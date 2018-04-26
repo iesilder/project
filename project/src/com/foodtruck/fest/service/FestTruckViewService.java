@@ -7,7 +7,7 @@ import com.foodtruck.fest.dto.FestDTO;
 import com.foodtruck.util.ServiceInterface;
 import com.webjjang.util.PageObject2;
 
-public class FestListService implements ServiceInterface {
+public class FestTruckViewService implements ServiceInterface {
 
 	private FestDAO festDAO;
 

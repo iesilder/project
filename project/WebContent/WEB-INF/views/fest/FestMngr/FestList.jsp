@@ -1,6 +1,6 @@
 <%@page import="com.foodtruck.fest.dto.FestDTO"%>
 <%@page import="java.util.List"%>
-<%@page import="com.webjjang.board.service.BoardListService"%>
+<%@page import="com.foodtruck.fest.service.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
