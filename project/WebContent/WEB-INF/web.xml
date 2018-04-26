@@ -52,7 +52,6 @@
     <url-pattern>/member/*</url-pattern>
   </servlet-mapping>
   
-<<<<<<< HEAD
   <!-- review 담당 : 조현일-->
 	<servlet>
 		<servlet-name>reviewController</servlet-name>
@@ -65,7 +64,6 @@
 	</servlet-mapping>
 	
 	<!-- Filter -->
-=======
 <!--   권한 필터 -->
     <filter>
     <filter-name>authLoginCheck</filter-name>
@@ -77,7 +75,6 @@
   </filter-mapping>
 
 	<!-- Encoding Filter -->
->>>>>>> branch 'master' of https://github.com/iesilder/project.git
 	<filter>
     <filter-name>encoding</filter-name>
     <filter-class>
