@@ -12,7 +12,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 
+import com.foodtruck.fest.dao.FestCustDAO;
 import com.foodtruck.fest.dao.FestDAO;
+import com.foodtruck.fest.dao.FestTruckDAO;
 import com.foodtruck.member.controller.Auth;
 import com.foodtruck.notice.dao.NoticeDAO;
 
@@ -64,8 +66,13 @@ public class Beans extends HttpServlet {
 		// daoBeans.put("memberDAO", new MemberDAO());
 		// daoBeans.put("dataDAO", new DataDAO());
 		daoBeans.put("noticeDAO", new NoticeDAO());
-		// 행사 일정에 대한 DAO 생성 및 저장 처리문 - 홍다운 - 20180420
+		// 행사 일정에 대한 DAO 생성 및 저장 처리문 - 홍다운 - 20180426
+		// 행사일정 메인 게시판DAO
 		daoBeans.put("festDAO", new FestDAO());
+		// 소비자 신청 DAO
+		daoBeans.put("custDAO", new FestCustDAO());
+		// 푸드트럭 신청 DAO
+		daoBeans.put("truckDAO", new FestTruckDAO());
 		// ========= service를 생성해서 저장하는 프로그램 작성 ==========
 		/* 설정된 파일을 불러오자 */
 		// web.xml에 init-param tag로 정의되어 있는 값을 받아 온다.
