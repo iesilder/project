@@ -73,11 +73,14 @@ public class ReviewController extends HttpServlet {
 				// jsp 이름을 만들어 내고 밑에서 forward 시킨다.
 				jsp = Beans.getJsp(command);
 				System.out.println(jsp);
-				System.out.println("둥가둥가");
+				System.out.println("둥가둥가1");
 				
 
-			RequestDispatcher a = request.getRequestDispatcher("reviewlist");
-			a.forward(request, response);
+//				String data = request.getParameter("list");
+//				response.sendRedirect("reviewlist?"+data);
+
+
+
 			
 				
 //				ReviewListService reviewlistservice = new ReviewListService();
@@ -146,13 +149,16 @@ public class ReviewController extends HttpServlet {
 				break;
 
 			default:
-			System.out.println("존재하지 않는 자원을 요청");
+				System.out.println("존재하지 않는 자원을 요청");
 				jsp = "/WEB-INF/views/error/404.jsp";
 				break;
 			}
-			if (jsp.indexOf("redirect:") == -1) // redirect: 존재하지 않는다.
+			System.out.println("outer switch");
+			if (jsp.indexOf("redirect:") == -1) { // redirect: 존재하지 않는다.
+				System.out.println("forward Process :" + jsp);
 				// jsp쪽으로 이동한다.
 				request.getRequestDispatcher(jsp).forward(request, response);
+			}
 			else {// redirect: 존재한다.
 				jsp = jsp.substring("redirect:".length());
 				// uri쪽으로 이동한다.

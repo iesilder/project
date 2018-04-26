@@ -4,12 +4,13 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <% 
-String list = (String)request.getAttribute("list");
-out.println(list);
+// // String list = (String)request.getAttribute("list");
+// String a = request.getParameter("list");
+// // out.println(list);
 out.println("도착했다!!!!!");
 System.out.println("도착했다!!!!!");
 
-// Object x = request.getAttribute("list");
+// // Object x = request.getAttribute("list");
 
 %>
 <!DOCTYPE html>
@@ -36,7 +37,7 @@ $(document).ready(function(){
     });
 });
 </script>
-<link rel="stylesheet" href="../css/board.css" />
+<!-- <link rel="stylesheet" href="../css/board.css" /> -->
 </head>
 <body>
 	<h1>공지사항 리스트</h1>
