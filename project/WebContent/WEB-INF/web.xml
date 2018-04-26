@@ -42,6 +42,36 @@
 		<url-pattern>/notice/*</url-pattern>
 	</servlet-mapping>
 	<servlet>
+	
+	<servlet>
+		<servlet-name>festController</servlet-name>
+		<servlet-class>com.foodtruck.fest.controller.FestController</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>festController</servlet-name>
+		<url-pattern>/fest/*</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>festCustController</servlet-name>
+		<servlet-class>com.foodtruck.fest.controller.FestCustController</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>festCustController</servlet-name>
+		<url-pattern>/fest/*</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>festTruckController</servlet-name>
+		<servlet-class>com.foodtruck.fest.controller.FestTruckController</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>festTruckController</servlet-name>
+		<url-pattern>/fest/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>mainController</servlet-name>
 		<servlet-class>com.foodtruck.main.controller.MainController</servlet-class>
 		<load-on-startup>2</load-on-startup>
