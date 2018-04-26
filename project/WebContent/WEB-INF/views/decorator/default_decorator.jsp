@@ -1,164 +1,119 @@
 <!-- sitemesh 사용을 위한 설정 파일 -->
-<!-- 사이드바 자료 -->
-<!-- 작성자 : 유태선 -->
-<!-- 작성일 : 2018-04-26 -->
+<!-- 작성자 : 홍다운-->
+<!-- 작성일 : 2018-04-19 -->
+<!-- 작성자 : 홍다운 -->
+<!-- 작성일 : 2018-04-19 -->
+<!-- sitemesh 설정에 대한 정의 xml 파일 -->
+<!-- 1. web.xml에 filter를 지정해야한다. -->
+<!-- 2. sitemesh.xml을 설정한다: parser, mapper를 설정 .  --> 
+<!-- 3. 꾸미기에 대한 설정은 :decorator에 지정 : 적용을 시킬 구체적인 URI 적용  -->
+<!-- 4. decorators.xml에 설정한 JSP를 만든다.  --> 
 
-
+<!-- sitemesh 사용을 위한 설정 파일 -->
+<!-- 작성자 : 이영환 -->
+<!-- 작성일 : 2018.04.19 -->
+<!-- 1. web.xml에 filter를 지정해야 한다 -->
+<!-- 2. sitemesh.xml 설정: parser, mapper를 지정 -->
+<!-- 3. decorators.xml 설정: 꾸미기에 대한 설정 - 구체적인 uri 적용 -->
+<!-- 4. default_decorator.jsp: decorators.xml 설정한 JSP를 만든다.(*) -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="decorator"
 	uri="http://www.opensymphony.com/sitemesh/decorator"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
-System.out.println("default_decorator.jsp:"+request.getContextPath());
+// System.out.println("default_decorator.jsp:"+request.getContextPath());
 pageContext.setAttribute("absUri", request.getContextPath());
 %>
 <!DOCTYPE html>
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>웹짱:<decorator:title /></title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+header, footer {
+	background: AntiqueWhite;
+}
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+pre {
+	background: white;
+	border: 0px;
+}
 
-    <title>사이드바 자료</title>
+/* Remove the navbar's default margin-bottom and rounded borders */
+.navbar {
+	margin-bottom: 0;
+	border-radius: 0;
+}
 
-    <!-- Bootstrap core CSS -->
-    <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+/* Add a gray background color and some padding to the footer */
+footer {
+	background-color: #f2f2f2;
+	padding: 25px;
+}
 
-    <!-- Custom styles for this template -->
-    <link href="../../css/modern-business.css" rel="stylesheet">
+.carousel-inner img {
+	width: 100%; /* Set width to 100% */
+	margin: auto;
+	min-height: 200px;
+}
 
-  </head>
+/* Hide the carousel text when the screen is less than 600 pixels wide */
+@media ( max-width : 600px) {
+	.carousel-caption {
+		display: none;
+	}
+}
 
-  <body>
+article {
+	min-height: 795px;
+}
 
-    <!-- Navigation -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="index.html">푸드트럭 둥가둥가</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="about.html">회원관리</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="services.html">행사 일정</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact.html">리뷰게시판</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact.html">공지사항</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact.html">통계처리</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Portfolio
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-                <a class="dropdown-item" href="portfolio-1-col.html">1 Column Portfolio</a>
-                <a class="dropdown-item" href="portfolio-2-col.html">2 Column Portfolio</a>
-                <a class="dropdown-item" href="portfolio-3-col.html">3 Column Portfolio</a>
-                <a class="dropdown-item" href="portfolio-4-col.html">4 Column Portfolio</a>
-                <a class="dropdown-item" href="portfolio-item.html">Single Portfolio Item</a>
-              </div>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Blog
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-                <a class="dropdown-item" href="blog-home-1.html">Blog Home 1</a>
-                <a class="dropdown-item" href="blog-home-2.html">Blog Home 2</a>
-                <a class="dropdown-item" href="blog-post.html">Blog Post</a>
-              </div>
-            </li>
-            <li class="nav-item active dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Other Pages
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-                <a class="dropdown-item" href="full-width.html">Full Width Page</a>
-                <a class="dropdown-item active" href="sidebar.html">Sidebar Page</a>
-                <a class="dropdown-item" href="faq.html">FAQ</a>
-                <a class="dropdown-item" href="404.html">404</a>
-                <a class="dropdown-item" href="pricing.html">Pricing Table</a>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    <!-- Page Content -->
-    <div class="container">
-
-      <!-- Page Heading/Breadcrumbs -->
-      <h1 class="mt-4 mb-3">Sidebar Page
-        <small>Subheading</small>
-      </h1>
-
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <a href="index.html">Home</a>
-        </li>
-        <li class="breadcrumb-item active">About</li>
-      </ol>
-
-      <!-- Content Row -->
-      <div class="row">
-        <!-- Sidebar Column -->
-        <div class="col-lg-3 mb-4">
-          <div class="list-group">
-            <a href="index.html" class="list-group-item">Home</a>
-            <a href="about.html" class="list-group-item">About</a>
-            <a href="services.html" class="list-group-item">Services</a>
-            <a href="contact.html" class="list-group-item">Contact</a>
-            <a href="portfolio-1-col.html" class="list-group-item">1 Column Portfolio</a>
-            <a href="portfolio-2-col.html" class="list-group-item">2 Column Portfolio</a>
-            <a href="portfolio-3-col.html" class="list-group-item">3 Column Portfolio</a>
-            <a href="portfolio-4-col.html" class="list-group-item">4 Column Portfolio</a>
-            <a href="portfolio-item.html" class="list-group-item">Single Portfolio Item</a>
-            <a href="blog-home-1.html" class="list-group-item">Blog Home 1</a>
-            <a href="blog-home-2.html" class="list-group-item">Blog Home 2</a>
-            <a href="blog-post.html" class="list-group-item">Blog Post</a>
-            <a href="full-width.html" class="list-group-item">Full Width Page</a>
-            <a href="sidebar.html" class="list-group-item active">Sidebar Page</a>
-            <a href="faq.html" class="list-group-item">FAQ</a>
-            <a href="404.html" class="list-group-item">404</a>
-            <a href="pricing.html" class="list-group-item">Pricing Table</a>
-          </div>
-        </div>
-        <!-- Content Column -->
-        <div class="col-lg-9 mb-4">
-          <h2>Section Heading</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, et temporibus, facere perferendis veniam beatae non debitis, numquam blanditiis necessitatibus vel mollitia dolorum laudantium, voluptate dolores iure maxime ducimus fugit.</p>
-        </div>
-      </div>
-      <!-- /.row -->
-
-    </div>
-    <!-- /.container -->
-
-    <!-- Footer -->
-    <footer class="py-5 bg-dark">
-      <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; 푸드트럭 2018</p>
-      </div>
-      <!-- /.container -->
-    </footer>
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="../../vendor/jquery/jquery.min.js"></script>
-    <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  </body>
-
+#welcome {
+	color: grey;
+	margin: 0 auto;
+}
+</style>
+<decorator:head/>
+</head>
+<body>
+	<header>
+		<nav class="navbar navbar-inverse">
+		  <div class="container-fluid">
+		    <div class="navbar-header">
+		      <a class="navbar-brand" href="#">둥가둥가</a>
+		    </div>
+		    <ul class="nav navbar-nav">
+		        <li class="active"><a href="../main/main.do">Home</a></li>
+		       <li><a href="#">행사일정</a></li>
+		      <li><a href="#">리뷰</a></li>
+		      <li><a href="#">공지사항</a></li>
+		      <li><a href="#">트렌드</a></li>
+		      </ul>
+		    <ul class="nav navbar-nav navbar-right">
+		      <c:if test="${ empty id }">
+		      	<li><a href="../member/login.do"><span class="glyphicon glyphicon-log-in"></span>로그인</a></li>
+		      	<li><a href="../member/join.do"><span class="glyphicon glyphicon-user"></span> 회원가입</a></li>
+		      </c:if>
+		      <c:if test="${ !empty id }">
+		      	<li><a href="../member/logout.do"><span class="glyphicon glyphicon-log-out"> </span>로그아웃</a></li>
+		      </c:if>
+		    </ul>
+		  </div>
+		</nav>
+	</header>
+	<article>
+		<decorator:body />
+	</article>
+	<footer class="container-fluid text-center">
+		<p>이 홈페이지의 저작권은 나훈주에게 있습니다.</p>
+	</footer>
+</body>
 </html>
