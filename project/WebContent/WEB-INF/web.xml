@@ -41,16 +41,17 @@
 		<servlet-name>noticeController</servlet-name>
 		<url-pattern>/notice/*</url-pattern>
 	</servlet-mapping>
+	
+	
+<!-- 행사일정 게시판 servlet -->
 	<servlet>
-	
-	
 		<servlet-name>festController</servlet-name>
 		<servlet-class>com.foodtruck.fest.controller.FestController</servlet-class>
 		<load-on-startup>2</load-on-startup>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>festController</servlet-name>
-		<url-pattern>/fest/*</url-pattern>
+		<url-pattern>/fest/FestMngr/*</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>festCustController</servlet-name>
@@ -59,7 +60,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>festCustController</servlet-name>
-		<url-pattern>/fest/*</url-pattern>
+		<url-pattern>/fest/FestCust/*</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>festTruckController</servlet-name>
@@ -68,7 +69,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>festTruckController</servlet-name>
-		<url-pattern>/fest/*</url-pattern>
+		<url-pattern>/fest/FestTruck/*</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
