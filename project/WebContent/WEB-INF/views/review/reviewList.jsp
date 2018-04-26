@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>공지사항 리스트</title>
+<title>리뷰게시판 리스트</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
@@ -26,7 +26,7 @@
 <link rel="stylesheet" href="../css/board.css" />
 </head>
 <body>
-	<h1>공지사항 리스트</h1>
+	<h1>리뷰게시판 리스트</h1>
 	<table class="table">
 		<thead>
 			<tr>
