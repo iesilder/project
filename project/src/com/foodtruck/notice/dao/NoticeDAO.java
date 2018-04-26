@@ -29,7 +29,7 @@ public class NoticeDAO {
 			con = DBUtil.getConnection();
 			// 3. sql
 			// 1) 원래 데이터를 순서에 맞게 가져온다.
-			String sql = "select no, title, id, writedate, hit from board order by no desc ";
+			String sql = "select no, title, id, writedate, hit from noticeboard order by no desc ";
 			sql = " select rownum rnum, no, title, id, writedate, hit from (" + sql + ")";
 			sql = " select * from (" + sql + ")" + "where rnum between ? and ? ";
 
@@ -82,7 +82,7 @@ public class NoticeDAO {
 			// 1.드라이버 확인 //2.연결
 			con = DBUtil.getConnection();
 			// 3. sql 작성 - 변하는 데이터 대신 ?를 사용한다.
-			String sql = "select no, title, content, id, writedate, hit from board where no = ? ";
+			String sql = "select no, title, content, id, writedate, hit from noticeboard where no = ? ";
 			// 4. 처리 객체 생성
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, no); // 첫번재 ?에 no를 int로 세팅
@@ -148,7 +148,7 @@ public class NoticeDAO {
 			// 1.드라이버 확인 //2.연결
 			con = DBUtil.getConnection();
 			// 3. sql 작성 - 변하는 데이터 대신 ?를 사용한다.
-			String sql = "insert into board(no, title, content, id) values(board_seq.nextval, ?, ?, ?) ";
+			String sql = "insert into noticeboard(no, title, content, id) values(noticeboard_seq.nextval, ?, ?, ?) ";
 			// 4. 처리 객체 생성
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, noticeDTO.getTitle()); // 첫번재 ?에 no 세팅
@@ -180,7 +180,7 @@ public class NoticeDAO {
 			// 1.드라이버 확인 //2.연결
 			con = DBUtil.getConnection();
 			// 3. sql 작성 - 변하는 데이터 대신 ?를 사용한다.
-			String sql = "update board set title=?, content=? where no = ? ";
+			String sql = "update noticeboard set title=?, content=? where no = ? ";
 			// 4. 처리 객체 생성
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, noticeDTO.getTitle()); // 첫번재 ?에 title 세팅
@@ -212,7 +212,7 @@ public class NoticeDAO {
 			// 1.드라이버 확인 //2.연결
 			con = DBUtil.getConnection();
 			// 3. sql 작성 - 변하는 데이터 대신 ?를 사용한다.
-			String sql = "delete from board where no = ? ";
+			String sql = "delete from noticeboard where no = ? ";
 			// 4. 처리 객체 생성
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, noticeDTO.getNo()); // 첫번재 ?에 no 세팅
