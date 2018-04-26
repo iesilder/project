@@ -41,8 +41,7 @@
 		<servlet-name>noticeController</servlet-name>
 		<url-pattern>/notice/*</url-pattern>
 	</servlet-mapping>
-	<servlet>
-	
+<!-- 행사일정 게시판 servlet -->
 	<servlet>
 		<servlet-name>festController</servlet-name>
 		<servlet-class>com.foodtruck.fest.controller.FestController</servlet-class>
