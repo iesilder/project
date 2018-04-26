@@ -5,8 +5,6 @@ import java.util.List;
 import com.foodtruck.review.dao.ReviewDAO;
 import com.foodtruck.review.dto.ReviewDTO;
 import com.foodtruck.util.ServiceInterface;
-import com.webjjang.board.dto.BDAO;
-import com.webjjang.board.dto.BDTO;
 import com.webjjang.util.PageObject2;
 
 public class ReviewListService implements ServiceInterface {
@@ -31,16 +29,9 @@ public class ReviewListService implements ServiceInterface {
 		
 		// DAO에서 list를 받아온다.
 		list = ReviewDAO.list((PageObject2) obj);
-		
+		System.out.println("값 잘넘어오나?");
+		System.out.println(list);
 		return list;
-	}
-	public List<ReviewDTO> process(PageObject2 obj) {
-		System.out.println("BList.process()");
-		List<ReviewDTO> list = null;
-		// list에 데이터를 가져와서 채우는 프로그램 작성.
-		// 객체 생성하고 호출
-		ReviewDAO bDAO = new ReviewDAO();
-		list = bDAO.list((PageObject2)obj);
-		return list;
+
 	}
 }
