@@ -66,7 +66,7 @@ public class FestCustController extends HttpServlet {
 				// 처리를 해서 DB에 있는 데이터를 받아와서 request에 담아둔다.
 				// service를 실행하고 request에 바로 담기
 				// 페이징 처리 안해서 null로 선언
-				request.setAttribute("FestCustList", service.execute(pageObject)); // 위에 만든 페이지 객체를 execute에 넣어서 실행한다.
+				request.setAttribute("list", service.execute(pageObject)); // 위에 만든 페이지 객체를 execute에 넣어서 실행한다.
 				request.setAttribute("pageObject", pageObject); // 위에 만든 페이지 객체를 execute에 넣어서 실행한다.
 				// jsp 이름을 만들어 내고, 밑에서 forward 시킨다.
 				viewJSP = Beans.getJsp(command);
@@ -82,7 +82,7 @@ public class FestCustController extends HttpServlet {
 			// [소비자 신청서] 글보기 - get방식으로 데이터가 들어온다.
 			case "/fest/FestMngr/FestCustView.do":
 				// 글번호로 넘어오기 때문에 int festNo를 받는다.
-				int custNo = Integer.parseInt(request.getParameter("festNo"));
+				int custNo = Integer.parseInt(request.getParameter("custNo"));
 				// command.properties의 BoardViewService 필요함
 				service = Beans.getService(command);
 				// service를 실행해서 DB에서 FestDTO를 가져와서 request에 담기

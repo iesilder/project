@@ -70,7 +70,7 @@ public class FestController extends HttpServlet {
 				// 처리를 해서 DB에 있는 데이터를 받아와서 request에 담아둔다.
 				// service를 실행하고 request에 바로 담기
 				// 페이징 처리 안해서 null로 선언
-				request.setAttribute("FestList", service.execute(pageObject)); // 위에 만든 페이지 객체를 execute에 넣어서 실행한다.
+				request.setAttribute("list", service.execute(pageObject)); // 위에 만든 페이지 객체를 execute에 넣어서 실행한다.
 				request.setAttribute("pageObject", pageObject); // 위에 만든 페이지 객체를 execute에 넣어서 실행한다.
 				// jsp 이름을 만들어 내고, 밑에서 forward 시킨다.
 				viewJSP = Beans.getJsp(command);
@@ -86,14 +86,14 @@ public class FestController extends HttpServlet {
 			// [행사일정]글수정 폼 - get방식으로 데이터가 들어온다.
 			case "/fest/FestMngr/FestUpdate.do":
 				// 글번호로 넘어오기 때문에 int festNo를 받는다.
-				int festNo2 = Integer.parseInt(request.getParameter("festNo"));
+				int festNo = Integer.parseInt(request.getParameter("festNo"));
 				// command.properties의 BoardViewService 필요함
 				service = Beans.getService("/fest/FestMngr/FestView.do");
 				// service를 실행해서 DB에서 FestDTO를 가져와서 request에 담기
 				// 번호로 넘어오니까 festNo로 선언s
 				// 넘길 때 ArrayList<>로 캐스팅해서 사용함으로 0번째:festNo[int], 1번째:isView[boolean]를 넣는다.
 				ArrayList<Object> executeObj2 = new ArrayList<>();
-				executeObj2.add(festNo2);
+				executeObj2.add(festNo);
 				executeObj2.add(false); // 조회수 1증가를 시키지 않는다.
 				request.setAttribute("festCustDTO", service.execute(executeObj2));
 				// jsp 이름을 만들어 내고, 밑에서 forward 시킨다.
@@ -104,14 +104,14 @@ public class FestController extends HttpServlet {
 			// [행사일정] 글보기 - get방식으로 데이터가 들어온다.
 			case "/fest/FestMngr/FestView.do":
 				// 글번호로 넘어오기 때문에 int festNo를 받는다.
-				int festNo = Integer.parseInt(request.getParameter("festNo"));
+				int festNo2 = Integer.parseInt(request.getParameter("festNo"));
 				// command.properties의 BoardViewService 필요함
 				service = Beans.getService(command);
 				// service를 실행해서 DB에서 FestDTO를 가져와서 request에 담기
 				// 번호로 넘어오니까 festNo로 선언
 				// 넘길 때 ArrayList<>로 캐스팅해서 사용함으로 0번째:festNo[int], 1번째:isView[boolean]를 넣는다.
 				ArrayList<Object> executeObj = new ArrayList<>();
-				executeObj.add(festNo);
+				executeObj.add(festNo2);
 				executeObj.add(true); // 조회수를 1 증가 시킨다!
 				request.setAttribute("festDTO", service.execute(executeObj));
 				// jsp 이름을 만들어 내고, 밑에서 forward 시킨다.
@@ -175,7 +175,7 @@ public class FestController extends HttpServlet {
 				System.out.println(service);
 				service.execute(festDTO);
 				// 현재위치에 있는 리스트: 상대주소
-				viewJSP = "/fest/FestMngr/FestList.do";
+				viewJSP = "FestList.do";
 				System.out.println(viewJSP);
 				break;
 
