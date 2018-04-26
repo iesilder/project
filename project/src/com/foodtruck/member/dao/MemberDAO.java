@@ -93,7 +93,7 @@ public class MemberDAO {
 			//6. 표시 -> jsp : 데이터를 담아서 넘긴다.
 			if(rs.next()) { // 데이터가 있으면 로그인 처리를 위한 정보를 담는다.
 				memberDTO.setName(rs.getString("name"));
-				memberDTO.setGradeno(rs.getInt("grade"));
+				memberDTO.setGradeno(rs.getInt("gradeno"));
 				System.out.println(memberDTO);
 			}else { memberDTO = null; System.out.println("MemberDAO.login().else.memberDTO:"+memberDTO);}
 			return memberDTO;
