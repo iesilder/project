@@ -17,7 +17,7 @@ public class FestCustDAO {
 	// DBUtil에 다 선언함.
 
 	// 글리스트를 가져오는 메서드
-	public List<FestDTO> list(PageObject2 pgObj) {
+	public List<FestDTO> list(PageObject2 pageObject) {
 		System.out.println(getClass().getName() + ".list()");
 		List<FestDTO> list = null;
 		// RDBMS에서 데이터를 가져 오는 프로그램 작성
@@ -39,8 +39,8 @@ public class FestCustDAO {
 			sql = "select * from (" + sql + ") where rnum between ? and ?";
 			// 4. 처리문 객체
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, pgObj.getStartRow());
-			pstmt.setInt(2, pgObj.getEndRow());
+			pstmt.setInt(1, pageObject.getStartRow());
+			pstmt.setInt(2, pageObject.getEndRow());
 			// 5. 실행 -- select ->rs이 나온다.
 			rs = pstmt.executeQuery();
 			// 6. 표시 --> 데이터 담기
