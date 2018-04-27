@@ -40,7 +40,7 @@ public class FestCustController extends HttpServlet {
 
 			switch (command) {
 			// [소비자 신청서 ]리스트
-			case "/fest/FestMngr/FestCustList.do":
+			case "/fest/FestCust/FestCustList.do":
 				// list에 뿌릴 데이터를 가져와야 한다. - BoardListService 필요함
 				// 이미 생성해서 저장해 놓은 곳에서 가져오기. getService() in Beans -> BoardListService에 있는
 				// execute가져오게 됨
@@ -60,7 +60,7 @@ public class FestCustController extends HttpServlet {
 					rowPerPage = Integer.parseInt(rowPerPageStr);
 				// 페이지 처리 객체 생성 -> 다른 데이터는 자동 계산 된다.
 				// PageObject.jar을 library에 넣음.
-				PageObject2 pageObject = new PageObject2(DBUtil.getConnection(), "festCust", page, rowPerPage, 10,
+				PageObject2 pageObject = new PageObject2(DBUtil.getConnection(), "festcustboard", page, rowPerPage, 10,
 						searchKey, searchWord);
 				System.out.println(pageObject);
 				// 처리를 해서 DB에 있는 데이터를 받아와서 request에 담아둔다.
@@ -80,16 +80,16 @@ public class FestCustController extends HttpServlet {
 				break;
 
 			// [소비자 신청서] 글보기 - get방식으로 데이터가 들어온다.
-			case "/fest/FestMngr/FestCustView.do":
+			case "/fest/FestCust/FestCustView.do":
 				// 글번호로 넘어오기 때문에 int festNo를 받는다.
-				int custNo = Integer.parseInt(request.getParameter("custNo"));
+				int custno = Integer.parseInt(request.getParameter("custno"));
 				// command.properties의 BoardViewService 필요함
 				service = Beans.getService(command);
 				// service를 실행해서 DB에서 FestDTO를 가져와서 request에 담기
 				// 번호로 넘어오니까 festNo로 선언
 				// 넘길 때 ArrayList<>로 캐스팅해서 사용함으로 0번째:festNo[int], 1번째:isView[boolean]를 넣는다.
 				ArrayList<Object> executeObj3 = new ArrayList<>();
-				executeObj3.add(custNo);
+				executeObj3.add(custno);
 				executeObj3.add(true); // 조회수를 1 증가 시킨다!
 				request.setAttribute("custDTO", service.execute(executeObj3));
 				// jsp 이름을 만들어 내고, 밑에서 forward 시킨다.
@@ -99,15 +99,15 @@ public class FestCustController extends HttpServlet {
 
 			// 글수정 폼 - get방식으로 데이터가 들어온다.
 			case "/fest/FestCust/CustUpdate.do":
-				// 글번호로 넘어오기 때문에 int custNo를 받는다.
-				int custNo2 = Integer.parseInt(request.getParameter("custNo"));
+				// 글번호로 넘어오기 때문에 int custno를 받는다.
+				int custno2 = Integer.parseInt(request.getParameter("custno"));
 				// command.properties의 BoardViewService 필요함
-				service = Beans.getService("/fest/FestMngr/FestView.do");
+				service = Beans.getService("/fest/FestCust/CustWrite.do");
 				// service를 실행해서 DB에서 FestCustDTO를 가져와서 request에 담기
-				// 번호로 넘어오니까 custNo로 선언
-				// 넘길 때 ArrayList<>로 캐스팅해서 사용함으로 0번째:custNo[int], 1번째:isView[boolean]를 넣는다.
+				// 번호로 넘어오니까 custno로 선언
+				// 넘길 때 ArrayList<>로 캐스팅해서 사용함으로 0번째:custno[int], 1번째:isView[boolean]를 넣는다.
 				ArrayList<Object> executeObj = new ArrayList<>();
-				executeObj.add(custNo2);
+				executeObj.add(custno2);
 				executeObj.add(false); // 조회수 1증가를 시키지 않는다.
 				request.setAttribute("festCustDTO", service.execute(executeObj));
 				// jsp 이름을 만들어 내고, 밑에서 forward 시킨다.
@@ -120,7 +120,7 @@ public class FestCustController extends HttpServlet {
 				// 삭제처리 할 서비스를 가져오자. BoardDeleteService가 필요함
 				service = Beans.getService(command);
 				// 글번호를 받아서 삭제 처리한다.
-				service.execute(Integer.parseInt(request.getParameter("custNo")));
+				service.execute(Integer.parseInt(request.getParameter("custno")));
 				// jsp 이름을 만들어 내고, 밑에서 forward 시킨다.
 				viewJSP = "redirect:FestList.do";
 				System.out.println(viewJSP);
@@ -189,7 +189,7 @@ public class FestCustController extends HttpServlet {
 				service.execute(festCustDTO2);
 				// 현재위치에 있는 리스트: 상대주소
 				// 끝나면 글보기로 자동 이동한다.
-				viewJSP = "view.do?custNo=" + festCustDTO2.getCustno() + "$page=" + request.getParameter("page")
+				viewJSP = "view.do?custno=" + festCustDTO2.getCustno() + "$page=" + request.getParameter("page")
 						+ "$rowPerPage=" + request.getParameter("rowPerPage");
 				System.out.println(viewJSP);
 				break;

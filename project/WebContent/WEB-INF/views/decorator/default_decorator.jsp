@@ -75,12 +75,12 @@ footer {
 	min-height: 200px;
 }
 
-/* Hide the carousel text when the screen is less than 600 pixels wide */
-@media{
-	.carousel-caption {
-		display: none;
-	}
-}
+ /* Hide the carousel text when the screen is less than 600 pixels wide */ */
+ @media{ 
+ 	.carousel-caption { 
+ 		display: none; 
+ 	} 
+ } 
 
 article {
 	min-height: 795px;
@@ -97,25 +97,11 @@ article {
 	<header>
 	   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
     	  <div class="container">
-				<div class="navbar-header">
-					<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        	 		 <span class="navbar-toggler-icon"></span>
-        			</button>
-				</div>
 				<div class="collapse navbar-collapse" id="navbarResponsive">
 					<div class="navbar-header"><a href="${absUri }/main/main.do"
 							 class="navbar-brand">둥가둥가</a></div>
 					<ul class="nav navbar-nav">
-						<li class="nav-item dropdown">
-              				<a class="nav-link dropdown-toggle" href="${absUri }/fest/FestMngr/FestList.do" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                			행사일정
-            			    </a>
-			              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-			                <a class="dropdown-item" href="/fest/FestMngr/FestList.do">행사일정 보러가기</a>
-			                <a class="dropdown-item" href="/fest/FestTruck/TruckWrite.do">푸드트럭 신청 하러가기</a>
-			                <a class="dropdown-item" href="/fest/FestCust/CustWrite.do">소비자 신청 하러가기</a>
-			              </div>
-			            </li>
+						<li><a href="${absUri }/fest/FestMngr/FestList.do">행사일정</a></li>
 						<li><a href="${absUri }/review/reviewlist.do">리뷰</a></li>
 						<li><a href="/board/list.do">트렌트</a></li>
 					</ul>
