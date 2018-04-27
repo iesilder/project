@@ -109,7 +109,7 @@ public class FestCustController extends HttpServlet {
 				ArrayList<Object> executeObj = new ArrayList<>();
 				executeObj.add(custno2);
 				executeObj.add(false); // 조회수 1증가를 시키지 않는다.
-				request.setAttribute("festCustDTO", service.execute(executeObj));
+				request.setAttribute("custDTO", service.execute(executeObj));
 				// jsp 이름을 만들어 내고, 밑에서 forward 시킨다.
 				viewJSP = Beans.getJsp(command);
 				System.out.println(viewJSP);
