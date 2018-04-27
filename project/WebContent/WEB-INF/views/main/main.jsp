@@ -10,6 +10,10 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
 </head>
 <body>
  <header>
@@ -31,7 +35,7 @@
             </div>
           </div>
           <!-- Slide Three - Set the background image for this slide in the line below -->
-          <div class="carousel-item" >s
+          <div class="carousel-item" ><img alt="" src="../../img/imgMain/slide1.jpg">
             <div class="carousel-caption d-none d-md-block">
             </div>
           </div>
@@ -51,6 +55,8 @@
   <h3>Inverted Navbar</h3>
   <p>An inverted navbar is black instead of gray.</p>
 </div>
-
+	    <!-- Bootstrap core JavaScript -->
+    <script src="../../vendor/jquery/jquery.min.js"></script>
+    <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

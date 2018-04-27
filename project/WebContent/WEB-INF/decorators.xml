@@ -15,7 +15,9 @@
 		<pattern>/notice</pattern>
 		<pattern>/member</pattern>
 		<pattern>/review</pattern>
-		<pattern>/fest</pattern>
+		<pattern>/fest/FestMngr</pattern>
+		<pattern>/fest/FestTruck</pattern>
+		<pattern>/fest/FestCust</pattern>
 		<pattern>/review</pattern>
 		<pattern>/data</pattern>
 
