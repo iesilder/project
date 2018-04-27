@@ -40,7 +40,7 @@ public class FestCustController extends HttpServlet {
 
 			switch (command) {
 			// [소비자 신청서 ]리스트
-			case "/fest/FestMngr/FestCustList.do":
+			case "/fest/FestCust/FestCustList.do":
 				// list에 뿌릴 데이터를 가져와야 한다. - BoardListService 필요함
 				// 이미 생성해서 저장해 놓은 곳에서 가져오기. getService() in Beans -> BoardListService에 있는
 				// execute가져오게 됨
@@ -80,7 +80,7 @@ public class FestCustController extends HttpServlet {
 				break;
 
 			// [소비자 신청서] 글보기 - get방식으로 데이터가 들어온다.
-			case "/fest/FestMngr/FestCustView.do":
+			case "/fest/FestCust/FestCustView.do":
 				// 글번호로 넘어오기 때문에 int festNo를 받는다.
 				int custno = Integer.parseInt(request.getParameter("custno"));
 				// command.properties의 BoardViewService 필요함
