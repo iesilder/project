@@ -27,15 +27,15 @@
 	    <!-- Wrapper for slides -->															
 	    <div class="carousel-inner">
 	      <div class="item active">
-	        <img src="../../img/slide1.jpg" class="img-fluid" alt="Los Angeles" style="width:1900px; height:1080px;">
+	        <img src="../../img/slide1.jpg" class="img-fluid" alt="Los Angeles" style="width:100%;">
 	      </div>
 	
 	      <div class="item">
-	        <img src="../../img/slide1.jpg" class="img-fluid" alt="Chicago" style="width:1900px; height:1080px;">
+	        <img src="../../img/slide2.jpg" class="img-fluid" alt="Chicago" style="width:100%;">
 	      </div>
 	    
 	      <div class="item">
-	        <img src="../../img/slide1.jpg" class="img-fluid" alt="New york" style="width:1900px; height:1080px;">
+	        <img src="../../img/slide3.jpg" class="img-fluid" alt="New york" style="width:100%;">
 	      </div>
 	    </div>
 	

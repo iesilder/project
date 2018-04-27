@@ -97,11 +97,6 @@ article {
 	<header>
 	   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
     	  <div class="container">
-				<div class="navbar-header">
-					<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        	 		 <span class="navbar-toggler-icon"></span>
-        			</button>
-				</div>
 				<div class="collapse navbar-collapse" id="navbarResponsive">
 					<div class="navbar-header"><a href="${absUri }/main/main.do"
 							 class="navbar-brand">둥가둥가</a></div>
