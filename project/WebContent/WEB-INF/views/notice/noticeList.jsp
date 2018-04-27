@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+	System.out.println("내가 gradeno:"+session.getAttribute("gradeno"));
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,32 +12,27 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
-	$(document)
-			.ready(
-					function() {
-						// 	alert("OK");
-						$(".data")
-								.click(
-										function() {
-											//         $(this).hide();
-											var no = $(this).find("td:first")
-													.text();
-											// 		alert("click");
-											// 		alert(no);
-											location = "noticeView.do?no="
-													+ no
-													+ "&page=${pageObject.page}"
-													+ '&rowPerPage=${(empty param.rowPerPage)?"10":param.rowPerPage}';
-										});
-						$("#write").click(function() {
-							location = "noticeWrite.do";
-						});
-					});
+$(document).ready(function() {
+	// 	alert("OK");
+	$(".data").click(function() {
+		//         $(this).hide();
+		var no = $(this).find("td:first").text();
+		// 		alert("click");
+		// 		alert(no);
+		location = "noticeView.do?no="
+					+ no
+					+ "&page=${pageObject.page}"
+					+ '&rowPerPage=${(empty param.rowPerPage)?'10':param.rowPerPage}';
+		});
+	$("#write").click(function() {
+			location = "noticeWrite.do";
+		});
+});
 </script>
 <link rel="stylesheet" href="../css/board.css" />
 </head>
 <body>
-	<h1>공지사항 리스트</h1>
+	<h1>공지사항 리스트 </h1>
 	<table class="table">
 		<thead>
 			<tr>
@@ -82,15 +80,14 @@
 					</ul>
 				</td>
 
-				<c:if test="${session.grade } == 9">
+				
+<%-- 				<c:if test="${!empty id} "> --%>
 					<td colspan="2">
 						<div class="btn-group">
 							<button id="write" class="btn btn-primary">글쓰기</button>
-							<button id="reload" class="btn btn-info">새로고침</button>
 						</div>
 					</td>
-				</c:if>
-
+<%-- 				</c:if> --%>
 
 			</tr>
 		</tfoot>
