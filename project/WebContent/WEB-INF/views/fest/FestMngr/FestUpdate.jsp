@@ -19,6 +19,9 @@ $(document).ready(function(){
 	$("#cancel").click(function(){
 		history.go(-1);
 	});
+	$("#reload").click(function(){
+	    location = "FestUpdate.do";
+	});
 });
 </script>
 <link rel="stylesheet" href="../css/board.css" />

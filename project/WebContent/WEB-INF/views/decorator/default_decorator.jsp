@@ -75,12 +75,12 @@ footer {
 	min-height: 200px;
 }
 
-/* Hide the carousel text when the screen is less than 600 pixels wide */
-@media{
-	.carousel-caption {
-		display: none;
-	}
-}
+ /* Hide the carousel text when the screen is less than 600 pixels wide */ */
+ @media{ 
+ 	.carousel-caption { 
+ 		display: none; 
+ 	} 
+ } 
 
 article {
 	min-height: 795px;

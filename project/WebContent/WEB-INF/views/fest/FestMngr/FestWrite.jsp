@@ -18,6 +18,9 @@ $(document).ready(function(){
 	$("#cancel").click(function(){
 		history.back();
 	});
+	$("#reload").click(function(){
+	    location = "FestWrite.do";
+	});
 });
 </script>
 <link rel="stylesheet" href="../css/board.css" />

@@ -10,53 +10,52 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <meta name="description" content="">
     <meta name="author" content="">
 </head>
 <body>
  <header>
-      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner" role="listbox">
-          <!-- Slide One - Set the background image for this slide in the line below -->
-          <div class="carousel-item active"><img alt="" src="../../img/imgMain/slide1.jpg">
-            <div class="carousel-caption d-none d-md-block">
-            </div>
-          </div>
-          <!-- Slide Two - Set the background image for this slide in the line below -->
-          <div class="carousel-item"><img alt="" src="../../img/imgMain/slide1.jpg">
-            <div class="carousel-caption d-none d-md-block">
-            </div>
-          </div>
-          <!-- Slide Three - Set the background image for this slide in the line below -->
-          <div class="carousel-item" ><img alt="" src="../../img/imgMain/slide1.jpg">
-            <div class="carousel-caption d-none d-md-block">
-            </div>
-          </div>
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
-    </header>
+	<div class="container">
+	  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+	    <!-- Indicators -->
+	    <ol class="carousel-indicators">
+	      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+	      <li data-target="#myCarousel" data-slide-to="1"></li>
+	      <li data-target="#myCarousel" data-slide-to="2"></li>
+	    </ol>
+	
+	    <!-- Wrapper for slides -->															
+	    <div class="carousel-inner">
+	      <div class="item active">
+	        <img src="../../img/slide1.jpg" class="img-fluid" alt="Los Angeles" style="width:1900px; height:1080px;">
+	      </div>
+	
+	      <div class="item">
+	        <img src="../../img/slide1.jpg" class="img-fluid" alt="Chicago" style="width:1900px; height:1080px;">
+	      </div>
+	    
+	      <div class="item">
+	        <img src="../../img/slide1.jpg" class="img-fluid" alt="New york" style="width:1900px; height:1080px;">
+	      </div>
+	    </div>
+	
+	    <!-- Left and right controls -->
+	    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+	      <span class="glyphicon glyphicon-chevron-left"></span>
+	      <span class="sr-only">Previous</span>
+	    </a>
+	    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+	      <span class="glyphicon glyphicon-chevron-right"></span>
+	      <span class="sr-only">Next</span>
+	    </a>
+	  </div>
+	</div>
+   </header>
   
 <div class="container">
   <h3>Inverted Navbar</h3>
   <p>An inverted navbar is black instead of gray.</p>
 </div>
-	    <!-- Bootstrap core JavaScript -->
-    <script src="../../vendor/jquery/jquery.min.js"></script>
-    <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
