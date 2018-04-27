@@ -45,7 +45,7 @@ public class FestTruckController extends HttpServlet {
 			switch (command) {
 
 			// [푸드트럭 신청 게시판]리스트
-			case "/fest/FestMngr/FestTruckList.do":
+			case "/fest/FestTruck/FestTruckList.do":
 				// list에 뿌릴 데이터를 가져와야 한다. - BoardListService 필요함
 				// 이미 생성해서 저장해 놓은 곳에서 가져오기. getService() in Beans -> BoardListService에 있는
 				// execute가져오게 됨
@@ -65,13 +65,13 @@ public class FestTruckController extends HttpServlet {
 					rowPerPage = Integer.parseInt(rowPerPageStr);
 				// 페이지 처리 객체 생성 -> 다른 데이터는 자동 계산 된다.
 				// PageObject.jar을 library에 넣음.
-				PageObject2 pageObject = new PageObject2(DBUtil.getConnection(), "festTruck", page, rowPerPage, 10,
+				PageObject2 pageObject = new PageObject2(DBUtil.getConnection(), "festtruckboard", page, rowPerPage, 10,
 						searchKey, searchWord);
 				System.out.println(pageObject);
 				// 처리를 해서 DB에 있는 데이터를 받아와서 request에 담아둔다.
 				// service를 실행하고 request에 바로 담기
 				// 페이징 처리 안해서 null로 선언
-				request.setAttribute("FestTruckList", service.execute(pageObject)); // 위에 만든 페이지 객체를 execute에 넣어서 실행한다.
+				request.setAttribute("list", service.execute(pageObject)); // 위에 만든 페이지 객체를 execute에 넣어서 실행한다.
 				request.setAttribute("pageObject", pageObject); // 위에 만든 페이지 객체를 execute에 넣어서 실행한다.
 				// jsp 이름을 만들어 내고, 밑에서 forward 시킨다.
 				viewJSP = Beans.getJsp(command);
