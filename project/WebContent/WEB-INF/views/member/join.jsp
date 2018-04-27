@@ -42,15 +42,7 @@
 				$("#resCheck").text("");
 		});
 	});
-// 	 //load함수를 이용하여 core스크립트의 로딩이 완료된 후, 우편번호 서비스를 실행합니다.
-//     daum.postcode.load(function(){
-//         new daum.Postcode({
-//             oncomplete: function(data) {
-//                 // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
-//                 // 예제를 참고하여 다양한 활용법을 확인해 보세요.
-//             }
-//         }).open();
-//     });
+
     function sample6_execDaumPostcode() {
         new daum.Postcode({
             oncomplete: function(data) {
@@ -100,7 +92,7 @@
 		<div class="panel panel-primary">
 			<div class="panel-heading">
 				<h3>회원가입</h3>
-				<p>안내:회원가입을 하면 회원전용 게시판등을 사용하실수 있습니다.</p>
+				<p>안내:회원가입을 하면 더 많은 정보와 혜택을 만날 수 있습니다.</p>
 			</div>
 			<div class="panel-body">
 				<!--   action 속성을 생략하면 같은 uri를 호출한다. 구분하기 위해 꼭 POST방식 전송하자. -->
@@ -153,7 +145,7 @@
 						<input type="text" id="sample6_postcode" placeholder="우편번호">
 						<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
 						<input type="text" class="form-control" id="sample6_address" name="address"
-						 placeholder="시,군,구,동까지만 입력하세요 ." required="required">상세 주소
+						 placeholder="우편번호 찾기를 통하여 주소를 찾아보세요." required="required">상세 주소
 						<input type="text" class="form-control" id="sample6_address2" name="add2"
 						 placeholder="나머지 주소를 입력하세요." required="required">
 					</div><br/>

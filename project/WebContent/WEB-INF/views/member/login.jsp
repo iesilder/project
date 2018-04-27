@@ -15,7 +15,7 @@
 <div class="container">
   <div class="panel panel-primary">
    <div class="panel-heading">
-     <h2>로그인</h2>
+     <h3>로그인</h3>
      <c:if test="${!empty reqURI }">
         <p style="color:red">요청하신 자원은 Login이 필요합니다.</p>
      </c:if>
@@ -31,7 +31,7 @@
        <div class="form-group">
          <label for="pw">암호</label>
          <input type="password" class="form-control" id="pw" name="pw"
-         required="required" pattern=".{4,10}" maxlength="10">
+         required="required" pattern=".{8,16}" maxlength="16">
        </div>
        <button type="submit" class="btn btn-default">로그인</button>
      </form>
