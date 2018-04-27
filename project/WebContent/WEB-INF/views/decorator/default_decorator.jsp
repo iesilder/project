@@ -103,7 +103,7 @@ article {
 					<ul class="nav navbar-nav">
 						<li><a href="${absUri }/fest/FestMngr/FestList.do">행사일정</a></li>
 						<li><a href="${absUri }/review/reviewlist.do">리뷰</a></li>
-						<li><a href="/board/list.do">트렌트</a></li>
+						<li><a href="/board/list.do">트렌드</a></li>
 						<li><a href="${absUri }/notice/noticeList.do">공지사항</a></li>
 						<li class="nav-item dropdown">
 			              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -125,7 +125,9 @@ article {
 					    </c:if>
 					    <c:if test="${ !empty id }">
 						   <li><a href="../member/logout.do">
-						   <span class="glyphicon glyphicon-log-out"> </span>로그아웃</a></li>
+						   <span class="glyphicon glyphicon-log-out"> </span> 로그아웃</a></li>
+						   <li><a href="../member/mypage.do">
+						   <span class="glyphicon glyphicon-user"> </span> 회원정보</a></li>
       					</c:if>
 
 					</ul>
