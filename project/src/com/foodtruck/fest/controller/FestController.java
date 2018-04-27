@@ -83,24 +83,6 @@ public class FestController extends HttpServlet {
 				System.out.println(viewJSP);
 				break;
 
-			// [행사일정]글수정 폼 - get방식으로 데이터가 들어온다.
-			case "/fest/FestMngr/FestUpdate.do":
-				// 글번호로 넘어오기 때문에 int festno를 받는다.
-				int festno = Integer.parseInt(request.getParameter("festno"));
-				// command.properties의 BoardViewService 필요함
-				service = Beans.getService(command);
-				// service를 실행해서 DB에서 FestDTO를 가져와서 request에 담기
-				// 번호로 넘어오니까 festno로 선언s
-				// 넘길 때 ArrayList<>로 캐스팅해서 사용함으로 0번째:festno[int], 1번째:isView[boolean]를 넣는다.
-				ArrayList<Object> executeObj2 = new ArrayList<>();
-				executeObj2.add(festno);
-				executeObj2.add(false); // 조회수 1증가를 시키지 않는다.
-				request.setAttribute("FestDTO", service.execute(executeObj2));
-				// jsp 이름을 만들어 내고, 밑에서 forward 시킨다.
-				viewJSP = Beans.getJsp(command);
-				System.out.println(viewJSP);
-				break;
-
 			// [행사일정] 글보기 - get방식으로 데이터가 들어온다.
 			case "/fest/FestMngr/FestView.do":
 				// 글번호로 넘어오기 때문에 int festno를 받는다.
@@ -114,6 +96,24 @@ public class FestController extends HttpServlet {
 				executeObj.add(festno2);
 				executeObj.add(true); // 조회수를 1 증가 시킨다!
 				request.setAttribute("FestDTO", service.execute(executeObj));
+				// jsp 이름을 만들어 내고, 밑에서 forward 시킨다.
+				viewJSP = Beans.getJsp(command);
+				System.out.println(viewJSP);
+				break;
+
+			// [행사일정]글수정 폼 - get방식으로 데이터가 들어온다.
+			case "/fest/FestMngr/FestUpdate.do":
+				// 글번호로 넘어오기 때문에 int festno를 받는다.
+				int festno = Integer.parseInt(request.getParameter("festno"));
+				// command.properties의 BoardViewService 필요함
+				service = Beans.getService("/fest/FestMngr/FestView.do");
+				// service를 실행해서 DB에서 FestDTO를 가져와서 request에 담기
+				// 번호로 넘어오니까 festno로 선언s
+				// 넘길 때 ArrayList<>로 캐스팅해서 사용함으로 0번째:festno[int], 1번째:isView[boolean]를 넣는다.
+				ArrayList<Object> executeObj2 = new ArrayList<>();
+				executeObj2.add(festno);
+				executeObj2.add(false); // 조회수 1증가를 시키지 않는다.
+				request.setAttribute("FestDTO", service.execute(executeObj2));
 				// jsp 이름을 만들어 내고, 밑에서 forward 시킨다.
 				viewJSP = Beans.getJsp(command);
 				System.out.println(viewJSP);
@@ -167,7 +167,7 @@ public class FestController extends HttpServlet {
 			case "/fest/FestMngr/FestWrite.do":
 				// 넘어오는 데이터를 festDTO에 담는다
 				// 넘어오는 데이터 name과 동일하게 작성해야한다.
-				FestDTO festDTO = new FestDTO(request.getParameter("festname"), request.getParameter("festcomp"),
+				FestDTO festDTO = new FestDTO(request.getParameter("festcomp"), request.getParameter("festname"),
 						request.getParameter("festdate"), request.getParameter("festloc"),
 						request.getParameter("festtime"));
 				// 담은 데이터를 처리할 서비스를 받아온다. - BoardWriteService in command.properties
@@ -183,7 +183,7 @@ public class FestController extends HttpServlet {
 			case "/fest/FestMngr/FestUpdate.do":
 				// 넘어오는 데이터를 festDTO에 담는다
 				// 넘어오는 데이터 name과 동일하게 작성해야한다.
-				FestDTO festDTO2 = new FestDTO(request.getParameter("festname"), request.getParameter("festcomp"),
+				FestDTO festDTO2 = new FestDTO(request.getParameter("festcomp"), request.getParameter("festname"),
 						request.getParameter("festdate"), request.getParameter("festloc"),
 						request.getParameter("festtime"));
 				// 담은 데이터를 처리할 서비스를 받아온다. - BoardUpdateService in command.properties
