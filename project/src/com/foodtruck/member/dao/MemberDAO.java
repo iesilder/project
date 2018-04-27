@@ -27,7 +27,7 @@ public class MemberDAO {
          con = DBUtil.getConnection();
          //3. sql 작성
          String sql = "select id, pw, name, birthDate, gender, "
-               + " mobile, email, address, add2, regdate, add2, regDate,"
+               + " mobile, email, address, add2, regdate,"
                + " idupdate, gradeno"
                + " from memberboard where id = ?";
          //4. 처리객체
@@ -43,7 +43,7 @@ public class MemberDAO {
                   rs.getString("id"),
                   rs.getString("pw"),
                   rs.getString("name"),
-                  rs.getString("birthate"),
+                  rs.getString("birtdate"),
                   rs.getString("gender"),
                   rs.getString("mobile"),
                   rs.getString("email"),
@@ -152,9 +152,9 @@ public class MemberDAO {
 //      Connection con = null;
 //      PreparedStatement pstmt = null;
       //3. sql 작성
-      String sql = "insert into memberboard(id, pw, name, birthdate, gender, "
-            + " mobile, email, address, add2,) "
-            + " values(?,?,?,?,?,?,?,?,?)";
+      String sql = "insert into memberboard(id, pw, name, birthDate, gender, "
+            + " mobile, email, address, add2 ,gradeno) "
+            + " values(?,?,?,?,?,?,?,?,?,1)";
       try(Connection con = DBUtil.getConnection();
             PreparedStatement pstmt = con.prepareStatement(sql)) {
          //4. 처리객체
