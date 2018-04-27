@@ -1,4 +1,4 @@
-package com.foodtruck.fest.service;
+package com.foodtruck.fest.CustService;
 
 import java.util.List;
 

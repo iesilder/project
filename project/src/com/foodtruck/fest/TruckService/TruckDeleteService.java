@@ -1,4 +1,4 @@
-package com.foodtruck.fest.service;
+package com.foodtruck.fest.TruckService;
 
 import com.foodtruck.fest.dao.FestTruckDAO;
 import com.foodtruck.util.ServiceInterface;

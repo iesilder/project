@@ -1,4 +1,4 @@
-<%@page import="com.foodtruck.fest.service.FestViewService"%>
+<%@page import="com.foodtruck.fest.FestService.FestViewService"%>
 <%@page import="com.foodtruck.fest.dto.FestDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
