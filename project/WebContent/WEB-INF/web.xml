@@ -46,7 +46,7 @@
 <!-- 행사일정 게시판 servlet -->
 	<servlet>
 		<servlet-name>festController</servlet-name>
-		<servlet-class>com.foodtruck.fest.controller.FestController</servlet-class>
+		<servlet-class>com.foodtruck.fest.FestController.FestController</servlet-class>
 		<load-on-startup>2</load-on-startup>
 	</servlet>
 	<servlet-mapping>
@@ -55,7 +55,7 @@
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>festCustController</servlet-name>
-		<servlet-class>com.foodtruck.fest.controller.FestCustController</servlet-class>
+		<servlet-class>com.foodtruck.fest.CustController.FestCustController</servlet-class>
 		<load-on-startup>2</load-on-startup>
 	</servlet>
 	<servlet-mapping>
@@ -64,7 +64,7 @@
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>festTruckController</servlet-name>
-		<servlet-class>com.foodtruck.fest.controller.FestTruckController</servlet-class>
+		<servlet-class>com.foodtruck.fest.TruckController.FestTruckController</servlet-class>
 		<load-on-startup>2</load-on-startup>
 	</servlet>
 	<servlet-mapping>
