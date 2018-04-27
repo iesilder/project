@@ -106,11 +106,13 @@ article {
 						<li><a href="/board/list.do">트렌트</a></li>
 						<li><a href="${absUri }/notice/noticeList.do">공지사항</a></li>
 						<li class="nav-item dropdown">
-			              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown">데이터 분석</a>
+			              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			                	데이터 분석
+			              </a>
 			              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-			                <a class="dropdown-item" href="blog-home-1.html">1</a>
-			                <a class="dropdown-item" href="blog-home-2.html">2</a>
-			                <a class="dropdown-item" href="blog-post.html">3t</a>
+			                <a class="dropdown-item" href="blog-home-1.html">Blog Home 1</a>
+			                <a class="dropdown-item" href="blog-home-2.html">Blog Home 2</a>
+			                <a class="dropdown-item" href="blog-post.html">Blog Post</a>
 			              </div>
 			            </li>
 					</ul>
