@@ -20,7 +20,8 @@ public class ReviewWriteService implements ServiceInterface{
 	public Object execute(Object obj) throws Exception {
 		// TODO Auto-generated method stub
 		System.out.println(getClass().getName()+".execute()");
-		
+		System.out.println("우왕여기까지와버렸넹? 여기는 writeservices");
+		System.out.println(obj);
 		//캐스팅을 하여 사용 가능하게 바꾼다.
 		ReviewDTO ReviewDTO = (ReviewDTO) obj;
 		//DAO로 넘겨준다.

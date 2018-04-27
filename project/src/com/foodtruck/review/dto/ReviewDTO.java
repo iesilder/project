@@ -8,36 +8,36 @@ package com.foodtruck.review.dto;
  */
 public class ReviewDTO {
 
-	private int no, festtime, score, hit;
+	private int no, score, hit;
 	private String  id, fname, maindish, festloc, content, writedate, festdate, starscore;
 
-	public ReviewDTO() {
-		
-	}
 	
-	public ReviewDTO( int score, int hit, String fname, String maindish, String festloc,
-			String starscore) {
-		
+	//리스트
+	public ReviewDTO( int no,int score, int hit, String fname, String maindish, String festloc, 	String starscore) {
+		this.no =no;
 		this.score = score;
 		this.hit = hit;
 		this.fname = fname;
 		this.maindish = maindish;
 		this.festloc = festloc;
-		
+		this.starscore = starscore;
+	}
+	
+	//\글쓰기
+public ReviewDTO(int no,  String content, String starscore) {
+		this.no = no;
+//		this.score = score;
+//		this.id = id;
+		this.content = content;
 		this.starscore = starscore;
 	}
 
-	
-	
-	
-	
-	
 ////데이터를 넣을 때, 데이터가 다 준비 되어 있는 경우. -> 게시판 글보기 할 때 사용
-	public ReviewDTO(int no, int festtime, int hit, String id, String fname, String maindish,
+	public ReviewDTO(int no, int score, int hit, String id, String fname, String maindish, 
 			String festloc, String content, String writedate, String festdate, String starscore) {
 		super();
 		this.no = no;
-		this.festtime = festtime;
+		this.score = score;		
 		this.hit = hit;
 		this.id = id;
 		this.fname = fname;
@@ -51,20 +51,6 @@ public class ReviewDTO {
 
 
 
-
-
-
-
-
-		// 게시판 글쓰기
-		public ReviewDTO( String id, String content, String starscore) {
-		super();
-		
-		this.id = id;
-		this.content = content;
-		this.starscore = starscore;
-		}
-
 		public int getNo() {
 			return no;
 		}
@@ -73,13 +59,6 @@ public class ReviewDTO {
 			this.no = no;
 		}
 
-		public int getFesttime() {
-			return festtime;
-		}
-
-		public void setFesttime(int festtime) {
-			this.festtime = festtime;
-		}
 
 		public int getHit() {
 			return hit;
@@ -161,8 +140,8 @@ public class ReviewDTO {
 		}
 		@Override
 		public String toString() {
-			return "ReviewDTO [score=" + score + ", hit=" + hit + ", fname=" + fname + ", maindish=" + maindish
-					+ ", festloc=" + festloc + ", festdate=" + festdate + ", starscore=" + starscore + "]";
+			return "ReviewDTO [no=" + no + ", score=" + score + ", id=" + id + ", content=" + content + ", writedate="
+					+ writedate + ", starscore=" + starscore + "]";
 		}
 		
 		

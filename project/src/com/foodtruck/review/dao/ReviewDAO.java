@@ -30,8 +30,8 @@ public class ReviewDAO {
 			con = DBUtil.getConnection();
 			// 3. sql
 			// 1) 원래 데이터를 순서에 맞게 가져온다.
-			String sql = "select no,festloc,fname,maindish,starscore,score,hit from reviewboardtest";
-			sql = " select no rnum, festloc,fname,maindish,starscore,score,hit from (" + sql + ")";
+			String sql = "select no, festloc,fname,maindish,starscore,score,hit from reviewboardtest";
+			sql = " select no rnum,festloc,fname,maindish,starscore,score,hit from (" + sql + ")";
 			sql = " select * from (" + sql + ")" + "where rnum between ? and ? ";
 
 			// 2) 순서에 맞게 가져온 데이터에 rownum rnum을 붙인다.
@@ -47,20 +47,10 @@ public class ReviewDAO {
 				if (list == null)
 					list = new ArrayList<>();
 				// 데이터 하나를 담을 수 있는 BoardDTO객체를 생성한다.
-				ReviewDTO reviewDTO = new ReviewDTO(rs.getInt("score"), rs.getInt("hit"),  
+				ReviewDTO reviewDTO = new ReviewDTO(rs.getInt("rnum"),rs.getInt("score"), rs.getInt("hit"),  
 						rs.getString("fname"), rs.getString("maindish"), rs.getString("festloc"),
 						 rs.getString("starscore"));
-						
-//	
-				// 데이터를 rs에서 꺼내서 boardDTO에 담는다.
-//				ReviewDTO.setFestloc(rs.getString("festloc"));
-//				ReviewDTO.setFname(rs.getString("fname"));
-//				ReviewDTO.setFestdate(rs.getString("festdate"));
-//				ReviewDTO.setMaindish(rs.getString("maindish"));
-//				ReviewDTO.setStarscore(rs.getString("starscore"));
-//				ReviewDTO.setScore(rs.getInt("score"));
-//				ReviewDTO.setHit(rs.getInt("hit"));
-//				ReviewDTO.setContent(rs.getString("content"));
+
 
 				// list에 boardDTO를 담는다.
 				list.add(reviewDTO);
@@ -96,7 +86,8 @@ public class ReviewDAO {
 			// 1.드라이버 확인 //2.연결
 			con = DBUtil.getConnection();
 			// 3. sql 작성 - 변하는 데이터 대신 ?를 사용한다.
-			String sql = "select * from board where no = ? ";
+			String sql = "select no,score,hit,id,fname,maindish,festloc,content,writedate,festdate,starscore"
+					+ " from reviewboardtest where no = ? ";
 			// 4. 처리 객체 생성
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, no); // 첫번재 ?에 no를 int로 세팅
@@ -105,16 +96,18 @@ public class ReviewDAO {
 			// 6. 표시 rs에서 꺼내서 boardDTO에 담는다.
 			if (rs.next()) {
 				// 생성자가 만들어져 있어야 한다.
-				ReviewDTO = new ReviewDTO(rs.getInt("no"), rs.getInt("festtime"), rs.getInt("hit"), rs.getString("id"),
+				ReviewDTO = new ReviewDTO(rs.getInt("no"),  rs.getInt("score"), rs.getInt("hit"), rs.getString("id"),
 						rs.getString("fname"), rs.getString("maindish"), rs.getString("festloc"),
 						rs.getString("content"), rs.getString("writedate"), rs.getString("festdate"),
 						rs.getString("starscore"));
 			}
+			System.out.println(ReviewDTO);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			try {
 				// 7. 종료
+				System.out.println(ReviewDTO);
 				DBUtil.close(con, pstmt, rs);
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -134,7 +127,7 @@ public class ReviewDAO {
 			// 1.드라이버 확인 //2.연결
 			con = DBUtil.getConnection();
 			// 3. sql 작성 - 변하는 데이터 대신 ?를 사용한다.
-			String sql = "update board set hit = hit + 1 where no = ? ";
+			String sql = "update reviewboardtest set hit = hit + 1 where no = ? ";
 			// 4. 처리 객체 생성
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, no); // 첫번재 ?에 no를 int로 세팅
@@ -164,12 +157,13 @@ public class ReviewDAO {
 			// 1.드라이버 확인 //2.연결
 			con = DBUtil.getConnection();
 			// 3. sql 작성 - 변하는 데이터 대신 ?를 사용한다.
-			String sql = "insert into board(no, title, content, id) values(board_seq.nextval, ?, ?, ?) ";
+			String sql = "insert into reviewboardtest(no,starscore, content) "
+					+ "values(reviewboardtest_seq.nextval, ?,?) ";
 			// 4. 처리 객체 생성
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, ReviewDTO.getId()); // 첫번재 ?에 no 세팅
+//			pstmt.setInt(1, ReviewDTO.getScore()); // 첫번재 ?에 no 세팅
+			pstmt.setString(1, ReviewDTO.getStarscore()); // 첫번재 ?에 no 세팅
 			pstmt.setString(2, ReviewDTO.getContent()); // 첫번재 ?에 no 세팅
-			pstmt.setString(3, ReviewDTO.getStarscore()); // 첫번재 ?에 no 세팅
 			// 5. 처리 객체 실행 -> select: executeQuery(), 그 외: executeUpdate()
 			pstmt.executeUpdate();
 			// 6. 표시 -> 오류가 없으면 정상처리
