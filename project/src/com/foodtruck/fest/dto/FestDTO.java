@@ -49,11 +49,11 @@ public class FestDTO {
 		this.festtime = festtime;
 	}
 
-	public int getFestNo() {
+	public int getFestno() {
 		return festno;
 	}
 
-	public void setFestNo(int festno) {
+	public void setFestno(int festno) {
 		this.festno = festno;
 	}
 

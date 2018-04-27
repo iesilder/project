@@ -1,6 +1,6 @@
 <%@page import="com.foodtruck.fest.dto.FestDTO"%>
 <%@page import="java.util.List"%>
-<%@page import="com.foodtruck.fest.service.*"%>
+<%@page import="com.foodtruck.fest.service.FestListService"%>
 <%@taglib prefix="decorator"
 	uri="http://www.opensymphony.com/sitemesh/decorator"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -25,13 +25,16 @@ $(document).ready(function(){
 // 	alert("OK");
     $(".data").click(function(){
 //         $(this).hide();
-        var no = $(this).find("td:first").text();
+        var festno = $(this).find("td:first").text();
 // 		alert("click");
-// 		alert(no);
-		location = "view.do?no="+no+'&page=${pageObject.page}&rowPerPage=${(empty param.rowPerPage)?"10":param.rowPerPage}&searchKey=${param.searchKey}&searchWord=${param.searchWord}';
+// 		alert(festno);
+		location = "FestView.do?festno="+festno+'&page=${pageObject.page}&rowPerPage=${(empty param.rowPerPage)?"10":param.rowPerPage}&searchKey=${param.searchKey}&searchWord=${param.searchWord}';
     });
     $("#write").click(function(){
-    	location = "write.do";
+    	location = "FestWrite.do";
+    });
+    $("#reload").click(function(){
+    	location = "FestList.do";
     });
 });
 </script>
@@ -42,54 +45,51 @@ $(document).ready(function(){
 <div class="container">
   <h2>Basic Table</h2>
   <p>The .table class adds basic styling (light padding and only horizontal dividers) to a table:</p>
- <form>
-	<input name="page" value="1" type="hidden" />
+ <form class="navbar-form">
+ <input name="page" value="1" type="hidden" />
 	<input name="rowPerPage" value='${(empty param.rowPerPage)?"10":param.rowPerPage}' type="hidden" />
-  <div class="input-group">
-  	<select class="form-control" name="searchKey"  class="input-group-addon">
-  		<option value="title" ${(param.searchKey == "title")?"selected=\"selected\"":"" } 
-  		>제목</option>
-  		<option value="content"  ${(param.searchKey == "content")?"selected=\"selected\"":"" }
-  		>내용</option>
-  		<option value="writer" ${(param.searchKey =="writer")?"selected=\"selected\"":""}
-  		>작성자</option>
-  		<option value="title,content" ${(param.searchKey =="title,content")?"selected=\"selected\"":""} 
-  		>제목/내용</option>
-  		<option value="title,writer" ${(param.searchKey =="title,writer")?"selected=\"selected\"":""} 
-  		>제목/작성자</option>
-  		<option value="content,writer" ${(param.searchKey =="content,writer")?"selected=\"selected\"":""} 
-  		>내용/작성자</option>
-  		<option value="title,content,writer" ${(param.searchKey =="title,content,writer")?"selected=\"selected\"":""} 
-  		>제목/내용/작성자</option>
-  	</select>
-    <input type="text" class="form-control" placeholder="Search" name="searchWord"
-     value="${param.searchWord }">
-    <div class="input-group-btn">
-      <button class="btn btn-default" type="submit">
-        <i class="glyphicon glyphicon-search"></i>
-      </button>
-    </div>
-  </div>
-</form> 
+ <div class="form-group navbar-left">
+ <select class="form-control navbar-left list-group"  name="searchKey"  class="input-group-addon">
+<option value="festname" ${(param.searchKey == "festname")?"selected=\"selected\"":"" } 
+  		>행사이름</option>
+<option value="festdate" ${(param.searchKey == "festdate")?"selected=\"selected\"":"" } 
+  		>행사날짜</option>
+<option value="festloc" ${(param.searchKey == "festloc")?"selected=\"selected\"":"" } 
+  		>행사지역</option>
+<option value="festname,festloc" ${(param.searchKey == "festname,festloc")?"selected=\"selected\"":"" } 
+  		>행사이름+행사날짜</option>
+<option value="festname,festloc" ${(param.searchKey == "festname,festloc")?"selected=\"selected\"":"" } 
+  		>행사이름+행사지역</option>
+<option value="festdate,festloc" ${(param.searchKey == "festdate,festloc")?"selected=\"selected\"":"" } 
+  		>행사날짜+행사지역</option>
+ </select> 
+ <input type="text" class="form-control navbar-left " placeholder="Search" name="searchWord">
+ </div>
+ <button type="submit" class="btn btn-default">
+ <i class="glyphicon glyphicon-search"></i>
+ </button>
+</form>
 <table class="table">
 <thead>
 	<tr>
-		<th>번호</th>
-		<th>제목</th>
-		<th>작성자</th>
+		<th>행사번호</th>
+		<th>행사이름</th>
+		<th>행사날짜</th>
+		<th>행사지역</th>
 		<th>작성일</th>
 		<th>조회수</th>
 	</tr>
 </thead>
 <tbody>
 <!-- 데이터를 출력하는 반복 처리 -->
-<c:forEach items="${list }" var="boardDTO">
+<c:forEach items="${list }" var="FestDTO">
 	<tr class="data">
-		<td>${boardDTO.no }</td>
-		<td>${boardDTO.title }</td>
-		<td>${boardDTO.writer }</td>
-		<td>${boardDTO.writeDate }</td>
-		<td>${boardDTO.hit }</td>
+		<td>${FestDTO.festno }</td>
+		<td>${FestDTO.festname }</td>
+		<td>${FestDTO.festdate }</td>
+		<td>${FestDTO.festloc }</td>
+		<td>${FestDTO.applydate }</td>
+		<td>${FestDTO.hit }</td>
 	</tr>
 </c:forEach>
 </tbody>
@@ -99,18 +99,18 @@ $(document).ready(function(){
 			<ul class="pagination">
 			<c:if test="${pageObject.startPage > 1 }">
 			  <li>
-			  	<a href='list.do?page=${pageObject.startPage -1 }&rowPerPage=${(empty param.rowPerPage)?"10":param.rowPerPage}&searchKey=${param.searchKey}&searchWord=${param.searchWord}'>
+			  	<a href='FestList.do?page=${pageObject.startPage -1 }&rowPerPage=${(empty param.rowPerPage)?"10":param.rowPerPage}&searchKey=${param.searchKey}&searchWord=${param.searchWord}'>
 			  	<i class="glyphicon glyphicon-backward"></i></a></li>
 			</c:if>
 			<c:forEach begin="${pageObject.startPage }" end="${pageObject.endPage }"
 			var="idx">
 			  <li ${(pageObject.page == idx)?"class='active'":"" }>
-			  	<a href='list.do?page=${idx }&rowPerPage=${(empty param.rowPerPage)?"10":param.rowPerPage}'>
+			  	<a href='FestList.do?page=${idx }&rowPerPage=${(empty param.rowPerPage)?"10":param.rowPerPage}'>
 			  	${idx }</a></li>
 			</c:forEach>
 			<c:if test="${pageObject.endPage != pageObject.totalPage}">
 			  <li>
-			  	<a href='list.do?page=${pageObject.endPage + 1 }&rowPerPage=${(empty param.rowPerPage)?"10":param.rowPerPage}&searchKey=${param.searchKey}&searchWord=${param.searchWord}'>
+			  	<a href='FestList.do?page=${pageObject.endPage + 1 }&rowPerPage=${(empty param.rowPerPage)?"10":param.rowPerPage}&searchKey=${param.searchKey}&searchWord=${param.searchWord}'>
 			  	<i class="glyphicon glyphicon-forward"></i></a></li>
 			</c:if>
 			</ul>

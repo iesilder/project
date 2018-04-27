@@ -49,8 +49,8 @@ pageContext.setAttribute("absUri", request.getContextPath());
     <link href="../../css/modern-business.css" rel="stylesheet">
 <style type="text/css">
 header, footer {
-	background: #c180ff;
-}
+	background: purple;
+	}
 
 pre {
 	background: white;
@@ -65,7 +65,7 @@ pre {
 
 /* Add a gray background color and some padding to the footer */
 footer {
-	background-color: #c180ff;
+	background-color: purple;
 	padding: 25px;
 }
 

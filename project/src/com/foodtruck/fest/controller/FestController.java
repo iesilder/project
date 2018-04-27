@@ -64,7 +64,7 @@ public class FestController extends HttpServlet {
 					rowPerPage = Integer.parseInt(rowPerPageStr);
 				// 페이지 처리 객체 생성 -> 다른 데이터는 자동 계산 된다.
 				// PageObject.jar을 library에 넣음.
-				PageObject2 pageObject = new PageObject2(DBUtil.getConnection(), "fest", page, rowPerPage, 10,
+				PageObject2 pageObject = new PageObject2(DBUtil.getConnection(), "festboard", page, rowPerPage, 10,
 						searchKey, searchWord);
 				System.out.println(pageObject);
 				// 처리를 해서 DB에 있는 데이터를 받아와서 request에 담아둔다.
@@ -85,17 +85,17 @@ public class FestController extends HttpServlet {
 
 			// [행사일정]글수정 폼 - get방식으로 데이터가 들어온다.
 			case "/fest/FestMngr/FestUpdate.do":
-				// 글번호로 넘어오기 때문에 int festNo를 받는다.
-				int festNo = Integer.parseInt(request.getParameter("festNo"));
+				// 글번호로 넘어오기 때문에 int festno를 받는다.
+				int festno = Integer.parseInt(request.getParameter("festno"));
 				// command.properties의 BoardViewService 필요함
-				service = Beans.getService("/fest/FestMngr/FestView.do");
+				service = Beans.getService(command);
 				// service를 실행해서 DB에서 FestDTO를 가져와서 request에 담기
-				// 번호로 넘어오니까 festNo로 선언s
-				// 넘길 때 ArrayList<>로 캐스팅해서 사용함으로 0번째:festNo[int], 1번째:isView[boolean]를 넣는다.
+				// 번호로 넘어오니까 festno로 선언s
+				// 넘길 때 ArrayList<>로 캐스팅해서 사용함으로 0번째:festno[int], 1번째:isView[boolean]를 넣는다.
 				ArrayList<Object> executeObj2 = new ArrayList<>();
-				executeObj2.add(festNo);
+				executeObj2.add(festno);
 				executeObj2.add(false); // 조회수 1증가를 시키지 않는다.
-				request.setAttribute("festCustDTO", service.execute(executeObj2));
+				request.setAttribute("FestDTO", service.execute(executeObj2));
 				// jsp 이름을 만들어 내고, 밑에서 forward 시킨다.
 				viewJSP = Beans.getJsp(command);
 				System.out.println(viewJSP);
@@ -103,17 +103,17 @@ public class FestController extends HttpServlet {
 
 			// [행사일정] 글보기 - get방식으로 데이터가 들어온다.
 			case "/fest/FestMngr/FestView.do":
-				// 글번호로 넘어오기 때문에 int festNo를 받는다.
-				int festNo2 = Integer.parseInt(request.getParameter("festNo"));
+				// 글번호로 넘어오기 때문에 int festno를 받는다.
+				int festno2 = Integer.parseInt(request.getParameter("festno"));
 				// command.properties의 BoardViewService 필요함
 				service = Beans.getService(command);
 				// service를 실행해서 DB에서 FestDTO를 가져와서 request에 담기
-				// 번호로 넘어오니까 festNo로 선언
-				// 넘길 때 ArrayList<>로 캐스팅해서 사용함으로 0번째:festNo[int], 1번째:isView[boolean]를 넣는다.
+				// 번호로 넘어오니까 festno로 선언
+				// 넘길 때 ArrayList<>로 캐스팅해서 사용함으로 0번째:festno[int], 1번째:isView[boolean]를 넣는다.
 				ArrayList<Object> executeObj = new ArrayList<>();
-				executeObj.add(festNo2);
+				executeObj.add(festno2);
 				executeObj.add(true); // 조회수를 1 증가 시킨다!
-				request.setAttribute("festDTO", service.execute(executeObj));
+				request.setAttribute("FestDTO", service.execute(executeObj));
 				// jsp 이름을 만들어 내고, 밑에서 forward 시킨다.
 				viewJSP = Beans.getJsp(command);
 				System.out.println(viewJSP);
@@ -124,7 +124,7 @@ public class FestController extends HttpServlet {
 				// 삭제처리 할 서비스를 가져오자. BoardDeleteService가 필요함
 				service = Beans.getService(command);
 				// 글번호를 받아서 삭제 처리한다.
-				service.execute(Integer.parseInt(request.getParameter("festNo")));
+				service.execute(Integer.parseInt(request.getParameter("festno")));
 				// jsp 이름을 만들어 내고, 밑에서 forward 시킨다.
 				viewJSP = "redirect:FestList.do";
 				System.out.println(viewJSP);
@@ -193,7 +193,7 @@ public class FestController extends HttpServlet {
 				service.execute(festDTO2);
 				// 현재위치에 있는 리스트: 상대주소
 				// 끝나면 글보기로 자동 이동한다.
-				viewJSP = "view.do?festNo=" + festDTO2.getFestNo() + "$page=" + request.getParameter("page")
+				viewJSP = "FestView.do?festno=" + festDTO2.getFestno() + "$page=" + request.getParameter("page")
 						+ "$rowPerPage=" + request.getParameter("rowPerPage");
 				System.out.println(viewJSP);
 				break;
