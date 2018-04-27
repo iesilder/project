@@ -19,6 +19,7 @@ public class FestCustDAO {
 	public List<FestCustDTO> list(PageObject2 pageObject) {
 		System.out.println(getClass().getName() + ".list()");
 		List<FestCustDTO> list = null;
+
 		// RDBMS에서 데이터를 가져 오는 프로그램 작성
 
 		// 필요한 객체 선언
@@ -46,7 +47,8 @@ public class FestCustDAO {
 			while (rs.next()) {
 				// 데이터가 있는데 list가 null이면 생성한다.
 				if (list == null)
-					list = new ArrayList<>();
+					System.out.println(list);
+				list = new ArrayList<>();
 				// 데이터 하나를 담을 수 있는 FestCustDTO 객체를 생성한다.
 				FestCustDTO festCustDTO = new FestCustDTO();
 				// 데이터를 rs에서 꺼내서 festCustDTO에 담는다.

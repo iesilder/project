@@ -66,7 +66,7 @@ public class FestCustController extends HttpServlet {
 				// 처리를 해서 DB에 있는 데이터를 받아와서 request에 담아둔다.
 				// service를 실행하고 request에 바로 담기
 				// 페이징 처리 안해서 null로 선언
-				request.setAttribute("list", service.execute(pageObject)); // 위에 만든 페이지 객체를 execute에 넣어서 실행한다.
+				request.setAttribute("list", service.execute(pageObject));
 				request.setAttribute("pageObject", pageObject); // 위에 만든 페이지 객체를 execute에 넣어서 실행한다.
 				// jsp 이름을 만들어 내고, 밑에서 forward 시킨다.
 				viewJSP = Beans.getJsp(command);
