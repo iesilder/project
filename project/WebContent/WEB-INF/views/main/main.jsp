@@ -55,84 +55,103 @@
   
  <!-- Portfolio Section -->
  	 <div class="container">
- 	       <h2>Portfolio Heading</h2>
  	 
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-          <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="../../img/portfolio_4 - waffle 700x400.jpg" alt="" style="width:300px; height:150px;"></a>
-            <div class="card-body">
-              <h4 class="card-title">
-                <a href="#">Project One</a>
-              </h4>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
-            </div>
-          </div>
-        </div>
-         
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-          <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="../../img/portfolio_4 - waffle 700x400.jpg" alt="" style="width:300px; height:150px;"></a>
-            <div class="card-body">
-              <h4 class="card-title">
-                <a href="#">Project One</a>
-              </h4>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
-            </div>
-          </div>
-        </div>
-         
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-          <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="../../img/portfolio_4 - waffle 700x400.jpg" alt="" style="width:300px; height:150px;"></a>
-            <div class="card-body">
-              <h4 class="card-title">
-                <a href="#">Project One</a>
-              </h4>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
-            </div>
-          </div>
-        </div>
-        </div>
-        
-         <div class="container">
- 	       <h2>Portfolio Heading</h2>
+ 	 <h2 style="border: solid gray; border-width: 0 0 1px;">행사 알아보기</h2>
  	 
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-          <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="../../img/portfolio_4 - waffle 700x400.jpg" alt="" style="width:300px; height:150px;"></a>
-            <div class="card-body">
-              <h4 class="card-title">
-                <a href="#">Project One</a>
-              </h4>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
-            </div>
-          </div>
-        </div>
-         
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-          <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="../../img/portfolio_4 - waffle 700x400.jpg" alt="" style="width:300px; height:150px;"></a>
-            <div class="card-body">
-              <h4 class="card-title">
-                <a href="#">Project One</a>
-              </h4>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
-            </div>
-          </div>
-        </div>
-         
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-          <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="../../img/portfolio_4 - waffle 700x400.jpg" alt="" style="width:300px; height:150px;"></a>
-            <div class="card-body">
-              <h4 class="card-title">
-                <a href="#">Project One</a>
-              </h4>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
-            </div>
-          </div>
-        </div>             <!-- /.row -->
-     
+	      <div class="col-lg-4 col-sm-6 portfolio-item">
+	          <div class="card h-100">
+	            <a href="#"><img class="card-img-top" src="../../img/portfolio_4 - beer 700x400.jpg" alt="" style="width:300px; height:180px;"></a>
+	            <div class="card-body">
+	              <h4 class="card-title">
+	                <a href="#">여의도 청춘 페스티벌</a>
+	              </h4>
+	              <p class="card-text">행사이름: 여의도 청춘 페스티벌 <br/> 가수: 태선이와 아이들</p>
+	            </div>
+	          </div>
+	        </div>
+	         
+	      <div class="col-lg-4 col-sm-6 portfolio-item">
+	          <div class="card h-100">
+	            <a href="#"><img class="card-img-top" src="../../img/portfolio_4 - burger 700x400.jpg" alt="" style="width:300px; height:180px;"></a>
+	            <div class="card-body">
+	              <h4 class="card-title">
+	                  <a href="#">여의도 청춘 페스티벌</a>
+	              </h4>
+	              <p class="card-text">행사이름: 여의도 청춘 페스티벌 <br/> 가수: 태선이와 아이들</p> </div>
+	          </div>
+	        </div>
+	         
+	      <div class="col-lg-4 col-sm-6 portfolio-item">
+	          <div class="card h-100">
+	            <a href="#"><img class="card-img-top" src="../../img/portfolio_4 - waffle 700x400.jpg" alt="" style="width:300px; height:180px;"></a>
+	            <div class="card-body">
+	              <h4 class="card-title">
+	                   <a href="#">여의도 청춘 페스티벌</a>
+	              </h4>
+	              <p class="card-text">행사이름: 여의도 청춘 페스티벌 <br/> 가수: 태선이와 아이들</p></div>
+	          </div>
+	        </div>
+	        </div>
+	        
+	        <hr style="border: solid #dedede; border-width: 2px 0 0;">
+	        
+      <div class="container">
+ 	   <h2 style="border: solid gray; border-width: 0 0 1px;">푸드트럭 알아보기</h2>
+ 	 
+	      <div class="col-lg-4 col-sm-6 portfolio-item">
+	          <div class="card h-100">
+	            <a href="#"><img class="card-img-top" src="../../img/portfolio_4 - waffle 700x400.jpg" alt="" style="width:300px; height:180px;"></a>
+	            <div class="card-body">
+	              <h4 class="card-title">
+	                <a href="#">너와나플 푸드트럭</a>
+	              </h4>
+	              <p class="card-text">푸드트럭명: 너와나플 <br/> 메뉴: 와플 <br/> 소개글: 커플이라면 한번쯤 먹어본다는 와플</p>
+	            </div>
+	          </div>
+	        </div>
+	         
+	      <div class="col-lg-4 col-sm-6 portfolio-item">
+	          <div class="card h-100">
+	            <a href="#"><img class="card-img-top" src="../../img/portfolio_4 - mexican 700x400.jpg" alt="" style="width:300px; height:180px;"></a>
+	            <div class="card-body">
+	              <h4 class="card-title">
+	                <a href="#">신나쵸</a>
+	              </h4>
+	              <p class="card-text">푸드트럭명: 신나쵸 <br/> 메뉴: 나쵸 <br/> 소개글: 나 지금 나쵸먹고, 신나쵸?</p>
+	            </div>
+	          </div>
+	        </div>
+	         
+	      <div class="col-lg-4 col-sm-6 portfolio-item">
+	          <div class="card h-100">
+	            <a href="#"><img class="card-img-top" src="../../img/portfolio_4 - burger 700x400.jpg" alt="" style="width:300px; height:180px;"></a>
+	            <div class="card-body">
+	              <h4 class="card-title">
+	                <a href="#">버거운 버거</a>
+	              </h4>
+	              <p class="card-text">푸드트럭명: 버거운 버거 <br/> 메뉴: 수제 햄버거 <br/> 소개글: 배가 버거울 정도로 맛있는 버거운 버거!</p>
+	            </div>
+	          </div>
+	        </div>    
+	        </div>       
+	     
+	<hr style="border: solid #dedede; border-width: 2px 0 0;"/>
+	        
+      <div class="container"  >
+ 	   <h2 style="border: solid gray; border-width: 0 0 1px;">푸드트럭별 리뷰보기</h2>
+	         
+	      <div class="col-lg-4 col-sm-6 portfolio-item">
+	          <div class="card h-100" >
+	            <a href="#"><img class="card-img-top" src="../../img/blog_post_1 - together 900x300.jpg" alt="" style="width:900px; height:300px;"></a>
+	            <div class="card-body">
+	              <h4 class="card-title">
+	                <a href="#">둥가둥가 푸드트럭</a>
+	              </h4>
+	              <p class="card-text">푸드트럭명: 버거운 버거 <br/> 메뉴: 수제 햄버거 <br/> 소개글: 배가 버거울 정도로 맛있는 버거운 버거!</p>
+	            </div>
+	          </div>
+	        </div>           
+	     
 </div>
 
 </body>
