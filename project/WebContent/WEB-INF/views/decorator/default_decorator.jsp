@@ -104,6 +104,15 @@ article {
 						<li><a href="${absUri }/fest/FestMngr/FestList.do">행사일정</a></li>
 						<li><a href="${absUri }/review/reviewlist.do">리뷰</a></li>
 						<li><a href="/board/list.do">트렌트</a></li>
+						<li><a href="${absUri }/notice/noticeList.do">공지사항</a></li>
+						<li class="nav-item dropdown">
+			              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown">데이터 분석</a>
+			              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
+			                <a class="dropdown-item" href="blog-home-1.html">1</a>
+			                <a class="dropdown-item" href="blog-home-2.html">2</a>
+			                <a class="dropdown-item" href="blog-post.html">3t</a>
+			              </div>
+			            </li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 					    <c:if test="${ empty id }">
