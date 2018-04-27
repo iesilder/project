@@ -76,6 +76,7 @@ public class FestController extends HttpServlet {
 				viewJSP = Beans.getJsp(command);
 				System.out.println(viewJSP);
 				break;
+
 			// [행사일정]글쓰기 폼 - get방식으로 데이터가 들어온다.
 			case "/fest/FestMngr/FestWrite.do":
 				// jsp 이름을 만들어 내고, 밑에서 forward 시킨다.
