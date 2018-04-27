@@ -31,9 +31,9 @@ public class FestCustDAO {
 			con = DBUtil.getConnection();
 			// 3. sql
 			// 3-1. 원래 데이터를 순서에 맞게 가져온다.
-			String sql = "select festcustno, applyname, applytel, to_char(applydate, 'yyyy-mm-dd')applydate, hit from festcust order by custno desc ";
+			String sql = "select custno, applyname, applytel, to_char(applydate, 'yyyy-mm-dd')applydate, hit from festcustboard order by custno desc ";
 			// 3-2. 순서에 맞게 가져온 데이터에 rowNum을 붙인다.
-			sql = "select rownum rnum, festcustno, applyname, applytel, applydate, hit from (" + sql + ")";
+			sql = "select rownum rnum, custno, applyname, applytel, applydate, hit from (" + sql + ")";
 			// 3-3. 페이지에 맞는 startRow, endRow를 설정한다.
 			sql = "select * from (" + sql + ") where rnum between ? and ?";
 			// 4. 처리문 객체
@@ -50,7 +50,7 @@ public class FestCustDAO {
 				// 데이터 하나를 담을 수 있는 FestCustDTO 객체를 생성한다.
 				FestCustDTO festCustDTO = new FestCustDTO();
 				// 데이터를 rs에서 꺼내서 festCustDTO에 담는다.
-				festCustDTO.setCustno(rs.getInt("festcustno"));
+				festCustDTO.setCustno(rs.getInt("custno"));
 				festCustDTO.setApplyname(rs.getString("applyname"));
 				festCustDTO.setApplytel(rs.getString("applytel"));
 				festCustDTO.setApplydate(rs.getDate("applydate"));
@@ -88,7 +88,7 @@ public class FestCustDAO {
 			con = DBUtil.getConnection();
 			// 3. sql문 작성
 			String sql = "select custno, applyname, applytel, applyno, applyloc, applytime, to_char(applydate, 'yyyy-mm-dd')applydate, hit "
-					+ " from festcust " + " where custno = ? "; // 변하는
+					+ " from festcustboard " + " where custno = ? "; // 변하는
 			// 사용
 			// 4. 처리문 객체
 			pstmt = con.prepareStatement(sql);
@@ -128,8 +128,8 @@ public class FestCustDAO {
 			// 1. 드라이버 확인 //2. 연결
 			con = DBUtil.getConnection();
 			// 3. sql문 작성
-			String sql = "insert into festcust(custno, applyname, applytel, applyno, applyloc, applytime) "
-					+ " values(festcust_seq.nextval," + " ?, ?, ?, ?, ?) "; // 변하는 데이터 대신 ? 사용
+			String sql = "insert into festcustboard(custno, applyname, applytel, applyno, applyloc, applytime) "
+					+ " values(festcustboard_seq.nextval," + " ?, ?, ?, ?, ?) "; // 변하는 데이터 대신 ? 사용
 			// 4. 처리문 객체
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, festCustDTO.getApplyname());
@@ -165,7 +165,7 @@ public class FestCustDAO {
 			// 1. 드라이버 확인 //2. 연결
 			con = DBUtil.getConnection();
 			// 3. sql문 작성
-			String sql = "update festcust set hit = hit + 1 where custno = ? "; // 변하는 데이터 대신 ? 사용
+			String sql = "update festcustboard set hit = hit + 1 where custno = ? "; // 변하는 데이터 대신 ? 사용
 			// 4. 처리문 객체
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, custno); // 첫번째 ?에 no를 int로 셋팅
@@ -197,7 +197,7 @@ public class FestCustDAO {
 			// 1. 드라이버 확인 //2. 연결
 			con = DBUtil.getConnection();
 			// 3. sql문 작성
-			String sql = "update festcust set applyname = ?, applytel = ?, applyno = ?, applyloc=?, applytime=? "
+			String sql = "update festcustboard set applyname = ?, applytel = ?, applyno = ?, applyloc=?, applytime=? "
 					+ " where custno = ? "; // 변하는 데이터 대신
 			// ? 사용
 			// 4. 처리문 객체
@@ -235,7 +235,7 @@ public class FestCustDAO {
 			// 1. 드라이버 확인 //2. 연결
 			con = DBUtil.getConnection();
 			// 3. sql문 작성
-			String sql = "delete from festcust " + " where custno = ?"; // 변하는 데이터 대신 ? 사용
+			String sql = "delete from festcustboard " + " where custno = ?"; // 변하는 데이터 대신 ? 사용
 			// 4. 처리문 객체
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, custno);
