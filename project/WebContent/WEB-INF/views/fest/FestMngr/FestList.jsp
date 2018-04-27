@@ -1,6 +1,6 @@
 <%@page import="com.foodtruck.fest.dto.FestDTO"%>
 <%@page import="java.util.List"%>
-<%@page import="com.foodtruck.fest.service.FestListService"%>
+<%@page import="com.foodtruck.fest.FestService.FestListService"%>
 <%@taglib prefix="decorator"
 	uri="http://www.opensymphony.com/sitemesh/decorator"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"

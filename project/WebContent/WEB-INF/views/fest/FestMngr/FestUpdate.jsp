@@ -1,5 +1,5 @@
 <%@page import="com.foodtruck.fest.dto.FestDTO"%>
-<%@page import="com.foodtruck.fest.service.FestUpdateService"%>
+<%@page import="com.foodtruck.fest.FestService.FestUpdateService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%-- <%@ include file = ""%> ->> jsp에서 jsp로 이동할 때 필요 --%>
