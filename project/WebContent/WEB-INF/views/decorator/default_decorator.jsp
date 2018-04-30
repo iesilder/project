@@ -101,9 +101,19 @@ article {
 					<div class="navbar-header"><a href="${absUri }/main/main.do"
 							 class="navbar-brand">둥가둥가</a></div>
 					<ul class="nav navbar-nav">
-						<li><a href="${absUri }/fest/FestMngr/FestList.do">행사일정</a></li>
+						<li class="nav-item dropdown">
+			              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+			                	행사일정
+			              </a>
+			              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
+			                <ul>
+				                <li><a class="dropdown-item" href="../fest/FestMngr/FestList.do">행사일정표 </a></li>
+				                <li><a class="dropdown-item" href="../fest/FestTruck/TruckWrite.do">푸드트럭 신청서</a></li>
+				                <li><a class="dropdown-item" href="../fest/FestCust/CustWrite.do">소비자 신청서</a></li>
+			                </ul>
+			              </div>
+			            </li>
 						<li><a href="${absUri }/review/reviewlist.do">리뷰</a></li>
-						<li><a href="/board/list.do">트렌드</a></li>
 						<li><a href="${absUri }/notice/noticeList.do">공지사항</a></li>
 						<li class="nav-item dropdown">
 			              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
