@@ -179,6 +179,44 @@ public class MemberDAO {
       } 
    } // end of selectById()
    
+   // 아이디 업데이트
+   public void update(MemberDTO memberDTO) {
+		System.out.println("memberDAO.update()");
+		// 사용한 객체 선언
+		Connection con = null; // 연결 객체
+		PreparedStatement pstmt = null; // 처리문 객체
+		try {
+			//1. 드라이버 확인 //2. 연결
+			con = DBUtil.getConnection();
+			//3. sql문 작성
+			String sql = "update memberboard set "
+					+ " birthdate = ?, Mobile = ?, email = ?, address = ?, add2 = ?, "
+					+ " idupdate = sysdate where id = ? "; //변하는 데이터 대신 ? 사용
+			//4. 처리문 객체
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, memberDTO.getBirthDate());
+			pstmt.setString(2, memberDTO.getMobile());
+			pstmt.setString(3, memberDTO.getEmail());
+			pstmt.setString(4, memberDTO.getAddress());
+			pstmt.setString(5, memberDTO.getAdd2());
+			pstmt.setString(6, memberDTO.getId());
+			//5. 실행 -> select: executeQuery()
+			//  insert, update, delete:executeUpdate()
+			pstmt.executeUpdate();
+			//6. 표시 -> 오류가 없으면 정상처리
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			try {
+				// 7. 닫기
+				DBUtil.close(con, pstmt);	
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+	}
    
    
 }
