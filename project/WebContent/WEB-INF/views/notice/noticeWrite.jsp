@@ -17,7 +17,7 @@
 		// 	alert("OK");
 		// 버튼 이벤트 처리
 		$("#cancel").click(function() {
-			history.back();
+			location="noticeList.do";
 		});
 	});
 </script>
@@ -26,6 +26,7 @@
 <body>
 
 	<!-- Page Content -->
+<!-- 	<form method="post"> -->
 	<div class="container">
 
 		<!-- Page Heading/Breadcrumbs -->
@@ -43,7 +44,7 @@
 		<div class="row">
 			<div class="col-lg-8 mb-4">
 				<h3>공지사항 작성란</h3>
-				<form name="sentMessage" id="contactForm" novalidate>
+				<form name="sentMessage" id="contactForm" method="post">
 					<div class="control-group form-group">
 						<div class="controls">
 							<label>제목:</label> <input type="text" class="form-control"
@@ -55,9 +56,9 @@
 					</div>
 					<div class="control-group form-group">
 						<div class="controls">
-							<label>작성자:</label> <input type="text" class="form-control"
-								id="writer" data-validation-required-message="작성자를 입력하세요."
-								required="required" value="${noticeDTO.id} }">
+							<label></label> <input type="hidden" class="form-control"
+								id="id" data-validation-required-message="작성자를 입력하세요."
+								required="required" value="admin ">
 						</div>
 					</div>
 					<div class="control-group form-group">
@@ -72,9 +73,7 @@
 					<div id="success"></div>
 					<!-- For success/fail messages -->
 					<div>
-						<button type="submit" class="btn btn-primary"
-							id="sendMessageButton">공지사항 등록</button>
-						<button type="reset" class="btn btn-warning">새로고침</button>
+						<button type="submit" class="btn btn-primary">공지사항 등록</button>
 						<button type="button" id="cancel" class="btn btn-danger">취소</button>
 					</div>
 				</form>
@@ -85,7 +84,7 @@
 
 	</div>
 
-
+<!-- </form> -->
 </body>
 
 </html>

@@ -1,4 +1,4 @@
-package com.foodtruck.fest.service;
+package com.foodtruck.fest.CustService;
 
 import java.util.List;
 
@@ -25,6 +25,7 @@ public class FestCustListService implements ServiceInterface {
 		// list에 데이터를 가져와서 채우는 프로그램 작성
 		// 호출만
 		list = custDAO.list((PageObject2) obj);
+
 		return list;
 	}
 }

@@ -1,4 +1,4 @@
-package com.foodtruck.fest.controller;
+package com.foodtruck.fest.TruckController;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -8,17 +8,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.foodtruck.fest.dto.FestCustDTO;
+import com.foodtruck.fest.dto.FestTruckDTO;
 import com.foodtruck.util.Beans;
 import com.foodtruck.util.DBUtil;
 import com.foodtruck.util.ServiceInterface;
 import com.webjjang.util.PageObject2;
 
+/*
+ * 20180426 - 홍다운 푸드트럭 신청서 폼 등록, 수정, 삭제 처리 컨트롤러
+ * */
+
 /**
  * Servlet implementation class BoardController
  */
 // @WebServlet("/BoardController")
-public class FestCustController extends HttpServlet {
+public class FestTruckController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -39,8 +43,9 @@ public class FestCustController extends HttpServlet {
 		try {
 
 			switch (command) {
-			// [소비자 신청서 ]리스트
-			case "/fest/FestMngr/FestCustList.do":
+
+			// [푸드트럭 신청 게시판]리스트
+			case "/fest/FestTruck/FestTruckList.do":
 				// list에 뿌릴 데이터를 가져와야 한다. - BoardListService 필요함
 				// 이미 생성해서 저장해 놓은 곳에서 가져오기. getService() in Beans -> BoardListService에 있는
 				// execute가져오게 됨
@@ -60,7 +65,7 @@ public class FestCustController extends HttpServlet {
 					rowPerPage = Integer.parseInt(rowPerPageStr);
 				// 페이지 처리 객체 생성 -> 다른 데이터는 자동 계산 된다.
 				// PageObject.jar을 library에 넣음.
-				PageObject2 pageObject = new PageObject2(DBUtil.getConnection(), "festCust", page, rowPerPage, 10,
+				PageObject2 pageObject = new PageObject2(DBUtil.getConnection(), "festtruckboard", page, rowPerPage, 10,
 						searchKey, searchWord);
 				System.out.println(pageObject);
 				// 처리를 해서 DB에 있는 데이터를 받아와서 request에 담아둔다.
@@ -72,55 +77,56 @@ public class FestCustController extends HttpServlet {
 				viewJSP = Beans.getJsp(command);
 				System.out.println(viewJSP);
 				break;
+
 			// 글쓰기 폼 - get방식으로 데이터가 들어온다.
-			case "/fest/FestCust/CustWrite.do":
+			case "/fest/FestTruck/TruckWrite.do":
 				// jsp 이름을 만들어 내고, 밑에서 forward 시킨다.
 				viewJSP = Beans.getJsp(command);
 				System.out.println(viewJSP);
 				break;
 
-			// [소비자 신청서] 글보기 - get방식으로 데이터가 들어온다.
-			case "/fest/FestMngr/FestCustView.do":
+			// [푸드트럭 신청서] 글보기 - get방식으로 데이터가 들어온다.
+			case "/fest/FestMngr/FestTruckView.do":
 				// 글번호로 넘어오기 때문에 int festNo를 받는다.
-				int custNo = Integer.parseInt(request.getParameter("custNo"));
+				int truckNo = Integer.parseInt(request.getParameter("truckNo"));
 				// command.properties의 BoardViewService 필요함
 				service = Beans.getService(command);
 				// service를 실행해서 DB에서 FestDTO를 가져와서 request에 담기
 				// 번호로 넘어오니까 festNo로 선언
 				// 넘길 때 ArrayList<>로 캐스팅해서 사용함으로 0번째:festNo[int], 1번째:isView[boolean]를 넣는다.
-				ArrayList<Object> executeObj3 = new ArrayList<>();
-				executeObj3.add(custNo);
-				executeObj3.add(true); // 조회수를 1 증가 시킨다!
-				request.setAttribute("custDTO", service.execute(executeObj3));
+				ArrayList<Object> executeObj1 = new ArrayList<>();
+				executeObj1.add(truckNo);
+				executeObj1.add(true); // 조회수를 1 증가 시킨다!
+				request.setAttribute("truckDTO", service.execute(executeObj1));
 				// jsp 이름을 만들어 내고, 밑에서 forward 시킨다.
 				viewJSP = Beans.getJsp(command);
 				System.out.println(viewJSP);
 				break;
 
 			// 글수정 폼 - get방식으로 데이터가 들어온다.
-			case "/fest/FestCust/CustUpdate.do":
-				// 글번호로 넘어오기 때문에 int custNo를 받는다.
-				int custNo2 = Integer.parseInt(request.getParameter("custNo"));
+			case "/fest/FestTruck/TruckUpdate.do":
+				// 글번호로 넘어오기 때문에 int truckNo를 받는다.
+				int truckNo2 = Integer.parseInt(request.getParameter("truckNo"));
 				// command.properties의 BoardViewService 필요함
 				service = Beans.getService("/fest/FestMngr/FestView.do");
-				// service를 실행해서 DB에서 FestCustDTO를 가져와서 request에 담기
-				// 번호로 넘어오니까 custNo로 선언
-				// 넘길 때 ArrayList<>로 캐스팅해서 사용함으로 0번째:custNo[int], 1번째:isView[boolean]를 넣는다.
+				// service를 실행해서 DB에서 FestTruckDTO를 가져와서 request에 담기
+				// 번호로 넘어오니까 truckNo로 선언
+				// 넘길 때 ArrayList<>로 캐스팅해서 사용함으로 0번째:truckNo[int], 1번째:isView[boolean]를 넣는다.
 				ArrayList<Object> executeObj = new ArrayList<>();
-				executeObj.add(custNo2);
+				executeObj.add(truckNo2);
 				executeObj.add(false); // 조회수 1증가를 시키지 않는다.
-				request.setAttribute("festCustDTO", service.execute(executeObj));
+				request.setAttribute("festTruckDTO", service.execute(executeObj));
 				// jsp 이름을 만들어 내고, 밑에서 forward 시킨다.
 				viewJSP = Beans.getJsp(command);
 				System.out.println(viewJSP);
 				break;
 
 			// 글삭제 - get방식으로 데이터가 들어온다.
-			case "/fest/FestCust/CustDelete.do":
+			case "/fest/FestTruck/TruckDelete.do":
 				// 삭제처리 할 서비스를 가져오자. BoardDeleteService가 필요함
 				service = Beans.getService(command);
 				// 글번호를 받아서 삭제 처리한다.
-				service.execute(Integer.parseInt(request.getParameter("custNo")));
+				service.execute(Integer.parseInt(request.getParameter("truckNo")));
 				// jsp 이름을 만들어 내고, 밑에서 forward 시킨다.
 				viewJSP = "redirect:FestList.do";
 				System.out.println(viewJSP);
@@ -160,36 +166,40 @@ public class FestCustController extends HttpServlet {
 		try {
 			switch (command) {
 			// 글쓰기 처리
-			case "/fest/FestCust/CustWrite.do":
-				// 넘어오는 데이터를 festCustDTO에 담는다
+			case "/fest/FestTruck/TruckWrite.do":
+				// 넘어오는 데이터를 festTruckDTO에 담는다
 				// 넘어오는 데이터 name과 동일하게 작성해야한다.
-				FestCustDTO festCustDTO = new FestCustDTO(request.getParameter("applyname"),
-						request.getParameter("applytel"), Integer.parseInt(request.getParameter("applyno")),
-						request.getParameter("applyloc"), request.getParameter("applytime"));
+				FestTruckDTO festTruckDTO = new FestTruckDTO(request.getParameter("country"),
+						request.getParameter("maindish"), Integer.parseInt(request.getParameter("predppl")),
+						Integer.parseInt(request.getParameter("applyppl")),
+						Integer.parseInt(request.getParameter("readyfood")), request.getParameter("mngrname"),
+						request.getParameter("mngrtel"));
 				// 담은 데이터를 처리할 서비스를 받아온다. - BoardWriteService in command.properties
 				service = Beans.getService(command);
 				System.out.println(service);
-				service.execute(festCustDTO);
+				service.execute(festTruckDTO);
 				// 현재위치에 있는 리스트: 상대주소
-				viewJSP = "/fest/FestMngr/FestList.do";
+				viewJSP = "FestList.do";
 				System.out.println(viewJSP);
 				break;
 
 			// 글수정 처리
-			case "/fest/FestCust/CustUpdate.do":
-				// 넘어오는 데이터를 festCustDTO에 담는다
+			case "/fest/FestTruck/TruckUpdate.do":
+				// 넘어오는 데이터를 festTruckDTO에 담는다
 				// 넘어오는 데이터 name과 동일하게 작성해야한다.
-				FestCustDTO festCustDTO2 = new FestCustDTO(request.getParameter("applyname"),
-						request.getParameter("applytel"), Integer.parseInt(request.getParameter("applyno")),
-						request.getParameter("applyloc"), request.getParameter("applytime"));
+				FestTruckDTO festTruckDTO2 = new FestTruckDTO(request.getParameter("country"),
+						request.getParameter("maindish"), Integer.parseInt(request.getParameter("predppl")),
+						Integer.parseInt(request.getParameter("applyppl")),
+						Integer.parseInt(request.getParameter("readyfood")), request.getParameter("mngrname"),
+						request.getParameter("mngrtel"));
 				// 담은 데이터를 처리할 서비스를 받아온다. - BoardUpdateService in command.properties
 				service = Beans.getService(command);
 				System.out.println(service);
 				// 실행해서 수정처리
-				service.execute(festCustDTO2);
+				service.execute(festTruckDTO2);
 				// 현재위치에 있는 리스트: 상대주소
 				// 끝나면 글보기로 자동 이동한다.
-				viewJSP = "view.do?custNo=" + festCustDTO2.getCustno() + "$page=" + request.getParameter("page")
+				viewJSP = "view.do?truckNo=" + festTruckDTO2.getTruckno() + "$page=" + request.getParameter("page")
 						+ "$rowPerPage=" + request.getParameter("rowPerPage");
 				System.out.println(viewJSP);
 				break;

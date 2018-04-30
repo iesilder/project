@@ -74,12 +74,12 @@ public class Beans extends HttpServlet {
 		// 행사 일정에 대한 DAO 생성 및 저장 처리문 - 홍다운 - 20180420
 		daoBeans.put("reviewDAO", new ReviewDAO());
 		// 소비자 신청 DAO
-		daoBeans.put("custDAO", new FestCustDAO());
+		daoBeans.put("festCustDAO", new FestCustDAO());
 		// 푸드트럭 신청 DAO
-		daoBeans.put("truckDAO", new FestTruckDAO());
+		daoBeans.put("festTruckDAO", new FestTruckDAO());
 		// 회원관리 DAO
 		daoBeans.put("memberDAO", new MemberDAO());
-//>>>>>>> branch 'master' of https://github.com/iesilder/project.git
+		// >>>>>>> branch 'master' of https://github.com/iesilder/project.git
 		// ========= service를 생성해서 저장하는 프로그램 작성 ==========
 		/* 설정된 파일을 불러오자 */
 		// web.xml에 init-param tag로 정의되어 있는 값을 받아 온다.

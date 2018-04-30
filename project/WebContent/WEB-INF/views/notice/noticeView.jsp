@@ -26,7 +26,7 @@ $(document).ready(function(){
 	$("#list").click(function(){
 // 		location="list.do";
 		$("#dataForm input[name='no']").attr("disabled","disabled")
-		$("#dataForm").attr("action","list.do");
+		$("#dataForm").attr("action","noticeList.do");
 		$("#dataForm").submit();
 	});
 });

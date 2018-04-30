@@ -104,7 +104,7 @@ public class MemberController extends HttpServlet {
 						request.getParameter("name"),
 						request.getParameter("birthDate"),
 						request.getParameter("gender"),
-						request.getParameter("moblie"),
+						request.getParameter("mobile"),
 						request.getParameter("email"),
 						request.getParameter("address"),
 						request.getParameter("add2"),

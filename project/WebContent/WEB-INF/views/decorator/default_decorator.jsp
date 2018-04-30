@@ -50,7 +50,7 @@ pageContext.setAttribute("absUri", request.getContextPath());
 <style type="text/css">
 header, footer {
 	background: purple;
-}
+	}
 
 pre {
 	background: white;
@@ -65,7 +65,7 @@ pre {
 
 /* Add a gray background color and some padding to the footer */
 footer {
-	background-color: #f2f2f2;
+	background-color: purple;
 	padding: 25px;
 }
 
@@ -75,12 +75,12 @@ footer {
 	min-height: 200px;
 }
 
-/* Hide the carousel text when the screen is less than 600 pixels wide */
-@media{
-	.carousel-caption {
-		display: initial;
-	}
-}
+ /* Hide the carousel text when the screen is less than 600 pixels wide */ */
+ @media{ 
+ 	.carousel-caption { 
+ 		display: none; 
+ 	} 
+ } 
 
 article {
 	min-height: 795px;
@@ -97,29 +97,34 @@ article {
 	<header>
 	   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
     	  <div class="container">
-				<div class="navbar-header">
-					<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        	 		 <span class="navbar-toggler-icon"></span>
-        			</button>
-				</div>
 				<div class="collapse navbar-collapse" id="navbarResponsive">
 					<div class="navbar-header"><a href="${absUri }/main/main.do"
 							 class="navbar-brand">둥가둥가</a></div>
 					<ul class="nav navbar-nav">
 						<li class="nav-item dropdown">
-              				<a class="nav-link dropdown-toggle" href="${absUri }/notice/list.do" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                			행사일정
-            			    </a>
-			              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-			                <a class="dropdown-item" href="portfolio-1-col.html">1 Column Portfolio</a>
-			                <a class="dropdown-item" href="portfolio-2-col.html">2 Column Portfolio</a>
-			                <a class="dropdown-item" href="portfolio-3-col.html">3 Column Portfolio</a>
-			                <a class="dropdown-item" href="portfolio-4-col.html">4 Column Portfolio</a>
-			                <a class="dropdown-item" href="portfolio-item.html">Single Portfolio Item</a>
+			              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+			                	행사일정
+			              </a>
+			              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
+			                <ul>
+				                <li><a class="dropdown-item" href="../fest/FestMngr/FestList.do">행사일정표 </a></li>
+				                <li><a class="dropdown-item" href="../fest/FestTruck/TruckWrite.do">푸드트럭 신청서</a></li>
+				                <li><a class="dropdown-item" href="../fest/FestCust/CustWrite.do">소비자 신청서</a></li>
+			                </ul>
 			              </div>
 			            </li>
-						<li><a href="${absUri }/board/list.do">리뷰</a></li>
-						<li><a href="${absUri }/board/list.do">트렌트</a></li>
+						<li><a href="${absUri }/review/reviewlist.do">리뷰</a></li>
+						<li><a href="${absUri }/notice/noticeList.do">공지사항</a></li>
+						<li class="nav-item dropdown">
+			              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			                	데이터 분석
+			              </a>
+			              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
+			                <a class="dropdown-item" href="blog-home-1.html">Blog Home 1</a>
+			                <a class="dropdown-item" href="blog-home-2.html">Blog Home 2</a>
+			                <a class="dropdown-item" href="blog-post.html">Blog Post</a>
+			              </div>
+			            </li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 					    <c:if test="${ empty id }">
@@ -130,9 +135,9 @@ article {
 					    </c:if>
 					    <c:if test="${ !empty id }">
 						   <li><a href="../member/logout.do">
-						   <span class="glyphicon glyphicon-log-out"> </span>로그아웃</a></li>
-						   <li><a href="#">
-						   <span class="glyphicons glyphicons-notes-2"></span>마이페이지</a></li>
+						   <span class="glyphicon glyphicon-log-out"> </span> 로그아웃</a></li>
+						   <li><a href="../member/mypage.do">
+						   <span class="glyphicon glyphicon-user"> </span> 회원정보</a></li>
       					</c:if>
 
 					</ul>
@@ -144,7 +149,7 @@ article {
 		<decorator:body />
 	</article>
 	<footer class="container-fluid text-center">
-		<p>이 홈페이지의 저작권은 나훈주에게 있습니다.</p>
+		<p>Copyright: 둥가둥가 푸드트럭 2018</p>
 	</footer>
 	    <!-- Bootstrap core JavaScript -->
     <script src="../../vendor/jquery/jquery.min.js"></script>

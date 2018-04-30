@@ -1,6 +1,6 @@
-<%@page import="com.foodtruck.fest.dto.FestDTO"%>
+<%@page import="com.foodtruck.fest.dto.FestTruckDTO"%>
 <%@page import="java.util.List"%>
-<%@page import="com.foodtruck.fest.FestService.FestListService"%>
+<%@page import="com.foodtruck.fest.TruckService.FestTruckListService"%>
 <%@taglib prefix="decorator"
 	uri="http://www.opensymphony.com/sitemesh/decorator"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -25,16 +25,13 @@ $(document).ready(function(){
 // 	alert("OK");
     $(".data").click(function(){
 //         $(this).hide();
-        var festno = $(this).find("td:first").text();
+        var truckno = $(this).find("td:first").text();
 // 		alert("click");
-// 		alert(festno);
-		location = "FestView.do?festno="+festno+'&page=${pageObject.page}&rowPerPage=${(empty param.rowPerPage)?"10":param.rowPerPage}&searchKey=${param.searchKey}&searchWord=${param.searchWord}';
-    });
-    $("#write").click(function(){
-    	location = "FestWrite.do";
+// 		alert(truckno);
+		location = "FestTruckView.do?truckno="+truckno+'&page=${pageObject.page}&rowPerPage=${(empty param.rowPerPage)?"10":param.rowPerPage}&searchKey=${param.searchKey}&searchWord=${param.searchWord}';
     });
     $("#reload").click(function(){
-    	location = "FestList.do";
+    	location = "FestTruckList.do";
     });
 });
 </script>
@@ -50,18 +47,22 @@ $(document).ready(function(){
 	<input name="rowPerPage" value='${(empty param.rowPerPage)?"10":param.rowPerPage}' type="hidden" />
  <div class="form-group navbar-left">
  <select class="form-control navbar-left list-group"  name="searchKey"  class="input-group-addon">
-<option value="festname" ${(param.searchKey == "festname")?"selected=\"selected\"":"" } 
-  		>행사이름</option>
-<option value="festdate" ${(param.searchKey == "festdate")?"selected=\"selected\"":"" } 
-  		>행사날짜</option>
-<option value="festloc" ${(param.searchKey == "festloc")?"selected=\"selected\"":"" } 
-  		>행사지역</option>
-<option value="festname,festloc" ${(param.searchKey == "festname,festloc")?"selected=\"selected\"":"" } 
-  		>행사이름+행사날짜</option>
-<option value="festname,festloc" ${(param.searchKey == "festname,festloc")?"selected=\"selected\"":"" } 
-  		>행사이름+행사지역</option>
-<option value="festdate,festloc" ${(param.searchKey == "festdate,festloc")?"selected=\"selected\"":"" } 
-  		>행사날짜+행사지역</option>
+<option value="country" ${(param.searchKey == "country")?"selected=\"selected\"":"" } 
+  		>국적</option>
+<option value="maindish" ${(param.searchKey == "maindish")?"selected=\"selected\"":"" } 
+  		>주요 메뉴</option>
+<option value="mngrname" ${(param.searchKey == "mngrname")?"selected=\"selected\"":"" } 
+  		>매니저 이름</option>
+<option value="mngrtel" ${(param.searchKey == "mngrtel")?"selected=\"selected\"":"" } 
+  		>매니저 연락처</option>
+<option value="applydate" ${(param.searchKey == "applydate")?"selected=\"selected\"":"" } 
+  		>접수 날짜</option>
+<option value="applyname,applytel" ${(param.searchKey == "country,maindish")?"selected=\"selected\"":"" } 
+  		>국적+주요메뉴</option>
+<option value="applyname,applydate" ${(param.searchKey == "mngrname,mngrtel")?"selected=\"selected\"":"" } 
+  		>매니저 이름+매니저 연락처</option>
+<option value="applytel,applydate" ${(param.searchKey == "mngrtel,applydate")?"selected=\"selected\"":"" } 
+  		>매니저 연락처+접수 날짜</option>
  </select> 
  <input type="text" class="form-control navbar-left " placeholder="Search" name="searchWord">
  </div>
@@ -72,24 +73,26 @@ $(document).ready(function(){
 <table class="table">
 <thead>
 	<tr>
-		<th>행사번호</th>
-		<th>행사이름</th>
-		<th>행사날짜</th>
-		<th>행사지역</th>
-		<th>작성일</th>
+		<th>푸드트럭번호</th>
+		<th>국적</th>
+		<th>주요 메뉴</th>
+		<th>매니저 이름</th>
+		<th>매니저 연락처</th>
+		<th>접수 날짜</th>
 		<th>조회수</th>
 	</tr>
 </thead>
 <tbody>
 <!-- 데이터를 출력하는 반복 처리 -->
-<c:forEach items="${list }" var="FestDTO">
+<c:forEach items="${list }" var="FestTruckDTO">
 	<tr class="data">
-		<td>${FestDTO.festno }</td>
-		<td>${FestDTO.festname }</td>
-		<td>${FestDTO.festdate }</td>
-		<td>${FestDTO.festloc }</td>
-		<td>${FestDTO.applydate }</td>
-		<td>${FestDTO.hit }</td>
+		<td>${FestTruckDTO.truckno }</td>
+		<td>${FestTruckDTO.country }</td>
+		<td>${FestTruckDTO.maindish }</td>
+		<td>${FestTruckDTO.mngrname }</td>
+		<td>${FestTruckDTO.mngrtel }</td>
+		<td>${FestTruckDTO.applydate }</td>
+		<td>${FestTruckDTO.hit }</td>
 	</tr>
 </c:forEach>
 </tbody>
@@ -99,18 +102,18 @@ $(document).ready(function(){
 			<ul class="pagination">
 			<c:if test="${pageObject.startPage > 1 }">
 			  <li>
-			  	<a href='FestList.do?page=${pageObject.startPage -1 }&rowPerPage=${(empty param.rowPerPage)?"10":param.rowPerPage}&searchKey=${param.searchKey}&searchWord=${param.searchWord}'>
+			  	<a href='FestTruckList.do?page=${pageObject.startPage -1 }&rowPerPage=${(empty param.rowPerPage)?"10":param.rowPerPage}&searchKey=${param.searchKey}&searchWord=${param.searchWord}'>
 			  	<i class="glyphicon glyphicon-backward"></i></a></li>
 			</c:if>
 			<c:forEach begin="${pageObject.startPage }" end="${pageObject.endPage }"
 			var="idx">
 			  <li ${(pageObject.page == idx)?"class='active'":"" }>
-			  	<a href='FestList.do?page=${idx }&rowPerPage=${(empty param.rowPerPage)?"10":param.rowPerPage}'>
+			  	<a href='FestTruckList.do?page=${idx }&rowPerPage=${(empty param.rowPerPage)?"10":param.rowPerPage}'>
 			  	${idx }</a></li>
 			</c:forEach>
 			<c:if test="${pageObject.endPage != pageObject.totalPage}">
 			  <li>
-			  	<a href='FestList.do?page=${pageObject.endPage + 1 }&rowPerPage=${(empty param.rowPerPage)?"10":param.rowPerPage}&searchKey=${param.searchKey}&searchWord=${param.searchWord}'>
+			  	<a href='FestTruckList.do?page=${pageObject.endPage + 1 }&rowPerPage=${(empty param.rowPerPage)?"10":param.rowPerPage}&searchKey=${param.searchKey}&searchWord=${param.searchWord}'>
 			  	<i class="glyphicon glyphicon-forward"></i></a></li>
 			</c:if>
 			</ul>
