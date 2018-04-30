@@ -47,9 +47,9 @@ public class AuthLoginCheckFilter implements Filter {
 		HttpServletResponse res = (HttpServletResponse) response;
 
 		String uri = Beans.getURI(req);
-		Integer grade = (Integer) req.getSession().getAttribute("grade");
+		Integer gradeno = (Integer) req.getSession().getAttribute("gradeno");
 		// 1. Login 확인
-		if (Auth.isGoLogin(uri, grade)) { // 로그인이 필요하다.
+		if (Auth.isGoLogin(uri, gradeno)) { // 로그인이 필요하다.
 			// 뒤에 넘어오는 데이터들을 붙인다.
 			String query = req.getQueryString();
 			if (query != null && !query.equals(""))
@@ -59,7 +59,7 @@ public class AuthLoginCheckFilter implements Filter {
 			;
 			// 로그인이 필요하다.
 			res.sendRedirect("../member/login.do");
-		} else if (Auth.isAuth(uri, grade)) {
+		} else if (Auth.isAuth(uri, gradeno)) {
 			// 2. 권한 확인
 			chain.doFilter(request, response);
 		} else { // 권한 없는 오류 페이지 처리
