@@ -37,7 +37,7 @@ public class ReviewController extends HttpServlet {
 		// 실행할 Service를 담는 객체 선언
 		ServiceInterface service = null;
 		System.out.println(command);
-		System.out.println("둥가둥가");
+		System.out.println("둥가둥가~~~~~~~~~~~~~");
 
 		try {
 			switch (command) {
@@ -76,75 +76,66 @@ public class ReviewController extends HttpServlet {
 				System.out.println("둥가둥가1");
 				
 
-//				String data = request.getParameter("list");
-//				response.sendRedirect("reviewlist?"+data);
-
-
-
-			
-				
-//				ReviewListService reviewlistservice = new ReviewListService();
-//				Object obj = null;
-//				List<ReviewDTO> list = reviewlistservice.execute(obj);
-//				request.setAttribute("list", list);
-				
-				
 				
 				break;
 			// 글쓰기 폼 - get
-			case "/board/write.do":
+			case "/review/reviewwrite.do":
+				// jsp 이름을 만들어 내고 밑에서 forward 시킨다.
+				System.out.println("글쓰기컨트롤레어왔어요~");
+				jsp = Beans.getJsp(command);
+				System.out.println(jsp);
+				break;
+
+			// 글보기 - get
+			case "/review/reviewview.do":
+				System.out.println("리뷰보기스타뜨뜨뜨뜨뜨");
+				int no = Integer.parseInt(request.getParameter("no"));
+				service = Beans.getService(command); // BoardViewService
+				// service를 실행해서 DB에서 BoardDTO를 가져와서 request에 담는다.
+				// 넘길 때 ArrayList로 캐스팅해서 사용하므로 0: (int)no, 1: (boolean)isViews
+				ArrayList<Object> list = new ArrayList<Object>();
+				list.add(no);
+				list.add(true); // 조회수 1증가를 시킨다.
+				// list를 매개변수로 넘겨 처리한다.
+				request.setAttribute("reviewDTO", service.execute(list));
 				// jsp 이름을 만들어 내고 밑에서 forward 시킨다.
 				jsp = Beans.getJsp(command);
 				System.out.println(jsp);
 				break;
-			// 글쓰기 폼 - get
-			case "/review/Write.do":
-				jsp = Beans.getJsp(command);
-				System.out.println(jsp);
-				
-				break;
-
-//			// 글보기 - get
-//			case "/review/reviewView.do":
-//				int no = Integer.parseInt(request.getParameter("no"));
-//				service = Beans.getService(command); // BoardViewService
-//				// service를 실행해서 DB에서 BoardDTO를 가져와서 request에 담는다.
-//				// 넘길 때 ArrayList로 캐스팅해서 사용하므로 0: (int)no, 1: (boolean)isViews
-//				ArrayList<Object> list = new ArrayList<Object>();
-//				list.add(no);
-//				list.add(true); // 조회수 1증가를 시킨다.
-//				// list를 매개변수로 넘겨 처리한다.
-//				request.setAttribute("reviewDTO", service.execute(list));
-//				// jsp 이름을 만들어 내고 밑에서 forward 시킨다.
-//				jsp = Beans.getJsp(command);
-//				System.out.println(jsp);
-//				break;
 
 			// 글수정 폼
-			case "/review/Update.do":
+			case "/review/reviewupdate.do":
 				// viewService에서
 				int no2 = Integer.parseInt(request.getParameter("no"));
-				service = Beans.getService("/review/view.do"); // BoardViewService
+				System.out.println(no2);
+				System.out.println(no2);
+				System.out.println(no2);
+				System.out.println(no2);
+				service = Beans.getService("/review/reviewupdate.do"); // BoardViewService
 				// service를 실행해서 DB에서 BoardDTO를 가져와서 request에 담는다.
 				// 넘길 때 ArrayList로 캐스팅해서 사용하므로 0: (int)no, 1: (boolean)isViews
-				ArrayList<Object> list2 = new ArrayList<Object>();
-				list2.add(no2);
-				list2.add(false); // 조회수 1증가를 시키지 않는다.
+//				ArrayList<Object> list2 = new ArrayList<Object>();
+//				list2.add(no2);
+//				list2.add(false); // 조회수 1증가를 시키지 않는다.
 				// list를 매개변수로 넘겨 처리한다.
-				request.setAttribute("reviewDTO", service.execute(list2));
+//				request.setAttribute("reviewDTO", service.execute(list2));
+				service.execute(no2);
 				// jsp 이름을 만들어 내고 밑에서 forward 시킨다.
 				jsp = Beans.getJsp(command);
 				System.out.println(jsp);
 				break;
 
 			// 리스트
-			case "/review/Delete.do":
+			case "/review/reviewdelete.do":
+				System.out.println("delete에 오신걸 화녕해");
 				// 삭제 처리할 서비스를 가져오자. - BoardDeleteService가 필요하다.
 				service = Beans.getService(command);
+				System.out.println(service);
 				// 처리를해서 DB에 있는 데이터를 받아와서 request에 담아 둔다.
+				
 				service.execute(Integer.parseInt(request.getParameter("no")));
 				// jsp 이름을 만들어 내고 밑에서 forward 시킨다.
-				jsp = "redirect:list.do";
+				jsp = "redirect:reviewlist.do";
 				System.out.println(jsp);
 				break;
 
@@ -187,30 +178,54 @@ public class ReviewController extends HttpServlet {
 		try {
 			switch (command) {
 			// 글쓰기 처리
-			case "/review/Write.do":
+			case "/review/reviewwrite.do":
+				System.out.println("dopost에 write로넘어왔다!");
 				// 넘어오는 데이터를 BoardDTO에 담는다.
-				ReviewDTO reviewDTO = new ReviewDTO(request.getParameter("title"), request.getParameter("content"),
-						request.getParameter("id"));
+				String i = request.getParameter("starscore");
+				String i2 = request.getParameter("content");
+				System.out.println(i);
+				System.out.println(i2);
+				ReviewDTO reviewDTO = new ReviewDTO(
+						0, request.getParameter("content"),
+						request.getParameter("starscore"),
+						Integer.parseInt(request.getParameter("score1")));
+
+//						request.getParameter("id"));
 				// 처리할 서비스를 받아온다. - BoardWriteService
 				service = Beans.getService(command);
 				System.out.println(service);
+				
+				System.out.println(reviewDTO);
 				service.execute(reviewDTO);
-				jsp = "list.do"; // 현재위치이므로 /board/list.do 가 아니다.
+//				System.out.println(reviewDTO);
+//				System.out.println(reviewDTO);
+//				System.out.println(reviewDTO);
+//				System.out.println(reviewDTO);
+				jsp = "reviewlist.do"; // 현재위치이므로 /board/list.do 가 아니다.
 				System.out.println(jsp);
 				break;
+				
+				
+				
+				
+				
+				
 			// 글수정
-			case "/review/Update.do":
-				service = Beans.getService(command);
-				System.out.println(service);
-				ReviewDTO reviewDTO2 = new ReviewDTO(request.getParameter("id"),
-						request.getParameter("content"),request.getParameter("score"));
+			case "/review/reviewupdate.do":
+				
+				ReviewDTO reviewDTO2 = new ReviewDTO(0,request.getParameter("content"),
+						request.getParameter("starscore"),
+						Integer.parseInt(request.getParameter("score1")));
 //						(Integer.parseInt(request.getParameter("no")),
 //						request.getParameter("title"), request.getParameter("content"), request.getParameter("id"),
 //						null, 0); // hit는 int이므로 0을 넣어야 한다.
+				service = Beans.getService(command);
+				System.out.println(service);
 				// 실행해서 수정처리
 				service.execute(reviewDTO2);
 				// 글보기로 이동시키는데 글번호와 함께 이동시킨다.
-				jsp = "view.do?no=" + reviewDTO2.getNo();
+				jsp = "reviewview.do?no=" + reviewDTO2.getNo() + "$page=" + request.getParameter("page")
+				+ "$rowPerPage=" + request.getParameter("rowPerPage");
 				System.out.println(jsp);
 				break;
 

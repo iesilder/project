@@ -33,7 +33,7 @@ $(document).ready(function(){
 				+'&rowPerPage=${(empty param.rowPerPage)?"10":param.rowPerPage}';
     });
     $("#write").click(function(){
-    	location = "reviewWrite.do";
+    	location = "reviewwrite.do";
     });
 });
 </script>
