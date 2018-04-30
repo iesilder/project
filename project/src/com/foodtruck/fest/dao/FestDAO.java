@@ -29,38 +29,20 @@ public class FestDAO {
 		try {
 			// 1. 드라이버 확인 //2. 연결
 			con = DBUtil.getConnection();
-			// ** SEARCH를 위한 처리 - pageObject.searchWord가 있는 경우가 검색을 해야한다.
-			String search = "";
-			String searchWord = pageObject.getSearchWord();
-			// " " 보단 trim을 사용하는걸 권장. 추후 코딩해보기!
-			if (searchWord != null && !searchWord.equals("")) {
-				search += " where 1=0 ";
-				// title -> where 1=0 or title like ? or content like ?
-				for (String field : pageObject.getSearchKeys()) {
-					search += " or " + field + " like ?";
-				}
-			}
+
 			// 3. sql
 			// 3-1. 원래 데이터를 순서에 맞게 가져온다.
-			String sql = "select festno, festdate, festloc, festname, to_char(applydate, 'yyyy-mm-dd')applydate, hit from festboard"
-					+ search + "order by festno desc ";
+			String sql = "select festno, festdate, festloc, festname, to_char(applydate, 'yyyy-mm-dd')applydate, hit from festboard order by festno desc ";
 			// 3-2. 순서에 맞게 가져온 데이터에 rowNum을 붙인다.
 			sql = "select rownum rnum, festno, festdate, festloc, festname, applydate, hit from (" + sql + ")";
 			// 3-3. 페이지에 맞는 startRow, endRow를 설정한다.
 			sql = "select * from (" + sql + ") where rnum between ? and ?";
 			// idx가 필요한 이유: 검색이란 기능을 추가 할 당시 sql문의 rnum ?가 계속 뒤로 움직이게 된다. 따라서, idx로 변수를 선언하여
 			// 간단하게 만들기
-			int idx = 1;
 			// 4. 처리문 객체
 			pstmt = con.prepareStatement(sql);
-			if (searchWord != null && !searchWord.equals("")) {
-				// title -> where 1=0 or title like ? or content like ?
-				for (String field : pageObject.getSearchKeys()) {
-					pstmt.setString(idx++, "%" + searchWord + "%");
-				}
-			}
-			pstmt.setInt(idx++, pageObject.getStartRow());
-			pstmt.setInt(idx++, pageObject.getEndRow());
+			pstmt.setInt(1, pageObject.getStartRow());
+			pstmt.setInt(2, pageObject.getEndRow());
 			// 5. 실행 -- select ->rs이 나온다.
 			rs = pstmt.executeQuery();
 			// 6. 표시 --> 데이터 담기
