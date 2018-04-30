@@ -157,6 +157,7 @@ public class NoticeController extends HttpServlet {
 				// 넘어오는 데이터를 BoardDTO에 담는다.
 				NoticeDTO noticeDTO = new NoticeDTO(request.getParameter("title"), request.getParameter("content"),
 						request.getParameter("id"));
+				System.out.println("컨트롤러DTO:"+noticeDTO);
 				// 처리할 서비스를 받아온다. - BoardWriteService
 				service = Beans.getService(command);
 				System.out.println(service);
