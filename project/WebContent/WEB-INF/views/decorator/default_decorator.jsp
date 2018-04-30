@@ -179,7 +179,7 @@ font-weight: bolder;
 					    <c:if test="${ empty id }">
 						   <li><a href="../member/login.do">
 						   <span class="glyphicon glyphicon-log-in"></span> 로그인</a></li>
-						   <li><a href="../member/join.do">
+						   <li><a href="../member/view.do">
 						   	<span class="glyphicon glyphicon-user"></span> 회원가입</a></li>
 					    </c:if>
 					    <c:if test="${ !empty id }">
