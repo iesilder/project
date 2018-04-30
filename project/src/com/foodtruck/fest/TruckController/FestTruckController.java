@@ -86,7 +86,7 @@ public class FestTruckController extends HttpServlet {
 				break;
 
 			// [푸드트럭 신청서] 글보기 - get방식으로 데이터가 들어온다.
-			case "/fest/FestMngr/FestTruckView.do":
+			case "/fest/FestTruck/FestTruckView.do":
 				// 글번호로 넘어오기 때문에 int festNo를 받는다.
 				int truckno = Integer.parseInt(request.getParameter("truckno"));
 				// command.properties의 BoardViewService 필요함

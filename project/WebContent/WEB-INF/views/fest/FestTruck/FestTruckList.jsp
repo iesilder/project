@@ -23,13 +23,13 @@ pageContext.setAttribute("absURI", request.getContextPath());
 <script>
 $(document).ready(function(){
 // 	alert("OK");
-//     $(".data").click(function(){
-// //         $(this).hide();
-//         var festno = $(this).find("h3:first").text();
-// // 		alert("click");
-// // 		alert(festno);
-// 		location = "FestView.do?festno="+festno+'&page=${pageObject.page}&rowPerPage=${(empty param.rowPerPage)?"10":param.rowPerPage}&searchKey=${param.searchKey}&searchWord=${param.searchWord}';
-//     });
+    $(".data").click(function(){
+//         $(this).hide();
+        var truckno = $(this).find("td:first").text();
+// 		alert("click");
+// 		alert(festno);
+		location = "FestTruckView.do?truckno="+truckno+'&page=${pageObject.page}&rowPerPage=${(empty param.rowPerPage)?"10":param.rowPerPage}&searchKey=${param.searchKey}&searchWord=${param.searchWord}';
+    });
     $("#write").click(function(){
     	location = "TruckWrite.do";
     });
@@ -64,14 +64,18 @@ $(document).ready(function(){
           </a>
         </div>
         <div class="col-md-5">
-          <h3>(${FestTruckDTO.truckno}) ${FestTruckDTO.truckname }</h3>
-          <p>${FestTruckDTO.festjoin }</p>
-          <p>${FestTruckDTO.country }</p>
-          <p>${FestTruckDTO.maindish }</p>
-          <p>마음이 벅찬 수제버거 푸드트럭을 소개합니다!</p>
-          <a class="btn btn-primary" href="../FestTruck/FestTruckView.do">푸드트럭 자세히 보러가기
-            <span class="glyphicon glyphicon-chevron-right"></span>
-          </a>
+        <table class="data">
+        	<tr>
+	          <td>${FestTruckDTO.truckno}</td>
+			  <td><p>${FestTruckDTO.truckname }</td>
+	          <td><p>${FestTruckDTO.festjoin }<p></td>
+	          <td><p>${FestTruckDTO.country }<p></td>
+	          <td><p>${FestTruckDTO.maindish }<p></td>
+	          <td><p>마음이 벅찬 수제버거 푸드트럭을 소개합니다!<p></td>
+          </tr>
+          </table>
+          <a class="btn btn-primary" href="../../fest/FestTruck/FestTruckView.do">푸드트럭 자세히 보러가기
+	            <span class="glyphicon glyphicon-chevron-right"></span></a>
         </div>
         </c:forEach>
               <hr>
