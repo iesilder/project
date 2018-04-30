@@ -27,8 +27,6 @@ $(document).ready(function(){
 </head>
 <body>
 <div class="container" >
-<form action="write.do" method="post">
-
  <!-- Page Content -->
     <div class="container" >
 
@@ -44,15 +42,17 @@ $(document).ready(function(){
         <li class="breadcrumb-item active">행사신청서-푸드트럭</li>
       </ol>
       
+  <form action="write.do" method="post">
+     
       <div class="row" >
         <div class="col-lg-8 mb-4" >
          <div class="control-group form-group" >
               <div class="controls" >
               	 <label>행사 정보:</label>
-	              <select class="form-control" name="festname,festloc,festdate" id="festname,festloc,festdate" required >
-					  <option class="form-control" id="festname,festloc,festdate" value="올림픽,뮤직 페스티벌 ,2018-05-05">올림픽,뮤직 페스티벌 ,2018-05-05</option>
-					  <option class="form-control" id="festname,festloc,festdate" value="잠실나루, 불꽃축제, 2018-05-08">잠실나루, 불꽃축제, 2018-05-08</option>
-					  <option class="form-control" id="festname,festloc,festdate" value="에버랜드, 장미축제, 2018-05-20">에버랜드, 장미축제, 2018-05-20</option>
+	              <select class="form-control" name="festjoin" id="festjoin" required >
+					  <option class="form-control" id="festjoin" value="올림픽,뮤직 페스티벌 ,2018-05-05">올림픽,뮤직 페스티벌 ,2018-05-05</option>
+					  <option class="form-control" id="festjoin" value="잠실나루, 불꽃축제, 2018-05-08">잠실나루, 불꽃축제, 2018-05-08</option>
+					  <option class="form-control" id="festjoin" value="에버랜드, 장미축제, 2018-05-20">에버랜드, 장미축제, 2018-05-20</option>
 				</select>
 				</div>
         </div>
@@ -146,12 +146,11 @@ $(document).ready(function(){
 				</tr>
 			</table>
         </div>
-
       </div>
+    </form>
 
       <!-- /.row -->
 	</div>
-    </form>
     </div>
     <!-- /.container -->
 
