@@ -130,6 +130,12 @@ public class FestController extends HttpServlet {
 				viewJSP = "redirect:FestList.do";
 				System.out.println(viewJSP);
 				break;
+				
+			//오류를 자세히 보기 위해 추가 - 유태선
+			default:
+				System.out.println("존재하지 않는 URI(자원)를 요청하였습니다");
+				viewJSP = "/WEB-INF/views/error/404.jsp";
+				break;
 
 			}
 			if (viewJSP.indexOf("redirect:") == -1) // redirect:이 존재하지 않는다.
