@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>게시판 글쓰기</title>
+<title>소비자 행사 신청서</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
@@ -47,18 +47,22 @@ $(document).ready(function(){
       <div class="row" >
         <div class="col-lg-8 mb-4" >
          <div class="control-group form-group" >
+              <div class="controls" >
+              	 <label>행사정보:</label>
+	              <select class="form-control" name="festname,festloc,festdate" id="festname,festloc,festdate" required >
+					  <option class="form-control" id="festname,festloc,festdate" value="올림픽,뮤직 페스티벌 ,2018-05-05">올림픽,뮤직 페스티벌 ,2018-05-05</option>
+					  <option class="form-control" id="festname,festloc,festdate" value="잠실나루, 불꽃축제, 2018-05-08">잠실나루, 불꽃축제, 2018-05-08</option>
+					  <option class="form-control" id="festname,festloc,festdate" value="에버랜드, 장미축제, 2018-05-20">에버랜드, 장미축제, 2018-05-20</option>
+				</select>
+				</div>
+            </div>
+         <div class="control-group form-group" >
               <div class="controls">
-              	 <label>행사명:</label>
-	              <select class="form-control" name="applyno" id="applyno" required >
-					  <option class="form-control" id="applyno" value="서울/경기">서울/경기</option>
-					  <option class="form-control" id="applyno" value="강원도">강원도</option>
-					  <option class="form-control" id="applyno" value="충청북도">충청북도</option>
-					  <option class="form-control" id="applyno" value="충청남도">충청남도</option>
-					  <option class="form-control" id="applyno" value="경상북도">경상북도</option>
-					  <option class="form-control" id="applyno" value="경상남도">경상남도</option>
-					  <option class="form-control" id="applyno" value="전라북도">전라북도</option>
-					  <option class="form-control" id="applyno" value="전라남도">전라남도</option>
-					  <option class="form-control" id="applyno" value="제주">제주</option>
+              	 <label>푸드트럭정보:</label>
+	              <select class="form-control" name="truckname,maindish" id="truckname,maindish" required >
+					  <option class="form-control" id="truckname,maindish" value="버버푸드트럭,햄버거">버버푸드트럭,햄버거</option>
+					  <option class="form-control" id="truckname,maindish" value="신나쵸, 나쵸">신나쵸, 나쵸</option>
+					  <option class="form-control" id="truckname,maindish" value="너와나플, 와플">너와나플, 와플</option>
 				</select>
 				</div>
             </div>
@@ -80,13 +84,13 @@ $(document).ready(function(){
             </div>
             <div class="control-group form-group" >
               <div class="controls" >
-                <label>연락처:</label>
+                <label>연락처:  (010-xxxx-xxxx)</label>
                 <input type="text" class="form-control" name="applytel" id="applytel" placeholder="연락처를 입력하세요." required />
               </div>
             </div>
             <div class="control-group form-group" >
               <div class="controls" >
-                <label>동반인원:</label>
+                <label>동반인원: (명)</label>
                 <input type="number" class="form-control" name="applyno" id="applyno" placeholder="인원수를 입력하세요." required />
               </div>
             </div>
@@ -146,6 +150,7 @@ $(document).ready(function(){
 	</div>
     </form>
     </div>
+ 
     <!-- /.container -->
 
     <!-- Bootstrap core JavaScript -->

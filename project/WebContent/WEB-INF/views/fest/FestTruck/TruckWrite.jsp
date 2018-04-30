@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>게시판 글쓰기</title>
+<title>푸드트럭 행사 신청서</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
@@ -19,7 +19,7 @@ $(document).ready(function(){
 		history.back();
 	});
 	$("#reload").click(function(){
-	    location = "CustWrite.do";
+	    location = "TruckWrite.do";
 	});
 });
 </script>
@@ -43,70 +43,100 @@ $(document).ready(function(){
         </li>
         <li class="breadcrumb-item active">행사신청서-푸드트럭</li>
       </ol>
-
+      
+      <div class="row" >
+        <div class="col-lg-8 mb-4" >
+         <div class="control-group form-group" >
+              <div class="controls" >
+              	 <label>행사정보:</label>
+	              <select class="form-control" name="festname,festloc,festdate" id="festname,festloc,festdate" required >
+					  <option class="form-control" id="festname,festloc,festdate" value="올림픽,뮤직 페스티벌 ,2018-05-05">올림픽,뮤직 페스티벌 ,2018-05-05</option>
+					  <option class="form-control" id="festname,festloc,festdate" value="잠실나루, 불꽃축제, 2018-05-08">잠실나루, 불꽃축제, 2018-05-08</option>
+					  <option class="form-control" id="festname,festloc,festdate" value="에버랜드, 장미축제, 2018-05-20">에버랜드, 장미축제, 2018-05-20</option>
+				</select>
+				</div>
+        </div>
+        </div>
+      </div>
+      
       <!-- Contact Form -->
       <!-- In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
       <div class="row" >
         <div class="col-lg-8 mb-4" >
             <div class="control-group form-group" >
               <div class="controls" >
-                <label>이름:</label>
-                <input type="text" class="form-control" name="applyname" id="applyname" placeholder="이름을 입력하세요." required />
+                <label>푸드트럭명:</label>
+                <input type="text" class="form-control" name="truckname" id="applyname" placeholder="푸드트럭명을 입력하세요." required />
                 <p class="help-block"></p>
               </div>
             </div>
             <div class="control-group form-group" >
               <div class="controls" >
-                <label>연락처:</label>
-                <input type="text" class="form-control" name="applytel" id="applytel" placeholder="연락처를 입력하세요." required />
-              </div>
+                <label>국적:</label>
+                    <select class="form-control" name="country" id="country" required >
+					  <option class="form-control" id="country" value="한국">한국</option>
+					  <option class="form-control" id="country" value="미국">미국</option>
+					  <option class="form-control" id="country" value="동남아">동남아</option>
+					  <option class="form-control" id="country" value="일본">일본</option>
+					  <option class="form-control" id="country" value="중국">중국</option>
+					  <option class="form-control" id="country" value="유럽">유럽</option>
+					  <option class="form-control" id="country" value="아프리카">아프리카</option>
+					  <option class="form-control" id="country" value="러시아">러시아</option>
+					  <option class="form-control" id="country" value="북한">북한</option>
+					  <option class="form-control" id="country" value="기타">기타</option>
+				</select><br/>
+					<input type="text" class="form-control" name="country" id="country" placeholder="기타 국적을 입력하세요."  />
+				</div>
             </div>
             <div class="control-group form-group" >
               <div class="controls" >
-                <label>동반인원:</label>
-                <input type="number" class="form-control" name="applyno" id="applyno" placeholder="인원수를 입력하세요." required />
-              </div>
+                <label>메뉴:</label>
+            	 <select class="form-control" name="maindish" id="maindish" required >
+					  <option class="form-control" id="maindish" value="비빔밥">비빔밥</option>
+					  <option class="form-control" id="maindish" value="햄버거">햄버거</option>
+					  <option class="form-control" id="maindish" value="핫도그">핫도글</option>
+					  <option class="form-control" id="maindish" value="와플">와플</option>
+					  <option class="form-control" id="maindish" value="나쵸">나쵸</option>
+					  <option class="form-control" id="maindish" value="디저트">커피</option>
+					  <option class="form-control" id="maindish" value="기타">기타</option>
+				</select><br/>              
+					<input type="text" class="form-control" name="maindish" id="maindish" placeholder="기타 메뉴를 입력하세요."  />
+				</div>
             </div>
             <div class="control-group form-group" >
               <div class="controls">
-              	 <label>거주지역:</label>
-	              <select class="form-control" name="applyno" id="applyno" required >
-					  <option class="form-control" id="applyno" value="서울/경기">서울/경기</option>
-					  <option class="form-control" id="applyno" value="강원도">강원도</option>
-					  <option class="form-control" id="applyno" value="충청북도">충청북도</option>
-					  <option class="form-control" id="applyno" value="충청남도">충청남도</option>
-					  <option class="form-control" id="applyno" value="경상북도">경상북도</option>
-					  <option class="form-control" id="applyno" value="경상남도">경상남도</option>
-					  <option class="form-control" id="applyno" value="전라북도">전라북도</option>
-					  <option class="form-control" id="applyno" value="전라남도">전라남도</option>
-					  <option class="form-control" id="applyno" value="제주">제주</option>
-				</select>
+              	 <label>예상인원: (명)</label>
+	               <input type="number" class="form-control" name="predppl" id="predppl" placeholder="인원수를 입력하세요." required />
 				</div>
             </div>
             <div class="control-group form-group">
               <div class="controls">
-                <label>참여시간:</label>
-                 <select class="form-control" name="applytime" id="applytime" required >
-					  <option class="form-control" id="applytime" value="오전9시">9:00 ~</option>
-					  <option class="form-control" id="applytime" value="오전10시">10:00 ~</option>
-					  <option class="form-control" id="applytime" value="오전11시">11:00 ~</option>
-					  <option class="form-control" id="applytime" value="오후12시">12:00 ~</option>
-					  <option class="form-control" id="applytime" value="오후1시">13:00 ~</option>
-					  <option class="form-control" id="applytime" value="오후2시">14:00 ~</option>
-					  <option class="form-control" id="applytime" value="오후3시">15:00 ~</option>
-					  <option class="form-control" id="applytime" value="오후4시">16:00 ~</option>
-					  <option class="form-control" id="applytime" value="오후5시">17:00 ~</option>
-					  <option class="form-control" id="applytime" value="오후6시">18:00 ~</option>
-					  <option class="form-control" id="applytime" value="오후7시">19:00 ~</option>
-					  <option class="form-control" id="applytime" value="오후8시">20:00 ~</option>
-					  <option class="form-control" id="applytime" value="오후9시">21:00 ~</option>
-					  <option class="form-control" id="applytime" value="오후10시">22:00 ~</option>
-					  <option class="form-control" id="applytime" value="오후11시">23:00 ~</option>
-					  <option class="form-control" id="applytime" value="오전12시">24:00 ~</option>
-				</select>
+                <label>신청 가능인원: (명)</label>
+	               <input type="number" class="form-control" name="applyppl" id="applyppl" placeholder="인원수를 입력하세요." required />
               </div>
             </div>
-         	 <table>
+            <div class="control-group form-group">
+              <div class="controls">
+                <label>준비된 판매량: (인분)</label>
+   	               <input type="number" class="form-control" name="readyfood" id="readyfood" placeholder="판매량을 입력하세요." required />
+              </div>
+            </div>
+                  	        <hr style="border: solid #dedede; border-width: 2px 0 0;">
+            
+              <div class="control-group form-group" >
+              <div class="controls" >
+                <label>현장담당자 이름:</label>
+                <input type="text" class="form-control" name="mngrname" id="mngrname" placeholder="현장담당자 이름을 입력하세요." required />
+                <p class="help-block"></p>
+              </div>
+            </div>
+            <div class="control-group form-group" >
+              <div class="controls" >
+                <label>현장담당자 연락처: (010-xxxx-xxxx)</label>
+                <input type="text" class="form-control" name="mngrtel" id="mngrtel" placeholder="현장담당자 연락처를 입력하세요." required />
+              </div>
+            </div>
+			 <table>
 				<tr>
 					<td colspan="2">
 						<button class="btn btn-success">등록</button>
