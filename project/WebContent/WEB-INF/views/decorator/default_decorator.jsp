@@ -177,15 +177,15 @@ font-weight: bolder;
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 					    <c:if test="${ empty id }">
-						   <li><a href="../member/login.do">
+						   <li><a href="${absUri }/member/login.do">
 						   <span class="glyphicon glyphicon-log-in"></span> 로그인</a></li>
-						   <li><a href="../member/view.do">
+						   <li><a href="${absUri }/member/join.do">
 						   	<span class="glyphicon glyphicon-user"></span> 회원가입</a></li>
 					    </c:if>
 					    <c:if test="${ !empty id }">
-						   <li><a href="../member/logout.do">
+						   <li><a href="${absUri }/member/logout.do">
 						   <span class="glyphicon glyphicon-log-out"> </span> 로그아웃</a></li>
-						   <li><a href="../member/mypage.do">
+						   <li><a href="${absUri }/member/view.do">
 						   <span class="glyphicon glyphicon-user"> </span> 회원정보</a></li>
       					</c:if>
 
