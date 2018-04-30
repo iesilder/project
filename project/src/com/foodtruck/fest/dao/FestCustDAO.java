@@ -44,7 +44,7 @@ public class FestCustDAO {
 			// 3. sql
 			// 3-1. 원래 데이터를 순서에 맞게 가져온다.
 			String sql = "select custno, applyname, applytel, to_char(applydate, 'yyyy-mm-dd')applydate, hit from festcustboard"
-					+ search + "order by custno desc ";
+					+ search + " order by custno desc ";
 			// 3-2. 순서에 맞게 가져온 데이터에 rowNum을 붙인다.
 			sql = "select rownum rnum, custno, applyname, applytel, applydate, hit from (" + sql + ")";
 			// 3-3. 페이지에 맞는 startRow, endRow를 설정한다.
