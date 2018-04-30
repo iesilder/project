@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.foodtruck.notice.dto.NoticeDTO;
 import com.foodtruck.util.Beans;
@@ -38,31 +39,35 @@ public class NoticeController extends HttpServlet {
 			switch (command) {
 			// 리스트
 			case "/notice/noticeList.do":
-				// 리스트에 부릴 데이터를 가져오자. - BoardListService가 필요하다.
+				// 리스트에 뿌릴 데이터를 가져오자. - BoardListService가 필요하다.
+				// 이미 생성해서 저장해 놓은 곳에 가져오기. - BoardListService
 				service = Beans.getService(command);
 				int page = 1;
 				int rowPerPage = 10;
 				String pageStr = request.getParameter("page");
 				String rowPerPageStr = request.getParameter("rowPerPage");
-				// 처음에는 페이지, rowPerPage 데이터가 넘어오지 않아 null이다. null이면 page=1, rowPerPage = 10
-				if (pageStr != null && pageStr != "")
+				// 검색 데이터를 받는다.
+				String searchKey = request.getParameter("searchKey");
+				String searchWord = request.getParameter("searchWord");
+				System.out.println("1");
+				// 처음에는 페이지, rowPerPage 데이터가 넘어오지 않아 null이다. null이면 page=1, rowPerPage=10
+				if(pageStr != null && pageStr !="")
 					page = Integer.parseInt(pageStr);
-				if (rowPerPageStr != null && rowPerPageStr != "")
-					page = Integer.parseInt(rowPerPageStr);
-
-				// 페이지 처리를 하기 위한 객체 생성 -> 다른 데이터는 자동 계산 된다.
-				// <<<<<<< HEAD
-				PageObject2 pageObject = new PageObject2(DBUtil.getConnection(), "noticeboard", page, rowPerPage, 10,
-						null, null);
+				System.out.println("2");
+				if(rowPerPageStr != null && rowPerPageStr != "")
+					rowPerPage = Integer.parseInt(rowPerPageStr);
+				System.out.println("3");
+				// 페이지 처리를 하기 위한 객체 생성  -> 다른 데이터는 자동 계산 된다.
+				PageObject2 pageObject 
+				= new PageObject2(DBUtil.getConnection(), "noticeboard",
+						page, rowPerPage, 10, searchKey, searchWord);
 				System.out.println(pageObject);
-				// =======
-				// PageObject2 pageObject = new PageObject2(DBUtil.getConnection(),
-				// "noticeboard", page, rowPerPage, 10, null,
-				// null);
-				// >>>>>>> branch 'master' of https://github.com/iesilder/project.git
-				// 요청을 처리해서 DB에 있는 데이터를 받아와서 request에 담는다.
+				System.out.println("4");
+				// 처리를해서 DB에 있는 데이터를 받아와서 request에 담아 둔다.
 				request.setAttribute("list", service.execute(pageObject));
-				request.setAttribute("pageInfo", pageObject);
+				System.out.println("5");
+				request.setAttribute("pageObject", pageObject);
+				System.out.println("6");
 				// jsp 이름을 만들어 내고 밑에서 forward 시킨다.
 				jsp = Beans.getJsp(command);
 				System.out.println(jsp);
