@@ -41,89 +41,150 @@ $(document).ready(function(){
 <link rel="stylesheet" href="../css/board.css" />
 </head>
 <body>
-<h1>게시판 리스트</h1>
 <div class="container">
-  <h2>Basic Table</h2>
-  <p>The .table class adds basic styling (light padding and only horizontal dividers) to a table:</p>
+	<h2>행사일정표 검색</h2>
+ 	 <p>검색 창에 원하시는 일정을 검색하세요.</p>	
  <form class="navbar-form">
  <input name="page" value="1" type="hidden" />
 	<input name="rowPerPage" value='${(empty param.rowPerPage)?"10":param.rowPerPage}' type="hidden" />
- <div class="form-group navbar-left">
- <select class="form-control navbar-left list-group"  name="searchKey"  class="input-group-addon">
-<option value="festname" ${(param.searchKey == "festname")?"selected=\"selected\"":"" } 
-  		>행사이름</option>
-<option value="festdate" ${(param.searchKey == "festdate")?"selected=\"selected\"":"" } 
-  		>행사날짜</option>
-<option value="festloc" ${(param.searchKey == "festloc")?"selected=\"selected\"":"" } 
-  		>행사지역</option>
-<option value="festname,festloc" ${(param.searchKey == "festname,festloc")?"selected=\"selected\"":"" } 
-  		>행사이름+행사날짜</option>
-<option value="festname,festloc" ${(param.searchKey == "festname,festloc")?"selected=\"selected\"":"" } 
-  		>행사이름+행사지역</option>
-<option value="festdate,festloc" ${(param.searchKey == "festdate,festloc")?"selected=\"selected\"":"" } 
-  		>행사날짜+행사지역</option>
- </select> 
- <input type="text" class="form-control navbar-left " placeholder="Search" name="searchWord">
+	 <div class="form-group navbar-left">
+	 <select class="form-control navbar-left list-group"  name="searchKey"  class="input-group-addon">
+		<option value="festname" ${(param.searchKey == "festname")?"selected=\"selected\"":"" } 
+		  		>행사이름</option>
+		<option value="festdate" ${(param.searchKey == "festdate")?"selected=\"selected\"":"" } 
+		  		>행사날짜</option>
+		<option value="festloc" ${(param.searchKey == "festloc")?"selected=\"selected\"":"" } 
+		  		>행사지역</option>
+		<option value="festname,festloc" ${(param.searchKey == "festname,festloc")?"selected=\"selected\"":"" } 
+		  		>행사이름+행사날짜</option>
+		<option value="festname,festloc" ${(param.searchKey == "festname,festloc")?"selected=\"selected\"":"" } 
+		  		>행사이름+행사지역</option>
+		<option value="festdate,festloc" ${(param.searchKey == "festdate,festloc")?"selected=\"selected\"":"" } 
+		  		>행사날짜+행사지역</option>
+	 </select> 
+ 	<input type="text" class="form-control navbar-left " placeholder="Search" name="searchWord">
  </div>
- <button type="submit" class="btn btn-default">
- <i class="glyphicon glyphicon-search"></i>
- </button>
+ 	<button type="submit" class="btn btn-default">
+ 	<i class="glyphicon glyphicon-search"></i>
+ 	</button>
 </form>
-<table class="table">
-<thead>
-	<tr>
-		<th>행사번호</th>
-		<th>행사이름</th>
-		<th>행사날짜</th>
-		<th>행사지역</th>
-		<th>작성일</th>
-		<th>조회수</th>
-	</tr>
-</thead>
-<tbody>
-<!-- 데이터를 출력하는 반복 처리 -->
-<c:forEach items="${list }" var="FestDTO">
-	<tr class="data">
-		<td>${FestDTO.festno }</td>
-		<td>${FestDTO.festname }</td>
-		<td>${FestDTO.festdate }</td>
-		<td>${FestDTO.festloc }</td>
-		<td>${FestDTO.applydate }</td>
-		<td>${FestDTO.hit }</td>
-	</tr>
-</c:forEach>
-</tbody>
-<tfoot>
-	<tr>
-		<td colspan="3">
-			<ul class="pagination">
-			<c:if test="${pageObject.startPage > 1 }">
-			  <li>
-			  	<a href='FestList.do?page=${pageObject.startPage -1 }&rowPerPage=${(empty param.rowPerPage)?"10":param.rowPerPage}&searchKey=${param.searchKey}&searchWord=${param.searchWord}'>
-			  	<i class="glyphicon glyphicon-backward"></i></a></li>
-			</c:if>
-			<c:forEach begin="${pageObject.startPage }" end="${pageObject.endPage }"
-			var="idx">
-			  <li ${(pageObject.page == idx)?"class='active'":"" }>
-			  	<a href='FestList.do?page=${idx }&rowPerPage=${(empty param.rowPerPage)?"10":param.rowPerPage}'>
-			  	${idx }</a></li>
+
+ <!-- Page Content -->
+      <!-- Page Heading/Breadcrumbs -->
+      <h1 class="mt-4 mb-3">행사일정표
+        <small>일정표 메인 화면</small>
+      </h1>
+
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="/main/main.do">메인</a>
+        </li>
+        <li class="breadcrumb-item active">행사일정표 </li>
+      </ol>
+
+      <!-- Project One -->
+      <div class="row">
+        <div class="col-md-7">
+          <a href="#">
+            <img class="img-fluid rounded mb-3 mb-md-0" src="../../../img/festival1.jpg" alt="음악축제" style="width:650px; height:350px;">
+          </a>
+        </div>
+        <div class="col-md-5">
+          <h3>뮤직 페스티벌</h3>
+          <p>올림픽 공원에서 2018년 5월5일 어린이날을 맞이하여 가족이 모여 음악을 즐길 수 있는 축제가 열립니다...</p>
+			          <!-- 데이터를 출력하는 반복 처리 -->
+			<c:forEach items="${list }" var="FestDTO">
+				<tr class="data">
+					<td>${FestDTO.festno }</td>
+					<td>${FestDTO.festname }</td>
+					<td>${FestDTO.festdate }</td>
+					<td>${FestDTO.festloc }</td>
+					<td>${FestDTO.applydate }</td>
+					<td>${FestDTO.hit }</td>
+				</tr>
 			</c:forEach>
-			<c:if test="${pageObject.endPage != pageObject.totalPage}">
-			  <li>
-			  	<a href='FestList.do?page=${pageObject.endPage + 1 }&rowPerPage=${(empty param.rowPerPage)?"10":param.rowPerPage}&searchKey=${param.searchKey}&searchWord=${param.searchWord}'>
-			  	<i class="glyphicon glyphicon-forward"></i></a></li>
-			</c:if>
-			</ul>
-		</td>
-			<td colspan="2">
-				<div class="btn-group">
-					<button id="write" class="btn btn-primary">글쓰기</button>
-					<button id="reload" class="btn btn-info">새로고침</button>
-				</div>
+          <a class="btn btn-primary" href="#">행사 자세히 보러가기
+            <span class="glyphicon glyphicon-chevron-right"></span>
+          </a>
+        </div>
+      </div>
+      <!-- /.row -->
+
+      <hr>
+
+      <!-- Project Two -->
+      <div class="row">
+        <div class="col-md-7">
+          <a href="#">
+            <img class="img-fluid rounded mb-3 mb-md-0" src="../../../img/festival2.jpg" alt="불꽃축제" style="width:650px; height:350px;">
+          </a>
+        </div>
+        <div class="col-md-5">
+          <h3>불꽃 축제</h3>
+            <p>오는 어버이날에는 잠실나루에서 최고의 효도를 선물할 수 있는 불꽃 축제가 열립니다. 모두 함께 행복한 추억을 만들어 보세요...</p>
+          <a class="btn btn-primary" href="#">행사 자세히 보러가기
+            <span class="glyphicon glyphicon-chevron-right"></span>
+          </a>
+        </div>
+      </div>
+      <!-- /.row -->
+
+      <hr>
+
+      <!-- Project Three -->
+      <div class="row">
+        <div class="col-md-7">
+          <a href="#">
+            <img class="img-fluid rounded mb-3 mb-md-0" src="../../../img/festival3.jpg" alt="장미축제" style="width:650px; height:350px;">
+          </a>
+        </div>
+        <div class="col-md-5">
+          <h3>장미 축제</h3>
+            <p>나와 쌓은 10년의 우정의 고마움을 표현 할 수 있는 축제. 서로에게 장미를 선물하면서 소중한 시간을 보내세요...</p>
+          <a class="btn btn-primary" href="#">행사 자세히 보러가기
+            <span class="glyphicon glyphicon-chevron-right"></span>
+          </a>
+        </div>
+      </div>
+      <!-- /.row -->
+
+      <hr>
+
+    <!-- /.container -->
+	<table>
+		<tr align="center">
+			<td colspan="3">
+				<ul class="pagination">
+				<c:if test="${pageObject.startPage > 1 }">
+				  <li>
+				  	<a href='FestList.do?page=${pageObject.startPage -1 }&rowPerPage=${(empty param.rowPerPage)?"10":param.rowPerPage}&searchKey=${param.searchKey}&searchWord=${param.searchWord}'>
+				  	<i class="glyphicon glyphicon-backward"></i></a></li>
+				</c:if>
+				<c:forEach begin="${pageObject.startPage }" end="${pageObject.endPage }"
+				var="idx">
+				  <li ${(pageObject.page == idx)?"class='active'":"" }>
+				  	<a href='FestList.do?page=${idx }&rowPerPage=${(empty param.rowPerPage)?"10":param.rowPerPage}'>
+				  	${idx }</a></li>
+				</c:forEach>
+				<c:if test="${pageObject.endPage != pageObject.totalPage}">
+				  <li>
+				  	<a href='FestList.do?page=${pageObject.endPage + 1 }&rowPerPage=${(empty param.rowPerPage)?"10":param.rowPerPage}&searchKey=${param.searchKey}&searchWord=${param.searchWord}'>
+				  	<i class="glyphicon glyphicon-forward"></i></a></li>
+				</c:if>
+				</ul>
 			</td>
-	</tr>
-</tfoot>
-</table>
+				<td colspan="2">
+					<div class="btn-group">
+						<button id="write" class="btn btn-primary">글쓰기</button>
+						<button id="reload" class="btn btn-info">새로고침</button>
+					</div>
+				</td>
+		</tr>
+	</table>
 </div>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
