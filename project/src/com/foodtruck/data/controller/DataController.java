@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.foodtruck.util.Beans;
+import com.foodtruck.util.ServiceInterface;
 
 /**
  * Servlet implementation class DataController
@@ -31,11 +32,22 @@ public class DataController extends HttpServlet {
 		// TODO Auto-generated method stub
 		System.out.println(getClass().getName() + ".doGet()");
 		String command = Beans.getURI(request);
+		// 기본으로는 forward 시킨 jsp 파일명을 저장한다. 앞에 redirect:이라고 붙이면 redirect 시킨 uri를 저장한다.
 		String jsp = "";
+		// 실행할 Service를 담는 객체 선언
+		ServiceInterface service = null;
 		System.out.println(command);
 
 		switch (command) {
 
+		case "/data/MongodbDataPrint.do":
+			//데이터를 가져오기 위한 service 객체 
+			service = Beans.getService(command);
+			
+			
+			jsp = Beans.getJsp(command);
+			System.out.println(jsp);
+			break;
 		case "/data/admin.do":
 			jsp = Beans.getJsp(command);
 			System.out.println(jsp);
@@ -45,10 +57,6 @@ public class DataController extends HttpServlet {
 			System.out.println(jsp);
 			break;
 		case "/data/MapPrint.do":
-			jsp = Beans.getJsp(command);
-			System.out.println(jsp);
-			break;
-		case "/data/MongodbDataPrint.do":
 			jsp = Beans.getJsp(command);
 			System.out.println(jsp);
 			break;
@@ -76,18 +84,6 @@ public class DataController extends HttpServlet {
 		switch (command) {
 
 		case "/data/admin.do":
-			jsp = Beans.getJsp(command);
-			System.out.println(jsp);
-			break;
-		case "/data/HuffGravityModelPrint.do":
-			jsp = Beans.getJsp(command);
-			System.out.println(jsp);
-			break;
-		case "/data/MapPrint.do":
-			jsp = Beans.getJsp(command);
-			System.out.println(jsp);
-			break;
-		case "/data/MongodbDataPrint.do":
 			jsp = Beans.getJsp(command);
 			System.out.println(jsp);
 			break;
