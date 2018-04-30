@@ -39,45 +39,94 @@ $(document).ready(function(){
 
       <ol class="breadcrumb" >
         <li class="breadcrumb-item">
-          <a href="/main/main.do">메인</a>
+          <a href="../../main/main.do">메인</a>
         </li>
         <li class="breadcrumb-item active">행사신청서-소비자</li>
       </ol>
+      
+      <div class="row" >
+        <div class="col-lg-8 mb-4" >
+         <div class="control-group form-group" >
+              <div class="controls">
+              	 <label>행사명:</label>
+	              <select class="form-control" name="applyno" id="applyno" required >
+					  <option class="form-control" id="applyno" value="서울/경기">서울/경기</option>
+					  <option class="form-control" id="applyno" value="강원도">강원도</option>
+					  <option class="form-control" id="applyno" value="충청북도">충청북도</option>
+					  <option class="form-control" id="applyno" value="충청남도">충청남도</option>
+					  <option class="form-control" id="applyno" value="경상북도">경상북도</option>
+					  <option class="form-control" id="applyno" value="경상남도">경상남도</option>
+					  <option class="form-control" id="applyno" value="전라북도">전라북도</option>
+					  <option class="form-control" id="applyno" value="전라남도">전라남도</option>
+					  <option class="form-control" id="applyno" value="제주">제주</option>
+				</select>
+				</div>
+            </div>
+        </div>
+      </div>
+      
+      	        <hr style="border: solid #dedede; border-width: 2px 0 0;">
 
       <!-- Contact Form -->
       <!-- In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
       <div class="row" >
         <div class="col-lg-8 mb-4" >
-          <h3>행사 신청서 작성란</h3>
             <div class="control-group form-group" >
-              <div class="controls">
+              <div class="controls" >
                 <label>이름:</label>
                 <input type="text" class="form-control" name="applyname" id="applyname" placeholder="이름을 입력하세요." required />
                 <p class="help-block"></p>
               </div>
             </div>
-            <div class="control-group form-group">
-              <div class="controls">
+            <div class="control-group form-group" >
+              <div class="controls" >
                 <label>연락처:</label>
                 <input type="text" class="form-control" name="applytel" id="applytel" placeholder="연락처를 입력하세요." required />
               </div>
             </div>
             <div class="control-group form-group" >
-              <div class="controls">
+              <div class="controls" >
                 <label>동반인원:</label>
                 <input type="number" class="form-control" name="applyno" id="applyno" placeholder="인원수를 입력하세요." required />
               </div>
             </div>
-            <div class="control-group form-group">
+            <div class="control-group form-group" >
               <div class="controls">
-                <label>거주지역:</label>
-                <input type="radio" class="form-control" name="applyloc" id="applyloc" placeholder="지역을 선택하세요." required />
-              </div>
+              	 <label>거주지역:</label>
+	              <select class="form-control" name="applyno" id="applyno" required >
+					  <option class="form-control" id="applyno" value="서울/경기">서울/경기</option>
+					  <option class="form-control" id="applyno" value="강원도">강원도</option>
+					  <option class="form-control" id="applyno" value="충청북도">충청북도</option>
+					  <option class="form-control" id="applyno" value="충청남도">충청남도</option>
+					  <option class="form-control" id="applyno" value="경상북도">경상북도</option>
+					  <option class="form-control" id="applyno" value="경상남도">경상남도</option>
+					  <option class="form-control" id="applyno" value="전라북도">전라북도</option>
+					  <option class="form-control" id="applyno" value="전라남도">전라남도</option>
+					  <option class="form-control" id="applyno" value="제주">제주</option>
+				</select>
+				</div>
             </div>
             <div class="control-group form-group">
               <div class="controls">
                 <label>참여시간:</label>
-                <input type="text" class="form-control" name="applytime" id="applytime" placeholder="참여시간을 입력하세요." required />
+                 <select class="form-control" name="applytime" id="applytime" required >
+					  <option class="form-control" id="applytime" value="오전9시">9:00 ~</option>
+					  <option class="form-control" id="applytime" value="오전10시">10:00 ~</option>
+					  <option class="form-control" id="applytime" value="오전11시">11:00 ~</option>
+					  <option class="form-control" id="applytime" value="오후12시">12:00 ~</option>
+					  <option class="form-control" id="applytime" value="오후1시">13:00 ~</option>
+					  <option class="form-control" id="applytime" value="오후2시">14:00 ~</option>
+					  <option class="form-control" id="applytime" value="오후3시">15:00 ~</option>
+					  <option class="form-control" id="applytime" value="오후4시">16:00 ~</option>
+					  <option class="form-control" id="applytime" value="오후5시">17:00 ~</option>
+					  <option class="form-control" id="applytime" value="오후6시">18:00 ~</option>
+					  <option class="form-control" id="applytime" value="오후7시">19:00 ~</option>
+					  <option class="form-control" id="applytime" value="오후8시">20:00 ~</option>
+					  <option class="form-control" id="applytime" value="오후9시">21:00 ~</option>
+					  <option class="form-control" id="applytime" value="오후10시">22:00 ~</option>
+					  <option class="form-control" id="applytime" value="오후11시">23:00 ~</option>
+					  <option class="form-control" id="applytime" value="오전12시">24:00 ~</option>
+				</select>
               </div>
             </div>
          	 <table>
