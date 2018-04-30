@@ -64,23 +64,19 @@ $(document).ready(function(){
           </a>
         </div>
         <div class="col-md-5">
-        <table class="data">
-        	<tr>
-	          <td>${FestTruckDTO.truckno}</td>
-			  <td><p>${FestTruckDTO.truckname }</td>
-	          <td><p>${FestTruckDTO.festjoin }<p></td>
-	          <td><p>${FestTruckDTO.country }<p></td>
-	          <td><p>${FestTruckDTO.maindish }<p></td>
-	          <td><p>마음이 벅찬 수제버거 푸드트럭을 소개합니다!<p></td>
-          </tr>
-          </table>
+          <ul class="data" style="list-style: none; display:inline;" >
+	         <li style="font-size:large; font-weight: bolder;">(${FestTruckDTO.truckno})  ${FestTruckDTO.truckname }</li>
+	         <li>${FestTruckDTO.festjoin }</li>
+	         <li>${FestTruckDTO.country }</li>
+	         <li>${FestTruckDTO.maindish }</li>
+         	</ul>
           <a class="btn btn-primary" href="../../fest/FestTruck/FestTruckView.do">푸드트럭 자세히 보러가기
 	            <span class="glyphicon glyphicon-chevron-right"></span></a>
         </div>
         </c:forEach>
               <hr>
         
-      </div>
+  	</div>
       <!-- /.row -->
 
       <hr>
