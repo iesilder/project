@@ -28,9 +28,9 @@ $(document).ready(function(){
 		history.back();
 	});
 	$("#send").click(function(){
-		location = "write.do";
+// 		location = "write.do";
 		
-	});
+1	});
 });
 </script>
 </head>
@@ -46,16 +46,24 @@ $(document).ready(function(){
 					htmlString = "<span>" + x + "</span>";
 					$("#star").append(htmlString);
 					i++;
-					$("#showWrite").text(i);
+					$("#score").text(i);
 					$("#star1").val(i);
 					if (i == 2) {
 						$("#starImg").val("★★");
+						$("#score").val("2");
+
 					} else if (i == 3) {
 						$("#starImg").val("★★★");
+						$("#score").val("3");
+
 					} else if (i == 4) {
 						$("#starImg").val("★★★★");
+						$("#score").val("4");
+
 					} else if (i == 5) {
 						$("#starImg").val("★★★★★");
+						$("#score").val("5");
+
 					}
 				}
 			});
@@ -64,17 +72,24 @@ $(document).ready(function(){
 				if (1 < i) {
 					$("#star span:last").remove();
 					i--;
-					$("#showWrite").text(i);
+					$("#score").text(i);
 					$("#star1").val(i);
 
 					if (i == 2) {
 						$("#starImg").val("★★");
+						$("#score").val("2");
 					} else if (i == 3) {
 						$("#starImg").val("★★★");
+						$("#score").val("3");
+
 					} else if (i == 4) {
 						$("#starImg").val("★★★★");
+						$("#score").val("4");
+
 					} else if (i == 1) {
 						$("#starImg").val("★");
+						$("#score").val("1");
+
 					}
 
 				}
@@ -106,6 +121,7 @@ $(document).ready(function(){
 <!--           <form name="sentMessage" id="contactForm" novalidate> -->
            <form action="reviewwrite.do" method="post">
            <input type="hidden" id="starImg" name="starscore" value="★">
+           <input type="hidden" id="score"name="score1" value="1">
             <div class="control-group form-group">
               <div class="controls">
                 <label>평점:</label>
@@ -119,7 +135,6 @@ $(document).ready(function(){
 						<button id="bt1" type="button">+</button>
 						<button id="bt2" type="button">-</button>
 					</td>
-					<td id="showWrite">1</td>
 				</tr>
 
 				<tr>

@@ -16,17 +16,17 @@ $(document).ready(function(){
 // 	alert("OK");
 	$("#update").click(function(){
 // 		location="update.do?no="+$("#td_no").text();
-		$("#dataForm").attr("action","update.do");
+		$("#dataForm").attr("action","reviewupdate.do");
 		$("#dataForm").submit();
 	});
 	$("#delete").click(function(){
 		if(confirm("정말 삭제하시겠습니까?"))
-			location="delete.do?no="+$("#td_no").text();
+			location="reviewdelete.do?no="+$("#td_no").text();
 	});
 	$("#list").click(function(){
 // 		location="list.do";
 		$("#dataForm input[name='no']").attr("disabled","disabled")
-		$("#dataForm").attr("action","list.do");
+		$("#dataForm").attr("action","reviewlist.do");
 		$("#dataForm").submit();
 	});
 });
@@ -52,23 +52,23 @@ $(document).ready(function(){
 	</tr>
 	<tr>
 		<th>아이디</th>
-		<td id="td_no">${reviewDTO.id}</td>
+		<td>${reviewDTO.id}</td>
 	</tr>
 	<tr>
 		<th>조회수</th>
-		<td id="td_no">${reviewDTO.hit}</td>
+		<td>${reviewDTO.hit}</td>
 	</tr>
 	<tr>
 		<th>회사명</th>
-		<td id="td_no">${reviewDTO.fname}</td>
+		<td>${reviewDTO.fname}</td>
 	</tr>
 	<tr>
 		<th>주요메뉴</th>
-		<td id="td_no">${reviewDTO.maindish}</td>
+		<td>${reviewDTO.maindish}</td>
 	</tr>
 	<tr>
 		<th>행사장소</th>
-		<td id="td_no">${reviewDTO.festloc}</td>
+		<td>${reviewDTO.festloc}</td>
 	</tr>
 	<tr>
 		<th>행사날짜</th>

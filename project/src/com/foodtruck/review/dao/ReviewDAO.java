@@ -47,18 +47,16 @@ public class ReviewDAO {
 				if (list == null)
 					list = new ArrayList<>();
 				// 데이터 하나를 담을 수 있는 BoardDTO객체를 생성한다.
-				ReviewDTO reviewDTO = new ReviewDTO(rs.getInt("rnum"),rs.getInt("score"), rs.getInt("hit"),  
+				ReviewDTO reviewDTO = new ReviewDTO(rs.getInt("rnum"), rs.getInt("score"), rs.getInt("hit"),
 						rs.getString("fname"), rs.getString("maindish"), rs.getString("festloc"),
-						 rs.getString("starscore"));
-
+						rs.getString("starscore"));
 
 				// list에 boardDTO를 담는다.
 				list.add(reviewDTO);
-				
 
 			}
 			System.out.println("다오둥가둥가");
-		
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -96,7 +94,7 @@ public class ReviewDAO {
 			// 6. 표시 rs에서 꺼내서 boardDTO에 담는다.
 			if (rs.next()) {
 				// 생성자가 만들어져 있어야 한다.
-				ReviewDTO = new ReviewDTO(rs.getInt("no"),  rs.getInt("score"), rs.getInt("hit"), rs.getString("id"),
+				ReviewDTO = new ReviewDTO(rs.getInt("no"), rs.getInt("score"), rs.getInt("hit"), rs.getString("id"),
 						rs.getString("fname"), rs.getString("maindish"), rs.getString("festloc"),
 						rs.getString("content"), rs.getString("writedate"), rs.getString("festdate"),
 						rs.getString("starscore"));
@@ -157,13 +155,27 @@ public class ReviewDAO {
 			// 1.드라이버 확인 //2.연결
 			con = DBUtil.getConnection();
 			// 3. sql 작성 - 변하는 데이터 대신 ?를 사용한다.
-			String sql = "insert into reviewboardtest(no,starscore, content) "
-					+ "values(reviewboardtest_seq.nextval, ?,?) ";
+			String sql = "insert into reviewboardtest(no,starscore, content,score) "
+					+ "values(reviewboardtest_seq.nextval, ?,?,?) ";
 			// 4. 처리 객체 생성
 			pstmt = con.prepareStatement(sql);
-//			pstmt.setInt(1, ReviewDTO.getScore()); // 첫번재 ?에 no 세팅
+			// pstmt.setInt(1, ReviewDTO.getScore()); // 첫번재 ?에 no 세팅
 			pstmt.setString(1, ReviewDTO.getStarscore()); // 첫번재 ?에 no 세팅
 			pstmt.setString(2, ReviewDTO.getContent()); // 첫번재 ?에 no 세팅
+			pstmt.setInt(3, ReviewDTO.getScore());
+//						if (ReviewDTO.equals(Starscore) == "★") {
+//				pstmt.setInt(3, 1);
+//			} else if (ReviewDTO.getStarscore() == "★★") {
+//				pstmt.setInt(3, 2);
+//			} else if (ReviewDTO.getStarscore() == "★★★") {
+//				pstmt.setInt(3, 3);
+//			} else if (ReviewDTO.getStarscore() == "★★★★") {
+//				pstmt.setInt(3, 4);
+//			} else if (ReviewDTO.getStarscore() == "★★★★★") {
+//				pstmt.setInt(3, 5);
+//			}
+			System.out.println(ReviewDTO.getStarscore());
+			// pstmt.setInt(3, ReviewDTO.getScore()); // 첫번재 ?에 no 세팅
 			// 5. 처리 객체 실행 -> select: executeQuery(), 그 외: executeUpdate()
 			pstmt.executeUpdate();
 			// 6. 표시 -> 오류가 없으면 정상처리
@@ -180,7 +192,7 @@ public class ReviewDAO {
 	}
 
 	// 게시판 글수정 처리
-	public void update(ReviewDTO ReviewDTO) {
+	public ReviewDTO update(ReviewDTO ReviewDTO, int no) {
 		System.out.println("ReviewDAO.update()");
 		// 오라클에서 데이터를 가져와서 채우는 프로그램 작성.
 		// 필요한 객체 선언
@@ -190,15 +202,19 @@ public class ReviewDAO {
 			// 1.드라이버 확인 //2.연결
 			con = DBUtil.getConnection();
 			// 3. sql 작성 - 변하는 데이터 대신 ?를 사용한다.
-			String sql = "update board set title=?, content=? where no = ? ";
+			String sql = "update reviewboardtest set content=?,starscore=?,score=? where no = ? ";
 			// 4. 처리 객체 생성
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, ReviewDTO.getId()); // 첫번재 ?에 title 세팅
-			pstmt.setString(2, ReviewDTO.getContent()); // 두번재 ?에 content 세팅
-			pstmt.setString(3, ReviewDTO.getStarscore()); // 네번재 ?에 no 세팅
+//			pstmt.setString(1, ReviewDTO.getId()); // 첫번재 ?에 title 세팅
+			pstmt.setInt(4,  no);
+			pstmt.setString(1, ReviewDTO.getContent()); // 두번재 ?에 content 세팅
+			pstmt.setString(2, ReviewDTO.getStarscore()); // 네번재 ?에 no 세팅
+			pstmt.setInt(3, ReviewDTO.getScore()); // 네번재 ?에 no 세팅
+			System.out.println();
 			// 5. 처리 객체 실행 -> select: executeQuery(), 그 외: executeUpdate()
 			pstmt.executeUpdate();
 			// 6. 표시 -> 오류가 없으면 정상처리
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -209,10 +225,11 @@ public class ReviewDAO {
 				e.printStackTrace();
 			}
 		}
+		return ReviewDTO;
 	}
 
 	// 게시판 글삭제 처리
-	public void delete(ReviewDTO ReviewDTO) {
+	public void delete(int no) {
 		System.out.println("ReviewDAO.delete()");
 		// 오라클에서 데이터를 가져와서 채우는 프로그램 작성.
 		// 필요한 객체 선언
@@ -222,10 +239,10 @@ public class ReviewDAO {
 			// 1.드라이버 확인 //2.연결
 			con = DBUtil.getConnection();
 			// 3. sql 작성 - 변하는 데이터 대신 ?를 사용한다.
-			String sql = "delete from board where no = ? ";
+			String sql = "delete from reviewboardtest where no = ? ";
 			// 4. 처리 객체 생성
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, ReviewDTO.getNo()); // 첫번재 ?에 no 세팅
+			pstmt.setInt(1, no); // 첫번재 ?에 no 세팅
 			// 5. 처리 객체 실행 -> select: executeQuery(), 그 외: executeUpdate()
 			pstmt.executeUpdate();
 			// 6. 표시 -> 오류가 없으면 정상처리

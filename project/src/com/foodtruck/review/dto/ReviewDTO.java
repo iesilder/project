@@ -24,12 +24,13 @@ public class ReviewDTO {
 	}
 	
 	//\글쓰기
-public ReviewDTO(int no,  String content, String starscore) {
+public ReviewDTO(int no,  String content, String starscore, int score) {
 		this.no = no;
-//		this.score = score;
 //		this.id = id;
 		this.content = content;
 		this.starscore = starscore;
+		this.score = score;
+
 	}
 
 ////데이터를 넣을 때, 데이터가 다 준비 되어 있는 경우. -> 게시판 글보기 할 때 사용
