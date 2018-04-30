@@ -4,6 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>공지사항 글수정</title>
 <script>
 	$(document).ready(function() {
@@ -12,19 +16,20 @@
 		$("#cancel").click(function() {
 			history.go(-1);
 		});
+		$("#reload").click(function(){
+		    location = "noticeUpdate.do";
+		});
 	});
 </script>
 <link rel="stylesheet" href="../css/board.css" />
 </head>
 <body>
 	<div class="container">
-		<div class="panel_group">
-			<div class="panel panel-primary">
-				<div class="panel-heading">
+		
 					<h1>공지사항 글수정</h1>
-				</div>
+				
 				<div class="panel-body">
-					<form method="post">
+					<form action="noticeUpdate.do" method="post">
 						<input type="hidden" name="page" value="${param.page }" /> <input
 							type="hidden" name="rowPerPage" value="${param.rowPerPage }" />
 						<table>
@@ -59,7 +64,5 @@
 					</form>
 				</div>
 			</div>
-		</div>
-	</div>
 </body>
 </html>
