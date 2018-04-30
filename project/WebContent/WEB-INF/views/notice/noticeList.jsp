@@ -124,7 +124,7 @@ $(document).ready(function(){
 		<td colspan="2">
 			<div class="btn-group">
 				<%if(gradeno >= 9){ %>
-					<button id="write" class="btn btn-primary">글쓰기</button>
+					<button id="write" class="btn btn-primary">공지사항 작성</button>
 				<%} %>
 <!-- 				<button id="reload" class="btn btn-info">새로고침</button> -->
 			</div>
