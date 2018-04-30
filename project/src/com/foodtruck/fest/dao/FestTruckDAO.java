@@ -31,10 +31,10 @@ public class FestTruckDAO {
 			con = DBUtil.getConnection();
 			// 3. sql
 			// 3-1. 원래 데이터를 순서에 맞게 가져온다.
-			String sql = "select truckno, country, maindish, mngrname, mngrtel, to_char(applydate,'yyyy-mm-dd')applydate, hit from festtruckboard order by truckno desc ";
+			String sql = "select truckno, festjoin, truckname, country, maindish, mngrname, mngrtel, to_char(applydate,'yyyy-mm-dd')applydate, hit from festtruckboard order by truckno desc ";
 			// 3-2. 순서에 맞게 가져온 데이터에 rowNum을 붙인다.
-			sql = "select rownum rnum, truckno, country, maindish, mngrname, mngrtel, applydate, hit from (" + sql
-					+ ")";
+			sql = "select rownum rnum, truckno, festjoin, truckname, country, maindish, mngrname, mngrtel, applydate, hit from ("
+					+ sql + ")";
 			// 3-3. 페이지에 맞는 startRow, endRow를 설정한다.
 			sql = "select * from (" + sql + ") where rnum between ? and ?";
 			// 4. 처리문 객체
@@ -52,6 +52,8 @@ public class FestTruckDAO {
 				FestTruckDTO festTruckDTO = new FestTruckDTO();
 				// 데이터를 rs에서 꺼내서 festTruckDTO에 담는다.
 				festTruckDTO.setTruckno(rs.getInt("truckno"));
+				festTruckDTO.setFestjoin(rs.getString("festjoin"));
+				festTruckDTO.setTruckname(rs.getString("truckname"));
 				festTruckDTO.setCountry(rs.getString("country"));
 				festTruckDTO.setMaindish(rs.getString("maindish"));
 				festTruckDTO.setMngrname(rs.getString("mngrname"));
@@ -90,7 +92,7 @@ public class FestTruckDAO {
 			// 1. 드라이버 확인 //2. 연결
 			con = DBUtil.getConnection();
 			// 3. sql문 작성
-			String sql = "select truckno, country, maindish, predppl, applyppl, readyfood, mngrname, mngrtel, to_char(applydate, 'yyyy-mm-dd')applydate, hit from festtruckboard "
+			String sql = "select truckno, festjoin, truckname, country, maindish, predppl, applyppl, readyfood, mngrname, mngrtel, to_char(applydate, 'yyyy-mm-dd')applydate, hit from festtruckboard "
 					+ " where truckno = ? "; // 변하는
 			// 사용
 			// 4. 처리문 객체
@@ -101,7 +103,8 @@ public class FestTruckDAO {
 			// 6. 표시 rs에서 꺼내서 FestDTO에 담는다.
 			if (rs.next()) {
 				// 생성자가 만들어져 있어야 한다.
-				festTruckDTO = new FestTruckDTO(rs.getInt("truckno"), rs.getString("country"), rs.getString("maindish"),
+				festTruckDTO = new FestTruckDTO(rs.getInt("truckno"), rs.getString("festjoin"),
+						rs.getString("truckname"), rs.getString("country"), rs.getString("maindish"),
 						rs.getInt("predppl"), rs.getInt("applyppl"), rs.getInt("readyfood"), rs.getString("mngrname"),
 						rs.getString("mngrtel"), rs.getDate("applydate"), rs.getInt("hit"));
 			}
@@ -131,17 +134,19 @@ public class FestTruckDAO {
 			// 1. 드라이버 확인 //2. 연결
 			con = DBUtil.getConnection();
 			// 3. sql문 작성
-			String sql = "insert into festtruckboard(truckno, country, maindish, predppl, applyppl, readyfood, mngrname, mngrtel) "
-					+ " values(festtruckboard_seq.nextval, ?, ?, ?, ? ,?, ?, ?) "; // 변하는 데이터 대신 ? 사용
+			String sql = "insert into festtruckboard(truckno, festjoin, truckname, country, maindish, predppl, applyppl, readyfood, mngrname, mngrtel) "
+					+ " values(festtruckboard_seq.nextval, ?, ?, ?, ?, ?, ? ,?, ?, ?) "; // 변하는 데이터 대신 ? 사용
 			// 4. 처리문 객체
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, festTruckDTO.getCountry());
-			pstmt.setString(2, festTruckDTO.getMaindish());
-			pstmt.setInt(3, festTruckDTO.getPredppl());
-			pstmt.setInt(4, festTruckDTO.getApplyppl());
-			pstmt.setInt(5, festTruckDTO.getReadyfood());
-			pstmt.setString(6, festTruckDTO.getMngrname());
-			pstmt.setString(7, festTruckDTO.getMngrtel());
+			pstmt.setString(1, festTruckDTO.getFestjoin());
+			pstmt.setString(2, festTruckDTO.getTruckname());
+			pstmt.setString(3, festTruckDTO.getCountry());
+			pstmt.setString(4, festTruckDTO.getMaindish());
+			pstmt.setInt(5, festTruckDTO.getPredppl());
+			pstmt.setInt(6, festTruckDTO.getApplyppl());
+			pstmt.setInt(7, festTruckDTO.getReadyfood());
+			pstmt.setString(8, festTruckDTO.getMngrname());
+			pstmt.setString(9, festTruckDTO.getMngrtel());
 			// 5. 실행 -> select: executeQuery()
 			// insert, update, delete:executeUpdate()
 			pstmt.executeUpdate();
@@ -202,18 +207,20 @@ public class FestTruckDAO {
 			// 1. 드라이버 확인 //2. 연결
 			con = DBUtil.getConnection();
 			// 3. sql문 작성
-			String sql = "update festtruckboard set country = ?, maindish = ?, predppl = ?, applyppl=?, readyfood=?, mngrname= ?, mngrtel=? "
+			String sql = "update festtruckboard set festjoin = ?, truckname = ?,  country = ?, maindish = ?, predppl = ?, applyppl=?, readyfood=?, mngrname= ?, mngrtel=? "
 					+ " where truckno = ? "; // 변하는 데이터 대신
 			// ? 사용
 			// 4. 처리문 객체
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, festTruckDTO.getCountry());
-			pstmt.setString(2, festTruckDTO.getMaindish());
-			pstmt.setInt(3, festTruckDTO.getPredppl());
-			pstmt.setInt(4, festTruckDTO.getApplyppl());
-			pstmt.setInt(5, festTruckDTO.getReadyfood());
-			pstmt.setString(6, festTruckDTO.getMngrname());
-			pstmt.setString(7, festTruckDTO.getMngrtel());
+			pstmt.setString(1, festTruckDTO.getFestjoin());
+			pstmt.setString(2, festTruckDTO.getTruckname());
+			pstmt.setString(3, festTruckDTO.getCountry());
+			pstmt.setString(4, festTruckDTO.getMaindish());
+			pstmt.setInt(5, festTruckDTO.getPredppl());
+			pstmt.setInt(6, festTruckDTO.getApplyppl());
+			pstmt.setInt(7, festTruckDTO.getReadyfood());
+			pstmt.setString(8, festTruckDTO.getMngrname());
+			pstmt.setString(9, festTruckDTO.getMngrtel());
 			// 5. 실행 -> select: executeQuery()
 			// insert, update, delete:executeUpdate()
 			pstmt.executeUpdate();

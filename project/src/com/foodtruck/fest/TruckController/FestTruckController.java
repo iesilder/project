@@ -88,14 +88,14 @@ public class FestTruckController extends HttpServlet {
 			// [푸드트럭 신청서] 글보기 - get방식으로 데이터가 들어온다.
 			case "/fest/FestMngr/FestTruckView.do":
 				// 글번호로 넘어오기 때문에 int festNo를 받는다.
-				int truckNo = Integer.parseInt(request.getParameter("truckNo"));
+				int truckno = Integer.parseInt(request.getParameter("truckno"));
 				// command.properties의 BoardViewService 필요함
 				service = Beans.getService(command);
 				// service를 실행해서 DB에서 FestDTO를 가져와서 request에 담기
 				// 번호로 넘어오니까 festNo로 선언
 				// 넘길 때 ArrayList<>로 캐스팅해서 사용함으로 0번째:festNo[int], 1번째:isView[boolean]를 넣는다.
 				ArrayList<Object> executeObj1 = new ArrayList<>();
-				executeObj1.add(truckNo);
+				executeObj1.add(truckno);
 				executeObj1.add(true); // 조회수를 1 증가 시킨다!
 				request.setAttribute("truckDTO", service.execute(executeObj1));
 				// jsp 이름을 만들어 내고, 밑에서 forward 시킨다.
@@ -105,15 +105,15 @@ public class FestTruckController extends HttpServlet {
 
 			// 글수정 폼 - get방식으로 데이터가 들어온다.
 			case "/fest/FestTruck/TruckUpdate.do":
-				// 글번호로 넘어오기 때문에 int truckNo를 받는다.
-				int truckNo2 = Integer.parseInt(request.getParameter("truckNo"));
+				// 글번호로 넘어오기 때문에 int truckno를 받는다.
+				int truckno2 = Integer.parseInt(request.getParameter("truckno"));
 				// command.properties의 BoardViewService 필요함
 				service = Beans.getService("/fest/FestMngr/FestView.do");
 				// service를 실행해서 DB에서 FestTruckDTO를 가져와서 request에 담기
-				// 번호로 넘어오니까 truckNo로 선언
-				// 넘길 때 ArrayList<>로 캐스팅해서 사용함으로 0번째:truckNo[int], 1번째:isView[boolean]를 넣는다.
+				// 번호로 넘어오니까 truckno로 선언
+				// 넘길 때 ArrayList<>로 캐스팅해서 사용함으로 0번째:truckno[int], 1번째:isView[boolean]를 넣는다.
 				ArrayList<Object> executeObj = new ArrayList<>();
-				executeObj.add(truckNo2);
+				executeObj.add(truckno2);
 				executeObj.add(false); // 조회수 1증가를 시키지 않는다.
 				request.setAttribute("festTruckDTO", service.execute(executeObj));
 				// jsp 이름을 만들어 내고, 밑에서 forward 시킨다.
@@ -126,7 +126,7 @@ public class FestTruckController extends HttpServlet {
 				// 삭제처리 할 서비스를 가져오자. BoardDeleteService가 필요함
 				service = Beans.getService(command);
 				// 글번호를 받아서 삭제 처리한다.
-				service.execute(Integer.parseInt(request.getParameter("truckNo")));
+				service.execute(Integer.parseInt(request.getParameter("truckno")));
 				// jsp 이름을 만들어 내고, 밑에서 forward 시킨다.
 				viewJSP = "redirect:FestList.do";
 				System.out.println(viewJSP);
@@ -169,7 +169,8 @@ public class FestTruckController extends HttpServlet {
 			case "/fest/FestTruck/TruckWrite.do":
 				// 넘어오는 데이터를 festTruckDTO에 담는다
 				// 넘어오는 데이터 name과 동일하게 작성해야한다.
-				FestTruckDTO festTruckDTO = new FestTruckDTO(request.getParameter("country"),
+				FestTruckDTO festTruckDTO = new FestTruckDTO(request.getParameter("festjoin"),
+						request.getParameter("truckname"), request.getParameter("country"),
 						request.getParameter("maindish"), Integer.parseInt(request.getParameter("predppl")),
 						Integer.parseInt(request.getParameter("applyppl")),
 						Integer.parseInt(request.getParameter("readyfood")), request.getParameter("mngrname"),
@@ -187,7 +188,8 @@ public class FestTruckController extends HttpServlet {
 			case "/fest/FestTruck/TruckUpdate.do":
 				// 넘어오는 데이터를 festTruckDTO에 담는다
 				// 넘어오는 데이터 name과 동일하게 작성해야한다.
-				FestTruckDTO festTruckDTO2 = new FestTruckDTO(request.getParameter("country"),
+				FestTruckDTO festTruckDTO2 = new FestTruckDTO(request.getParameter("festjoin"),
+						request.getParameter("truckname"), request.getParameter("country"),
 						request.getParameter("maindish"), Integer.parseInt(request.getParameter("predppl")),
 						Integer.parseInt(request.getParameter("applyppl")),
 						Integer.parseInt(request.getParameter("readyfood")), request.getParameter("mngrname"),
@@ -199,7 +201,7 @@ public class FestTruckController extends HttpServlet {
 				service.execute(festTruckDTO2);
 				// 현재위치에 있는 리스트: 상대주소
 				// 끝나면 글보기로 자동 이동한다.
-				viewJSP = "view.do?truckNo=" + festTruckDTO2.getTruckno() + "$page=" + request.getParameter("page")
+				viewJSP = "view.do?truckno=" + festTruckDTO2.getTruckno() + "$page=" + request.getParameter("page")
 						+ "$rowPerPage=" + request.getParameter("rowPerPage");
 				System.out.println(viewJSP);
 				break;

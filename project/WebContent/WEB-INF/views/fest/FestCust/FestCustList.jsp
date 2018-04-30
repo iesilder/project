@@ -38,10 +38,8 @@ $(document).ready(function(){
 <link rel="stylesheet" href="../css/board.css" />
 </head>
 <body>
-<h1>게시판 리스트</h1>
+<h1>소비자 신청서 리스트</h1>
 <div class="container">
-  <h2>Basic Table</h2>
-  <p>The .table class adds basic styling (light padding and only horizontal dividers) to a table:</p>
  <form class="navbar-form">
  <input name="page" value="1" type="hidden" />
 	<input name="rowPerPage" value='${(empty param.rowPerPage)?"10":param.rowPerPage}' type="hidden" />

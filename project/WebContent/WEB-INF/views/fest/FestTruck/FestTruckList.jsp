@@ -1,6 +1,6 @@
-<%@page import="com.foodtruck.fest.dto.FestTruckDTO"%>
+<%@page import="com.foodtruck.fest.dto.FestDTO"%>
 <%@page import="java.util.List"%>
-<%@page import="com.foodtruck.fest.TruckService.FestTruckListService"%>
+<%@page import="com.foodtruck.fest.FestService.FestListService"%>
 <%@taglib prefix="decorator"
 	uri="http://www.opensymphony.com/sitemesh/decorator"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -18,17 +18,20 @@ pageContext.setAttribute("absURI", request.getContextPath());
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>게시판 리스트</title>
+<title>푸드트럭 리스트</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
 // 	alert("OK");
-    $(".data").click(function(){
-//         $(this).hide();
-        var truckno = $(this).find("td:first").text();
-// 		alert("click");
-// 		alert(truckno);
-		location = "FestTruckView.do?truckno="+truckno+'&page=${pageObject.page}&rowPerPage=${(empty param.rowPerPage)?"10":param.rowPerPage}&searchKey=${param.searchKey}&searchWord=${param.searchWord}';
+//     $(".data").click(function(){
+// //         $(this).hide();
+//         var festno = $(this).find("h3:first").text();
+// // 		alert("click");
+// // 		alert(festno);
+// 		location = "FestView.do?festno="+festno+'&page=${pageObject.page}&rowPerPage=${(empty param.rowPerPage)?"10":param.rowPerPage}&searchKey=${param.searchKey}&searchWord=${param.searchWord}';
+//     });
+    $("#write").click(function(){
+    	location = "TruckWrite.do";
     });
     $("#reload").click(function(){
     	location = "FestTruckList.do";
@@ -38,95 +41,127 @@ $(document).ready(function(){
 <link rel="stylesheet" href="../css/board.css" />
 </head>
 <body>
-<h1>게시판 리스트</h1>
 <div class="container">
-  <h2>Basic Table</h2>
-  <p>The .table class adds basic styling (light padding and only horizontal dividers) to a table:</p>
- <form class="navbar-form">
- <input name="page" value="1" type="hidden" />
-	<input name="rowPerPage" value='${(empty param.rowPerPage)?"10":param.rowPerPage}' type="hidden" />
- <div class="form-group navbar-left">
- <select class="form-control navbar-left list-group"  name="searchKey"  class="input-group-addon">
-<option value="country" ${(param.searchKey == "country")?"selected=\"selected\"":"" } 
-  		>국적</option>
-<option value="maindish" ${(param.searchKey == "maindish")?"selected=\"selected\"":"" } 
-  		>주요 메뉴</option>
-<option value="mngrname" ${(param.searchKey == "mngrname")?"selected=\"selected\"":"" } 
-  		>매니저 이름</option>
-<option value="mngrtel" ${(param.searchKey == "mngrtel")?"selected=\"selected\"":"" } 
-  		>매니저 연락처</option>
-<option value="applydate" ${(param.searchKey == "applydate")?"selected=\"selected\"":"" } 
-  		>접수 날짜</option>
-<option value="applyname,applytel" ${(param.searchKey == "country,maindish")?"selected=\"selected\"":"" } 
-  		>국적+주요메뉴</option>
-<option value="applyname,applydate" ${(param.searchKey == "mngrname,mngrtel")?"selected=\"selected\"":"" } 
-  		>매니저 이름+매니저 연락처</option>
-<option value="applytel,applydate" ${(param.searchKey == "mngrtel,applydate")?"selected=\"selected\"":"" } 
-  		>매니저 연락처+접수 날짜</option>
- </select> 
- <input type="text" class="form-control navbar-left " placeholder="Search" name="searchWord">
- </div>
- <button type="submit" class="btn btn-default">
- <i class="glyphicon glyphicon-search"></i>
- </button>
-</form>
-<table class="table">
-<thead>
-	<tr>
-		<th>푸드트럭번호</th>
-		<th>국적</th>
-		<th>주요 메뉴</th>
-		<th>매니저 이름</th>
-		<th>매니저 연락처</th>
-		<th>접수 날짜</th>
-		<th>조회수</th>
-	</tr>
-</thead>
-<tbody>
-<!-- 데이터를 출력하는 반복 처리 -->
-<c:forEach items="${list }" var="FestTruckDTO">
-	<tr class="data">
-		<td>${FestTruckDTO.truckno }</td>
-		<td>${FestTruckDTO.country }</td>
-		<td>${FestTruckDTO.maindish }</td>
-		<td>${FestTruckDTO.mngrname }</td>
-		<td>${FestTruckDTO.mngrtel }</td>
-		<td>${FestTruckDTO.applydate }</td>
-		<td>${FestTruckDTO.hit }</td>
-	</tr>
-</c:forEach>
-</tbody>
-<tfoot>
-	<tr>
-		<td colspan="3">
-			<ul class="pagination">
-			<c:if test="${pageObject.startPage > 1 }">
-			  <li>
-			  	<a href='FestTruckList.do?page=${pageObject.startPage -1 }&rowPerPage=${(empty param.rowPerPage)?"10":param.rowPerPage}&searchKey=${param.searchKey}&searchWord=${param.searchWord}'>
-			  	<i class="glyphicon glyphicon-backward"></i></a></li>
-			</c:if>
-			<c:forEach begin="${pageObject.startPage }" end="${pageObject.endPage }"
-			var="idx">
-			  <li ${(pageObject.page == idx)?"class='active'":"" }>
-			  	<a href='FestTruckList.do?page=${idx }&rowPerPage=${(empty param.rowPerPage)?"10":param.rowPerPage}'>
-			  	${idx }</a></li>
-			</c:forEach>
-			<c:if test="${pageObject.endPage != pageObject.totalPage}">
-			  <li>
-			  	<a href='FestTruckList.do?page=${pageObject.endPage + 1 }&rowPerPage=${(empty param.rowPerPage)?"10":param.rowPerPage}&searchKey=${param.searchKey}&searchWord=${param.searchWord}'>
-			  	<i class="glyphicon glyphicon-forward"></i></a></li>
-			</c:if>
-			</ul>
-		</td>
-			<td colspan="2">
-				<div class="btn-group">
-					<button id="write" class="btn btn-primary">글쓰기</button>
-					<button id="reload" class="btn btn-info">새로고침</button>
-				</div>
+ <!-- Page Content -->
+      <!-- Page Heading/Breadcrumbs -->
+      <h1 class="mt-4 mb-3">푸드트럭
+        <small>알아보기</small>
+      </h1>
+
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="../../main/main.do">메인</a>
+        </li>
+        <li class="breadcrumb-item active">푸드트럭 </li>
+      </ol>
+
+      <!-- Project One -->
+      <div class="row">
+      	<c:forEach items="${list }" var="FestTruckDTO">
+  		<div class="col-md-7">
+          <a href="#">
+            <img class="img-fluid rounded mb-3 mb-md-0" src="../../../img/portfolio_4 - burger 700x400.jpg" alt="버버 푸드트럭" style="width:650px; height:350px;">
+          </a>
+        </div>
+        <div class="col-md-5">
+          <h3>(${FestTruckDTO.truckno}) ${FestTruckDTO.truckname }</h3>
+          <p>${FestTruckDTO.festjoin }</p>
+          <p>${FestTruckDTO.country }</p>
+          <p>${FestTruckDTO.maindish }</p>
+          <p>마음이 벅찬 수제버거 푸드트럭을 소개합니다!</p>
+          <a class="btn btn-primary" href="../FestTruck/FestTruckView.do">푸드트럭 자세히 보러가기
+            <span class="glyphicon glyphicon-chevron-right"></span>
+          </a>
+        </div>
+        </c:forEach>
+              <hr>
+        
+      </div>
+      <!-- /.row -->
+
+      <hr>
+
+      <!-- Project Two -->
+      <div class="row">
+        <div class="col-md-7">
+          <a href="../../error/ing.jsp">
+            <img class="img-fluid rounded mb-3 mb-md-0" src="../../../img/portfolio_4 - mexican 700x400.jpg" alt="신나쵸" style="width:650px; height:350px;">
+          </a>
+        </div>
+        <div class="col-md-5">
+          <h3>(3) 신나쵸</h3>
+          	<p>잠실나루-불꽃축제-2018-05-08</p>
+          	<p>멕시코</p>
+          	<p>나쵸</p>
+            <p>우리 다같이 나쵸를 먹고 신나쵸 푸드트럭을 외칩시다!!</p>
+          <a class="btn btn-primary" href="../../error/ing.jsp">푸드트럭 자세히 보러가기
+            <span class="glyphicon glyphicon-chevron-right"></span>
+          </a>
+        </div>
+      </div>
+      <!-- /.row -->
+
+      <hr>
+
+      <!-- Project Three -->
+      <div class="row">
+        <div class="col-md-7">
+          <a href="../../error/ing.jsp">
+            <img class="img-fluid rounded mb-3 mb-md-0" src="../../../img/portfolio_4 - waffle 700x400.jpg" alt="너와나플" style="width:650px; height:350px;">
+          </a>
+        </div>
+        <div class="col-md-5">
+          <h3>(4) 너와나플</h3>
+            <p>에버랜드-장미축제-2018-05-20</p>
+          	 <p>기타</p>
+          	<p>와플</p>
+            <p>혼자 와플 먹으면, 슬프죠. 너도나도 함께 즐기는 너와나플 푸드트럭!</p>
+          <a class="btn btn-primary" href="../../error/ing.jsp">푸드트럭 자세히 보러가기
+            <span class="glyphicon glyphicon-chevron-right"></span>
+          </a>
+        </div>
+      </div>
+      <!-- /.row -->
+
+      <hr>
+
+<div class=container>
+    <!-- /.container -->
+	<table>
+		<tr align="center">
+			<td colspan="3">
+				<ul class="pagination">
+				<c:if test="${pageObject.startPage > 1 }">
+				  <li>
+				  	<a href='FestTruckList.do?page=${pageObject.startPage -1 }&rowPerPage=${(empty param.rowPerPage)?"10":param.rowPerPage}&searchKey=${param.searchKey}&searchWord=${param.searchWord}'>
+				  	<i class="glyphicon glyphicon-backward"></i></a></li>
+				</c:if>
+				<c:forEach begin="${pageObject.startPage }" end="${pageObject.endPage }"
+				var="idx">
+				  <li ${(pageObject.page == idx)?"class='active'":"" }>
+				  	<a href='FestTruckList.do?page=${idx }&rowPerPage=${(empty param.rowPerPage)?"10":param.rowPerPage}'>
+				  	${idx }</a></li>
+				</c:forEach>
+				<c:if test="${pageObject.endPage != pageObject.totalPage}">
+				  <li>
+				  	<a href='FestTruckList.do?page=${pageObject.endPage + 1 }&rowPerPage=${(empty param.rowPerPage)?"10":param.rowPerPage}&searchKey=${param.searchKey}&searchWord=${param.searchWord}'>
+				  	<i class="glyphicon glyphicon-forward"></i></a></li>
+				</c:if>
+				</ul>
 			</td>
-	</tr>
-</tfoot>
-</table>
+				<td colspan="2">
+					<div class="btn-group">
+						<button id="write" class="btn btn-primary">글쓰기</button>
+						<button id="reload" class="btn btn-info">새로고침</button>
+					</div>
+				</td>
+		</tr>
+	</table>
+	</div>
 </div>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

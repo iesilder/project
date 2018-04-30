@@ -19,7 +19,6 @@ $(document).ready(function(){
 // 	alert("OK");
 	// 버튼 이벤트 처리
 // 	수정 & 수정취소 버튼을 일단 숨긴다. 
-	$("#replyUpdateDiv").hide();
 	
 	$("#update").click(function(){
 // 		location="update.do?festno="+$("#td_festno").text();

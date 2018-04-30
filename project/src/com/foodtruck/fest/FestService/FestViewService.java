@@ -16,9 +16,10 @@ public class FestViewService implements ServiceInterface {
 		this.festDAO = (FestDAO) obj;
 	}
 
+	// ArrayList에 넣어서 아래 int와 boolean 객체를 받는다. get(0) - no, get(1) - isView
+	// update Form으로 갈 때 실행해서 데이터를 가져간다. view할 때 사용한다.
 	@Override
-	public FestDTO execute(Object objs) throws Exception {
-		// TODO Auto-generated method stub
+	public FestDTO execute(Object objs) {
 		System.out.println("FestViewService.excute()");
 		// 원래는 excute()에 타입을 선언하였으나, ServInt에는 하나만 받을 수 있게 하였다
 		// 따라서 두개인 타입을 ArrayList<>에 넣어서 꺼내 사용한다.
@@ -35,4 +36,5 @@ public class FestViewService implements ServiceInterface {
 		festDTO = festDAO.view(festno);
 		return festDTO;
 	}
+
 }

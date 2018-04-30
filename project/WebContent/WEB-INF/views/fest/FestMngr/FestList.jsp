@@ -64,11 +64,11 @@ $(document).ready(function(){
           </a>
         </div>
         <div class="col-md-5">
-          <h3>${FestDTO.festname }</h3>
+          <h3>(${FestDTO.festno}) ${FestDTO.festname }</h3>
           <p>${FestDTO.festdate }</p>
           <p>${FestDTO.festloc }</p>
           <p>올림픽 공원에서 2018년 5월5일 어린이날을 맞이하여 가족이 모여 음악을 즐길 수 있는 축제가 열립니다...</p>
-          <a class="btn btn-primary" href="/fest/FestMngr/FestView.do">행사 자세히 보러가기
+          <a class="btn btn-primary" href="../FestMngr/FestView.do">행사 자세히 보러가기
             <span class="glyphicon glyphicon-chevron-right"></span>
           </a>
         </div>

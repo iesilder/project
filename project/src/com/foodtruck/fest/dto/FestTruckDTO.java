@@ -5,7 +5,7 @@ import java.util.Date;
 public class FestTruckDTO {
 
 	private int truckno;
-	private String country, maindish;
+	private String festjoin, truckname, country, maindish;
 	private int predppl, applyppl, readyfood;
 	private String mngrname, mngrtel;
 	private Date applydate;
@@ -17,9 +17,11 @@ public class FestTruckDTO {
 	}
 
 	// 푸드트럭 신청서 리스트용
-	public FestTruckDTO(int truckno, String country, String maindish, String mngrname, String mngrtel, Date applydate,
-			int hit) {
+	public FestTruckDTO(int truckno, String festjoin, String truckname, String country, String maindish,
+			String mngrname, String mngrtel, Date applydate, int hit) {
 		this.truckno = truckno;
+		this.festjoin = festjoin;
+		this.truckname = truckname;
 		this.country = country;
 		this.maindish = maindish;
 		this.mngrname = mngrname;
@@ -29,9 +31,11 @@ public class FestTruckDTO {
 	}
 
 	// 푸드트럭 신청서 글보기용
-	public FestTruckDTO(int truckno, String country, String maindish, int predppl, int applyppl, int readyfood,
-			String mngrname, String mngrtel, Date applydate, int hit) {
+	public FestTruckDTO(int truckno, String festjoin, String truckname, String country, String maindish, int predppl,
+			int applyppl, int readyfood, String mngrname, String mngrtel, Date applydate, int hit) {
 		this.truckno = truckno;
+		this.festjoin = festjoin;
+		this.truckname = truckname;
 		this.country = country;
 		this.maindish = maindish;
 		this.predppl = predppl;
@@ -44,8 +48,10 @@ public class FestTruckDTO {
 	}
 
 	// 푸드트럭 신청서 글등록 및 수정용
-	public FestTruckDTO(String country, String maindish, int predppl, int applyppl, int readyfood, String mngrname,
-			String mngrtel) {
+	public FestTruckDTO(String festjoin, String truckname, String country, String maindish, int predppl, int applyppl,
+			int readyfood, String mngrname, String mngrtel) {
+		this.festjoin = festjoin;
+		this.truckname = truckname;
 		this.country = country;
 		this.maindish = maindish;
 		this.predppl = predppl;
@@ -135,11 +141,28 @@ public class FestTruckDTO {
 		this.hit = hit;
 	}
 
+	public String getTruckname() {
+		return truckname;
+	}
+
+	public void setTruckname(String truckname) {
+		this.truckname = truckname;
+	}
+
+	public String getFestjoin() {
+		return festjoin;
+	}
+
+	public void setFestjoin(String festjoin) {
+		this.festjoin = festjoin;
+	}
+
 	@Override
 	public String toString() {
-		return "FestTruckDTO [truckno=" + truckno + ", country=" + country + ", maindish=" + maindish + ", predppl="
-				+ predppl + ", applyppl=" + applyppl + ", readyfood=" + readyfood + ", mngrname=" + mngrname
-				+ ", mngrtel=" + mngrtel + ",applydate=" + applydate + ", hit=" + hit + "]";
+		return "FestTruckDTO [truckno=" + truckno + ", festjoin=" + festjoin + ", truckname=" + truckname + ", country="
+				+ country + ", maindish=" + maindish + ", predppl=" + predppl + ", applyppl=" + applyppl
+				+ ", readyfood=" + readyfood + ", mngrname=" + mngrname + ", mngrtel=" + mngrtel + ", applydate="
+				+ applydate + ", hit=" + hit + "]";
 	}
 
 }

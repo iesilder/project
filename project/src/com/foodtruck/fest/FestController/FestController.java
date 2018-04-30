@@ -87,16 +87,16 @@ public class FestController extends HttpServlet {
 			// [행사일정] 글보기 - get방식으로 데이터가 들어온다.
 			case "/fest/FestMngr/FestView.do":
 				// 글번호로 넘어오기 때문에 int festno를 받는다.
-				int festno2 = Integer.parseInt(request.getParameter("festno"));
+				int festno = Integer.parseInt(request.getParameter("festno"));
 				// command.properties의 BoardViewService 필요함
 				service = Beans.getService(command);
 				// service를 실행해서 DB에서 FestDTO를 가져와서 request에 담기
 				// 번호로 넘어오니까 festno로 선언
 				// 넘길 때 ArrayList<>로 캐스팅해서 사용함으로 0번째:festno[int], 1번째:isView[boolean]를 넣는다.
 				ArrayList<Object> executeObj = new ArrayList<>();
-				executeObj.add(festno2);
+				executeObj.add(festno);
 				executeObj.add(true); // 조회수를 1 증가 시킨다!
-				request.setAttribute("FestDTO", service.execute(executeObj));
+				request.setAttribute("festDTO", service.execute(executeObj));
 				// jsp 이름을 만들어 내고, 밑에서 forward 시킨다.
 				viewJSP = Beans.getJsp(command);
 				System.out.println(viewJSP);
@@ -105,16 +105,16 @@ public class FestController extends HttpServlet {
 			// [행사일정]글수정 폼 - get방식으로 데이터가 들어온다.
 			case "/fest/FestMngr/FestUpdate.do":
 				// 글번호로 넘어오기 때문에 int festno를 받는다.
-				int festno = Integer.parseInt(request.getParameter("festno"));
+				int festno2 = Integer.parseInt(request.getParameter("festno"));
 				// command.properties의 BoardViewService 필요함
 				service = Beans.getService("/fest/FestMngr/FestView.do");
 				// service를 실행해서 DB에서 FestDTO를 가져와서 request에 담기
 				// 번호로 넘어오니까 festno로 선언s
 				// 넘길 때 ArrayList<>로 캐스팅해서 사용함으로 0번째:festno[int], 1번째:isView[boolean]를 넣는다.
 				ArrayList<Object> executeObj2 = new ArrayList<>();
-				executeObj2.add(festno);
+				executeObj2.add(festno2);
 				executeObj2.add(false); // 조회수 1증가를 시키지 않는다.
-				request.setAttribute("FestDTO", service.execute(executeObj2));
+				request.setAttribute("festDTO", service.execute(executeObj2));
 				// jsp 이름을 만들어 내고, 밑에서 forward 시킨다.
 				viewJSP = Beans.getJsp(command);
 				System.out.println(viewJSP);
@@ -130,8 +130,8 @@ public class FestController extends HttpServlet {
 				viewJSP = "redirect:FestList.do";
 				System.out.println(viewJSP);
 				break;
-				
-			//오류를 자세히 보기 위해 추가 - 유태선
+
+			// 오류를 자세히 보기 위해 추가 - 유태선
 			default:
 				System.out.println("존재하지 않는 URI(자원)를 요청하였습니다");
 				viewJSP = "/WEB-INF/views/error/404.jsp";
