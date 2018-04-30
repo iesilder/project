@@ -24,6 +24,14 @@
 <%
 System.out.println("default_decorator.jsp:"+request.getContextPath());
 pageContext.setAttribute("absUri", request.getContextPath());
+
+	//관리자용 페이지를 위한 처리 - 유태선 20180430
+	int gradeno;
+	if(session.getAttribute("gradeno") != null){
+		gradeno = (int) session.getAttribute("gradeno");
+	}else{
+		gradeno = 0;
+	}
 %>
 <!DOCTYPE html>
 <html>
@@ -90,6 +98,23 @@ article {
 	color: grey;
 	margin: 0 auto;
 }
+
+.container li ul {
+background: #800080;
+display:none;  /* 평상시에는 서브메뉴가 안보이게 하기 */
+height:auto;
+padding:0px;
+margin:0px;
+border:0px;
+position:absolute;
+width:130px;
+z-index:200;
+}
+.container li:hover ul {
+display:block;   /* 마우스 커서 올리면 서브메뉴 보이게 하기 */
+list-style: none;
+}
+
 </style>
 <decorator:head/>
 </head>
@@ -115,16 +140,19 @@ article {
 			            </li>
 						<li><a href="${absUri }/review/reviewlist.do">리뷰</a></li>
 						<li><a href="${absUri }/notice/noticeList.do">공지사항</a></li>
-						<li class="nav-item dropdown">
+						<li class="dropdown">
 			              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			                	데이터 분석
 			              </a>
-			              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-			                <a class="dropdown-item" href="blog-home-1.html">Blog Home 1</a>
-			                <a class="dropdown-item" href="blog-home-2.html">Blog Home 2</a>
-			                <a class="dropdown-item" href="blog-post.html">Blog Post</a>
-			              </div>
-			            </li>
+			                <ul>
+				                <li><a class="dropdown-item" href="${absUri }/notice/noticeList.do">상권분석</a></li>
+				                <li><a class="dropdown-item" href="${absUri }/notice/noticeList.do">공공데이터</a></li>
+				                <li><a class="dropdown-item" href="${absUri }/notice/noticeList.do">푸드트럭 지도</a></li>
+				                <%if(gradeno >= 9 ){ %>
+				                <li><a class="dropdown-item" href="${absUri }/notice/noticeList.do">관리자용 페이지</a></li>
+			              		<%} %>
+			              	</ul>
+			            	</li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 					    <c:if test="${ empty id }">
