@@ -50,7 +50,7 @@ $(document).ready(function(){
 
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="/main/main.do">메인</a>
+          <a href="../../main/main.do">메인</a>
         </li>
         <li class="breadcrumb-item active">행사일정표 </li>
       </ol>
@@ -83,7 +83,7 @@ $(document).ready(function(){
       <!-- Project Two -->
       <div class="row">
         <div class="col-md-7">
-          <a href="#">
+          <a href="../../error/ing.jsp">
             <img class="img-fluid rounded mb-3 mb-md-0" src="../../../img/festival2.jpg" alt="불꽃축제" style="width:650px; height:350px;">
           </a>
         </div>
@@ -104,7 +104,7 @@ $(document).ready(function(){
       <!-- Project Three -->
       <div class="row">
         <div class="col-md-7">
-          <a href="#">
+          <a href="../../error/ing.jsp">
             <img class="img-fluid rounded mb-3 mb-md-0" src="../../../img/festival3.jpg" alt="장미축제" style="width:650px; height:350px;">
           </a>
         </div>
@@ -113,7 +113,7 @@ $(document).ready(function(){
             <p>2018-05-20</p>
           	<p>경기-용인</p>
             <p>나와 쌓은 10년의 우정의 고마움을 표현 할 수 있는 축제. 서로에게 장미를 선물하면서 소중한 시간을 보내세요...</p>
-          <a class="btn btn-primary" href="#">행사 자세히 보러가기
+          <a class="btn btn-primary" href="../../error/ing.jsp">행사 자세히 보러가기
             <span class="glyphicon glyphicon-chevron-right"></span>
           </a>
         </div>
