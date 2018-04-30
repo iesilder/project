@@ -15,10 +15,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>공지사항 리스트</title>
-<!--   <meta name="viewport" content="width=device-width, initial-scale=1"> -->
-<!--   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
-<!--   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
-<!--   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
 $(document).ready(function(){
 // 	alert("OK");
@@ -41,15 +42,15 @@ $(document).ready(function(){
 </head>
 <body>
 <div class="container">
-<div class="panel_group">
-<div class="panel panel-primary">
-<div class="panel-heading">
+<!-- <div class="panel_group"> -->
+<!-- <div class="panel panel-primary"> -->
+<!-- <div class="panel-heading"> -->
 <h1>공지사항 리스트</h1>
-<form class="form-inline">
+<form class="navbar-form" action="/action_page.php">
 	<input name="page" value="1" type="hidden" />
 	<input name="rowPerPage" value='${(empty param.rowPerPage)?"10":param.rowPerPage}' type="hidden" />
-  <div class="input-group">
-  	<select class="form-control col-sm-3" name="searchKey" >
+  <div class="form-group navbar-left">
+  	<select class="form-control navbar-left list-group" name="searchKey" >
   		<option value="title" ${(param.searchKey == "title")?"selected=\"selected\"":"" } 
   		>제목</option>
   		<option value="content"  ${(param.searchKey == "content")?"selected=\"selected\"":"" }
@@ -65,7 +66,7 @@ $(document).ready(function(){
   		<option value="title,content,id" ${(param.searchKey =="title,content,id")?"selected=\"selected\"":""} 
   		>제목/내용/작성자</option>
   	</select>
-    <input type="text" class="form-control col-sm-8" placeholder="Search"
+    <input type="text" class="form-control navbar-left"  placeholder="Search"
      name="searchWord" value="${param.searchWord }">
     <div class="input-group-btn">
       <button class="btn btn-default" type="submit">
@@ -75,7 +76,6 @@ $(document).ready(function(){
   </div>
 </form> 
 </div>
-<div class="panel-body">
 <table class="table">
 <thead>
 	<tr>
@@ -126,15 +126,11 @@ $(document).ready(function(){
 				<%if(gradeno >= 9){ %>
 					<button id="write" class="btn btn-primary">글쓰기</button>
 				<%} %>
-				<button id="reload" class="btn btn-info">새로고침</button>
+<!-- 				<button id="reload" class="btn btn-info">새로고침</button> -->
 			</div>
 		</td>
 	</tr>
 </tfoot>
 </table>
-</div>
-</div>
-</div>
-</div>
 </body>
 </html>

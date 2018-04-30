@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>게시판 글쓰기</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="../../css/modern-business.css" rel="stylesheet">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
 $(document).ready(function(){
 // 	alert("OK");
@@ -23,7 +23,8 @@ $(document).ready(function(){
 <body>
 <h1>게시판 글쓰기</h1>
 <form method="post">
-<table>
+<div class="container">
+<table class="table">
 <tbody>
 <!-- 데이터를 입력하는 -->
 	<tr>
@@ -33,22 +34,24 @@ $(document).ready(function(){
 	<tr>
 		<th>내용</th>
 		<td><textarea rows="5" cols="60" name="content"></textarea></td>
-	<tr/>
-	<tr>
-		<th>작성자</th>
 		<td><input type="hidden" name="id" value="admin"/></td>
-	</tr>
+	<tr/>
+<!-- 	<tr> -->
+<!-- 		<th>작성자</th> -->
+<!-- 		<td><input type="hidden" name="id" value="admin"/></td> -->
+<!-- 	</tr> -->
 </tbody>
 <tfoot>
 	<tr>
 		<td colspan="2">
-			<button>등록</button>
-			<button type="reset">새로고침</button>
-			<button type="button" id="cancel">취소</button>
+			<button class="btn btn-success">등록</button>
+			<button class="btn btn-warning" type="reset">새로고침</button>
+			<button class="btn btn-danger" type="button" id="cancel">취소</button>
 		</td>
 	</tr>
 </tfoot>
 </table>
+</div>
 </form>
 </body>
 </html>
