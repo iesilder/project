@@ -58,7 +58,7 @@
 						<div class="controls">
 							<label></label> <input type="hidden" class="form-control"
 								id="id" data-validation-required-message="작성자를 입력하세요."
-								required="required" value="관리자 ">
+								required="required" value="admin ">
 						</div>
 					</div>
 					<div class="control-group form-group">

@@ -81,13 +81,13 @@ $(document).ready(function() {
 				</td>
 
 				
-<%-- 				<c:if test="${!empty id} "> --%>
+				<c:if test="${session.gradeno > 8} ">
 					<td colspan="2">
 						<div class="btn-group">
 							<button id="write" class="btn btn-primary">글쓰기</button>
 						</div>
 					</td>
-<%-- 				</c:if> --%>
+				</c:if>
 
 			</tr>
 		</tfoot>
