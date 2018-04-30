@@ -23,13 +23,13 @@ pageContext.setAttribute("absURI", request.getContextPath());
 <script>
 $(document).ready(function(){
 // 	alert("OK");
-    $(".data").click(function(){
-//         $(this).hide();
-        var festno = $(this).find("td:first").text();
-// 		alert("click");
-// 		alert(festno);
-		location = "FestView.do?festno="+festno+'&page=${pageObject.page}&rowPerPage=${(empty param.rowPerPage)?"10":param.rowPerPage}&searchKey=${param.searchKey}&searchWord=${param.searchWord}';
-    });
+//     $(".data").click(function(){
+// //         $(this).hide();
+//         var festno = $(this).find("h3:first").text();
+// // 		alert("click");
+// // 		alert(festno);
+// 		location = "FestView.do?festno="+festno+'&page=${pageObject.page}&rowPerPage=${(empty param.rowPerPage)?"10":param.rowPerPage}&searchKey=${param.searchKey}&searchWord=${param.searchWord}';
+//     });
     $("#write").click(function(){
     	location = "FestWrite.do";
     });
@@ -42,33 +42,6 @@ $(document).ready(function(){
 </head>
 <body>
 <div class="container">
-	<h2>행사일정표 검색</h2>
- 	 <p>검색 창에 원하시는 일정을 검색하세요.</p>	
- <form class="navbar-form">
- <input name="page" value="1" type="hidden" />
-	<input name="rowPerPage" value='${(empty param.rowPerPage)?"10":param.rowPerPage}' type="hidden" />
-	 <div class="form-group navbar-left">
-	 <select class="form-control navbar-left list-group"  name="searchKey"  class="input-group-addon">
-		<option value="festname" ${(param.searchKey == "festname")?"selected=\"selected\"":"" } 
-		  		>행사이름</option>
-		<option value="festdate" ${(param.searchKey == "festdate")?"selected=\"selected\"":"" } 
-		  		>행사날짜</option>
-		<option value="festloc" ${(param.searchKey == "festloc")?"selected=\"selected\"":"" } 
-		  		>행사지역</option>
-		<option value="festname,festloc" ${(param.searchKey == "festname,festloc")?"selected=\"selected\"":"" } 
-		  		>행사이름+행사날짜</option>
-		<option value="festname,festloc" ${(param.searchKey == "festname,festloc")?"selected=\"selected\"":"" } 
-		  		>행사이름+행사지역</option>
-		<option value="festdate,festloc" ${(param.searchKey == "festdate,festloc")?"selected=\"selected\"":"" } 
-		  		>행사날짜+행사지역</option>
-	 </select> 
- 	<input type="text" class="form-control navbar-left " placeholder="Search" name="searchWord">
- </div>
- 	<button type="submit" class="btn btn-default">
- 	<i class="glyphicon glyphicon-search"></i>
- 	</button>
-</form>
-
  <!-- Page Content -->
       <!-- Page Heading/Breadcrumbs -->
       <h1 class="mt-4 mb-3">행사일정표
@@ -84,29 +57,24 @@ $(document).ready(function(){
 
       <!-- Project One -->
       <div class="row">
-        <div class="col-md-7">
+      	<c:forEach items="${list }" var="FestDTO">
+  		<div class="col-md-7">
           <a href="#">
             <img class="img-fluid rounded mb-3 mb-md-0" src="../../../img/festival1.jpg" alt="음악축제" style="width:650px; height:350px;">
           </a>
         </div>
         <div class="col-md-5">
-          <h3>뮤직 페스티벌</h3>
+          <h3>${FestDTO.festname }</h3>
+          <p>${FestDTO.festdate }</p>
+          <p>${FestDTO.festloc }</p>
           <p>올림픽 공원에서 2018년 5월5일 어린이날을 맞이하여 가족이 모여 음악을 즐길 수 있는 축제가 열립니다...</p>
-			          <!-- 데이터를 출력하는 반복 처리 -->
-			<c:forEach items="${list }" var="FestDTO">
-				<tr class="data">
-					<td>${FestDTO.festno }</td>
-					<td>${FestDTO.festname }</td>
-					<td>${FestDTO.festdate }</td>
-					<td>${FestDTO.festloc }</td>
-					<td>${FestDTO.applydate }</td>
-					<td>${FestDTO.hit }</td>
-				</tr>
-			</c:forEach>
-          <a class="btn btn-primary" href="#">행사 자세히 보러가기
+          <a class="btn btn-primary" href="/fest/FestMngr/FestView.do">행사 자세히 보러가기
             <span class="glyphicon glyphicon-chevron-right"></span>
           </a>
         </div>
+        </c:forEach>
+              <hr>
+        
       </div>
       <!-- /.row -->
 
@@ -121,8 +89,10 @@ $(document).ready(function(){
         </div>
         <div class="col-md-5">
           <h3>불꽃 축제</h3>
+          	<p>2018-05-08</p>
+          	<p>서울-송파구</p>
             <p>오는 어버이날에는 잠실나루에서 최고의 효도를 선물할 수 있는 불꽃 축제가 열립니다. 모두 함께 행복한 추억을 만들어 보세요...</p>
-          <a class="btn btn-primary" href="#">행사 자세히 보러가기
+          <a class="btn btn-primary" href="../../error/ing.jsp">행사 자세히 보러가기
             <span class="glyphicon glyphicon-chevron-right"></span>
           </a>
         </div>
@@ -140,6 +110,8 @@ $(document).ready(function(){
         </div>
         <div class="col-md-5">
           <h3>장미 축제</h3>
+            <p>2018-05-20</p>
+          	<p>경기-용인</p>
             <p>나와 쌓은 10년의 우정의 고마움을 표현 할 수 있는 축제. 서로에게 장미를 선물하면서 소중한 시간을 보내세요...</p>
           <a class="btn btn-primary" href="#">행사 자세히 보러가기
             <span class="glyphicon glyphicon-chevron-right"></span>
@@ -150,6 +122,7 @@ $(document).ready(function(){
 
       <hr>
 
+<div class=container>
     <!-- /.container -->
 	<table>
 		<tr align="center">
@@ -181,6 +154,7 @@ $(document).ready(function(){
 				</td>
 		</tr>
 	</table>
+	</div>
 </div>
 
     <!-- Bootstrap core JavaScript -->
