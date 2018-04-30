@@ -32,7 +32,10 @@ public class FestDAO {
 
 			// 3. sql
 			// 3-1. 원래 데이터를 순서에 맞게 가져온다.
+			// <<<<<<< HEAD
 			String sql = "select festno, festdate, festloc, festname, to_char(applydate, 'yyyy-mm-dd')applydate, hit from festboard order by festno desc ";
+			// =======
+			// >>>>>>> branch 'master' of https://github.com/iesilder/project.git
 			// 3-2. 순서에 맞게 가져온 데이터에 rowNum을 붙인다.
 			sql = "select rownum rnum, festno, festdate, festloc, festname, applydate, hit from (" + sql + ")";
 			// 3-3. 페이지에 맞는 startRow, endRow를 설정한다.
