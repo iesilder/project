@@ -58,37 +58,37 @@
  	 
  	 <h2 style="border: solid gray; border-width: 0 0 1px;">행사 알아보기</h2>
  	 
-	      <div class="col-lg-4 col-sm-6 portfolio-item">
+	      <div class="col-lg-4 col-sm-6 portfolio-item" align="right">
 	          <div class="card h-100">
-	            <a href="#"><img class="card-img-top" src="../../img/portfolio_4 - beer 700x400.jpg" alt="" style="width:300px; height:180px;"></a>
-	            <div class="card-body">
+	            <a href="#"><img class="card-img-top" src="../../img/festival1.jpg" alt="" style="width:300px; height:180px;"></a>
+	            <div class="card-body" align="center">
 	              <h4 class="card-title">
-	                <a href="#">여의도 청춘 페스티벌</a>
+	                <a href="#">뮤직 페스티벌</a>
 	              </h4>
-	              <p class="card-text">행사이름: 여의도 청춘 페스티벌 <br/> 가수: 태선이와 아이들</p>
+	              <p class="card-text">행사이름: 올림픽 음악 페스티벌 <br/> 가수: 태선이와 아이들</p>
 	            </div>
 	          </div>
 	        </div>
 	         
-	      <div class="col-lg-4 col-sm-6 portfolio-item">
+	      <div class="col-lg-4 col-sm-6 portfolio-item" align="center">
 	          <div class="card h-100">
-	            <a href="#"><img class="card-img-top" src="../../img/portfolio_4 - burger 700x400.jpg" alt="" style="width:300px; height:180px;"></a>
-	            <div class="card-body">
+	            <a href="#"><img class="card-img-top" src="../../img/festival2.jpg" alt="" style="width:300px; height:180px;"></a>
+	            <div class="card-body" align="center">
 	              <h4 class="card-title">
-	                  <a href="#">여의도 청춘 페스티벌</a>
+	                  <a href="#">불꽃 축제</a>
 	              </h4>
-	              <p class="card-text">행사이름: 여의도 청춘 페스티벌 <br/> 가수: 태선이와 아이들</p> </div>
+	              <p class="card-text">행사이름: 잠실나루 불꽃축제 <br/> 불꽃축제와 치맥은 환상콤비</p> </div>
 	          </div>
 	        </div>
 	         
-	      <div class="col-lg-4 col-sm-6 portfolio-item">
+	      <div class="col-lg-4 col-sm-6 portfolio-item" align="left">
 	          <div class="card h-100">
-	            <a href="#"><img class="card-img-top" src="../../img/portfolio_4 - waffle 700x400.jpg" alt="" style="width:300px; height:180px;"></a>
-	            <div class="card-body">
+	            <a href="#"><img class="card-img-top" src="../../img/festival3.jpg" alt="" style="width:300px; height:180px;"></a>
+	            <div class="card-body" align="center">
 	              <h4 class="card-title">
-	                   <a href="#">여의도 청춘 페스티벌</a>
+	                   <a href="#">장미 축제</a>
 	              </h4>
-	              <p class="card-text">행사이름: 여의도 청춘 페스티벌 <br/> 가수: 태선이와 아이들</p></div>
+	              <p class="card-text">행사이름: 우정 장미축제 <br/> 친구와 우정축제 가즈아!</p></div>
 	          </div>
 	        </div>
 	        </div>
@@ -98,10 +98,10 @@
       <div class="container">
  	   <h2 style="border: solid gray; border-width: 0 0 1px;">푸드트럭 알아보기</h2>
  	 
-	      <div class="col-lg-4 col-sm-6 portfolio-item">
+	      <div class="col-lg-4 col-sm-6 portfolio-item" align="right">
 	          <div class="card h-100">
 	            <a href="#"><img class="card-img-top" src="../../img/portfolio_4 - waffle 700x400.jpg" alt="" style="width:300px; height:180px;"></a>
-	            <div class="card-body">
+	            <div class="card-body" align="center">
 	              <h4 class="card-title">
 	                <a href="#">너와나플 푸드트럭</a>
 	              </h4>
@@ -110,10 +110,10 @@
 	          </div>
 	        </div>
 	         
-	      <div class="col-lg-4 col-sm-6 portfolio-item">
+	      <div class="col-lg-4 col-sm-6 portfolio-item" align="center">
 	          <div class="card h-100">
 	            <a href="#"><img class="card-img-top" src="../../img/portfolio_4 - mexican 700x400.jpg" alt="" style="width:300px; height:180px;"></a>
-	            <div class="card-body">
+	            <div class="card-body" align="center"> 
 	              <h4 class="card-title">
 	                <a href="#">신나쵸</a>
 	              </h4>
@@ -122,10 +122,10 @@
 	          </div>
 	        </div>
 	         
-	      <div class="col-lg-4 col-sm-6 portfolio-item">
+	      <div class="col-lg-4 col-sm-6 portfolio-item" align="left">
 	          <div class="card h-100">
 	            <a href="#"><img class="card-img-top" src="../../img/portfolio_4 - burger 700x400.jpg" alt="" style="width:300px; height:180px;"></a>
-	            <div class="card-body">
+	            <div class="card-body" align="center">
 	              <h4 class="card-title">
 	                <a href="#">버거운 버거</a>
 	              </h4>
