@@ -18,54 +18,83 @@ public class NoticeDAO {
 	public List<NoticeDTO> list(PageObject2 pageObject) {
 		System.out.println("NoticeDAO.list()");
 		List<NoticeDTO> list = null;
-
+		// RDBMS에서 데이터를 가져 오는 프로그램 작성
+		
 		// 필요한 객체 선언
 		Connection con = null; // 연결 객체
 		PreparedStatement pstmt = null; // 처리문 객체
-		ResultSet rs = null; // 결과 객체
-
+		ResultSet rs = null;  // 결과 객체
+		
 		try {
-			// 1. 드라이버 확인 //2. 연결
+			//1. 드라이버 확인 //2. 연결
 			con = DBUtil.getConnection();
-			// 3. sql
-			// 1) 원래 데이터를 순서에 맞게 가져온다.
-			String sql = "select no, title, id, writedate, hit from noticeboard order by no desc ";
-			sql = " select rownum rnum, no, title, id, writedate, hit from (" + sql + ")";
-			sql = " select * from (" + sql + ")" + "where rnum between ? and ? ";
-
-			// 2) 순서에 맞게 가져온 데이터에 rownum rnum을 붙인다.
-			// 4. 처리문 객체 생성.
+			// ** 검색 처리 문구를 만든다. pageObject.searchWord가 있는 경우 검색을 해야한다.
+			String search = "";
+			String searchWord = pageObject.getSearchWord();
+			if(searchWord !=null && !searchWord.equals("") ) {
+				search += " where 1=0 ";
+				// title -> where 1=0  title like ? 
+				// title, content  -> where 1=0 or title like ? or content like ?
+				for(String field : pageObject.getSearchKeys())
+					search += " or "+field+" like ? ";
+			}
+			//3. sql
+			//   1. 원래 데이터를 순서에 맞게 다가져온다.
+			String sql = "select no, title, id, "
+					+ " writedate, hit from noticeboard "
+					+ search
+					+ " order by no desc ";
+			//   2. 순서에 맞게 가져온 데이터에 rownum rnum 을 붙인다.
+			sql = " select rownum rnum, no, title, id, "
+					+" writedate, hit from ("+sql+")";
+			sql = "select * from (" + sql+ ")"
+					+ " where rnum between ? and ? ";
+			System.out.println(sql);
+			//4. 처리문 객체
+			int idx = 1;
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, pageObject.getStartRow());
-			pstmt.setInt(2, pageObject.getEndRow());
-			// 5. 처리문 객체 실행 --> rs가 나온다.
+			System.out.println("pstmt setDate : searchWord:"+searchWord);
+//			System.out.println(pageObject.getSearchKeys().length);
+			if(searchWord != null && !searchWord.equals("")) {
+				for(String field : pageObject.getSearchKeys()) {
+//					System.out.println(idx);
+					pstmt.setString(idx++, "%"+searchWord+"%");
+				}
+			}
+//			System.out.println(idx);
+			pstmt.setInt(idx++, pageObject.getStartRow());
+			pstmt.setInt(idx++, pageObject.getEndRow());
+			//5. 실행 -- select ->rs이 나온다.
 			rs = pstmt.executeQuery();
-			// 6. 표시 --> 데이터 담기
-			while (rs.next()) {
+			//6. 표시 --> 데이터 담기
+			while(rs.next()) {
 				// 데이터가 있는데 list가 null이면 생성한다.
-				if (list == null)
-					list = new ArrayList<>();
-				// 데이터 하나를 담을 수 있는 BoardDTO객체를 생성한다.
+				if(list == null) list = new ArrayList<>();
+				// 데이터 하나를 담을 수 있는 BoardDTO 객체를 생성한다.
 				NoticeDTO noticeDTO = new NoticeDTO();
 				// 데이터를 rs에서 꺼내서 boardDTO에 담는다.
 				noticeDTO.setNo(rs.getInt("no"));
 				noticeDTO.setTitle(rs.getString("title"));
 				noticeDTO.setId(rs.getString("id"));
-				noticeDTO.setWriteDate(rs.getString("writedate"));
+				noticeDTO.setWriteDate
+				(rs.getString("writedate"));
 				noticeDTO.setHit(rs.getInt("hit"));
 				// list에 boardDTO를 담는다.
 				list.add(noticeDTO);
 			}
 		} catch (Exception e) {
+			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
 			try {
-				// 7. 객체 닫기
+				//7. 객체 닫기
 				DBUtil.close(con, pstmt, rs);
 			} catch (Exception e) {
+				// TODO: handle exception
 				e.printStackTrace();
 			}
 		}
+				
 		return list;
 	}
 
@@ -118,7 +147,7 @@ public class NoticeDAO {
 			// 1.드라이버 확인 //2.연결
 			con = DBUtil.getConnection();
 			// 3. sql 작성 - 변하는 데이터 대신 ?를 사용한다.
-			String sql = "update board set hit = hit + 1 where no = ? ";
+			String sql = "update noticeboard set hit = hit + 1 where no = ? ";
 			// 4. 처리 객체 생성
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, no); // 첫번재 ?에 no를 int로 세팅
@@ -202,7 +231,7 @@ public class NoticeDAO {
 	}
 
 	// 게시판 글삭제 처리
-	public void delete(NoticeDTO noticeDTO) {
+	public void delete(int no) {
 		System.out.println("NoticeDAO.delete()");
 		// 오라클에서 데이터를 가져와서 채우는 프로그램 작성.
 		// 필요한 객체 선언
@@ -215,7 +244,7 @@ public class NoticeDAO {
 			String sql = "delete from noticeboard where no = ? ";
 			// 4. 처리 객체 생성
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, noticeDTO.getNo()); // 첫번재 ?에 no 세팅
+			pstmt.setInt(1, no); // 첫번재 ?에 no 세팅
 			// 5. 처리 객체 실행 -> select: executeQuery(), 그 외: executeUpdate()
 			pstmt.executeUpdate();
 			// 6. 표시 -> 오류가 없으면 정상처리

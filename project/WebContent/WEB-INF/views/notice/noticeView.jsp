@@ -1,6 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+	//함부로 삭제 혹은 수정하는 것을 막기 위한 if
+	int gradeno;
+	if(session.getAttribute("gradeno")!=null){
+		gradeno = (int)session.getAttribute("gradeno");
+	} else{
+		gradeno = 0 ;
+	}
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,12 +25,12 @@ $(document).ready(function(){
 // 	alert("OK");
 	$("#update").click(function(){
 // 		location="update.do?no="+$("#td_no").text();
-		$("#dataForm").attr("action","update.do");
+		$("#dataForm").attr("action","noticeUpdate.do");
 		$("#dataForm").submit();
 	});
 	$("#delete").click(function(){
 		if(confirm("정말 삭제하시겠습니까?"))
-			location="delete.do?no="+$("#td_no").text();
+			location="noticeDelete.do?no="+$("#td_no").text();
 	});
 	$("#list").click(function(){
 // 		location="list.do";
@@ -74,8 +83,10 @@ $(document).ready(function(){
 <tfoot>
 	<tr>
 		<td colspan="2">
-			<button id="update" class="btn btn-primary">수정</button>
-			<button id="delete" class="btn btn-danger">삭제</button>
+			<%if(gradeno >= 9){ %>
+				<button id="update" class="btn btn-primary">수정</button>
+				<button id="delete" class="btn btn-danger">삭제</button>
+			<%} %>
 			<button id="list" class="btn btn-success">리스트</button>
 		</td>
 	</tr>

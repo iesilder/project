@@ -24,6 +24,14 @@
 <%
 System.out.println("default_decorator.jsp:"+request.getContextPath());
 pageContext.setAttribute("absUri", request.getContextPath());
+
+	//관리자용 페이지를 위한 처리 - 유태선 20180430
+	int gradeno;
+	if(session.getAttribute("gradeno") != null){
+		gradeno = (int) session.getAttribute("gradeno");
+	}else{
+		gradeno = 0;
+	}
 %>
 <!DOCTYPE html>
 <html>
@@ -49,7 +57,7 @@ pageContext.setAttribute("absUri", request.getContextPath());
     <link href="../../css/modern-business.css" rel="stylesheet">
 <style type="text/css">
 header, footer {
-	background: purple;
+	background: #6a009e;
 	}
 
 pre {
@@ -65,7 +73,7 @@ pre {
 
 /* Add a gray background color and some padding to the footer */
 footer {
-	background-color: purple;
+	background-color: #6a009e;
 	padding: 25px;
 }
 
@@ -90,6 +98,38 @@ article {
 	color: grey;
 	margin: 0 auto;
 }
+
+.container li ul {
+background: #6a009e;
+display:none;  /* 평상시에는 서브메뉴가 안보이게 하기 */
+height:auto;
+padding:0px;
+margin:0px;
+border:0px;
+position:absolute;
+width:130px;
+z-index:200;
+}
+.container li:hover ul {
+display:block;   /* 마우스 커서 올리면 서브메뉴 보이게 하기 */ 
+list-style: none;
+border-bottom: none;
+color:none;
+}
+.container li a{
+color: white;
+font-weight:bold;
+}
+footer p{
+color: white ;
+font-weight:bold;
+}
+.navbar-header a{
+color: white;
+font-weight: bolder;
+}
+
+
 </style>
 <decorator:head/>
 </head>
@@ -101,30 +141,39 @@ article {
 					<div class="navbar-header"><a href="${absUri }/main/main.do"
 							 class="navbar-brand">둥가둥가</a></div>
 					<ul class="nav navbar-nav">
-						<li class="nav-item dropdown">
-			              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+						<li class="dropdown">
+			              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			                	행사일정
 			              </a>
-			              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
 			                <ul>
 				                <li><a class="dropdown-item" href="../fest/FestMngr/FestList.do">행사일정표 </a></li>
 				                <li><a class="dropdown-item" href="../fest/FestTruck/TruckWrite.do">푸드트럭 신청서</a></li>
 				                <li><a class="dropdown-item" href="../fest/FestCust/CustWrite.do">소비자 신청서</a></li>
+				                <%if(gradeno >= 9 ){ %>
+				                	<li><a class="dropdown-item" href="${absUri }../fest/FestCust/FestCustList.do">관리자용-소비자신청서리스트</a></li>
+				                	<li><a class="dropdown-item" href="${absUri }../fest/FestCust/FestCustView.do">관리자용-소비자신청서글보기</a></li>
+				                	<li><a class="dropdown-item" href="${absUri }../fest/FestTruck/FestTruckList.do">관리자용-푸드트럭신청서리스트</a></li>
+				                	<li><a class="dropdown-item" href="${absUri }../fest/FestTruck/FestTruckView.do">관리자용-푸드트럭신청서글보기</a></li>
+				                	<li><a class="dropdown-item" href="${absUri }../fest/FestMngr/FestWrite.do">관리자용-행사일정글등록</a></li>
+				                	<li><a class="dropdown-item" href="${absUri }../fest/FestMngr/FestUpdate.do">관리자용-행사일정글수정</a></li>
+			              		<%} %>
 			                </ul>
-			              </div>
 			            </li>
 						<li><a href="${absUri }/review/reviewlist.do">리뷰</a></li>
 						<li><a href="${absUri }/notice/noticeList.do">공지사항</a></li>
-						<li class="nav-item dropdown">
+						<li class="dropdown">
 			              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			                	데이터 분석
 			              </a>
-			              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-			                <a class="dropdown-item" href="blog-home-1.html">Blog Home 1</a>
-			                <a class="dropdown-item" href="blog-home-2.html">Blog Home 2</a>
-			                <a class="dropdown-item" href="blog-post.html">Blog Post</a>
-			              </div>
-			            </li>
+			                <ul>
+				                <li><a class="dropdown-item" href="${absUri }/notice/noticeList.do">상권분석</a></li>
+				                <li><a class="dropdown-item" href="${absUri }/notice/noticeList.do">공공데이터</a></li>
+				                <li><a class="dropdown-item" href="${absUri }/notice/noticeList.do">푸드트럭 지도</a></li>
+				                <%if(gradeno >= 9 ){ %>
+				                	<li><a class="dropdown-item" href="${absUri }/notice/noticeList.do">관리자용 페이지</a></li>
+			              		<%} %>
+			              	</ul>
+			            	</li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 					    <c:if test="${ empty id }">

@@ -44,11 +44,6 @@
 									<th>내용</th>
 									<td><textarea rows="5" cols="60" name="content"
 											class="form-control">${noticeDTO.content }</textarea></td>
-								<tr />
-								<tr>
-									<th>작성자</th>
-									<td><input name="writer" size="10" maxlength="10"
-										class="form-control" value="${noticeDTO.id}" /></td>
 								</tr>
 							</tbody>
 							<tfoot>

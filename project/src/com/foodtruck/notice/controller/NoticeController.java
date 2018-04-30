@@ -38,31 +38,30 @@ public class NoticeController extends HttpServlet {
 			switch (command) {
 			// 리스트
 			case "/notice/noticeList.do":
-				// 리스트에 부릴 데이터를 가져오자. - BoardListService가 필요하다.
+				// 리스트에 뿌릴 데이터를 가져오자. - BoardListService가 필요하다.
+				// 이미 생성해서 저장해 놓은 곳에 가져오기. - BoardListService
 				service = Beans.getService(command);
 				int page = 1;
 				int rowPerPage = 10;
 				String pageStr = request.getParameter("page");
 				String rowPerPageStr = request.getParameter("rowPerPage");
-				// 처음에는 페이지, rowPerPage 데이터가 넘어오지 않아 null이다. null이면 page=1, rowPerPage = 10
-				if (pageStr != null && pageStr != "")
+				// 검색 데이터를 받는다.
+				String searchKey = request.getParameter("searchKey");
+				String searchWord = request.getParameter("searchWord");
+				
+				// 처음에는 페이지, rowPerPage 데이터가 넘어오지 않아 null이다. null이면 page=1, rowPerPage=10
+				if(pageStr != null && pageStr !="")
 					page = Integer.parseInt(pageStr);
-				if (rowPerPageStr != null && rowPerPageStr != "")
-					page = Integer.parseInt(rowPerPageStr);
-
-				// 페이지 처리를 하기 위한 객체 생성 -> 다른 데이터는 자동 계산 된다.
-				// <<<<<<< HEAD
-				PageObject2 pageObject = new PageObject2(DBUtil.getConnection(), "noticeboard", page, rowPerPage, 10,
-						null, null);
+				if(rowPerPageStr != null && rowPerPageStr != "")
+					rowPerPage = Integer.parseInt(rowPerPageStr);
+				// 페이지 처리를 하기 위한 객체 생성  -> 다른 데이터는 자동 계산 된다.
+				PageObject2 pageObject 
+				= new PageObject2(DBUtil.getConnection(), "noticeboard",
+						page, rowPerPage, 10, searchKey, searchWord);
 				System.out.println(pageObject);
-				// =======
-				// PageObject2 pageObject = new PageObject2(DBUtil.getConnection(),
-				// "noticeboard", page, rowPerPage, 10, null,
-				// null);
-				// >>>>>>> branch 'master' of https://github.com/iesilder/project.git
-				// 요청을 처리해서 DB에 있는 데이터를 받아와서 request에 담는다.
+				// 처리를해서 DB에 있는 데이터를 받아와서 request에 담아 둔다.
 				request.setAttribute("list", service.execute(pageObject));
-				request.setAttribute("pageInfo", pageObject);
+				request.setAttribute("pageObject", pageObject);
 				// jsp 이름을 만들어 내고 밑에서 forward 시킨다.
 				jsp = Beans.getJsp(command);
 				System.out.println(jsp);
@@ -93,7 +92,7 @@ public class NoticeController extends HttpServlet {
 			case "/notice/noticeUpdate.do":
 				// viewService에서
 				int no2 = Integer.parseInt(request.getParameter("no"));
-				service = Beans.getService("/notice/view.do"); // BoardViewService
+				service = Beans.getService("/notice/noticeView.do"); // BoardViewService
 				// service를 실행해서 DB에서 BoardDTO를 가져와서 request에 담는다.
 				// 넘길 때 ArrayList로 캐스팅해서 사용하므로 0: (int)no, 1: (boolean)isViews
 				ArrayList<Object> list2 = new ArrayList<Object>();
@@ -110,10 +109,12 @@ public class NoticeController extends HttpServlet {
 			case "/notice/noticeDelete.do":
 				// 삭제 처리할 서비스를 가져오자. - BoardDeleteService가 필요하다.
 				service = Beans.getService(command);
+				System.out.println("1");
 				// 처리를해서 DB에 있는 데이터를 받아와서 request에 담아 둔다.
 				service.execute(Integer.parseInt(request.getParameter("no")));
+				System.out.println("2");
 				// jsp 이름을 만들어 내고 밑에서 forward 시킨다.
-				jsp = "redirect:list.do";
+				jsp = "redirect:noticeList.do";
 				System.out.println(jsp);
 				break;
 
@@ -167,15 +168,16 @@ public class NoticeController extends HttpServlet {
 				break;
 			// 글수정
 			case "/notice/noticeUpdate.do":
-				service = Beans.getService(command);
-				System.out.println(service);
+				
 				NoticeDTO noticeDTO2 = new NoticeDTO(Integer.parseInt(request.getParameter("no")),
 						request.getParameter("title"), request.getParameter("content"), request.getParameter("id"),
 						null, 0); // hit는 int이므로 0을 넣어야 한다.
+				service = Beans.getService(command);
+				System.out.println(service);
 				// 실행해서 수정처리
 				service.execute(noticeDTO2);
 				// 글보기로 이동시키는데 글번호와 함께 이동시킨다.
-				jsp = "view.do?no=" + noticeDTO2.getNo() + "&page=" + request.getParameter("page") + "&rowPerPage="
+				jsp = "noticeView.do?no=" + noticeDTO2.getNo() + "&page=" + request.getParameter("page") + "&rowPerPage="
 						+ request.getParameter("rowPerPage");
 				break;
 
