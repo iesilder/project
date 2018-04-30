@@ -16,12 +16,12 @@ $(document).ready(function(){
 // 	alert("OK");
 	$("#update").click(function(){
 // 		location="update.do?no="+$("#td_no").text();
-		$("#dataForm").attr("action","update.do");
+		$("#dataForm").attr("action","noticeUpdate.do");
 		$("#dataForm").submit();
 	});
 	$("#delete").click(function(){
 		if(confirm("정말 삭제하시겠습니까?"))
-			location="delete.do?no="+$("#td_no").text();
+			location="noticeDelete.do?no="+$("#td_no").text();
 	});
 	$("#list").click(function(){
 // 		location="list.do";

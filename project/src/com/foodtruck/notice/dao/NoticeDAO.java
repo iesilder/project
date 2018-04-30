@@ -231,7 +231,7 @@ public class NoticeDAO {
 	}
 
 	// 게시판 글삭제 처리
-	public void delete(NoticeDTO noticeDTO) {
+	public void delete(int no) {
 		System.out.println("NoticeDAO.delete()");
 		// 오라클에서 데이터를 가져와서 채우는 프로그램 작성.
 		// 필요한 객체 선언
@@ -244,7 +244,7 @@ public class NoticeDAO {
 			String sql = "delete from noticeboard where no = ? ";
 			// 4. 처리 객체 생성
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, noticeDTO.getNo()); // 첫번재 ?에 no 세팅
+			pstmt.setInt(1, no); // 첫번재 ?에 no 세팅
 			// 5. 처리 객체 실행 -> select: executeQuery(), 그 외: executeUpdate()
 			pstmt.executeUpdate();
 			// 6. 표시 -> 오류가 없으면 정상처리
