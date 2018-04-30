@@ -89,7 +89,7 @@ public class FestCustDAO {
 			// 1. 드라이버 확인 //2. 연결
 			con = DBUtil.getConnection();
 			// 3. sql문 작성
-			String sql = "select custno, applyname, applytel, applyno, applyloc, applytime, to_char(applydate, 'yyyy-mm-dd')applydate, hit "
+			String sql = "select custno, festjoin, truckjoin, applyname, applytel, applyno, applyloc, applytime, to_char(applydate, 'yyyy-mm-dd')applydate, hit "
 					+ " from festcustboard " + " where custno = ? "; // 변하는
 			// 사용
 			// 4. 처리문 객체
@@ -100,9 +100,9 @@ public class FestCustDAO {
 			// 6. 표시 rs에서 꺼내서 FestCustDTO에 담는다.
 			if (rs.next()) {
 				// 생성자가 만들어져 있어야 한다.
-				festCustDTO = new FestCustDTO(rs.getInt("custno"), rs.getString("applyname"), rs.getString("applytel"),
-						rs.getInt("applyno"), rs.getString("applyloc"), rs.getString("applytime"),
-						rs.getDate("applydate"), rs.getInt("hit"));
+				festCustDTO = new FestCustDTO(rs.getInt("custno"), rs.getString("festjoin"), rs.getString("truckjoin"),
+						rs.getString("applyname"), rs.getString("applytel"), rs.getInt("applyno"),
+						rs.getString("applyloc"), rs.getString("applytime"), rs.getDate("applydate"), rs.getInt("hit"));
 			}
 
 		} catch (Exception e) {
@@ -130,15 +130,17 @@ public class FestCustDAO {
 			// 1. 드라이버 확인 //2. 연결
 			con = DBUtil.getConnection();
 			// 3. sql문 작성
-			String sql = "insert into festcustboard(custno, applyname, applytel, applyno, applyloc, applytime) "
-					+ " values(festcustboard_seq.nextval," + " ?, ?, ?, ?, ?) "; // 변하는 데이터 대신 ? 사용
+			String sql = "insert into festcustboard(custno, festjoin, truckjoin, applyname, applytel, applyno, applyloc, applytime) "
+					+ " values(festcustboard_seq.nextval," + "?, ?, ?, ?, ?, ?, ?) "; // 변하는 데이터 대신 ? 사용
 			// 4. 처리문 객체
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, festCustDTO.getApplyname());
-			pstmt.setString(2, festCustDTO.getApplytel());
-			pstmt.setInt(3, festCustDTO.getApplyno());
-			pstmt.setString(4, festCustDTO.getApplyloc());
-			pstmt.setString(5, festCustDTO.getApplytime());
+			pstmt.setString(1, festCustDTO.getFestJoin());
+			pstmt.setString(2, festCustDTO.getTruckJoin());
+			pstmt.setString(3, festCustDTO.getApplyname());
+			pstmt.setString(4, festCustDTO.getApplytel());
+			pstmt.setInt(5, festCustDTO.getApplyno());
+			pstmt.setString(6, festCustDTO.getApplyloc());
+			pstmt.setString(7, festCustDTO.getApplytime());
 			// 5. 실행 -> select: executeQuery()
 			// insert, update, delete:executeUpdate()
 			pstmt.executeUpdate();
@@ -199,16 +201,18 @@ public class FestCustDAO {
 			// 1. 드라이버 확인 //2. 연결
 			con = DBUtil.getConnection();
 			// 3. sql문 작성
-			String sql = "update festcustboard set applyname = ?, applytel = ?, applyno = ?, applyloc=?, applytime=? "
+			String sql = "update festcustboard set festjoin = ?, truckjoin = ?, applyname = ?, applytel = ?, applyno = ?, applyloc=?, applytime=? "
 					+ " where custno = ? "; // 변하는 데이터 대신
 			// ? 사용
 			// 4. 처리문 객체
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, festCustDTO.getApplyname());
-			pstmt.setString(2, festCustDTO.getApplytel());
-			pstmt.setInt(3, festCustDTO.getApplyno());
-			pstmt.setString(4, festCustDTO.getApplyloc());
-			pstmt.setString(5, festCustDTO.getApplytime());
+			pstmt.setString(1, festCustDTO.getFestJoin());
+			pstmt.setString(2, festCustDTO.getTruckJoin());
+			pstmt.setString(3, festCustDTO.getApplyname());
+			pstmt.setString(4, festCustDTO.getApplytel());
+			pstmt.setInt(5, festCustDTO.getApplyno());
+			pstmt.setString(6, festCustDTO.getApplyloc());
+			pstmt.setString(7, festCustDTO.getApplytime());
 			// 5. 실행 -> select: executeQuery()
 			// insert, update, delete:executeUpdate()
 			pstmt.executeUpdate();

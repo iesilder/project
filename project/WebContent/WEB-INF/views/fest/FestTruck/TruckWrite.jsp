@@ -48,7 +48,7 @@ $(document).ready(function(){
         <div class="col-lg-8 mb-4" >
          <div class="control-group form-group" >
               <div class="controls" >
-              	 <label>행사정보:</label>
+              	 <label>행사 정보:</label>
 	              <select class="form-control" name="festname,festloc,festdate" id="festname,festloc,festdate" required >
 					  <option class="form-control" id="festname,festloc,festdate" value="올림픽,뮤직 페스티벌 ,2018-05-05">올림픽,뮤직 페스티벌 ,2018-05-05</option>
 					  <option class="form-control" id="festname,festloc,festdate" value="잠실나루, 불꽃축제, 2018-05-08">잠실나루, 불꽃축제, 2018-05-08</option>

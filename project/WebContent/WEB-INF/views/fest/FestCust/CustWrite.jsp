@@ -48,21 +48,21 @@ $(document).ready(function(){
         <div class="col-lg-8 mb-4" >
          <div class="control-group form-group" >
               <div class="controls" >
-              	 <label>행사정보:</label>
-	              <select class="form-control" name="festname,festloc,festdate" id="festname,festloc,festdate" required >
-					  <option class="form-control" id="festname,festloc,festdate" value="올림픽,뮤직 페스티벌 ,2018-05-05">올림픽,뮤직 페스티벌 ,2018-05-05</option>
-					  <option class="form-control" id="festname,festloc,festdate" value="잠실나루, 불꽃축제, 2018-05-08">잠실나루, 불꽃축제, 2018-05-08</option>
-					  <option class="form-control" id="festname,festloc,festdate" value="에버랜드, 장미축제, 2018-05-20">에버랜드, 장미축제, 2018-05-20</option>
+              	 <label>행사 정보:</label>
+	              <select class="form-control" name="festjoin" id="festjoin" required >
+					  <option class="form-control" id="festjoin" value="올림픽,뮤직 페스티벌 ,2018-05-05">올림픽,뮤직 페스티벌 ,2018-05-05</option>
+					  <option class="form-control" id="festjoin" value="잠실나루, 불꽃축제, 2018-05-08">잠실나루, 불꽃축제, 2018-05-08</option>
+					  <option class="form-control" id="festjoin" value="에버랜드, 장미축제, 2018-05-20">에버랜드, 장미축제, 2018-05-20</option>
 				</select>
 				</div>
             </div>
          <div class="control-group form-group" >
               <div class="controls">
-              	 <label>푸드트럭정보:</label>
-	              <select class="form-control" name="truckname,maindish" id="truckname,maindish" required >
-					  <option class="form-control" id="truckname,maindish" value="버버푸드트럭,햄버거">버버푸드트럭,햄버거</option>
-					  <option class="form-control" id="truckname,maindish" value="신나쵸, 나쵸">신나쵸, 나쵸</option>
-					  <option class="form-control" id="truckname,maindish" value="너와나플, 와플">너와나플, 와플</option>
+              	 <label>푸드트럭 정보:</label>
+	              <select class="form-control" name="truckjoin" id="truckjoin" required>
+	              		<option class="form-control" id="truckjoin" value="버버푸드트럭,햄버거">버버푸드트럭,햄버거</option>
+					  <option class="form-control" id="truckjoin" value="신나쵸, 나쵸">신나쵸, 나쵸</option>
+					  <option class="form-control" id="truckjoin" value="너와나플, 와플">너와나플, 와플</option>
 				</select>
 				</div>
             </div>

@@ -72,6 +72,7 @@ public class FestCustController extends HttpServlet {
 				viewJSP = Beans.getJsp(command);
 				System.out.println(viewJSP);
 				break;
+
 			// 글쓰기 폼 - get방식으로 데이터가 들어온다.
 			case "/fest/FestCust/CustWrite.do":
 				// jsp 이름을 만들어 내고, 밑에서 forward 시킨다.
@@ -163,7 +164,8 @@ public class FestCustController extends HttpServlet {
 			case "/fest/FestCust/CustWrite.do":
 				// 넘어오는 데이터를 festCustDTO에 담는다
 				// 넘어오는 데이터 name과 동일하게 작성해야한다.
-				FestCustDTO festCustDTO = new FestCustDTO(request.getParameter("applyname"),
+				FestCustDTO festCustDTO = new FestCustDTO(request.getParameter("festjoin"),
+						request.getParameter("truckjoin"), request.getParameter("applyname"),
 						request.getParameter("applytel"), Integer.parseInt(request.getParameter("applyno")),
 						request.getParameter("applyloc"), request.getParameter("applytime"));
 				// 담은 데이터를 처리할 서비스를 받아온다. - BoardWriteService in command.properties
@@ -171,7 +173,7 @@ public class FestCustController extends HttpServlet {
 				System.out.println(service);
 				service.execute(festCustDTO);
 				// 현재위치에 있는 리스트: 상대주소
-				viewJSP = "/fest/FestMngr/FestList.do";
+				viewJSP = "FestCustList.do";
 				System.out.println(viewJSP);
 				break;
 
@@ -179,7 +181,8 @@ public class FestCustController extends HttpServlet {
 			case "/fest/FestCust/CustUpdate.do":
 				// 넘어오는 데이터를 festCustDTO에 담는다
 				// 넘어오는 데이터 name과 동일하게 작성해야한다.
-				FestCustDTO festCustDTO2 = new FestCustDTO(request.getParameter("applyname"),
+				FestCustDTO festCustDTO2 = new FestCustDTO(request.getParameter("festjoin"),
+						request.getParameter("truckjoin"), request.getParameter("applyname"),
 						request.getParameter("applytel"), Integer.parseInt(request.getParameter("applyno")),
 						request.getParameter("applyloc"), request.getParameter("applytime"));
 				// 담은 데이터를 처리할 서비스를 받아온다. - BoardUpdateService in command.properties
