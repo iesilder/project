@@ -147,14 +147,14 @@ font-weight: bolder;
 			              </a>
 			                <ul>
 				                <li><a class="dropdown-item" href="${absUri }/fest/FestMngr/FestList.do">행사일정표 </a></li>
+				                <li><a class="dropdown-item" href="${absUri }/fest/FestTruck/FestTruckList.do">푸드트럭</a></li>
 				                <li><a class="dropdown-item" href="${absUri }/fest/FestTruck/TruckWrite.do">푸드트럭 신청서</a></li>
 				                <li><a class="dropdown-item" href="${absUri }/fest/FestCust/CustWrite.do">소비자 신청서</a></li>
-								<li><a class="dropdown-item" href="${absUri }/fest/FestCust/FestCustList.do">관리자용-소비자신청서리스트</a></li>
-				                <li><a class="dropdown-item" href="${absUri }/fest/FestCust/FestCustView.do">관리자용-소비자신청서글보기</a></li>
-				                <li><a class="dropdown-item" href="${absUri }/fest/FestTruck/FestTruckList.do">관리자용-푸드트럭신청서리스트</a></li>
-				                <li><a class="dropdown-item" href="${absUri }/fest/FestTruck/FestTruckView.do">관리자용-푸드트럭신청서글보기</a></li>
+				                <%if(gradeno >= 9 ){ %>
+				                <li><a class="dropdown-item" href="${absUri }/fest/FestCust/FestCustList.do">관리자용-소비자신청서리스트</a></li>
 				                <li><a class="dropdown-item" href="${absUri }/fest/FestMngr/FestWrite.do">관리자용-행사일정글등록</a></li>
 				                <li><a class="dropdown-item" href="${absUri }/fest/FestMngr/FestUpdate.do">관리자용-행사일정글수정</a></li>
+			      			 	<%} %>
 			      			 </ul>
 			            </li>
 						<li><a href="${absUri }/review/reviewlist.do">리뷰</a></li>
