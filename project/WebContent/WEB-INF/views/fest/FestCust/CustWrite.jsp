@@ -95,6 +95,24 @@ $(document).ready(function(){
               </div>
             </div>
             <div class="control-group form-group" >
+              <div class="controls" >
+                <label>거주 지역</label>
+                    <select class="form-control" name="applyloc" id="applyloc" required >
+					  <option class="form-control" id="applyloc" value="서울/경기">서울/경기</option>
+					  <option class="form-control" id="applyloc" value="강원도">강원도</option>
+					  <option class="form-control" id="applyloc" value="충청북도">충청북도</option>
+					  <option class="form-control" id="applyloc" value="충청남도">충청남도</option>
+					  <option class="form-control" id="applyloc" value="경상북도">경상북도</option>
+					  <option class="form-control" id="applyloc" value="경상남도">경상남도</option>
+					  <option class="form-control" id="applyloc" value="전라북도">전라북도</option>
+					  <option class="form-control" id="applyloc" value="전라남도">전라남도</option>
+					  <option class="form-control" id="applyloc" value="제주">제주</option>
+					  <option class="form-control" id="applyloc" value="기타">기타</option>
+				</select><br/>
+					<input type="text" class="form-control" name="applyloc" id="applyloc" placeholder="기타 거주지역을 입력하세요."  />
+				</div>             
+            </div>
+            <div class="control-group form-group" >
                 <div class="controls" >
                 <label>참여시간:</label>
                 <input type="time" class="form-control" name="applytime" id="applytime" required />

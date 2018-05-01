@@ -10,8 +10,8 @@ public class FestCustDTO {
 	private String applyloc;
 	private String applytime;
 	private Date applydate;
-	private String festJoin;
-	private String truckJoin;
+	private String festjoin;
+	private String truckjoin;
 	private int hit;
 
 	// 초기화 블럭
@@ -29,10 +29,10 @@ public class FestCustDTO {
 	}
 
 	// 소비자 신청서 글보기용
-	public FestCustDTO(int custno, String festJoin, String truckJoin, String applyname, String applytel, int applyno,
+	public FestCustDTO(int custno, String festjoin, String truckjoin, String applyname, String applytel, int applyno,
 			String applyloc, String applytime, Date applydate, int hit) {
-		this.festJoin = festJoin;
-		this.truckJoin = truckJoin;
+		this.festjoin = festjoin;
+		this.truckjoin = truckjoin;
 		this.custno = custno;
 		this.applyname = applyname;
 		this.applytel = applytel;
@@ -44,10 +44,10 @@ public class FestCustDTO {
 	}
 
 	// 소비자 신청서 글등록 및 수정용
-	public FestCustDTO(String festJoin, String truckJoin, String applyname, String applytel, int applyno,
+	public FestCustDTO(String festjoin, String truckjoin, String applyname, String applytel, int applyno,
 			String applyloc, String applytime) {
-		this.festJoin = festJoin;
-		this.truckJoin = truckJoin;
+		this.festjoin = festjoin;
+		this.truckjoin = truckjoin;
 		this.applyname = applyname;
 		this.applytel = applytel;
 		this.applyno = applyno;
@@ -119,27 +119,27 @@ public class FestCustDTO {
 		this.hit = hit;
 	}
 
-	public String getFestJoin() {
-		return festJoin;
+	public String getFestjoin() {
+		return festjoin;
 	}
 
-	public void setFestJoin(String festJoin) {
-		this.festJoin = festJoin;
+	public void setFestjoin(String festjoin) {
+		this.festjoin = festjoin;
 	}
 
-	public String getTruckJoin() {
-		return truckJoin;
+	public String getTruckjoin() {
+		return truckjoin;
 	}
 
-	public void setTruckJoin(String truckJoin) {
-		this.truckJoin = truckJoin;
+	public void setTruckjoin(String truckjoin) {
+		this.truckjoin = truckjoin;
 	}
 
 	@Override
 	public String toString() {
 		return "FestCustDTO [custno=" + custno + ", applyname=" + applyname + ", applytel=" + applytel + ", applyno="
 				+ applyno + ", applyloc=" + applyloc + ", applytime=" + applytime + ", applydate=" + applydate
-				+ ", festJoin=" + festJoin + ", truckJoin=" + truckJoin + ", hit=" + hit + "]";
+				+ ", festjoin=" + festjoin + ", truckjoin=" + truckjoin + ", hit=" + hit + "]";
 	}
 
 }

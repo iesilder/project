@@ -103,7 +103,7 @@ public class FestCustController extends HttpServlet {
 				// 글번호로 넘어오기 때문에 int custno를 받는다.
 				int custno2 = Integer.parseInt(request.getParameter("custno"));
 				// command.properties의 BoardViewService 필요함
-				service = Beans.getService("/fest/FestCust/FestCustList.do");
+				service = Beans.getService("/fest/FestCust/FestCustView.do");
 				// service를 실행해서 DB에서 FestCustDTO를 가져와서 request에 담기
 				// 번호로 넘어오니까 custno로 선언
 				// 넘길 때 ArrayList<>로 캐스팅해서 사용함으로 0번째:custno[int], 1번째:isView[boolean]를 넣는다.

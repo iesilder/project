@@ -133,8 +133,8 @@ public class FestCustDAO {
 					+ " values(festcustboard_seq.nextval," + "?, ?, ?, ?, ?, ?, ?) "; // 변하는 데이터 대신 ? 사용
 			// 4. 처리문 객체
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, festCustDTO.getFestJoin());
-			pstmt.setString(2, festCustDTO.getTruckJoin());
+			pstmt.setString(1, festCustDTO.getFestjoin());
+			pstmt.setString(2, festCustDTO.getTruckjoin());
 			pstmt.setString(3, festCustDTO.getApplyname());
 			pstmt.setString(4, festCustDTO.getApplytel());
 			pstmt.setInt(5, festCustDTO.getApplyno());
@@ -205,8 +205,8 @@ public class FestCustDAO {
 			// ? 사용
 			// 4. 처리문 객체
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, festCustDTO.getFestJoin());
-			pstmt.setString(2, festCustDTO.getTruckJoin());
+			pstmt.setString(1, festCustDTO.getFestjoin());
+			pstmt.setString(2, festCustDTO.getTruckjoin());
 			pstmt.setString(3, festCustDTO.getApplyname());
 			pstmt.setString(4, festCustDTO.getApplytel());
 			pstmt.setInt(5, festCustDTO.getApplyno());
