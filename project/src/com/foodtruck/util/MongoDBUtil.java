@@ -19,7 +19,7 @@ public class MongoDBUtil {
 	}
 
 	// maxPoolSize를 통해 최대 유지 가능한 커넥션 객체 갯수를 설정
-	static MongoClientURI uri = new MongoClientURI("mongodb://192.168.137.75:27017/seoulpopulation?maxPoolSize=500",
+	static MongoClientURI uri = new MongoClientURI("mongodb://localhost:27017/seoulpopulation?maxPoolSize=500",
 			options());
 	// 로컬 접속 시 사용할 MongoClient 객체
 	public static MongoClient mongoClient = new MongoClient(uri);
