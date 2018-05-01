@@ -92,7 +92,7 @@ public class FestCustController extends HttpServlet {
 				ArrayList<Object> executeObj = new ArrayList<>();
 				executeObj.add(custno);
 				executeObj.add(true); // 조회수를 1 증가 시킨다!
-				request.setAttribute("custDTO", service.execute(executeObj));
+				request.setAttribute("FestCustDTO", service.execute(executeObj));
 				// jsp 이름을 만들어 내고, 밑에서 forward 시킨다.
 				viewJSP = Beans.getJsp(command);
 				System.out.println(viewJSP);
@@ -103,14 +103,14 @@ public class FestCustController extends HttpServlet {
 				// 글번호로 넘어오기 때문에 int custno를 받는다.
 				int custno2 = Integer.parseInt(request.getParameter("custno"));
 				// command.properties의 BoardViewService 필요함
-				service = Beans.getService("/fest/FestCust/CustWrite.do");
+				service = Beans.getService("/fest/FestCust/FestCustList.do");
 				// service를 실행해서 DB에서 FestCustDTO를 가져와서 request에 담기
 				// 번호로 넘어오니까 custno로 선언
 				// 넘길 때 ArrayList<>로 캐스팅해서 사용함으로 0번째:custno[int], 1번째:isView[boolean]를 넣는다.
 				ArrayList<Object> executeObj2 = new ArrayList<>();
 				executeObj2.add(custno2);
 				executeObj2.add(false); // 조회수 1증가를 시키지 않는다.
-				request.setAttribute("custDTO", service.execute(executeObj2));
+				request.setAttribute("FestCustDTO", service.execute(executeObj2));
 				// jsp 이름을 만들어 내고, 밑에서 forward 시킨다.
 				viewJSP = Beans.getJsp(command);
 				System.out.println(viewJSP);
@@ -123,7 +123,7 @@ public class FestCustController extends HttpServlet {
 				// 글번호를 받아서 삭제 처리한다.
 				service.execute(Integer.parseInt(request.getParameter("custno")));
 				// jsp 이름을 만들어 내고, 밑에서 forward 시킨다.
-				viewJSP = "redirect:FestList.do";
+				viewJSP = "redirect:/project/fest/FestCust/FestCustList.do";
 				System.out.println(viewJSP);
 				break;
 

@@ -40,8 +40,18 @@ public class FestDTO {
 		this.hit = hit;
 	}
 
-	// 행사일정 글등록 및 수정용
+	// 행사일정 글등록용
 	public FestDTO(String festname, String festcomp, String festdate, String festloc, String festtime) {
+		this.festname = festname;
+		this.festcomp = festcomp;
+		this.festdate = festdate;
+		this.festloc = festloc;
+		this.festtime = festtime;
+	}
+
+	// 행사일정 글 수정용
+	public FestDTO(int festno, String festname, String festcomp, String festdate, String festloc, String festtime) {
+		this.festno = festno;
 		this.festname = festname;
 		this.festcomp = festcomp;
 		this.festdate = festdate;

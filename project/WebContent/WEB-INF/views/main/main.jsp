@@ -19,6 +19,7 @@
 color: black;
 font-weight:lighter;
 }
+
 </style>
 </head>
 
@@ -69,7 +70,7 @@ font-weight:lighter;
  	 
 	      <div class="col-lg-4 col-sm-6 portfolio-item" align="right">
 	          <div class="card h-100">
-	            <a href="#"><img class="card-img-top" src="../../img/festival1.jpg" alt="" style="width:300px; height:180px;"></a>
+	            <a href="#"><img class="card-img-top" src="../../img/festival1.jpg" alt="뮤직페스티벌" style="width:300px; height:180px;"></a>
 	            <div class="card-body" align="center">
 	              <h4 class="card-title">
 	                <a href="#">뮤직 페스티벌</a>
@@ -147,19 +148,16 @@ font-weight:lighter;
 	<hr style="border: solid #dedede; border-width: 2px 0 0;"/>
 	        
       <div class="container"  >
- 	   <h2 style="border: solid gray; border-width: 0 0 1px;">푸드트럭별 리뷰보기</h2>
+ 	   <h2 style="border: solid gray; border-width: 0 0 1px;">둥가둥가 푸드트럭 더 알아가기</h2>
 	         
-	      <div class="col-lg-4 col-sm-6 portfolio-item" align="center">
-	          <div class="card h-100"  align="center">
-	            <a href="#"><img align="middle" class="card-img-top" src="../../img/blog_post_1 - together 900x300.jpg" alt="" style="width:900px; height:300px;"></a>
-	            <div class="card-body" align="center">
+	            <a href="#"><img align="middle" class="card-img-top" src="../../img/slide3.jpg" alt="" style="width:100%"></a>
+	            <div class="card-body" align="right">
 	              <h4 class="card-title">
-	                <a href="#">둥가둥가 푸드트럭</a>
+	                     <a class="btn btn-primary" href="#">지금 바로 알아보세요!
+					          <span class="glyphicon glyphicon-chevron-right"></span>
+					       </a>
 	              </h4>
-	              <p class="card-text">푸드트럭명: 버거운 버거 <br/> 메뉴: 수제 햄버거 <br/> 소개글: 배가 버거울 정도로 맛있는 버거운 버거!</p>
-	            </div>
-	          </div>
-	        </div>           
+	            </div>        
 	     
 </div>
 

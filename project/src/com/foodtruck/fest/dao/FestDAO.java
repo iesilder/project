@@ -201,7 +201,7 @@ public class FestDAO {
 			// 1. 드라이버 확인 //2. 연결
 			con = DBUtil.getConnection();
 			// 3. sql문 작성
-			String sql = "update festboard set  festcomp = ?, festname = ?, festdate = ?, festloc=?, festtime=? "
+			String sql = "update festboard set festcomp = ?, festname = ?, festdate = ?, festloc= ?, festtime= ? "
 					+ " where festno = ? "; // 변하는 데이터 대신
 			// ? 사용
 			// 4. 처리문 객체
@@ -211,6 +211,7 @@ public class FestDAO {
 			pstmt.setString(3, festDTO.getFestdate());
 			pstmt.setString(4, festDTO.getFestloc());
 			pstmt.setString(5, festDTO.getFesttime());
+			pstmt.setInt(6, festDTO.getFestno());
 			// 5. 실행 -> select: executeQuery()
 			// insert, update, delete:executeUpdate()
 			pstmt.executeUpdate();

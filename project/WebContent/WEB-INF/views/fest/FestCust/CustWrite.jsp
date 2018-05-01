@@ -95,42 +95,10 @@ $(document).ready(function(){
               </div>
             </div>
             <div class="control-group form-group" >
-              <div class="controls">
-              	 <label>거주지역:</label>
-	              <select class="form-control" name="applyno" id="applyno" required >
-					  <option class="form-control" id="applyno" value="서울/경기">서울/경기</option>
-					  <option class="form-control" id="applyno" value="강원도">강원도</option>
-					  <option class="form-control" id="applyno" value="충청북도">충청북도</option>
-					  <option class="form-control" id="applyno" value="충청남도">충청남도</option>
-					  <option class="form-control" id="applyno" value="경상북도">경상북도</option>
-					  <option class="form-control" id="applyno" value="경상남도">경상남도</option>
-					  <option class="form-control" id="applyno" value="전라북도">전라북도</option>
-					  <option class="form-control" id="applyno" value="전라남도">전라남도</option>
-					  <option class="form-control" id="applyno" value="제주">제주</option>
-				</select>
-				</div>
-            </div>
-            <div class="control-group form-group">
-              <div class="controls">
+                <div class="controls" >
                 <label>참여시간:</label>
-                 <select class="form-control" name="applytime" id="applytime" required >
-					  <option class="form-control" id="applytime" value="오전9시">9:00 ~</option>
-					  <option class="form-control" id="applytime" value="오전10시">10:00 ~</option>
-					  <option class="form-control" id="applytime" value="오전11시">11:00 ~</option>
-					  <option class="form-control" id="applytime" value="오후12시">12:00 ~</option>
-					  <option class="form-control" id="applytime" value="오후1시">13:00 ~</option>
-					  <option class="form-control" id="applytime" value="오후2시">14:00 ~</option>
-					  <option class="form-control" id="applytime" value="오후3시">15:00 ~</option>
-					  <option class="form-control" id="applytime" value="오후4시">16:00 ~</option>
-					  <option class="form-control" id="applytime" value="오후5시">17:00 ~</option>
-					  <option class="form-control" id="applytime" value="오후6시">18:00 ~</option>
-					  <option class="form-control" id="applytime" value="오후7시">19:00 ~</option>
-					  <option class="form-control" id="applytime" value="오후8시">20:00 ~</option>
-					  <option class="form-control" id="applytime" value="오후9시">21:00 ~</option>
-					  <option class="form-control" id="applytime" value="오후10시">22:00 ~</option>
-					  <option class="form-control" id="applytime" value="오후11시">23:00 ~</option>
-					  <option class="form-control" id="applytime" value="오전12시">24:00 ~</option>
-				</select>
+                <input type="time" class="form-control" name="applytime" id="applytime" required />
+                <p class="help-block"></p>
               </div>
             </div>
          	 <table>

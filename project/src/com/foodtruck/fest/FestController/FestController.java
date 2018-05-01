@@ -116,7 +116,7 @@ public class FestController extends HttpServlet {
 				ArrayList<Object> executeObj2 = new ArrayList<>();
 				executeObj2.add(festno2);
 				executeObj2.add(false); // 조회수 1증가를 시키지 않는다.
-				request.setAttribute("festDTO", service.execute(executeObj2));
+				request.setAttribute("FestDTO", service.execute(executeObj2));
 				// jsp 이름을 만들어 내고, 밑에서 forward 시킨다.
 				viewJSP = Beans.getJsp(command);
 				System.out.println(viewJSP);
@@ -129,7 +129,7 @@ public class FestController extends HttpServlet {
 				// 글번호를 받아서 삭제 처리한다.
 				service.execute(Integer.parseInt(request.getParameter("festno")));
 				// jsp 이름을 만들어 내고, 밑에서 forward 시킨다.
-				viewJSP = "redirect:FestList.do";
+				viewJSP = "redirect:/project/fest/FestMngr/FestList.do";
 				System.out.println(viewJSP);
 				break;
 
@@ -202,8 +202,8 @@ public class FestController extends HttpServlet {
 				service.execute(festDTO2);
 				// 현재위치에 있는 리스트: 상대주소
 				// 끝나면 글보기로 자동 이동한다.
-				viewJSP = "FestView.do?festno=" + festDTO2.getFestno() + "$page=" + request.getParameter("page")
-						+ "$rowPerPage=" + request.getParameter("rowPerPage");
+				viewJSP = "FestView.do?festno=" + festDTO2.getFestno() + "&page=" + request.getParameter("page")
+						+ "&rowPerPage=" + request.getParameter("rowPerPage");
 				System.out.println(viewJSP);
 				break;
 
