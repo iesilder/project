@@ -37,9 +37,25 @@ $(document).ready(function(){
 });
 </script>
 <link rel="stylesheet" href="../css/board.css" />
+
+<style type="text/css">
+h3 a{
+font-weight: bold;
+color:#6a009e;
+link
+} 
+h4 a{
+font-weight: bold;
+color:#6a009e;
+}
+a:hover{
+text-decoration: none;
+background-color: none;
+}
+</style>
+
 </head>
 <body>
-<h1>게시판 글보기</h1>
 <!-- 넘어온 데이터를 저장해 놓는 form tag 작성. 모든 input tag는 속성을 hidden으로 지정한다.  -->
 <form id="dataForm">
 	<input type ="hidden" name="festno" value="${FestDTO.festno }" />
@@ -68,62 +84,63 @@ $(document).ready(function(){
           <img class="img-fluid rounded mb-4" src="../../../img/festival1.jpg" alt="음악축제" style="width:550px; height:330px;">
         </div>
         <div class="col-lg-6">
-          <h2><a>(${FestDTO.festno })</a>${FestDTO.festname }</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed voluptate nihil eum consectetur similique? Consectetur, quod, incidunt, harum nisi dolores delectus reprehenderit voluptatem perferendis dicta dolorem non blanditiis ex fugiat.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe, magni, aperiam vitae illum voluptatum aut sequi impedit non velit ab ea pariatur sint quidem corporis eveniet. Odit, temporibus reprehenderit dolorum!</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, consequuntur, modi mollitia corporis ipsa voluptate corrupti eum ratione ex ea praesentium quibusdam? Aut, in eum facere corrupti necessitatibus perspiciatis quis?</p>
+          <h2>[${FestDTO.festno }번째 행사]</h2>
+          <h3><a>행사명:</a> ${FestDTO.festname }</h3>
+          <h4><a>행사기관:</a> ${FestDTO.festcomp }</h4>
+          <h4><a>행사날짜:</a> ${FestDTO.festdate }</h4>
+          <h4><a >행사지역:</a> ${FestDTO.festloc }</h4>
+          <h4><a >접수날짜:</a> ${FestDTO.applydate }</h4>
+          <h4><a >조회수:</a> ${FestDTO.hit }</h4>          
         </div>
       </div>
       <!-- /.row -->
+      
+   <hr style="border: solid #dedede; border-width: 2px 0 0;">
 
       <!-- Team Members -->
-      <h2>Our Team</h2>
+      <h2>관련 행사 사진</h2>
 
       <div class="row">
         <div class="col-lg-4 mb-4">
           <div class="card h-100 text-center">
-            <img class="card-img-top" src="http://placehold.it/750x450" alt="">
+            <img class="card-img-top" src="../../../img/music1.jpg" alt="" style="width:300px;height:200px;">
             <div class="card-body">
-              <h4 class="card-title">Team Member</h4>
-              <h6 class="card-subtitle mb-2 text-muted">Position</h6>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus aut mollitia eum ipsum fugiat odio officiis odit.</p>
+              <h4 class="card-title">2017-02-12 [여의도 축제]</h4>
             </div>
             <div class="card-footer">
-              <a href="#">name@example.com</a>
+              <a href="../../error/ing.jsp">더 자세히</a>
             </div>
           </div>
         </div>
         <div class="col-lg-4 mb-4">
           <div class="card h-100 text-center">
-            <img class="card-img-top" src="http://placehold.it/750x450" alt="">
+            <img class="card-img-top" src="../../../img/music2.jpg" alt="" style="width:300px;height:200px;">
             <div class="card-body">
-              <h4 class="card-title">Team Member</h4>
-              <h6 class="card-subtitle mb-2 text-muted">Position</h6>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus aut mollitia eum ipsum fugiat odio officiis odit.</p>
+              <h4 class="card-title">2017-05-01 [강원도 축제]</h4>
             </div>
             <div class="card-footer">
-              <a href="#">name@example.com</a>
+              <a href="../../error/ing.jsp">더 자세히</a>
             </div>
           </div>
         </div>
         <div class="col-lg-4 mb-4">
           <div class="card h-100 text-center">
-            <img class="card-img-top" src="http://placehold.it/750x450" alt="">
+            <img class="card-img-top" src="../../../img/music3.jpg" alt="" style="width:300px;height:200px;">
             <div class="card-body">
-              <h4 class="card-title">Team Member</h4>
-              <h6 class="card-subtitle mb-2 text-muted">Position</h6>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus aut mollitia eum ipsum fugiat odio officiis odit.</p>
+              <h4 class="card-title">2017-08-12 [제주도 축제]</h4>
             </div>
             <div class="card-footer">
-              <a href="#">name@example.com</a>
+              <a href="../../error/ing.jsp">더 자세히</a>
             </div>
           </div>
         </div>
       </div>
       <!-- /.row -->
 
+   <hr style="border: solid #dedede; border-width: 2px 0 0;">
+
       <!-- Our Customers -->
-      <h2>Our Customers</h2>
+      <h2>리뷰 보기</h2>
       <div class="row">
         <div class="col-lg-2 col-sm-4 mb-4">
           <img class="img-fluid" src="http://placehold.it/500x300" alt="">
@@ -148,6 +165,18 @@ $(document).ready(function(){
 
     </div>
     <!-- /.container -->
-
+    <div class="container">
+		<table>
+		<tfoot>
+			<tr>
+				<td colspan="2">
+					<button id="update" class="btn btn-warning">수정</button>
+					<button id="delete" class="btn btn-danger">삭제</button>
+					<button id="list" class="btn btn-success">리스트</button>
+				</td>
+			</tr>
+		</tfoot>
+		</table>
+	</div>
 </body>
 </html>
