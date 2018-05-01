@@ -51,7 +51,7 @@ $(document).ready(function(){
 <!-- <div class="panel_group"> -->
 <!-- <div class="panel panel-primary"> -->
 <!-- <div class="panel-heading"> -->
-<h1>공지사항 리스트</h1>
+<h3>공지사항 리스트</h3>
 <form class="navbar-form" action="/action_page.php">
 	<input name="page" value="1" type="hidden" />
 	<input name="rowPerPage" value='${(empty param.rowPerPage)?"10":param.rowPerPage}' type="hidden" />
