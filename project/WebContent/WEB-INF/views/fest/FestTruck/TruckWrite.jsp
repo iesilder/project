@@ -21,6 +21,9 @@ $(document).ready(function(){
 	$("#reload").click(function(){
 	    location = "TruckWrite.do";
 	});
+	$("#success").click(function(){
+		alert("등록이 완료되었습니다.");
+	});
 });
 </script>
 <link rel="stylesheet" href="../css/board.css" />
@@ -139,7 +142,7 @@ $(document).ready(function(){
 			 <table>
 				<tr>
 					<td colspan="2">
-						<button class="btn btn-success">등록</button>
+						<button id="success" class="btn btn-success">등록</button>
 						<button type="reset" class="btn btn-warning">새로고침</button>
 						<button type="button" id="cancel" class="btn btn-danger">취소</button>
 					</td>

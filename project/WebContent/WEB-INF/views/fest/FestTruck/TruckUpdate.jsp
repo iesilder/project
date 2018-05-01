@@ -37,7 +37,7 @@ $(document).ready(function(){
     <div class="container" >
 
       <!-- Page Heading/Breadcrumbs -->
-      <h1 class="mt-4 mb-3">행사일정 정보 수정
+      <h1 class="mt-4 mb-3">푸드트럭 정보 수정
         <small>관리자용</small>
       </h1>
 
@@ -45,7 +45,7 @@ $(document).ready(function(){
         <li class="breadcrumb-item">
           <a href="../../main/main.do">메인</a>
         </li>
-        <li class="breadcrumb-item active">행사일정수정-관리자</li>
+        <li class="breadcrumb-item active">푸드트럭수정-관리자</li>
       </ol>
 
       <!-- Contact Form -->

@@ -199,7 +199,7 @@ public class FestCustController extends HttpServlet {
 
 			default:
 				System.out.println("존재하지 않는 URI(자원)를 요청하였습니다");
-				viewJSP = "/WEB-INF/views/error/404.jsp";
+				viewJSP = "/project/WEB-INF/views/error/404.jsp";
 				break;
 			}
 			// jsp에 있느 uri쪽으로 이동한다.

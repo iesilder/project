@@ -136,7 +136,7 @@ public class FestController extends HttpServlet {
 			// 오류를 자세히 보기 위해 추가 - 유태선
 			default:
 				System.out.println("존재하지 않는 URI(자원)를 요청하였습니다");
-				viewJSP = "/WEB-INF/views/error/404.jsp";
+				viewJSP = "/project/WEB-INF/views/error/404.jsp";
 				break;
 
 			}
