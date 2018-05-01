@@ -184,8 +184,8 @@ getDate();
    <!--   action 속성을 생략하면 같은 uri를 호출한다. 구분하기 위해 꼭 POST방식 전송하자. -->
    <div class="container" id="viewInfoDiv">
       <div class="page-header">
-         <h2>개인 정보 수정</h2>
-         <p>안내:회원가입을 하면 회원전용 게시판등을 사용하실수 있습니다.</p>
+         <h2>My Page</h2>
+         <p>안내:나의 회원 정보입니다.</p>
       </div>
       <div class="col-md-6 col-md-offset-3">
 
