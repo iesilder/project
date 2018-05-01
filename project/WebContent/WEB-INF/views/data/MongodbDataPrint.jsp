@@ -102,7 +102,7 @@ $(function () {
 <h2>공공데이터</h2>
 <br><br><br>
 <div id="container1" style="width:600px; height:400px;"></div>
-<br><br><br>
 <div id="container2" style="width:600px; height:400px;"></div>
+<br><br><br>
 </body>
 </html>

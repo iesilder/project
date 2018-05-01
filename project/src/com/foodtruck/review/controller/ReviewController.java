@@ -89,7 +89,7 @@ public class ReviewController extends HttpServlet {
 			// 글보기 - get
 			case "/review/reviewview.do":
 				System.out.println("리뷰보기스타뜨뜨뜨뜨뜨");
-				int no = Integer.parseInt(request.getParameter("no"));
+				int no = Integer.parseInt(request.getParameter("rno"));
 				service = Beans.getService(command); // BoardViewService
 				// service를 실행해서 DB에서 BoardDTO를 가져와서 request에 담는다.
 				// 넘길 때 ArrayList로 캐스팅해서 사용하므로 0: (int)no, 1: (boolean)isViews
@@ -106,7 +106,7 @@ public class ReviewController extends HttpServlet {
 			// 글수정 폼
 			case "/review/reviewupdate.do":
 				// viewService에서
-				int no2 = Integer.parseInt(request.getParameter("no"));
+				int no2 = Integer.parseInt(request.getParameter("rno"));
 				System.out.println(no2);
 				System.out.println(no2);
 				System.out.println(no2);
@@ -133,7 +133,7 @@ public class ReviewController extends HttpServlet {
 				System.out.println(service);
 				// 처리를해서 DB에 있는 데이터를 받아와서 request에 담아 둔다.
 				
-				service.execute(Integer.parseInt(request.getParameter("no")));
+				service.execute(Integer.parseInt(request.getParameter("rno")));
 				// jsp 이름을 만들어 내고 밑에서 forward 시킨다.
 				jsp = "redirect:reviewlist.do";
 				System.out.println(jsp);
@@ -224,7 +224,7 @@ public class ReviewController extends HttpServlet {
 				// 실행해서 수정처리
 				service.execute(reviewDTO2);
 				// 글보기로 이동시키는데 글번호와 함께 이동시킨다.
-				jsp = "reviewview.do?no=" + reviewDTO2.getNo() + "$page=" + request.getParameter("page")
+				jsp = "reviewview.do?rno=" + reviewDTO2.getRno() + "$page=" + request.getParameter("page")
 				+ "$rowPerPage=" + request.getParameter("rowPerPage");
 				System.out.println(jsp);
 				break;
