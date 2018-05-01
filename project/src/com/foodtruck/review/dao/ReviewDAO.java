@@ -31,7 +31,7 @@ public class ReviewDAO {
 			// 3. sql
 			// 1) 원래 데이터를 순서에 맞게 가져온다.
 			String sql = "select no, festloc,fname,maindish,starscore,score,hit from reviewboardtest";
-			sql = " select no rnum,festloc,fname,maindish,starscore,score,hit from (" + sql + ")";
+			sql = " select rownum rnum,no,festloc,fname,maindish,starscore,score,hit from (" + sql + ")";
 			sql = " select * from (" + sql + ")" + "where rnum between ? and ? ";
 
 			// 2) 순서에 맞게 가져온 데이터에 rownum rnum을 붙인다.
@@ -47,7 +47,7 @@ public class ReviewDAO {
 				if (list == null)
 					list = new ArrayList<>();
 				// 데이터 하나를 담을 수 있는 BoardDTO객체를 생성한다.
-				ReviewDTO reviewDTO = new ReviewDTO(rs.getInt("rnum"), rs.getInt("score"), rs.getInt("hit"),
+				ReviewDTO reviewDTO = new ReviewDTO(rs.getInt("no"), rs.getInt("score"), rs.getInt("hit"),
 						rs.getString("fname"), rs.getString("maindish"), rs.getString("festloc"),
 						rs.getString("starscore"));
 
