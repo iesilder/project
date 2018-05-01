@@ -84,7 +84,7 @@ background-color: none;
           <img class="img-fluid rounded mb-4" src="../../../img/portfolio_4 - burger 700x400.jpg" alt="버버푸드트럭" style="width:550px; height:400px;">
         </div>
         <div class="col-lg-6">
-          <h2>[${FestTruckDTO.truckno }번째 행사]</h2>
+          <h2 id="h2_truckno">${FestTruckDTO.truckno }</h2>
           <h3><a>푸드트럭명:</a> ${FestTruckDTO.truckname }</h3>
           <h4><a>행사정보:</a> ${FestTruckDTO.festjoin }</h4>
           <h4><a>메뉴국적:</a> ${FestTruckDTO.country }</h4>

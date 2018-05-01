@@ -128,7 +128,7 @@ public class FestTruckController extends HttpServlet {
 				// 글번호를 받아서 삭제 처리한다.
 				service.execute(Integer.parseInt(request.getParameter("truckno")));
 				// jsp 이름을 만들어 내고, 밑에서 forward 시킨다.
-				viewJSP = "redirect:FestList.do";
+				viewJSP = "redirect:/project/fest/FestTruck/FestTruckList.do";
 				System.out.println(viewJSP);
 				break;
 

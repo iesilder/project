@@ -23,9 +23,9 @@ public class FestTruckViewService implements ServiceInterface {
 		// 원래는 excute()에 타입을 선언하였으나, ServInt에는 하나만 받을 수 있게 하였다
 		// 따라서 두개인 타입을 ArrayList<>에 넣어서 꺼내 사용한다.
 		@SuppressWarnings("unchecked")
-		ArrayList<Object> excuteObj = (ArrayList<Object>) objs;
-		int truckno = (int) excuteObj.get(0);
-		boolean isView = (boolean) excuteObj.get(1);
+		ArrayList<Object> executeObj = (ArrayList<Object>) objs;
+		int truckno = (int) executeObj.get(0);
+		boolean isView = (boolean) executeObj.get(1);
 
 		FestTruckDTO truckDTO = null;
 		// list에 데이터를 가져와서 채우는 프로그램 작성
