@@ -19,21 +19,21 @@ $(document).ready(function(){
 // 	alert("OK");
 	// 버튼 이벤트 처리
 // 	수정 & 수정취소 버튼을 일단 숨긴다. 
-	$("#replyUpdateDiv").hide();
+// 	$("#replyUpdateDiv").hide();
 	
 	$("#update").click(function(){
 // 		location="update.do?festno="+$("#td_festno").text();
-		$("#dataForm").attr("action","FestUpdate.do");
+		$("#dataForm").attr("action","TruckUpdate.do");
 		$("#dataForm").submit();
 	});
 	$("#delete").click(function(){
 		if(confirm("정말 삭제하시겠습니까?"))
-			location="FestDelete.do?festno="+$("#td_festno").text();
+			location="TruckDelete.do?truckno="+$("#td_truckno").text();
 	});
 	$("#list").click(function(){
 // 		location="list.do";
-		$("#dataForm input[name='festno']").attr("disabled", "disabled");
-		$("#dataForm").attr("action","FestList.do"). submit();
+		$("#dataForm input[name='truckno']").attr("disabled", "disabled");
+		$("#dataForm").attr("action","FestTruckList.do"). submit();
 	});
 });
 </script>
@@ -43,7 +43,7 @@ $(document).ready(function(){
 <h1>게시판 글보기</h1>
 <!-- 넘어온 데이터를 저장해 놓는 form tag 작성. 모든 input tag는 속성을 hidden으로 지정한다.  -->
 <form id="dataForm">
-	<input type ="hidden" name="festno" value="${FestDTO.festno }" />
+	<input type ="hidden" name="truckno" value="${FestTruckDTO.truckno }" />
 	<input type ="hidden" name="page" value="${param.page }"/>
 	<input type ="hidden" name="rowPerPage" value="${param.rowPerPage }"/>
 </form>
@@ -54,36 +54,52 @@ $(document).ready(function(){
 <tbody>
 <!-- 데이터를 출력한다. -->
 	<tr>
-		<th>행사번호</th>
-		<td id="td_festno">${FestDTO.festno}</td>
+		<th>푸드트럭번호</th>
+		<td id="td_truckno">${FestTruckDTO.truckno}</td>
 	</tr>
 	<tr>
-		<th>행사기관</th>
-		<td>${FestDTO.festcomp}</td>
+		<th>행사정보</th>
+		<td>${FestTruckDTO.festjoin}</td>
 	</tr>
 	<tr>
-		<th>행사이름</th>
-		<td><pre>${FestDTO.festname}</pre></td>
+		<th>푸드트럭명</th>
+		<td><pre>${FestTruckDTO.truckname}</pre></td>
 	<tr/>
 	<tr>
-		<th>행사날짜</th>
-		<td>${FestDTO.festdate}</td>
+		<th>메뉴국적</th>
+		<td>${FestTruckDTO.country}</td>
 	</tr>
 	<tr>
-		<th>행사지역</th>
-		<td>${FestDTO.festloc}</td>
+		<th>주요메뉴</th>
+		<td>${FestTruckDTO.maindish}</td>
 	</tr>
 	<tr>
-		<th>행사시간</th>
-		<td>${FestDTO.festtime}</td>
+		<th>예상인원</th>
+		<td>${FestTruckDTO.predppl}</td>
+	</tr>
+	<tr>
+		<th>신청가능인원</th>
+		<td>${FestTruckDTO.applyppl}</td>
+	</tr>
+	<tr>
+		<th>준비된 판매량</th>
+		<td>${FestTruckDTO.readyfood}</td>
+	</tr>
+	<tr>
+		<th>현장담당자 이름</th>
+		<td>${FestTruckDTO.mngrname}</td>
+	</tr>
+	<tr>
+		<th>현장담당자 연락처</th>
+		<td>${FestTruckDTO.mngrtel}</td>
 	</tr>
 	<tr>
 		<th>작성일</th>
-		<td>${FestDTO.applydate}</td>
+		<td>${FestTruckDTO.applydate}</td>
 	</tr>
 	<tr>
 		<th>조회수</th>
-		<td>${FestDTO.hit}</td>
+		<td>${FestTruckDTO.hit}</td>
 	</tr>
 </tbody>
 <tfoot>

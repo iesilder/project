@@ -25,7 +25,7 @@ $(document).ready(function(){
 // 	alert("OK");
     $(".data").click(function(){
 //         $(this).hide();
-        var truckno = $(this).find("td:first").text();
+        var truckno = $(this).find("li:first").text();
 // 		alert("click");
 // 		alert(festno);
 		location = "FestTruckView.do?truckno="+truckno+'&page=${pageObject.page}&rowPerPage=${(empty param.rowPerPage)?"10":param.rowPerPage}&searchKey=${param.searchKey}&searchWord=${param.searchWord}';
@@ -65,7 +65,8 @@ $(document).ready(function(){
         </div>
         <div class="col-md-5">
           <ul class="data" style="list-style: none; display:inline;" >
-	         <li style="font-size:large; font-weight: bolder;">(${FestTruckDTO.truckno})  ${FestTruckDTO.truckname }</li>
+	         <li style="font-size:large; font-weight: bolder;">${FestTruckDTO.truckno}</li>  
+	         <li>${FestTruckDTO.truckname }</li>
 	         <li>${FestTruckDTO.festjoin }</li>
 	         <li>${FestTruckDTO.country }</li>
 	         <li>${FestTruckDTO.maindish }</li>

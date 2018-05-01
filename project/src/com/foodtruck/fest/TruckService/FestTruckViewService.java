@@ -17,7 +17,7 @@ public class FestTruckViewService implements ServiceInterface {
 	}
 
 	@Override
-	public FestTruckDTO execute(Object objs) throws Exception {
+	public FestTruckDTO execute(Object objs) {
 		// TODO Auto-generated method stub
 		System.out.println("FestViewService.excute()");
 		// 원래는 excute()에 타입을 선언하였으나, ServInt에는 하나만 받을 수 있게 하였다

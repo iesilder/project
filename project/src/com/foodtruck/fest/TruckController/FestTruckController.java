@@ -94,10 +94,10 @@ public class FestTruckController extends HttpServlet {
 				// service를 실행해서 DB에서 FestDTO를 가져와서 request에 담기
 				// 번호로 넘어오니까 festNo로 선언
 				// 넘길 때 ArrayList<>로 캐스팅해서 사용함으로 0번째:festNo[int], 1번째:isView[boolean]를 넣는다.
-				ArrayList<Object> executeObj1 = new ArrayList<>();
-				executeObj1.add(truckno);
-				executeObj1.add(true); // 조회수를 1 증가 시킨다!
-				request.setAttribute("truckDTO", service.execute(executeObj1));
+				ArrayList<Object> executeObj = new ArrayList<>();
+				executeObj.add(truckno);
+				executeObj.add(true); // 조회수를 1 증가 시킨다!
+				request.setAttribute("truckDTO", service.execute(executeObj));
 				// jsp 이름을 만들어 내고, 밑에서 forward 시킨다.
 				viewJSP = Beans.getJsp(command);
 				System.out.println(viewJSP);
@@ -112,10 +112,10 @@ public class FestTruckController extends HttpServlet {
 				// service를 실행해서 DB에서 FestTruckDTO를 가져와서 request에 담기
 				// 번호로 넘어오니까 truckno로 선언
 				// 넘길 때 ArrayList<>로 캐스팅해서 사용함으로 0번째:truckno[int], 1번째:isView[boolean]를 넣는다.
-				ArrayList<Object> executeObj = new ArrayList<>();
-				executeObj.add(truckno2);
-				executeObj.add(false); // 조회수 1증가를 시키지 않는다.
-				request.setAttribute("festTruckDTO", service.execute(executeObj));
+				ArrayList<Object> executeObj1 = new ArrayList<>();
+				executeObj1.add(truckno2);
+				executeObj1.add(false); // 조회수 1증가를 시키지 않는다.
+				request.setAttribute("festTruckDTO", service.execute(executeObj1));
 				// jsp 이름을 만들어 내고, 밑에서 forward 시킨다.
 				viewJSP = Beans.getJsp(command);
 				System.out.println(viewJSP);
@@ -201,7 +201,7 @@ public class FestTruckController extends HttpServlet {
 				service.execute(festTruckDTO2);
 				// 현재위치에 있는 리스트: 상대주소
 				// 끝나면 글보기로 자동 이동한다.
-				viewJSP = "view.do?truckno=" + festTruckDTO2.getTruckno() + "$page=" + request.getParameter("page")
+				viewJSP = "TruckView.do?truckno=" + festTruckDTO2.getTruckno() + "$page=" + request.getParameter("page")
 						+ "$rowPerPage=" + request.getParameter("rowPerPage");
 				System.out.println(viewJSP);
 				break;
