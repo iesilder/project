@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 
+import com.foodtruck.data.dao.DataDAO;
 import com.foodtruck.fest.dao.FestCustDAO;
 import com.foodtruck.fest.dao.FestDAO;
 import com.foodtruck.fest.dao.FestTruckDAO;
@@ -66,7 +67,7 @@ public class Beans extends HttpServlet {
 		// TODO Auto-generated method stub
 		// =====dao 생성해서 저장하는 처리문. - 모든 DAO 프로그램을 다 생성해 놓는다. =====
 		// daoBeans.put("memberDAO", new MemberDAO());
-		// daoBeans.put("dataDAO", new DataDAO());
+		daoBeans.put("dataDAO", new DataDAO());
 		daoBeans.put("noticeDAO", new NoticeDAO());
 		// 행사 일정에 대한 DAO 생성 및 저장 처리문 - 홍다운 - 20180426
 		// 행사일정 메인 게시판DAO

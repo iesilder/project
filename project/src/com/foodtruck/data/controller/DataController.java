@@ -32,6 +32,7 @@ public class DataController extends HttpServlet {
 		// TODO Auto-generated method stub
 		System.out.println(getClass().getName() + ".doGet()");
 		String command = Beans.getURI(request);
+		System.out.println("1");
 		// 기본으로는 forward 시킨 jsp 파일명을 저장한다. 앞에 redirect:이라고 붙이면 redirect 시킨 uri를 저장한다.
 		String jsp = "";
 		// 실행할 Service를 담는 객체 선언
@@ -43,7 +44,7 @@ public class DataController extends HttpServlet {
 		case "/data/MongodbDataPrint.do":
 			//데이터를 가져오기 위한 service 객체 
 			service = Beans.getService(command);
-			
+			System.out.println("2");
 			
 			jsp = Beans.getJsp(command);
 			System.out.println(jsp);

@@ -5,28 +5,59 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<!-- DataTable css start-->
-
-<!-- DataTable css end -->
 <title>몽고디비내용 출력</title>
-<!-- jquery start -->
-
-<!-- jquery end -->
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
-	$(document).ready(function() {
-		$('#example').DataTable();
-	});
+	
+$(function () { 
+    var myChart = Highcharts.chart('container1', {
+        chart: {
+            type: 'line'
+        },
+        title: {
+            text: '서울지역 총 매출금액(월별)[금액:억원]'
+        },
+        subtitle: {
+            text: 'Modified by 유태선',
+            x: -20
+        },
+        xAxis: {
+            categories: ['201611', '201612', '201701', '201702', '201703', '201704', '201705', '201706', '201707', '201708']
+        },
+        yAxis: {
+            title: {
+                text: '총 매출 금액'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        series: [{
+            name: '서울전체',
+            data: [14481,15652,17197,16785,14224,16642,16262,16424,16176,14945]
+        }],
+        
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        tooltip: {
+            valueSuffix: '억원'
+        }
+    });
+});
+    
 </script>
 </head>
 <body>
-	<table>
-		<tbody>
-			<c:forEach var="data" items="${list }">
-				<tr>
-					<td>${data['TRDAR_CD_NM'] }</td>
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
+<h2>공공데이터</h2>
+<br><br><br>
+<div id="container1" style="width:600px; height:400px;"></div>
 </body>
 </html>

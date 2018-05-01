@@ -164,11 +164,11 @@ font-weight: bolder;
 			                	데이터 분석
 			              </a>
 			                <ul>
-				                <li><a class="dropdown-item" href="${absUri }/notice/noticeList.do">상권분석</a></li>
-				                <li><a class="dropdown-item" href="${absUri }/notice/noticeList.do">공공데이터</a></li>
-				                <li><a class="dropdown-item" href="${absUri }/notice/noticeList.do">푸드트럭 지도</a></li>
+				                <li><a class="dropdown-item" href="${absUri }/data/HuffGravityModelPrint.do">상권분석</a></li>
+				                <li><a class="dropdown-item" href="${absUri }/data/MongodbDataPrint.do">공공데이터</a></li>
+				                <li><a class="dropdown-item" href="${absUri }/data/MapPrint.do">푸드트럭 지도</a></li>
 				                <%if(gradeno >= 9 ){ %>
-				                	<li><a class="dropdown-item" href="${absUri }/notice/noticeList.do">관리자용 페이지</a></li>
+				                	<li><a class="dropdown-item" href="${absUri }/data/admin.do">관리자용 페이지</a></li>
 			              		<%} %>
 			              	</ul>
 			            	</li>

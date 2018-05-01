@@ -24,8 +24,8 @@
 	<!-- Notice, Data 담당 : 유태선	20180419-->
 	<servlet>
 		<servlet-name>dataController</servlet-name>
-		<servlet-class>com.foodtruck.board.controller.DataController</servlet-class>
-<!-- 		<load-on-startup>2</load-on-startup> -->
+		<servlet-class>com.foodtruck.data.controller.DataController</servlet-class>
+		<load-on-startup>2</load-on-startup>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>dataController</servlet-name>
