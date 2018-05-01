@@ -55,6 +55,19 @@ public class FestCustDTO {
 		this.applytime = applytime;
 	}
 
+	// 수정용
+	public FestCustDTO(int custno, String festjoin, String truckjoin, String applyname, String applytel, int applyno,
+			String applyloc, String applytime) {
+		this.custno = custno;
+		this.festjoin = festjoin;
+		this.truckjoin = truckjoin;
+		this.applyname = applyname;
+		this.applytel = applytel;
+		this.applyno = applyno;
+		this.applyloc = applyloc;
+		this.applytime = applytime;
+	}
+
 	public int getCustno() {
 		return custno;
 	}

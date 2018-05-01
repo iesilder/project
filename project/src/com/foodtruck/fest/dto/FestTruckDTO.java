@@ -61,6 +61,21 @@ public class FestTruckDTO {
 		this.mngrtel = mngrtel;
 	}
 
+	// 푸드트럭 신청서 글수정용
+	public FestTruckDTO(int truckno, String festjoin, String truckname, String country, String maindish, int predppl,
+			int applyppl, int readyfood, String mngrname, String mngrtel) {
+		this.truckno = truckno;
+		this.festjoin = festjoin;
+		this.truckname = truckname;
+		this.country = country;
+		this.maindish = maindish;
+		this.predppl = predppl;
+		this.applyppl = applyppl;
+		this.readyfood = readyfood;
+		this.mngrname = mngrname;
+		this.mngrtel = mngrtel;
+	}
+
 	public int getTruckno() {
 		return truckno;
 	}

@@ -188,9 +188,10 @@ public class FestTruckController extends HttpServlet {
 			case "/fest/FestTruck/TruckUpdate.do":
 				// 넘어오는 데이터를 festTruckDTO에 담는다
 				// 넘어오는 데이터 name과 동일하게 작성해야한다.
-				FestTruckDTO festTruckDTO2 = new FestTruckDTO(request.getParameter("festjoin"),
-						request.getParameter("truckname"), request.getParameter("country"),
-						request.getParameter("maindish"), Integer.parseInt(request.getParameter("predppl")),
+				FestTruckDTO festTruckDTO2 = new FestTruckDTO(Integer.parseInt(request.getParameter("truckno")),
+						request.getParameter("festjoin"), request.getParameter("truckname"),
+						request.getParameter("country"), request.getParameter("maindish"),
+						Integer.parseInt(request.getParameter("predppl")),
 						Integer.parseInt(request.getParameter("applyppl")),
 						Integer.parseInt(request.getParameter("readyfood")), request.getParameter("mngrname"),
 						request.getParameter("mngrtel"));

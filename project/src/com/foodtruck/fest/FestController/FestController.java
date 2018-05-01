@@ -192,7 +192,8 @@ public class FestController extends HttpServlet {
 			case "/fest/FestMngr/FestUpdate.do":
 				// 넘어오는 데이터를 festDTO에 담는다
 				// 넘어오는 데이터 name과 동일하게 작성해야한다.
-				FestDTO festDTO2 = new FestDTO(request.getParameter("festcomp"), request.getParameter("festname"),
+				FestDTO festDTO2 = new FestDTO(Integer.parseInt(request.getParameter("festno")),
+						request.getParameter("festcomp"), request.getParameter("festname"),
 						request.getParameter("festdate"), request.getParameter("festloc"),
 						request.getParameter("festtime"));
 				// 담은 데이터를 처리할 서비스를 받아온다. - BoardUpdateService in command.properties
@@ -209,7 +210,7 @@ public class FestController extends HttpServlet {
 
 			default:
 				System.out.println("존재하지 않는 URI(자원)를 요청하였습니다");
-				viewJSP = "/WEB-INF/views/error/404.jsp";
+				viewJSP = "/project/WEB-INF/views/error/404.jsp";
 				break;
 			}
 			// jsp에 있느 uri쪽으로 이동한다.

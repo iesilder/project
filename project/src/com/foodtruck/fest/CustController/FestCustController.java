@@ -181,10 +181,11 @@ public class FestCustController extends HttpServlet {
 			case "/fest/FestCust/CustUpdate.do":
 				// 넘어오는 데이터를 festCustDTO에 담는다
 				// 넘어오는 데이터 name과 동일하게 작성해야한다.
-				FestCustDTO festCustDTO2 = new FestCustDTO(request.getParameter("festjoin"),
-						request.getParameter("truckjoin"), request.getParameter("applyname"),
-						request.getParameter("applytel"), Integer.parseInt(request.getParameter("applyno")),
-						request.getParameter("applyloc"), request.getParameter("applytime"));
+				FestCustDTO festCustDTO2 = new FestCustDTO(Integer.parseInt(request.getParameter("custno")),
+						request.getParameter("festjoin"), request.getParameter("truckjoin"),
+						request.getParameter("applyname"), request.getParameter("applytel"),
+						Integer.parseInt(request.getParameter("applyno")), request.getParameter("applyloc"),
+						request.getParameter("applytime"));
 				// 담은 데이터를 처리할 서비스를 받아온다. - BoardUpdateService in command.properties
 				service = Beans.getService(command);
 				System.out.println(service);

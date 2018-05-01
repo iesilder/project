@@ -127,7 +127,6 @@ $(document).ready(function(){
 		</td>
 			<td colspan="2">
 				<div class="btn-group">
-					<button id="write" class="btn btn-primary">글쓰기</button>
 					<button id="reload" class="btn btn-info">새로고침</button>
 				</div>
 			</td>
