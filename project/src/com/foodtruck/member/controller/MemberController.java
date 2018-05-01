@@ -69,7 +69,7 @@ public class MemberController extends HttpServlet {
 		case "/member/view.do":
 			// 회원정보 보기
 			HttpSession httpSession = request.getSession();
-			String id1 = (String)httpSession.getAttribute("id1");
+			String id1 = (String)httpSession.getAttribute("id");
 			try {
 			MemberDTO memberDTO=(MemberDTO)Beans.getService(command).execute(id1);
 			request.setAttribute("memberDTO", memberDTO);

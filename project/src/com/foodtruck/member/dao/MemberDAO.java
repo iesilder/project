@@ -43,7 +43,7 @@ public class MemberDAO {
                   rs.getString("id"),
                   rs.getString("pw"),
                   rs.getString("name"),
-                  rs.getString("birtdate"),
+                  rs.getString("birthdate"),
                   rs.getString("gender"),
                   rs.getString("mobile"),
                   rs.getString("email"),
