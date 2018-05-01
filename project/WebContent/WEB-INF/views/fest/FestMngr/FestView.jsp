@@ -27,7 +27,7 @@ $(document).ready(function(){
 	});
 	$("#delete").click(function(){
 		if(confirm("정말 삭제하시겠습니까?"))
-			location="FestDelete.do?festno="+$("#td_festno").text();
+			location="FestDelete.do?festno="+$("#h2_festno").text();
 	});
 	$("#list").click(function(){
 // 		location="list.do";
@@ -73,7 +73,7 @@ background-color: none;
 
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="../main/main.do">메인</a>
+          <a href="../../main/main.do">메인</a>
         </li>
         <li class="breadcrumb-item active">행사일정 세부내용</li>
       </ol>
@@ -84,7 +84,7 @@ background-color: none;
           <img class="img-fluid rounded mb-4" src="../../../img/festival1.jpg" alt="음악축제" style="width:550px; height:330px;">
         </div>
         <div class="col-lg-6">
-          <h2>[${FestDTO.festno }번째 행사]</h2>
+          <h2 id="h2_festno">${FestDTO.festno }</h2>
           <h3><a>행사명:</a> ${FestDTO.festname }</h3>
           <h4><a>행사기관:</a> ${FestDTO.festcomp }</h4>
           <h4><a>행사날짜:</a> ${FestDTO.festdate }</h4>
@@ -106,6 +106,7 @@ background-color: none;
             <img class="card-img-top" src="../../../img/music1.jpg" alt="" style="width:300px;height:200px;">
             <div class="card-body">
               <h4 class="card-title">2017-02-12 [여의도 축제]</h4>
+              <p class="card-text">젊음의 열기가 쏟아졌던 여의도 현장 사진</p>
             </div>
             <div class="card-footer">
               <a href="../../error/ing.jsp">더 자세히</a>
@@ -117,6 +118,7 @@ background-color: none;
             <img class="card-img-top" src="../../../img/music2.jpg" alt="" style="width:300px;height:200px;">
             <div class="card-body">
               <h4 class="card-title">2017-05-01 [강원도 축제]</h4>
+              <p class="card-text">남녀노소 모두 음악에 미쳤던 강원도 현장 사진</p>
             </div>
             <div class="card-footer">
               <a href="../../error/ing.jsp">더 자세히</a>
@@ -128,6 +130,7 @@ background-color: none;
             <img class="card-img-top" src="../../../img/music3.jpg" alt="" style="width:300px;height:200px;">
             <div class="card-body">
               <h4 class="card-title">2017-08-12 [제주도 축제]</h4>
+              <p class="card-text">돌하르방과 함께 춤을 추게 만들었던 제주도 축제</p>
             </div>
             <div class="card-footer">
               <a href="../../error/ing.jsp">더 자세히</a>
