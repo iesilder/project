@@ -108,14 +108,14 @@ public class FestTruckController extends HttpServlet {
 				// 글번호로 넘어오기 때문에 int truckno를 받는다.
 				int truckno2 = Integer.parseInt(request.getParameter("truckno"));
 				// command.properties의 BoardViewService 필요함
-				service = Beans.getService("/fest/FestMngr/FestView.do");
+				service = Beans.getService("/fest/FestTruck/FestTruckView.do");
 				// service를 실행해서 DB에서 FestTruckDTO를 가져와서 request에 담기
 				// 번호로 넘어오니까 truckno로 선언
 				// 넘길 때 ArrayList<>로 캐스팅해서 사용함으로 0번째:truckno[int], 1번째:isView[boolean]를 넣는다.
 				ArrayList<Object> executeObj1 = new ArrayList<>();
 				executeObj1.add(truckno2);
 				executeObj1.add(false); // 조회수 1증가를 시키지 않는다.
-				request.setAttribute("festTruckDTO", service.execute(executeObj1));
+				request.setAttribute("FestTruckDTO", service.execute(executeObj1));
 				// jsp 이름을 만들어 내고, 밑에서 forward 시킨다.
 				viewJSP = Beans.getJsp(command);
 				System.out.println(viewJSP);

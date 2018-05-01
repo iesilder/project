@@ -21,7 +21,7 @@ $(document).ready(function(){
 // 	수정 & 수정취소 버튼을 일단 숨긴다. 
 	
 	$("#update").click(function(){
-// 		location="update.do?festno="+$("#td_festno").text();
+// 		location="update.do?festno="+$("#h2_festno").text();
 		$("#dataForm").attr("action","FestUpdate.do");
 		$("#dataForm").submit();
 	});
