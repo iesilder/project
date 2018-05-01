@@ -121,7 +121,7 @@ $(function () {
 	    },
 	    labels: {
 	        items: [{
-	            html: '유동인구 데이터',
+	            html: ' ',
 	            style: {
 	                left: '50px',
 	                top: '18px',
