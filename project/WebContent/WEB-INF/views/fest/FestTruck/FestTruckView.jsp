@@ -63,7 +63,7 @@ $(document).ready(function(){
 	</tr>
 	<tr>
 		<th>푸드트럭명</th>
-		<td><pre>${FestTruckDTO.truckname}</pre></td>
+		<td>${FestTruckDTO.truckname}</td>
 	<tr/>
 	<tr>
 		<th>메뉴국적</th>

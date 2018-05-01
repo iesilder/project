@@ -25,7 +25,7 @@ $(document).ready(function(){
 // 	alert("OK");
     $(".data").click(function(){
 //         $(this).hide();
-        var festno = $(this).find("li:first").text();
+        var festno = $(this).find("ul.data li a :first").text();
 // 		alert("click");
 // 		alert(festno);
 		location = "FestView.do?festno="+festno+'&page=${pageObject.page}&rowPerPage=${(empty param.rowPerPage)?"10":param.rowPerPage}&searchKey=${param.searchKey}&searchWord=${param.searchWord}';
@@ -65,12 +65,13 @@ $(document).ready(function(){
         </div>
         <div class="col-md-5">
           <ul class="data" style="list-style: none; display:inline;" >
-	         <li style="font-size:large; font-weight: bolder;">(${FestDTO.festno})  ${FestDTO.festname }</li>
+	         <li style="font-size:large; font-weight: bolder;"><a>${FestDTO.festno }</a></li>
+	         <li style="font-size:large; font-weight: bolder;">${FestDTO.festname }</li>
 	         <li>${FestDTO.festdate }</li>
 	         <li>${FestDTO.festloc }</li>
 	         <li>올림픽 공원에서 2018년 5월5일 어린이날을 맞이하여 가족이 모여 음악을 즐길 수 있는 축제가 열립니다...</li>
          	</ul>
-          <a class="btn btn-primary" href="../FestMngr/FestView.do">행사 자세히 보러가기
+          <a class="btn btn-primary" href="FestView.do">행사 자세히 보러가기
             <span class="glyphicon glyphicon-chevron-right"></span>
           </a>
         </div>
