@@ -66,7 +66,22 @@ public class MemberController extends HttpServlet {
 			jsp = "redirect:"+request.getContextPath()+"/main/main.do";
 			System.out.println(jsp);
 			break;
-
+		case "/member/view.do":
+			// 회원정보 보기
+			HttpSession httpSession = request.getSession();
+			String id1 = (String)httpSession.getAttribute("id1");
+			try {
+			MemberDTO memberDTO=(MemberDTO)Beans.getService(command).execute(id1);
+			request.setAttribute("memberDTO", memberDTO);
+			System.out.println(memberDTO);
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			jsp = Beans.getJsp(command);
+			System.out.println(jsp);
+			break;
+			
+			
 		default:
 			System.out.println("존재하지 않는 자원을 요청");
 			jsp="/WEB-INF/views/error/404.jsp";
@@ -142,26 +157,7 @@ public class MemberController extends HttpServlet {
 				}
 				System.out.println(jsp);
 				break;
-				
-			// 회원정보 보기 - update 사용	.
-			case "/board/view.do":
-				// 넘어오는 데이터를 BoardDTO에 담는다.
-				MemberDTO memberDTO1 = new MemberDTO(
-						request.getParameter("id"),
-						request.getParameter("birthDate"),
-						request.getParameter("mobile"),
-						request.getParameter("email"),
-						request.getParameter("address"),
-						request.getParameter("add2"),
-						null, null, null,null, null, 0);
-				// service - BoardUpdateService
-				service = Beans.getService(command);
-				// 실행해서 수정처리
-				service.execute(memberDTO1);
-				// 글보기로 이동시키는데 글번호와 함께 이동시킨다.
-				jsp = "view.do?no="+memberDTO1.getId();
-				break;	
-	
+			
 			default:
 				System.out.println("존재하지 않는 자원을 요청");
 				jsp="/WEB-INF/views/error/404.jsp";
