@@ -1,5 +1,5 @@
-<%@page import="com.foodtruck.fest.TruckService.FestTruckViewService"%>
-<%@page import="com.foodtruck.fest.dto.FestTruckDTO"%>
+<%@page import="com.foodtruck.fest.TruckService.FestTruckViewService" %>
+<%@page import="com.foodtruck.fest.dto.FestTruckDTO" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
  <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -89,9 +89,9 @@ background-color: none;
           <h4><a>행사정보:</a> ${FestTruckDTO.festjoin }</h4>
           <h4><a>메뉴국적:</a> ${FestTruckDTO.country }</h4>
           <h4><a >주요메뉴:</a> ${FestTruckDTO.maindish }</h4>
-          <h4><a >예상인원:</a> ${FestTruckDTO.predppl }</h4>
-          <h4><a >신청가능 인원:</a> ${FestTruckDTO.applyppl }</h4>
-          <h4><a >준비된 판매량:</a> ${FestTruckDTO.readyfood }</h4>
+          <h4><a >예상인원:</a> ${FestTruckDTO.predppl }명</h4>
+          <h4><a >신청가능 인원:</a> ${FestTruckDTO.applyppl }명</h4>
+          <h4><a >준비된 판매량:</a> ${FestTruckDTO.readyfood }인분</h4>
           <h4><a >현장담당자 이름:</a> ${FestTruckDTO.mngrname }</h4>
           <h4><a >현장담당자 연락처:</a> ${FestTruckDTO.mngrtel }</h4>
           <h4><a >접수날짜:</a> ${FestTruckDTO.applydate }</h4>

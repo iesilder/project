@@ -97,7 +97,7 @@ public class FestTruckController extends HttpServlet {
 				ArrayList<Object> executeObj = new ArrayList<>();
 				executeObj.add(truckno);
 				executeObj.add(true); // 조회수를 1 증가 시킨다!
-				request.setAttribute("truckDTO", service.execute(executeObj));
+				request.setAttribute("FestTruckDTO", service.execute(executeObj));
 				// jsp 이름을 만들어 내고, 밑에서 forward 시킨다.
 				viewJSP = Beans.getJsp(command);
 				System.out.println(viewJSP);
