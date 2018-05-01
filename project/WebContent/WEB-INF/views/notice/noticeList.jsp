@@ -41,7 +41,7 @@ $(document).ready(function(){
 <link rel="stylesheet" href="../css/board.css" />
 <style type="text/css">
 .table{
-	width: 70%;
+	width: 65%;
 	margin: 0 auto;
 }
 </style>
