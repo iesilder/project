@@ -52,6 +52,49 @@ $(function () {
         }
     });
 });
+
+
+$(function () { 
+    var myChart = Highcharts.chart('container2', {
+        chart: {
+            type: 'bar'
+        },
+        title: {
+            text: '강남지역 총 매출금액(도로명별)[금액:원]'
+        },
+        subtitle: {
+            text: 'Modified by 유태선',
+            x: -20
+        },
+        xAxis: {
+            categories: ['강남대로', '봉은사로', '논현로', '언주로', '선릉로', '삼성로', '남부순환로']
+        },
+        yAxis: {
+            title: {
+                text: '총 매출 금액'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        series: [{
+            name: '강남구',
+            data: [593,547,1945,206,465,478,1470]
+        }],
+        
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        tooltip: {
+            valueSuffix: '억원'
+        }
+    });
+});
     
 </script>
 </head>
@@ -59,5 +102,7 @@ $(function () {
 <h2>공공데이터</h2>
 <br><br><br>
 <div id="container1" style="width:600px; height:400px;"></div>
+<br><br><br>
+<div id="container2" style="width:600px; height:400px;"></div>
 </body>
 </html>
