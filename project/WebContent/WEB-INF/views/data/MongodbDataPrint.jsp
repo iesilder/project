@@ -216,7 +216,6 @@ $(function () {
 </style>
 </head>
 <body>
-<h2>공공데이터</h2>
 <br><br><br>
 <div class="data" id="container1" style="width:1000px; height:100%;"></div>
 <br><br><br>

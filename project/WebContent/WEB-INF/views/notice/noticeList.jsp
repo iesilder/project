@@ -39,6 +39,12 @@ $(document).ready(function(){
 });
 </script>
 <link rel="stylesheet" href="../css/board.css" />
+<style type="text/css">
+.table{
+	width: 70%;
+	margin: 0 auto;
+}
+</style>
 </head>
 <body>
 <div class="container">
