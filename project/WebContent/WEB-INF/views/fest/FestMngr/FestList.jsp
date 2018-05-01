@@ -25,7 +25,7 @@ $(document).ready(function(){
 // 	alert("OK");
     $(".data").click(function(){
 //         $(this).hide();
-        var festno = $(this).find("ul.data li a :first").text();
+        var festno = $(this).find("li:first").text();
 // 		alert("click");
 // 		alert(festno);
 		location = "FestView.do?festno="+festno+'&page=${pageObject.page}&rowPerPage=${(empty param.rowPerPage)?"10":param.rowPerPage}&searchKey=${param.searchKey}&searchWord=${param.searchWord}';
@@ -65,7 +65,7 @@ $(document).ready(function(){
         </div>
         <div class="col-md-5">
           <ul class="data" style="list-style: none; display:inline;" >
-	         <li style="font-size:large; font-weight: bolder;"><a>${FestDTO.festno }</a></li>
+	         <li style="font-size:large; font-weight: bolder;">${FestDTO.festno }</li>
 	         <li style="font-size:large; font-weight: bolder;">${FestDTO.festname }</li>
 	         <li>${FestDTO.festdate }</li>
 	         <li>${FestDTO.festloc }</li>

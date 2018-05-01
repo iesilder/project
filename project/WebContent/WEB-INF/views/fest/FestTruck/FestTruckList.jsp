@@ -66,7 +66,7 @@ $(document).ready(function(){
         <div class="col-md-5">
           <ul class="data" style="list-style: none; display:inline;" >
 	         <li style="font-size:large; font-weight: bolder;">${FestTruckDTO.truckno}</li>  
-	         <li>${FestTruckDTO.truckname }</li>
+	         <li style="font-size:large; font-weight: bolder;">${FestTruckDTO.truckname }</li>
 	         <li>${FestTruckDTO.festjoin }</li>
 	         <li>${FestTruckDTO.country }</li>
 	         <li>${FestTruckDTO.maindish }</li>
