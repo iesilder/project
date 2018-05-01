@@ -153,7 +153,6 @@ font-weight: bolder;
 				                <%if(gradeno >= 9 ){ %>
 				                <li><a class="dropdown-item" href="${absUri }/fest/FestCust/FestCustList.do">관리자용-소비자신청서리스트</a></li>
 				                <li><a class="dropdown-item" href="${absUri }/fest/FestMngr/FestWrite.do">관리자용-행사일정글등록</a></li>
-				                <li><a class="dropdown-item" href="${absUri }/fest/FestMngr/FestUpdate.do">관리자용-행사일정글수정</a></li>
 			      			 	<%} %>
 			      			 </ul>
 			            </li>
