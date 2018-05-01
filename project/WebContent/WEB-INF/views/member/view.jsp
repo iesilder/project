@@ -86,36 +86,28 @@ getDate();
 				<!--   action 속성을 생략하면 같은 uri를 호출한다. 구분하기 위해 꼭 POST방식 전송하자. -->
 				<form method="post" id="joinForm">
 					<div class="form-group">
-						<label for="id">아이디</label> 
+						<label for="id">아이디 : </label> ${memberDTO.id }
 					</div>
 					
 					<div class="form-group">
-						<label for="password">암호</label>
+						<label for="name">이름 : </label>  ${memberDTO.name }
 					</div>
 					
 					<div class="form-group">
-						<label for="confirmPassword">암호확인</label>
+						<label for="birthDate">생년월일 : </label>  ${memberDTO.birthDate }
 					</div>
 					
 					<div class="form-group">
-						<label for="name">이름</label> 
+						<label for="mobile">휴대전화 : </label>  ${memberDTO.mobile }
 					</div>
 					
 					<div class="form-group">
-						<label for="birthDate">생년월일 </label>
-					</div>
-					
-					<div>
-						<label for="mobile">휴대전화</label> 
+						<label for="email">이메일 : </label>  ${memberDTO.email }
 					</div>
 					
 					<div class="form-group">
-						<label for="email">이메일</label>
-					</div>
-					
-					<div>
-						<label for="address">주소</label><br/>
-					</div>
+						<label for="address">주소</label><br/>  ${memberDTO.address }<br/>  ${memberDTO.add2 }
+					</div><br/>
 					
 					<button type="submit" class="btn btn-default" >가입</button>
 				</form>
