@@ -83,7 +83,13 @@ $(document).ready(function(){
                 <p class="help-block"></p>
               </div>
             </div>
-         	 <table>
+            
+                   <hr style="border: solid #dedede; border-width: 2px 0 0;">
+    
+	    <!-- /.container -->
+	    <div class="container" align="center">
+			<table>
+			<tfoot>
 				<tr>
 					<td colspan="2">
 						<button class="btn btn-success">등록</button>
@@ -91,7 +97,10 @@ $(document).ready(function(){
 						<button type="button" id="cancel" class="btn btn-danger">취소</button>
 					</td>
 				</tr>
+			</tfoot>
 			</table>
+		</div>
+	       <hr style="border: solid white; border-width: 2px 0 0;">
         </div>
 
       </div>

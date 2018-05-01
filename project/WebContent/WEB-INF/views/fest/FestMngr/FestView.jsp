@@ -139,36 +139,12 @@ background-color: none;
         </div>
       </div>
       <!-- /.row -->
-
-   <hr style="border: solid #dedede; border-width: 2px 0 0;">
-
-      <!-- Our Customers -->
-      <h2>리뷰 보기</h2>
-      <div class="row">
-        <div class="col-lg-2 col-sm-4 mb-4">
-          <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-        </div>
-        <div class="col-lg-2 col-sm-4 mb-4">
-          <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-        </div>
-        <div class="col-lg-2 col-sm-4 mb-4">
-          <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-        </div>
-        <div class="col-lg-2 col-sm-4 mb-4">
-          <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-        </div>
-        <div class="col-lg-2 col-sm-4 mb-4">
-          <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-        </div>
-        <div class="col-lg-2 col-sm-4 mb-4">
-          <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-        </div>
-      </div>
-      <!-- /.row -->
-
     </div>
+    
+       <hr style="border: solid #dedede; border-width: 2px 0 0;">
+    
     <!-- /.container -->
-    <div class="container">
+    <div class="container" align="center">
 		<table>
 		<tfoot>
 			<tr>
@@ -181,5 +157,7 @@ background-color: none;
 		</tfoot>
 		</table>
 	</div>
+	       <hr style="border: solid white; border-width: 2px 0 0;">
+	
 </body>
 </html>

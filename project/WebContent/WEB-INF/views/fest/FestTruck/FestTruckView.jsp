@@ -81,7 +81,7 @@ background-color: none;
       <!-- Intro Content -->
       <div class="row">
         <div class="col-lg-6">
-          <img class="img-fluid rounded mb-4" src="../../../img/portfolio_4 - burger 700x400.jpg" alt="버버푸드트럭" style="width:550px; height:400px;">
+          <img class="img-fluid rounded mb-4" src="../../../img/portfolio_4 - burger 700x400.jpg" alt="버버푸드트럭" style="width:560px; height:380px;">
         </div>
         <div class="col-lg-6">
           <h2 id="h2_truckno">${FestTruckDTO.truckno }</h2>
@@ -145,35 +145,12 @@ background-color: none;
       </div>
       <!-- /.row -->
 
-   <hr style="border: solid #dedede; border-width: 2px 0 0;">
-
-      <!-- Our Customers -->
-      <h2>리뷰 보기</h2>
-      <div class="row">
-        <div class="col-lg-2 col-sm-4 mb-4">
-          <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-        </div>
-        <div class="col-lg-2 col-sm-4 mb-4">
-          <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-        </div>
-        <div class="col-lg-2 col-sm-4 mb-4">
-          <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-        </div>
-        <div class="col-lg-2 col-sm-4 mb-4">
-          <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-        </div>
-        <div class="col-lg-2 col-sm-4 mb-4">
-          <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-        </div>
-        <div class="col-lg-2 col-sm-4 mb-4">
-          <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-        </div>
-      </div>
-      <!-- /.row -->
-
     </div>
+    
+       <hr style="border: solid #dedede; border-width: 2px 0 0;">
+    
     <!-- /.container -->
-    <div class="container">
+    <div class="container" align="center">
 		<table>
 		<tfoot>
 			<tr>
@@ -185,6 +162,8 @@ background-color: none;
 			</tr>
 		</tfoot>
 		</table>
+	</div>
+	       <hr style="border: solid white; border-width: 2px 0 0;">
 	</div>
 </body>
 </html>
