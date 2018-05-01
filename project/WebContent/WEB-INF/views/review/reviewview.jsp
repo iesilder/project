@@ -21,21 +21,21 @@ $(document).ready(function(){
 	});
 	$("#delete").click(function(){
 		if(confirm("정말 삭제하시겠습니까?"))
-			location="reviewdelete.do?no="+$("#td_no").text();
+			location="reviewdelete.do?rno="+$("#td_rno").text();
 	});
-	$("#list").click(function(){
-// 		location="list.do";
-		$("#dataForm input[name='no']").attr("disabled","disabled")
-		$("#dataForm").attr("action","reviewlist.do");
-		$("#dataForm").submit();
-	});
+// 	$("#list").click(function(){
+// // 		location="list.do";
+// 		$("#dataForm input[name='rno']").attr("disabled","disabled")
+// 		$("#dataForm").attr("action","reviewlist.do");
+// 		$("#dataForm").submit();
+// 	});
 });
 </script>
 </head>
 <body>
 <!-- 넘어온 데이터를 저장해 놓는 form tag 작성. 모든 input tag는 type 속성을 hidden -->
 <form id="dataForm">
-	<input type="hidden" name="no" value="${reviewDTO.no }" />
+	<input type="hidden" name="rno" value="${reviewDTO.rno }" />
 	<input type="hidden" name="page" value="${param.page }" />
 	<input type="hidden" name="rowPerPage" value="${param.rowPerPage }" />
 	<input type="hidden" name="searchKey" value="${param.searchKey }" />
@@ -48,7 +48,7 @@ $(document).ready(function(){
 <!-- 데이터를 출력한다. -->
 	<tr>
 		<th>번호</th>
-		<td id="td_no">${reviewDTO.no}</td>
+		<td id="td_rno">${reviewDTO.rno}</td>
 	</tr>
 	<tr>
 		<th>아이디</th>
