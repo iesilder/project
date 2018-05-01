@@ -47,8 +47,7 @@ public class FestCustDAO {
 			while (rs.next()) {
 				// 데이터가 있는데 list가 null이면 생성한다.
 				if (list == null)
-					System.out.println(list);
-				list = new ArrayList<>();
+					list = new ArrayList<>();
 				// 데이터 하나를 담을 수 있는 FestCustDTO 객체를 생성한다.
 				FestCustDTO festCustDTO = new FestCustDTO();
 				// 데이터를 rs에서 꺼내서 festCustDTO에 담는다.

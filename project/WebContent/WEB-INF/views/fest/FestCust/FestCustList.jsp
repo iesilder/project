@@ -18,7 +18,7 @@ pageContext.setAttribute("absURI", request.getContextPath());
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>게시판 리스트</title>
+<title>소비자 신청서 리스트</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
@@ -38,13 +38,27 @@ $(document).ready(function(){
 <link rel="stylesheet" href="../css/board.css" />
 </head>
 <body>
-<h1>소비자 신청서 리스트</h1>
+
 <div class="container">
+
+  <h1 class="mt-4 mb-3">소비자 신청서 
+        <small>리스트 메인 화면</small>
+      </h1>
+
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="../../main/main.do">메인</a>
+        </li>
+        <li class="breadcrumb-item active">소비자 리스트</li>
+      </ol>
+
+ <h4>소비자 정보 검색창</h4>
+  <p>원하는 정보를 검색하세요.</p>
  <form class="navbar-form">
- <input name="page" value="1" type="hidden" />
+ <input name="page" value="1" type="hidden" /> 
 	<input name="rowPerPage" value='${(empty param.rowPerPage)?"10":param.rowPerPage}' type="hidden" />
- <div class="form-group navbar-left">
- <select class="form-control navbar-left list-group"  name="searchKey"  class="input-group-addon">
+ <div class="form-group navbar-left" align="center">
+ <select class="form-control navbar-left list-group"  name="searchKey"  class="input-group-addon" >
 <option value="applyname" ${(param.searchKey == "applyname")?"selected=\"selected\"":"" } 
   		>신청자 이름</option>
 <option value="applytel" ${(param.searchKey == "applytel")?"selected=\"selected\"":"" } 
@@ -62,8 +76,11 @@ $(document).ready(function(){
  </div>
  <button type="submit" class="btn btn-default">
  <i class="glyphicon glyphicon-search"></i>
- </button>
+ </button> 
 </form>
+
+   <hr style="border: solid #dedede; border-width: 2px 0 0;">
+
 <table class="table">
 <thead>
 	<tr>
