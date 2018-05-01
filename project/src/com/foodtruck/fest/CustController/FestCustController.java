@@ -173,7 +173,7 @@ public class FestCustController extends HttpServlet {
 				System.out.println(service);
 				service.execute(festCustDTO);
 				// 현재위치에 있는 리스트: 상대주소
-				viewJSP = "/fest/FestMngr/FestList.do";
+				viewJSP = "/project/fest/FestMngr/FestList.do";
 				System.out.println(viewJSP);
 				break;
 

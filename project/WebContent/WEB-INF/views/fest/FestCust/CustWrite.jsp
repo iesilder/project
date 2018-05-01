@@ -24,13 +24,16 @@ $(document).ready(function(){
 	$("#success").click(function(){
 		alert("등록이 완료되었습니다.");
 	});
+	$("#success").click(function(){
+		location = "/fest/FestMngr/FestList";
+	});
 });
 </script>
 <link rel="stylesheet" href="../css/board.css" />
 </head>
 <body>
 <div class="container" >
-<form action="write.do" method="post">
+<form action="CustWrite.do" method="post">
 
  <!-- Page Content -->
     <div class="container" >

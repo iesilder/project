@@ -45,7 +45,7 @@ $(document).ready(function(){
         <li class="breadcrumb-item active">행사신청서-푸드트럭</li>
       </ol>
       
-  <form action="write.do" method="post">
+  <form action="TruckWrite.do" method="post">
      
       <div class="row" >
         <div class="col-lg-8 mb-4" >
