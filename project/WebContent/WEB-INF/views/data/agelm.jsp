@@ -29,11 +29,17 @@ pageContext.setAttribute("absUri", request.getContextPath());
 <div align="center">
 
 	<h3 class="mid">나이에 따른 총매출량(회귀분석)</h3>
+	<br><br><br>
 	<img alt="회귀분석" src="../../../img/dataimg/agelm1.png"width="50%" height="50%"/>
+	<br><br><br>
 	<img alt="회귀분석" src="../../../img/dataimg/agelm2.png"width="50%" height="50%"/>
+	<br><br><br>
 	<img alt="회귀분석" src="../../../img/dataimg/agelm3.png"width="50%" height="50%"/>
+	<br><br><br>
 	<img alt="회귀분석" src="../../../img/dataimg/agelm4.png"width="50%" height="50%"/>
+	<br><br><br>
 	<img alt="회귀분석" src="../../../img/dataimg/agelm5.png"width="50%" height="50%"/>
+	<br><br><br>
 	<img alt="회귀분석" src="../../../img/dataimg/agelm6.png"width="50%" height="50%"/>
 </div>
 

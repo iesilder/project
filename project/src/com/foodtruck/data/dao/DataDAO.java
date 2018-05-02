@@ -66,14 +66,12 @@ public class DataDAO {
 //	}// end of Mongodb()
 	
 	public List<Object> MongodbGetValues() {
-		
+		//mongodb에서 데이터를 가져오기
 		MongoDatabase mongoDatabase = MongoDBUtil.getConnection("seoulpopulation");
 		MongoCollection<Document> mongoCollection = mongoDatabase.getCollection("salesData");
-//		List<Document> list = null;
 		List<String> key = new ArrayList<String>();
 		List<Double> value = new ArrayList<Double>();
 		List<Object> values = new ArrayList<Object>();
-		//mongodb에서 데이터를 가져오기
 		
 		//1. mongodb에서 데이터 가져오기.
 		MongoIterable<Document> mongoIterable = mongoCollection.find();
@@ -85,7 +83,6 @@ public class DataDAO {
 			Double instance2 = doc.getDouble("value");
 			key.add(instance1);
 			value.add(instance2);
-//			System.out.println(instance1);
 		}// end of while;
 		
 		/*	데이터 확인 완료	*/
