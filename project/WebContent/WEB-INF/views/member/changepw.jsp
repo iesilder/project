@@ -34,7 +34,7 @@ $(document).ready(function(){
             if(data==1){
 //                $("#checkPwd").html("1");
                if(confirm("비밀번호를 변경하시겠습니까?")){
-                  $("#changePwForm").attr("action","changedpw.do");
+                  $("#changePwForm").attr("action","changepw.do");
                     $("#changePwForm").submit();
                     alert("변경되었습니다. 마이페이지로 이동합니다.");
                     return true;

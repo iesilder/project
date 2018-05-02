@@ -62,7 +62,7 @@ public class MemberController extends HttpServlet {
             System.out.println("세션에 저장된 id:" + id1);
             System.out.println("changepw.jsp에서 받은 현재비밀번호: "+pw);
             try {                  
-               if((boolean) Beans.getService(command).execute(new MemberDTO(id1, pw))) {
+               if((boolean) Beans.getService(command).execute(pw)) {
             	   System.out.println("checkpw.do" + id1 + pw);
                   response.getWriter().print(1);
                }else {
@@ -95,9 +95,9 @@ public class MemberController extends HttpServlet {
 			HttpSession httpSession1 = request.getSession();
 			String id3 = (String)httpSession1.getAttribute("id");
 			try {
-			MemberDTO memberDTO=(MemberDTO)Beans.getService(command).execute(id3);
-			request.setAttribute("memberDTO", memberDTO);
-			System.out.println("컨트롤러에서" +memberDTO);
+			MemberDTO memberDTO1=(MemberDTO)Beans.getService(command).execute(id3);
+			request.setAttribute("memberDTO", memberDTO1);
+			System.out.println("컨트롤러에서" +memberDTO1);
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
@@ -110,10 +110,10 @@ public class MemberController extends HttpServlet {
 			String id4 = (String)httpSession2.getAttribute("id");
 			System.out.println("왔나?"+httpSession2);
 			try {
-				MemberDTO memberDTO=(MemberDTO)Beans.getService(command).execute(id4);
+				MemberDTO memberDTO2=(MemberDTO)Beans.getService(command).execute(id4);
 				System.out.println(id4);
-				request.setAttribute("memberDTO", memberDTO);
-				System.out.println(memberDTO);
+				request.setAttribute("memberDTO", memberDTO2);
+				System.out.println(memberDTO2);
 				
 			} catch (Exception e) {
 				// TODO: handle exception
@@ -127,14 +127,19 @@ public class MemberController extends HttpServlet {
 			break;
 //		case "/member/withdraw.do" :
 //			System.out.println("멤버 컨트롤러 /member/withdraw.do");
-//			HttpSession httpSession2 = request.getSession();
+//			HttpSession httpSession3 = request.getSession();
 //			// 로그인 할 때 세션에 저장한 id를 꺼낸다.
-//			String id1 = (String) httpSession2.getAttribute("id");
-//			String pw = request.getParameter("password");
-//			MemberDTO memberDTO4 = new MemberDTO(id1, pw, null);
+//			String id5 = (String) httpSession3.getAttribute("id");
+//			String pw1 = request.getParameter("password");
+//			MemberDTO memberDTO3 = new MemberDTO(id5, pw1);
 //			service=Beans.getService(command);
 //			System.out.println(service);
-//			service.execute(memberDTO4);
+//			try {
+//				service.execute(memberDTO3);
+//			} catch (Exception e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
 //			request.getSession().invalidate();
 //			jsp=request.getContextPath()+"/main/main.do";
 //			System.out.println(jsp);

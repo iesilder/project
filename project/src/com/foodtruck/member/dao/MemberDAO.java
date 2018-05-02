@@ -218,6 +218,43 @@ public class MemberDAO {
 			}
 		}
 	}
+   
+   // ========== 비밀번호 체크 처리 =========================================/
+   // 참조형 변수를 전달 받으면 밖에 있는 객체와 안에 있는 객체가 같은 주소를 가지게 된다. call by reference-그래서 return이 필요 없다.
+   public Boolean checkpw(String id) throws SQLException{
+      System.out.println("MemberDAO.checkpw()");
+      // 사용할 객체를 선언
+      Connection con = null;
+      PreparedStatement pstmt = null;
+      ResultSet rs = null;
+      try {
+         //1. 확인, 2.연결
+         con = DBUtil.getConnection();
+         //3. sql 작성
+         String sql = "select id, pw "
+               + " from memberboard where id = ?";
+         //4. 처리객체
+         pstmt = con.prepareStatement(sql);
+         pstmt.setString(1, id);
+         
+         //5. 실행  - select : executeQuery() - resultSet이 결과로 나온다.
+         //      - insert, update, delete : executeUpdate() - int 가 나온다.
+         rs = pstmt.executeQuery();
+         
+         //6. 표시 -> 데이터를 넘긴다.
+         if(rs.next()) { // 아이디가 존재하므로 리턴 false
+            return false;
+         }else { return true;} // 아이디가 존재하지 않으면 리턴 true
+      }catch (Exception e) {
+         // TODO: handle exception
+         throw new SQLException("회원 정보를 불러오는 중 DB 오류");
+      } 
+      finally {
+         DBUtil.close(con, pstmt, rs);
+      }
+   } // end of checkId()
+   
+   
    // 비밀번호 변경
    public void changepw(MemberDTO memberDTO) {
 	   System.out.println("memberDAO.update()");

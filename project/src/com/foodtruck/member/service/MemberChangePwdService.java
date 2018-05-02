@@ -1,20 +1,24 @@
 package com.foodtruck.member.service;
 
+import com.foodtruck.member.dao.MemberDAO;
+import com.foodtruck.member.dto.MemberDTO;
 import com.foodtruck.util.ServiceInterface;
 
 public class MemberChangePwdService implements ServiceInterface {
 
-	@Override
-	public Object execute(Object obj) throws Exception{
-		// TODO Auto-generated method stub
-		System.out.println(getClass().getName()+".excute()");
-		return null;
-	}
-
+private MemberDAO memberDAO;
+	
 	@Override
 	public void setDAO(Object obj) {
-		// TODO Auto-generated method stub
-		
+		this.memberDAO = (MemberDAO) obj;
+	}
+	
+	@Override
+	public Integer execute(Object memberDTO) throws Exception{
+		System.out.println("MemberUpdateService.process()");
+		// 호출
+		memberDAO.changepw((MemberDTO) memberDTO);
+		return 1;
 	}
 
 }
