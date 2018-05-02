@@ -22,7 +22,7 @@ $(document).ready(function(){
 	    location = "CustWrite.do";
 	});
 	$("#success").click(function(){
-		alert("등록이 완료되었습니다.");
+		alert("접수가 완료되었습니다.");
 	});
 	$("#success").click(function(){
 		location = "/fest/FestMngr/FestList";
@@ -136,7 +136,7 @@ $(document).ready(function(){
 			<tfoot>
 				<tr>
 					<td colspan="2">
-						<button class="btn btn-success">등록</button>
+						<button id ="success" class="btn btn-success">등록</button>
 						<button type="reset" class="btn btn-warning">새로고침</button>
 						<button type="button" id="cancel" class="btn btn-danger">취소</button>
 					</td>

@@ -22,7 +22,7 @@ $(document).ready(function(){
 	    location = "TruckWrite.do";
 	});
 	$("#success").click(function(){
-		alert("등록이 완료되었습니다.");
+		alert("접수가 완료되었습니다.");
 	});
 });
 </script>
