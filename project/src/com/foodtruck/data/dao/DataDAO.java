@@ -51,7 +51,7 @@ public class DataDAO {
 			value.add(instance2);
 			System.out.println(instance1);
 		}// end of while;
-		
+		 
 		/*	데이터 확인 완료	*/
 //		//데이터가 담긴것을 확인
 //		for(String a: key) {
