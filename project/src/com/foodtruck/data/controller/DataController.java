@@ -43,6 +43,7 @@ public class DataController extends HttpServlet {
 		List<Object> list = null;
 		System.out.println(command);
 
+		
 		switch (command) {
 
 		case "/data/MongodbDataPrint.do":
