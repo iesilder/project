@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+    <%
+String memberid = (String)session.getAttribute("id");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -90,6 +93,7 @@ $(document).ready(function() {
 <form action="reviewwrite.do" method="post" style="margin: auto;">
 		<input type="hidden" id="starImg" name="starscore" value="★">
 		<input type="hidden" id="show" name="score1" value="1">
+		<input type="hidden" name="id" value="<%=memberid%>">
 		<h3 style="margin: auto;">평점</h3>
 		<button id="bt1" type="button">+</button>
 		<button id="bt2" type="button">-</button>

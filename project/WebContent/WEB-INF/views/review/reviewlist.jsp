@@ -2,7 +2,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+System.out.println("default_decorator.jsp:"+request.getContextPath());
+pageContext.setAttribute("absUri", request.getContextPath());
 
+	//관리자용 페이지를 위한 처리 - 유태선 20180430
+	int gradeno;
+	if(session.getAttribute("gradeno") != null){
+		gradeno = (int) session.getAttribute("gradeno");
+	}else{
+		gradeno = 0;
+	}
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -80,7 +91,7 @@
       	<c:forEach items="${list }" var="reviewDTO">
   		<div class="col-md-7">
           <a href="#">
-            <img class="img-fluid rounded mb-3 mb-md-0" src="../../../img/portfolio_4 - burger 700x400.jpg" alt="버버푸드트럭 리뷰" style="width:650px; height:300px;">
+            <img class="img-fluid rounded mb-3 mb-md-0" src="../../../img/portfolio_4 - burger 700x400.jpg" alt="버버푸드트럭 리뷰" style="width:600px; height:300px;">
           </a><br>
         </div>
         <div class="col-md-5">
@@ -89,18 +100,22 @@
 
         
 
-
-          <a style="font-size: 40px; text-decoration: none; color: black;">"${reviewDTO.fname }"&ensp;</a>
+<a style="font-size: 15px;text-decoration: none; color: blue;">${reviewDTO.id}님의 작성글</a><br>
+          <a style="font-size: 30px; text-decoration: none; color: black;">"${reviewDTO.fname }"&ensp;</a>
           <a style="text-decoration: none; color: black">행사날짜 :</a>${reviewDTO.festdate }<br>
+                    
+          
           <a style="font-size: 12px; text-decoration: none; color: black;">행사지역 : </a>${reviewDTO.festloc }<br>
           <a style="font-size: 12px;text-decoration: none;color: black;">메인음식 :</a> ${reviewDTO.maindish }<br><br>
           <br><a style="font-size: 16px;text-decoration: none;color: black;">${reviewDTO.content }</a><br>          
           <a style="color: red; font-size:40px;text-decoration: none;">${reviewDTO.starscore }&emsp;&emsp;</a>
           <a style="font-size: 50px;text-decoration: none; ">${reviewDTO.score } ${reviewDTO.writedate }</a><br>
           
+          <%if(gradeno>=1){ %>
           <a class="btn btn-primary" href="reviewview.do?rno=${reviewDTO.rno}">리뷰 자세히 보러가기
+          <%} %>
             <span class="glyphicon glyphicon-chevron-right"></span>
-          </a>
+              </a><br><br><br><br><br><br>
         </div>
         </c:forEach>
         

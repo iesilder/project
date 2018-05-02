@@ -23,12 +23,12 @@ $(document).ready(function(){
 		if(confirm("정말 삭제하시겠습니까?"))
 			location="reviewdelete.do?rno="+$("#td_rno").text();
 	});
-// 	$("#list").click(function(){
-// // 		location="list.do";
-// 		$("#dataForm input[name='rno']").attr("disabled","disabled")
-// 		$("#dataForm").attr("action","reviewlist.do");
-// 		$("#dataForm").submit();
-// 	});
+	$("#list").click(function(){
+// 		location="list.do";
+		$("#dataForm input[name='rno']").attr("disabled","disabled")
+		$("#dataForm").attr("action","reviewlist.do");
+		$("#dataForm").submit();
+	});
 });
 </script>
 </head>
@@ -42,7 +42,7 @@ $(document).ready(function(){
 	<input type="hidden" name="searchWord" value="${param.searchWord }" />
 </form>
 <div class="container">
-<h1>공지사항 글보기</h1>
+<h1>리뷰 글보기</h1>
 <table class="table">
 <tbody>
 <!-- 데이터를 출력한다. -->
@@ -76,11 +76,11 @@ $(document).ready(function(){
 	</tr>
 	<tr>
 		<th>평점</th>
-		<td><pre>${reviewDTO.score}</pre></td>
+		<td>${reviewDTO.score}</td>
 	<tr/>
 	<tr>
 		<th>별점</th>
-		<td>${reviewDTO.starscore}</td>
+		<td style="color: red; font-size: 25px;">${reviewDTO.starscore}</td>
 	</tr>
 	<tr>
 		<th>내용</th>

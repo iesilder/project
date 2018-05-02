@@ -1,38 +1,42 @@
 package com.foodtruck.review.service;
 
-import com.foodtruck.util.ServiceInterface;
-
 import java.util.ArrayList;
 
 import com.foodtruck.review.dao.ReviewDAO;
+import com.foodtruck.review.dto.ReviewDTO;
+import com.foodtruck.util.ServiceInterface;
 
+public class ReviewUpdateService implements ServiceInterface {
 
-public abstract class ReviewUpdateService implements ServiceInterface {
-
-	@SuppressWarnings("unused")
-	private ReviewDAO ReviewDAO;
+	private ReviewDAO reviewDAO;
 
 	@Override
 	public void setDAO(Object obj) {
 		// TODO Auto-generated method stub
-		this.ReviewDAO = (ReviewDAO) obj;
+		this.reviewDAO = (ReviewDAO) obj;
 	}
 
-	public Object execute(ArrayList<Object> list) throws Exception {
+	public Integer execute(Object obj, int rno) throws Exception {
+		System.out.println("ReviewUpdateService.excute()");
+		// 객체 생성하고 호출
+		
+		@SuppressWarnings("unchecked")
+		ArrayList<Object> list = (ArrayList<Object>) obj;
+		
+		rno =(int) list.get(0);
+		boolean isView = (boolean) list.get(1);
+		ReviewDTO reviewDTO = null; 
+		
+		
+		reviewDTO = reviewDAO.update(reviewDTO,rno);
+		System.out.println(reviewDTO);
+		return rno;
+		
+	}
+
+	@Override
+	public Object execute(Object obj) throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println(getClass().getName() + ".execute()");
-		// obj 캐스팅
-//		if(!isView) ReviewDAO.increase(no);
-		Object[] obj =list.toArray();
-		System.out.println(obj[0]);
-		
-		
-		
-		// dao에서 담아온다.
-//		ReviewDAO.update((ReviewDTO) boardDTO);
-		// DAO로 넘겨준다
-//		ReviewDAO.update((ReviewDTO) obj);
-		return 1;
+		return null;
 	}
-
 }

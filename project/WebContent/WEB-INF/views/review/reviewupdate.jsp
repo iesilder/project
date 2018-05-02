@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +11,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>리뷰 글수정</title>
+<body>
 <script>
 	$(document).ready(function() {
 		// 	alert("OK");
@@ -78,9 +81,11 @@
 		})
 	});
 	</script>
-	<form action="reviewwrite.do" method="post" style="margin: auto;">
+
+	<form action="reviewupdate.do" method="post" style="margin: auto;">
 			<input type="hidden" id="starImg" name="starscore" value="★">
 			<input type="hidden" id="show" name="score1" value="1">
+			<input type="hidden" id="show1" name="rno" value="${reviewDTO.rno}">
 			<h3 style="margin: auto;">평점</h3>
 			<button id="bt1" type="button">+</button>
 			<button id="bt2" type="button">-</button>
@@ -88,10 +93,14 @@
 			<a id="star" style="color: red; font-size: 50px; text-decoration: none;"></a>
 	<table class="table">
 
+
+
+
 	<tbody>
 
+
 	<tr>
-			<th>내용</th>
+			<th>내용"${reviewDTO.rno}"</th>
 			<td><textarea rows="5" cols="60" name="content"></textarea></td>
 			<td><input type="hidden" name="id" value="admin"/></td>
 		<tr/>

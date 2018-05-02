@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.websocket.Session;
 
 import com.foodtruck.review.dto.ReviewDTO;
 import com.foodtruck.util.Beans;
@@ -188,6 +189,7 @@ public class ReviewController extends HttpServlet {
 				ReviewDTO reviewDTO = new ReviewDTO(
 						0, request.getParameter("content"),
 						request.getParameter("starscore"),
+						request.getParameter("id"),
 						Integer.parseInt(request.getParameter("score1")));
 
 //						request.getParameter("id"));
@@ -213,8 +215,11 @@ public class ReviewController extends HttpServlet {
 			// 글수정
 			case "/review/reviewupdate.do":
 				
-				ReviewDTO reviewDTO2 = new ReviewDTO(0,request.getParameter("content"),
+				ReviewDTO reviewDTO2 = new ReviewDTO(
+						0,
+						request.getParameter("content"),
 						request.getParameter("starscore"),
+						request.getParameter("id"),
 						Integer.parseInt(request.getParameter("score1")));
 //						(Integer.parseInt(request.getParameter("no")),
 //						request.getParameter("title"), request.getParameter("content"), request.getParameter("id"),

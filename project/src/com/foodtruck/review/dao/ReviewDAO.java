@@ -30,8 +30,8 @@ public class ReviewDAO {
 			con = DBUtil.getConnection();
 			// 3. sql
 			// 1) 원래 데이터를 순서에 맞게 가져온다.
-			String sql = "select rno,festloc,festdate,content,fname,fmemberboard.maindish,starscore,score,reviewboard.hit from fest,fmemberboard,REVIEWBOARD order by rno desc" ;
-			sql = " select rownum rnum,rno,festloc,content,festdate,fname,maindish,starscore,score,hit from (" + sql + ")";
+			String sql = "select rno,festloc,festdate,content,fname,fmemberboard.maindish,starscore,score,reviewboard.hit,replace(reviewboard.id, substr(reviewboard.id,1,3),'*****') id from fest,fmemberboard,REVIEWBOARD order by id" ;
+			sql = " select rownum rnum,rno,festloc,content,festdate,fname,maindish,starscore,score,hit,id from (" + sql + ")";
 			sql = " select * from (" + sql + ")" + "where rnum between ? and ? ";
 
 			// 2) 순서에 맞게 가져온 데이터에 rownum rnum을 붙인다.
@@ -49,7 +49,7 @@ public class ReviewDAO {
 				// 데이터 하나를 담을 수 있는 BoardDTO객체를 생성한다.
 				ReviewDTO reviewDTO = new ReviewDTO(rs.getInt("rno"), rs.getInt("score"), rs.getInt("hit"),
 						rs.getString("content"),rs.getString("fname"),rs.getString("festdate"),
-						rs.getString("maindish"), rs.getString("festloc"),rs.getString("starscore"));
+						rs.getString("maindish"), rs.getString("festloc"),rs.getString("starscore"),rs.getString("id"));
 						
 
 				// list에 boardDTO를 담는다.
@@ -134,7 +134,7 @@ public class ReviewDAO {
 	}
 
 	// 조회수를 1 증가시키는 메서드. -> 글번호를 받아서 글번호에 맞는 조회수 증가.
-	public void increase(int no) {
+	public void increase(int rno) {
 		System.out.println("ReviewDAO.increase()");
 		// 오라클에서 데이터를 가져와서 채우는 프로그램 작성.
 		// 필요한 객체 선언
@@ -144,10 +144,10 @@ public class ReviewDAO {
 			// 1.드라이버 확인 //2.연결
 			con = DBUtil.getConnection();
 			// 3. sql 작성 - 변하는 데이터 대신 ?를 사용한다.
-			String sql = "update reviewboard set hit = hit + 1 where no = ? ";
+			String sql = "update reviewboard set hit = hit + 1 where rno = ? ";
 			// 4. 처리 객체 생성
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, no); // 첫번재 ?에 no를 int로 세팅
+			pstmt.setInt(1, rno); // 첫번재 ?에 no를 int로 세팅
 			// 5. 처리 객체 실행 -> select: executeQuery(), 그 외: executeUpdate()
 			pstmt.executeUpdate();
 			// 6. 표시 -> 오류가 없으면 정상처리
@@ -174,14 +174,16 @@ public class ReviewDAO {
 			// 1.드라이버 확인 //2.연결
 			con = DBUtil.getConnection();
 			// 3. sql 작성 - 변하는 데이터 대신 ?를 사용한다.
-			String sql = "insert into reviewboard(rno,starscore, content,score) "
-					+ "values(reviewboard_seq.nextval, ?,?,?) ";
+			String sql = "insert into reviewboard(rno,starscore, content,id,score) "
+					+ "values(reviewboard_seq.nextval, ?,?,?,?) ";
 			// 4. 처리 객체 생성
 			pstmt = con.prepareStatement(sql);
 			// pstmt.setInt(1, ReviewDTO.getScore()); // 첫번재 ?에 no 세팅
 			pstmt.setString(1, ReviewDTO.getStarscore()); // 첫번재 ?에 no 세팅
 			pstmt.setString(2, ReviewDTO.getContent()); // 첫번재 ?에 no 세팅
-			pstmt.setInt(3, ReviewDTO.getScore());
+			pstmt.setString(3, ReviewDTO.getId());
+
+			pstmt.setInt(4, ReviewDTO.getScore());
 
 			
 			System.out.println(ReviewDTO.getStarscore());
@@ -202,7 +204,7 @@ public class ReviewDAO {
 	}
 
 	// 게시판 글수정 처리
-	public ReviewDTO update(ReviewDTO ReviewDTO) {
+	public ReviewDTO update(ReviewDTO ReviewDTO, int rno) {
 		System.out.println("ReviewDAO.update()");
 		// 오라클에서 데이터를 가져와서 채우는 프로그램 작성.
 		// 필요한 객체 선언
@@ -216,11 +218,10 @@ public class ReviewDAO {
 			// 4. 처리 객체 생성
 			pstmt = con.prepareStatement(sql);
 //			pstmt.setString(1, ReviewDTO.getId()); // 첫번재 ?에 title 세팅
-			
+			pstmt.setInt(4, rno);
 			pstmt.setString(1, ReviewDTO.getContent()); // 두번재 ?에 content 세팅
 			pstmt.setString(2, ReviewDTO.getStarscore()); // 네번재 ?에 no 세팅
 			pstmt.setInt(3, ReviewDTO.getScore()); // 네번재 ?에 no 세팅
-			pstmt.setInt(4,  ReviewDTO.getRno());
 			// 5. 처리 객체 실행 -> select: executeQuery(), 그 외: executeUpdate()
 			pstmt.executeUpdate();
 			// 6. 표시 -> 오류가 없으면 정상처리
