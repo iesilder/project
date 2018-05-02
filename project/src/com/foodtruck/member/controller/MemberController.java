@@ -28,6 +28,7 @@ public class MemberController extends HttpServlet {
 		String command = Beans.getURI(request);
 		String jsp = "";
 		System.out.println(command);
+		ServiceInterface service;
 		switch (command) {
 		// 회원가입 폼
 		case "/member/join.do":
@@ -51,6 +52,29 @@ public class MemberController extends HttpServlet {
 				throw new ServletException(e);
 			}
 			return;
+			//비밀번호 변경시 확인
+		case "/member/checkpw.do":
+			System.out.println("비밀번호중복체크 ajax");
+            HttpSession session = request.getSession();
+            // 아이디에 맞는 비밀번호를 확인해야 한다.
+            String id1 = (String)session.getAttribute("id");
+            String pw = request.getParameter("password");
+            System.out.println("세션에 저장된 id:" + id1);
+            System.out.println("changePwd.jsp에서 받은 현재비밀번호: "+pw);
+            System.out.println();
+            try {                  
+               if((boolean) Beans.getService(command).execute(new MemberDTO(id1, pw))) {            
+                  response.getWriter().print(1);
+               }else {
+                  response.getWriter().print(0);
+               }
+            } 
+               catch (Exception e) {
+               // TODO Auto-generated catch block
+//               e.printStackTrace();
+               throw new ServletException(e);
+            }
+            return;
 			
 		// 로그인 폼
 		case "/member/login.do":
@@ -68,10 +92,10 @@ public class MemberController extends HttpServlet {
 			break;
 		case "/member/view.do":
 			// 회원정보 보기
-			HttpSession httpSession = request.getSession();
-			String id1 = (String)httpSession.getAttribute("id");
+			HttpSession httpSession1 = request.getSession();
+			String id3 = (String)httpSession1.getAttribute("id");
 			try {
-			MemberDTO memberDTO=(MemberDTO)Beans.getService(command).execute(id1);
+			MemberDTO memberDTO=(MemberDTO)Beans.getService(command).execute(id3);
 			request.setAttribute("memberDTO", memberDTO);
 			System.out.println(memberDTO);
 			} catch (Exception e) {
@@ -80,7 +104,42 @@ public class MemberController extends HttpServlet {
 			jsp = Beans.getJsp(command);
 			System.out.println(jsp);
 			break;
-			
+			// 비밀번호 변경
+		case "/member/changepw.do":
+			HttpSession httpSession2 = request.getSession();
+			String id4 = (String)httpSession2.getAttribute("id");
+			System.out.println(httpSession2);
+			try {
+				MemberDTO memberDTO=(MemberDTO)Beans.getService(command).execute(id4);
+				System.out.println(id4);
+				request.setAttribute("memberDTO", memberDTO);
+				System.out.println(memberDTO);
+				
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			jsp = Beans.getJsp(command);
+			System.out.println(jsp);
+			// jsp 이름을 만들어 내고 밑에서 forward 시킨다.
+//			jsp = Beans.getJsp(command);
+//			System.out.println(jsp);
+			//post 방식으로 변경 쿼리를 보낼 것
+			break;
+//		case "/member/withdraw.do" :
+//			System.out.println("멤버 컨트롤러 /member/withdraw.do");
+//			HttpSession httpSession2 = request.getSession();
+//			// 로그인 할 때 세션에 저장한 id를 꺼낸다.
+//			String id1 = (String) httpSession2.getAttribute("id");
+//			String pw = request.getParameter("password");
+//			MemberDTO memberDTO4 = new MemberDTO(id1, pw, null);
+//			service=Beans.getService(command);
+//			System.out.println(service);
+//			service.execute(memberDTO4);
+//			request.getSession().invalidate();
+//			jsp=request.getContextPath()+"/main/main.do";
+//			System.out.println(jsp);
+//			break;
+//			삭제시에 비밀번호를 묻는다. 아니면 바로 삭제 한다. 
 			
 		default:
 			System.out.println("존재하지 않는 자원을 요청");
@@ -178,7 +237,24 @@ public class MemberController extends HttpServlet {
 				service = Beans.getService(command);
 				System.out.println(service);
 				service.execute(memberDTO1);
-				jsp = request.getContextPath()+"/member/view.do";
+				jsp = request.getContextPath()+"/main/main.do";
+				System.out.println(jsp);
+				
+				break;
+				
+			case "/member/changedpw.do":
+//				HttpSession httpSession = request.getSession();
+//				String id = (String)httpSession.getAttribute("id");
+				MemberDTO memberDTO3 = new MemberDTO(
+						request.getParameter("id"),
+						request.getParameter("pw"),
+						null, null, null, null, null, null, null, null, null, 1);
+				System.out.println(request);
+				System.out.println("memberDTO3: " +memberDTO3);
+				service = Beans.getService(command);
+				System.out.println(service);
+				service.execute(memberDTO3);
+				jsp = request.getContextPath()+"/main/main.do";
 				System.out.println(jsp);
 				
 				break;

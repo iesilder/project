@@ -105,6 +105,10 @@ getDate();
       });
    });
 
+   function goReplace(str) { location.replace(str); }
+
+   
+   
 //       $("#completeUpdateBtn").click(function() {
 //          var con = confirm("수정하시겠습니까?");
 //          if(con){
@@ -172,11 +176,28 @@ getDate();
             <button type="submit" class="btn btn-info" id="completeUpdateBtn">
                수정 <i class="fa fa-check spaceLeft"></i>
             </button>
-            <button type="button" class="btn btn-warning" id="cancelUpdateBtn">
+            <button type="button" class="btn" id="cancelUpdateBtn">
                돌아가기<i class="fa fa-times spaceLeft"></i>
             </button>
+            
          </div>
+       
+         
+         
       </div>
+<!--      탈퇴하기 -->
+
+</form>
+<form action="">
+<div class="form-group" align="right">        
+          <a href="../member/changepw.do" class="btn btn-info" >
+          <span class="glyphicon glyphicon-lock"  ></span> 비밀번호 변경</a>
+</div>          
+</form> 		
+ <form id="withdraw.do" method="post" action="../member/withdraw.do" >
+         <div class="form-group" align="right" >
+         	<button type="button" class="btn btn-warning"  >회원 탈퇴</button>
+         </div>
 </form>
 </div>
    </div>
@@ -221,7 +242,7 @@ getDate();
                <button type="button" class="btn btn-info" id="goUpdateBtn">
                   회원정보 수정<i class="fa fa-check spaceLeft"></i>
                </button>
-               <button type="button" class="btn btn-warning"
+               <button type="button" class="btn"
                   onclick="history.back(-1)">
                   돌아가기<i class="fa fa-times spaceLeft"></i>
                </button>
