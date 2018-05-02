@@ -32,13 +32,11 @@ public class ReviewController extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String command = Beans.getURI(request);
-		// 기본으로는 forward 시킨 jsp 파일명을 저장한다. 앞에 redirect:이라고 붙이면 redirect 시킨 uri를 저장한다.
 		String jsp = "";
-		// 실행할 Service를 담는 객체 선언
 		ServiceInterface service = null;
+		System.out.println(command);
 		try {
 			switch (command) {
-			// 리스트
 			case "/review/reviewlist.do":
 				// 리스트에 뿌릴 데이터를 가져오자. - BoardListService가 필요하다.
 				service = Beans.getService(command);

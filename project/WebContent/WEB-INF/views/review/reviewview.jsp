@@ -17,9 +17,7 @@
 <script>
 	$(document).ready(function() {
 		$("#update").click(function() {
-			location = "update.do?no=" + $("#td_no").text();
-			$("#dataForm").attr("action", "reviewupdate.do");
-			$("#dataForm").submit();
+			alert("공 사 중");
 		});
 		$("#delete").click(function() {
 			if (confirm("정말 삭제하시겠습니까?"))

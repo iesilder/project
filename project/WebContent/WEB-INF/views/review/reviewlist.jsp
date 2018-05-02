@@ -14,7 +14,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>공지사항 리스트</title>
+<title>리뷰 리스트</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
@@ -75,6 +75,11 @@
 					:</a> ${reviewDTO.maindish }<br>
 				<br> <br>
 				<a style="font-size: 16px; text-decoration: none; color: black;">${reviewDTO.content }</a><br>
+				<%
+				if (gradeno < 1) {
+			    %>
+				<a href="../member/join.do" style="color: orange;;">자세한 리뷰가 보고 싶다면? 회원가입하러 고고고!</a>
+				<%} %>
 				<a style="color: red; font-size: 40px; text-decoration: none;">${reviewDTO.starscore }&emsp;&emsp;</a>
 				<a style="font-size: 50px; text-decoration: none;">${reviewDTO.score }
 					${reviewDTO.writedate }</a><br>
@@ -94,28 +99,7 @@
 				<br>
 			</div>
 		</c:forEach>
-
-	</div>
-	<!-- Project Three -->
-	<div class="row">
-		<div class="col-md-7">
-			<a href="../../error/ing.jsp"> <img
-				class="img-fluid rounded mb-3 mb-md-0"
-				src="../../../img/festival3.jpg" alt="장미축제"
-				style="width: 650px; height: 350px;">
-			</a>
-		</div>
-		<div class="col-md-5">
-			<h3>장미 축제</h3>
-			<p>2018-05-20</p>
-			<p>경기-용인</p>
-			<p>나와 쌓은 10년의 우정의 고마움을 표현 할 수 있는 축제. 서로에게 장미를 선물하면서 소중한 시간을
-				보내세요...</p>
-			<a class="btn btn-primary" href="../../error/ing.jsp">행사 자세히 보러가기
-				<span class="glyphicon glyphicon-chevron-right"></span>
-			</a>
-		</div>
-	</div>
+</div>
 	<table>
 		<tr>
 			<td colspan="3">

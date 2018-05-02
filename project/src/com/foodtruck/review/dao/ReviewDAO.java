@@ -28,7 +28,9 @@ public class ReviewDAO {
 			con = DBUtil.getConnection();
 			// 3. sql
 			// 1) 원래 데이터를 순서에 맞게 가져온다.
-			String sql = "select rno,festloc,festdate,content,fname,fmemberboard.maindish,starscore,score,reviewboard.hit,replace(reviewboard.id, substr(reviewboard.id,1,3),'*****') id from fest,fmemberboard,REVIEWBOARD order by id" ;
+			String sql = "select rno,festloc,festdate,concat(substr(content,1,10),'..........') content,fname,fmemberboard.maindish,starscore,score,reviewboard.hit,"
+					+ "replace(reviewboard.id, substr(reviewboard.id,1,3),'***') id from (reviewboard left outer join fest on reviewboard.festno = fest.FESTNO)"
+					+ " left outer join fmemberboard on FMEMBERBOARD.FNO=reviewboard.fno order by rno desc" ;
 			sql = " select rownum rnum,rno,festloc,content,festdate,fname,maindish,starscore,score,hit,id from (" + sql + ")";
 			sql = " select * from (" + sql + ")" + "where rnum between ? and ? ";
 
