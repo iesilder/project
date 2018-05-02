@@ -43,7 +43,7 @@ $(document).ready(function(){
 
       <ol class="breadcrumb" >
         <li class="breadcrumb-item">
-          <a href="../../main/main.do">메인</a>
+          <a href="../../main/main.do"  style="color:#4a4b4c;">메인</a>
         </li>
         <li class="breadcrumb-item active">푸드트럭수정-관리자</li>
       </ol>
