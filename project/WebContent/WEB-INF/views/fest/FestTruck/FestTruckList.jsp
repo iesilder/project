@@ -126,9 +126,9 @@ $(document).ready(function(){
 
       <hr>
 
-<div class=container>
+<div class=container align="center">
     <!-- /.container -->
-	<table>
+	<table >
 		<tr align="center">
 			<td colspan="3">
 				<ul class="pagination">

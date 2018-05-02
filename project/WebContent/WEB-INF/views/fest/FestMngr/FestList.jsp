@@ -98,7 +98,7 @@ $(document).ready(function(){
           <a class="btn btn-primary" href="../../error/ing.jsp">행사 자세히 보러가기
             <span class="glyphicon glyphicon-chevron-right"></span>
           </a>
-        </div>
+        </div>        
       </div>
       <!-- /.row -->
 
@@ -125,7 +125,7 @@ $(document).ready(function(){
 
       <hr>
 
-<div class=container>
+<div class=container align="center">
     <!-- /.container -->
 	<table>
 		<tr align="center">

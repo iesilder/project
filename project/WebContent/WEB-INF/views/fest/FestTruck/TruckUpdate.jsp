@@ -143,22 +143,29 @@ $(document).ready(function(){
                 <input type="text" class="form-control" name="mngrtel" id="mngrtel" placeholder="현장담당자 연락처를 입력하세요." required />
               </div>
             </div>
-            
-         	 <table>
-				<tr>
-					<td colspan="2">
-						<button class="btn btn-success">수정</button>
-						<button type="reset" class="btn btn-warning">새로고침</button>
-						<button type="button" id="cancel" class="btn btn-danger">취소</button>
-					</td>
-				</tr>
-			</table>
         </div>
 
       </div>
 
       <!-- /.row -->
 	</div>
+	      <hr style="border: solid #dedede; border-width: 2px 0 0;">
+    
+    <!-- /.container -->
+    <div class="container" align="left">
+		<table>
+		<tfoot>
+			<tr>
+				<td colspan="2">
+						<button class="btn btn-success">수정</button>
+						<button type="reset" class="btn btn-warning">새로고침</button>
+						<button type="button" id="cancel" class="btn btn-danger">취소</button>
+				</td>
+			</tr>
+		</tfoot>
+		</table>
+	</div>
+	       <hr style="border: solid white; border-width: 2px 0 0;">
     </form>
     </div>
  

@@ -87,7 +87,7 @@ $(document).ready(function(){
                    <hr style="border: solid #dedede; border-width: 2px 0 0;">
     
 	    <!-- /.container -->
-	    <div class="container" align="center">
+	    <div class="container" align="left">
 			<table>
 			<tfoot>
 				<tr>

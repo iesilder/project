@@ -125,21 +125,30 @@ $(document).ready(function(){
                 <p class="help-block"></p>
               </div>
             </div>
-         	 <table>
+        </div>
+
+      </div>
+		<hr style="border: solid #dedede; border-width: 2px 0 0;">
+    
+	    <!-- /.container -->
+	    <div class="container" align="left">
+			<table>
+			<tfoot>
 				<tr>
 					<td colspan="2">
-						<button id="success" class="btn btn-success">등록</button>
+						<button class="btn btn-success">등록</button>
 						<button type="reset" class="btn btn-warning">새로고침</button>
 						<button type="button" id="cancel" class="btn btn-danger">취소</button>
 					</td>
 				</tr>
+			</tfoot>
 			</table>
-        </div>
-
-      </div>
-
+		</div>
+		
+	       <hr style="border: solid white; border-width: 2px 0 0;">
       <!-- /.row -->
 	</div>
+	       
     </form>
     </div>
  

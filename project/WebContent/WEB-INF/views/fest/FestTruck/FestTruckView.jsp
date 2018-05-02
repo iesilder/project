@@ -164,6 +164,5 @@ background-color: none;
 		</table>
 	</div>
 	       <hr style="border: solid white; border-width: 2px 0 0;">
-	</div>
 </body>
 </html>
