@@ -32,7 +32,7 @@ $(document).ready(function(){
          .done(function(data) {
             alert(data);
             if(data==1){
-//                $("#checkPwd").html("1");
+               $("#checkPwd").html("1");
                if(confirm("비밀번호를 변경하시겠습니까?")){
                   $("#changePwForm").attr("action","changepw.do");
                     $("#changePwForm").submit();
@@ -77,12 +77,12 @@ $(document).ready(function(){
         <div class="form-group">
        <label for="pw">새 비밀번호</label>
        
-       <input type="password" class="form-control" id="newpw" name="pw" required="required" placeholder="새 비밀번호" />
+       <input type="password" class="form-control" id="newpw" name="newpw" required="required" placeholder="새 비밀번호" />
        </div>
        
         <div class="form-group">
        <label for="pw">새비밀번호 확인</label>
-       <input type="password" class="form-control" id="confirmNewpw" name="pw" required="required" placeholder="새 비밀번호 확인" />
+       <input type="password" class="form-control" id="confirmNewpw" name="confirmNewpw" required="required" placeholder="새 비밀번호 확인" />
        </div>
       
         <div class="form-group text-center">
