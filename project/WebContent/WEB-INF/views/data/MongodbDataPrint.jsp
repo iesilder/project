@@ -10,7 +10,9 @@
 <script src="http://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
-	
+
+
+
 $(function () { 
     var myChart = Highcharts.chart('container1', {
         chart: {
@@ -27,7 +29,7 @@ $(function () {
         	title: {
                 text: '연도-월'
             },
-            categories: ['2016-11', '2016-12', '2017-01', '2017-02', '2017-03', '2017-04', '2017-05', '2017-06', '2017-07', '2017-08']
+            categories:  ['2016-11', '2016-12', '2017-01', '2017-02', '2017-03', '2017-04', '2017-05', '2017-06', '2017-07', '2017-08']
         },
         yAxis: {
             title: {

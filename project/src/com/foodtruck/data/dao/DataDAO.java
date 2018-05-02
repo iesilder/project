@@ -85,7 +85,7 @@ public class DataDAO {
 			Double instance2 = doc.getDouble("value");
 			key.add(instance1);
 			value.add(instance2);
-			System.out.println(instance1);
+//			System.out.println(instance1);
 		}// end of while;
 		
 		/*	데이터 확인 완료	*/
