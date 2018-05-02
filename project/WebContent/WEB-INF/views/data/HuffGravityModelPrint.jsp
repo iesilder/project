@@ -34,6 +34,8 @@ pageContext.setAttribute("absUri", request.getContextPath());
 	<br><br><br>
 	<img alt="상관분석" src="../../../img/dataimg/cor.png" width="50%" height="50%"/>
 	<br><br><br>
+	<img alt="상관분석" src="../../../img/dataimg/cor1.png" width="50%" height="50%"/>
+	<br><br><br>
 
 </div>
 
