@@ -38,14 +38,14 @@ $(document).ready(function(){
 
       <!-- Page Heading/Breadcrumbs -->
       <h1 class="mt-4 mb-3">푸드트럭 정보 수정
-        <small>관리자용</small>
+        <small>푸드트럭용</small>
       </h1>
 
       <ol class="breadcrumb" >
         <li class="breadcrumb-item">
-          <a href="../../main/main.do">메인</a>
+          <a href="../../main/main.do"  style="color:#4a4b4c;">메인</a>
         </li>
-        <li class="breadcrumb-item active">푸드트럭수정-관리자</li>
+        <li class="breadcrumb-item active">푸드트럭수정-푸드트럭</li>
       </ol>
 
       <!-- Contact Form -->
@@ -59,7 +59,7 @@ $(document).ready(function(){
                 <p class="help-block"></p>
               </div>
             </div>
-                 <div class="control-group form-group" >
+              <div class="control-group form-group" >
               <div class="controls" >
                 <label>푸드트럭명:</label>
                 <input type="text" class="form-control" name="truckname" id="truckname" placeholder="행사기관명을 입력하세요." readonly="readonly"  value="${FestTruckDTO.truckname }" />
@@ -143,22 +143,28 @@ $(document).ready(function(){
                 <input type="text" class="form-control" name="mngrtel" id="mngrtel" placeholder="현장담당자 연락처를 입력하세요." required />
               </div>
             </div>
-            
-         	 <table>
-				<tr>
-					<td colspan="2">
-						<button class="btn btn-success">수정</button>
-						<button type="reset" class="btn btn-warning">새로고침</button>
-						<button type="button" id="cancel" class="btn btn-danger">취소</button>
-					</td>
-				</tr>
-			</table>
+        </div>
         </div>
 
-      </div>
-
       <!-- /.row -->
+	      <hr style="border: solid #dedede; border-width: 2px 0 0;">
+    
+    <!-- /.container -->
+    <div class="container" align="left">
+		<table>
+			<tfoot>
+				<tr>
+					<td colspan="2">
+							<button class="btn btn-success">수정</button>
+							<button type="reset" class="btn btn-warning">새로고침</button>
+							<button type="button" id="cancel" class="btn btn-danger">취소</button>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
 	</div>
+	       <hr style="border: solid white; border-width: 2px 0 0;">
+	 </div>
     </form>
     </div>
  

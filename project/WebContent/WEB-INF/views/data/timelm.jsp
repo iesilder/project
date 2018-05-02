@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 System.out.println("default_decorator.jsp:"+request.getContextPath());
@@ -24,14 +24,18 @@ pageContext.setAttribute("absUri", request.getContextPath());
 <a class="dropdown-item" href="${absUri }/data/HuffGravityModelPrint.do">상관관계분석</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <a class="dropdown-item" href="${absUri }/data/agelm.do">회귀분석(나이)</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <a class="dropdown-item" href="${absUri }/data/daylm.do">회귀분석(요일)</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<a class="dropdown-item" href="${absUri }/data/timelm.do">회귀분석(시간대)</a>
-<br><br><h3 class="mid">상관관계 분석</h3>
+<a class="dropdown-item" href="${absUri }/data/timelm.do">회귀분석(시간대)</a></br>
+<br><h3 class="mid">회귀분석(시간대)</h3>
 <div align="center">
 
-	<h3 class="mid">상관관계 분석</h3>
-	<iframe class="mid" src="http://127.0.0.1:7776/foodtruck.html" width="50%" height="400px" frameborder="0"></iframe>
-	<img alt="상관분석" src="../../../img/dataimg/cor.png" width="50%" height="50%"/>
-
+	<h3 class="mid">시간때에 따른 총매출량(회귀분석)</h3>
+	<img alt="회귀분석" src="../../../img/dataimg/timelm1.png"width="50%" height="50%"/>
+	<img alt="회귀분석" src="../../../img/dataimg/timelm2.png"width="50%" height="50%"/>
+	<img alt="회귀분석" src="../../../img/dataimg/timelm3.png"width="50%" height="50%"/>
+	<img alt="회귀분석" src="../../../img/dataimg/timelm4.png"width="50%" height="50%"/>
+	<img alt="회귀분석" src="../../../img/dataimg/timelm5.png"width="50%" height="50%"/>
+	<img alt="회귀분석" src="../../../img/dataimg/timelm6.png"width="50%" height="50%"/>
+	
 </div>
 
 	

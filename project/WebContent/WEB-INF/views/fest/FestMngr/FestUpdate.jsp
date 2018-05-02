@@ -43,7 +43,7 @@ $(document).ready(function(){
 
       <ol class="breadcrumb" >
         <li class="breadcrumb-item">
-          <a href="../../main/main.do">메인</a>
+          <a href="../../main/main.do"  style="color:#4a4b4c;">메인</a>
         </li>
         <li class="breadcrumb-item active">행사일정수정-관리자</li>
       </ol>
@@ -94,21 +94,29 @@ $(document).ready(function(){
                 <p class="help-block"></p>
               </div>
             </div>
-         	 <table>
-				<tr>
-					<td colspan="2">
-						<button class="btn btn-success">수정</button>
-						<button type="reset" class="btn btn-warning">새로고침</button>
-						<button type="button" id="cancel" class="btn btn-danger">취소</button>
-					</td>
-				</tr>
-			</table>
         </div>
 
       </div>
 
       <!-- /.row -->
 	</div>
+		      <hr style="border: solid #dedede; border-width: 2px 0 0;">
+    
+    <!-- /.container -->
+    <div class="container" align="left">
+		<table>
+		<tfoot>
+			<tr>
+				<td colspan="2">
+						<button class="btn btn-success">수정</button>
+						<button type="reset" class="btn btn-warning">새로고침</button>
+						<button type="button" id="cancel" class="btn btn-danger">취소</button>
+				</td>
+			</tr>
+		</tfoot>
+		</table>
+	</div>
+	       <hr style="border: solid white; border-width: 2px 0 0;">
     </form>
     </div>
  

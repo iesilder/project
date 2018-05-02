@@ -50,7 +50,7 @@ $(document).ready(function(){
 
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="../../main/main.do">메인</a>
+          <a href="../../main/main.do" style="color:#4a4b4c;">메인</a>
         </li>
         <li class="breadcrumb-item active">푸드트럭 </li>
       </ol>
@@ -126,9 +126,9 @@ $(document).ready(function(){
 
       <hr>
 
-<div class=container>
+<div class=container align="center">
     <!-- /.container -->
-	<table>
+	<table >
 		<tr align="center">
 			<td colspan="3">
 				<ul class="pagination">
@@ -152,7 +152,6 @@ $(document).ready(function(){
 			</td>
 				<td colspan="2">
 					<div class="btn-group">
-						<button id="write" class="btn btn-primary">글쓰기</button>
 						<button id="reload" class="btn btn-info">새로고침</button>
 					</div>
 				</td>

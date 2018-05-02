@@ -83,7 +83,7 @@ footer {
 	min-height: 200px;
 }
 
- /* Hide the carousel text when the screen is less than 600 pixels wide */ */
+ /* Hide the carousel text when the screen is less than 600 pixels wide */
  @media{ 
  	.carousel-caption { 
  		display: none; 
@@ -149,8 +149,8 @@ font-weight: bolder;
 				                <li><a class="dropdown-item" href="${absUri }/fest/FestMngr/FestList.do">행사일정표 </a></li>
 				                <li><a class="dropdown-item" href="${absUri }/fest/FestTruck/FestTruckList.do">푸드트럭</a></li>
 				                <%if(gradeno >= 1 ){ %>
-				                <li><a class="dropdown-item" href="${absUri }/fest/FestTruck/TruckWrite.do">푸드트럭 신청서</a></li>
-				                <li><a class="dropdown-item" href="${absUri }/fest/FestCust/CustWrite.do">소비자 신청서</a></li>
+				                <li><a class="dropdown-item" href="${absUri }/fest/FestTruck/TruckWrite.do">푸드트럭 신청서 </a></li>
+				                <li><a class="dropdown-item" href="${absUri }/fest/FestCust/CustWrite.do">소비자 신청서 </a></li>
 				                <%} %>
 				                <%if(gradeno >= 9 ){ %>
 				                <li><a class="dropdown-item" href="${absUri }/fest/FestCust/FestCustList.do">관리자용-소비자신청서리스트</a></li>
@@ -176,7 +176,7 @@ font-weight: bolder;
 			                	데이터 분석
 			              </a>
 			                <ul>
-				                <li><a class="dropdown-item" href="${absUri }/data/HuffGravityModelPrint.do">상권분석</a></li>
+				                <li><a class="dropdown-item" href="${absUri }/data/HuffGravityModelPrint.do">데이터분석자료</a></li>
 				                <li><a class="dropdown-item" href="${absUri }/data/MongodbDataPrint.do">공공데이터</a></li>
 				                <li><a class="dropdown-item" href="${absUri }/data/MapPrint.do">푸드트럭 지도</a></li>
 				                <%if(gradeno >= 9 ){ %>

@@ -57,6 +57,18 @@ public class DataController extends HttpServlet {
 			jsp = Beans.getJsp(command);
 			System.out.println(jsp);
 			break;
+		case "/data/daylm.do":
+			jsp = Beans.getJsp(command);
+			System.out.println(jsp);
+			break;
+		case "/data/timelm.do":
+			jsp = Beans.getJsp(command);
+			System.out.println(jsp);
+			break;
+		case "/data/agelm.do":
+			jsp = Beans.getJsp(command);
+			System.out.println(jsp);
+			break;
 		case "/data/MapPrint.do":
 			jsp = Beans.getJsp(command);
 			System.out.println(jsp);

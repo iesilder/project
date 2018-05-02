@@ -40,7 +40,7 @@ $(document).ready(function(){
 
       <ol class="breadcrumb" >
         <li class="breadcrumb-item">
-          <a href="../../main/main.do">메인</a>
+          <a href="../../main/main.do"  style="color:#4a4b4c;">메인</a>
         </li>
         <li class="breadcrumb-item active">행사신청서-푸드트럭</li>
       </ol>
@@ -139,17 +139,25 @@ $(document).ready(function(){
                 <input type="text" class="form-control" name="mngrtel" id="mngrtel" placeholder="현장담당자 연락처를 입력하세요." required />
               </div>
             </div>
-			 <table>
-				<tr>
-					<td colspan="2">
+        </div>
+      </div>
+            <hr style="border: solid #dedede; border-width: 2px 0 0;">
+    
+    <!-- /.container -->
+    <div class="container" align="left">
+		<table>
+		<tfoot>
+			<tr>
+				<td colspan="2">
 						<button id="success" class="btn btn-success">등록</button>
 						<button type="reset" class="btn btn-warning">새로고침</button>
 						<button type="button" id="cancel" class="btn btn-danger">취소</button>
-					</td>
-				</tr>
-			</table>
-        </div>
-      </div>
+				</td>
+			</tr>
+		</tfoot>
+		</table>
+	</div>
+	       <hr style="border: solid white; border-width: 2px 0 0;">
     </form>
 
       <!-- /.row -->

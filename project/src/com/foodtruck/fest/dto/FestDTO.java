@@ -50,10 +50,10 @@ public class FestDTO {
 	}
 
 	// 행사일정 글 수정용
-	public FestDTO(int festno, String festname, String festcomp, String festdate, String festloc, String festtime) {
+	public FestDTO(int festno, String festcomp, String festname, String festdate, String festloc, String festtime) {
 		this.festno = festno;
-		this.festname = festname;
 		this.festcomp = festcomp;
+		this.festname = festname;
 		this.festdate = festdate;
 		this.festloc = festloc;
 		this.festtime = festtime;

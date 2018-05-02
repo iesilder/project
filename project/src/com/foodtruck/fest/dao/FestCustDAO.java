@@ -212,6 +212,7 @@ public class FestCustDAO {
 			pstmt.setInt(5, festCustDTO.getApplyno());
 			pstmt.setString(6, festCustDTO.getApplyloc());
 			pstmt.setString(7, festCustDTO.getApplytime());
+			pstmt.setInt(8, festCustDTO.getCustno());
 			// 5. 실행 -> select: executeQuery()
 			// insert, update, delete:executeUpdate()
 			pstmt.executeUpdate();

@@ -180,7 +180,7 @@ public class FestTruckController extends HttpServlet {
 				System.out.println(service);
 				service.execute(festTruckDTO);
 				// 현재위치에 있는 리스트: 상대주소
-				viewJSP = "/project/fest/FestMngr/FestList.do";
+				viewJSP = "/project/fest/FestTruck/FestTruckList.do";
 				System.out.println(viewJSP);
 				break;
 
@@ -188,9 +188,10 @@ public class FestTruckController extends HttpServlet {
 			case "/fest/FestTruck/TruckUpdate.do":
 				// 넘어오는 데이터를 festTruckDTO에 담는다
 				// 넘어오는 데이터 name과 동일하게 작성해야한다.
-				FestTruckDTO festTruckDTO2 = new FestTruckDTO(request.getParameter("festjoin"),
-						request.getParameter("truckname"), request.getParameter("country"),
-						request.getParameter("maindish"), Integer.parseInt(request.getParameter("predppl")),
+				FestTruckDTO festTruckDTO2 = new FestTruckDTO(Integer.parseInt(request.getParameter("truckno")),
+						request.getParameter("festjoin"), request.getParameter("truckname"),
+						request.getParameter("country"), request.getParameter("maindish"),
+						Integer.parseInt(request.getParameter("predppl")),
 						Integer.parseInt(request.getParameter("applyppl")),
 						Integer.parseInt(request.getParameter("readyfood")), request.getParameter("mngrname"),
 						request.getParameter("mngrtel"));
@@ -201,8 +202,8 @@ public class FestTruckController extends HttpServlet {
 				service.execute(festTruckDTO2);
 				// 현재위치에 있는 리스트: 상대주소
 				// 끝나면 글보기로 자동 이동한다.
-				viewJSP = "TruckView.do?truckno=" + festTruckDTO2.getTruckno() + "$page=" + request.getParameter("page")
-						+ "$rowPerPage=" + request.getParameter("rowPerPage");
+				viewJSP = "FestTruckView.do?truckno=" + festTruckDTO2.getTruckno() + "&page="
+						+ request.getParameter("page") + "&rowPerPage=" + request.getParameter("rowPerPage");
 				System.out.println(viewJSP);
 				break;
 
