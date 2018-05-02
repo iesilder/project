@@ -15,7 +15,7 @@
 $(document).ready(function(){
 // 	alert("OK");
 	$("#update").click(function(){
-// 		location="update.do?no="+$("#td_no").text();
+		location="update.do?no="+$("#td_no").text();
 		$("#dataForm").attr("action","reviewupdate.do");
 		$("#dataForm").submit();
 	});
@@ -35,7 +35,7 @@ $(document).ready(function(){
 <body>
 <!-- 넘어온 데이터를 저장해 놓는 form tag 작성. 모든 input tag는 type 속성을 hidden -->
 <form id="dataForm">
-	<input type="hidden" name="rno" value="${reviewDTO.rno }" />
+	<input type="hidden" name="rno" value="${reviewDTO.rno}" />
 	<input type="hidden" name="page" value="${param.page }" />
 	<input type="hidden" name="rowPerPage" value="${param.rowPerPage }" />
 	<input type="hidden" name="searchKey" value="${param.searchKey }" />

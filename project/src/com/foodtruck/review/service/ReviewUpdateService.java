@@ -5,11 +5,11 @@ import com.foodtruck.util.ServiceInterface;
 import java.util.ArrayList;
 
 import com.foodtruck.review.dao.ReviewDAO;
-import com.foodtruck.review.dto.ReviewDTO;
 
 
-public class ReviewUpdateService implements ServiceInterface {
+public abstract class ReviewUpdateService implements ServiceInterface {
 
+	@SuppressWarnings("unused")
 	private ReviewDAO ReviewDAO;
 
 	@Override
@@ -18,29 +18,21 @@ public class ReviewUpdateService implements ServiceInterface {
 		this.ReviewDAO = (ReviewDAO) obj;
 	}
 
-	public Object execute(Object obj,int no) throws Exception {
+	public Object execute(ArrayList<Object> list) throws Exception {
 		// TODO Auto-generated method stub
 		System.out.println(getClass().getName() + ".execute()");
 		// obj 캐스팅
-		System.out.println(no);
-//		@SuppressWarnings("unchecked")
-//		ArrayList<Object> list = (ArrayList<Object>) obj;
-//		int no =(int) list.get(0);
-//		boolean isView = (boolean) list.get(1);
-		ReviewDTO reviewDTO = (ReviewDTO) obj;
 //		if(!isView) ReviewDAO.increase(no);
+		Object[] obj =list.toArray();
+		System.out.println(obj[0]);
+		
+		
 		
 		// dao에서 담아온다.
-		reviewDTO = ReviewDAO.update(reviewDTO, no);
+//		ReviewDAO.update((ReviewDTO) boardDTO);
 		// DAO로 넘겨준다
 //		ReviewDAO.update((ReviewDTO) obj);
-		System.out.println(reviewDTO);
-		return reviewDTO;
+		return 1;
 	}
 
-	@Override
-	public Object execute(Object obj) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

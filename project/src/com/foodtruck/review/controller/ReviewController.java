@@ -62,7 +62,7 @@ public class ReviewController extends HttpServlet {
 				// 페이지 처리를 하기 위한 객체 생성  -> 다른 데이터는 자동 계산 된다.
 				
 
-				PageObject2 pageObject 	= new PageObject2(DBUtil.getConnection(), "reviewboardtest",
+				PageObject2 pageObject 	= new PageObject2(DBUtil.getConnection(), "reviewboard",
 						page, rowPerPage, 10, searchKey, searchWord);
 				System.out.println(pageObject);
 				
@@ -89,12 +89,13 @@ public class ReviewController extends HttpServlet {
 			// 글보기 - get
 			case "/review/reviewview.do":
 				System.out.println("리뷰보기스타뜨뜨뜨뜨뜨");
-				int no = Integer.parseInt(request.getParameter("rno"));
+				int rno = Integer.parseInt(request.getParameter("rno").trim());
+				
 				service = Beans.getService(command); // BoardViewService
 				// service를 실행해서 DB에서 BoardDTO를 가져와서 request에 담는다.
 				// 넘길 때 ArrayList로 캐스팅해서 사용하므로 0: (int)no, 1: (boolean)isViews
 				ArrayList<Object> list = new ArrayList<Object>();
-				list.add(no);
+				list.add(rno);
 				list.add(true); // 조회수 1증가를 시킨다.
 				// list를 매개변수로 넘겨 처리한다.
 				request.setAttribute("reviewDTO", service.execute(list));
@@ -111,15 +112,14 @@ public class ReviewController extends HttpServlet {
 				System.out.println(no2);
 				System.out.println(no2);
 				System.out.println(no2);
-				service = Beans.getService("/review/reviewupdate.do"); // BoardViewService
+				service = Beans.getService(command); // BoardViewService
 				// service를 실행해서 DB에서 BoardDTO를 가져와서 request에 담는다.
 				// 넘길 때 ArrayList로 캐스팅해서 사용하므로 0: (int)no, 1: (boolean)isViews
-//				ArrayList<Object> list2 = new ArrayList<Object>();
-//				list2.add(no2);
-//				list2.add(false); // 조회수 1증가를 시키지 않는다.
+				ArrayList<Object> list2 = new ArrayList<Object>();
+				list2.add(no2);
+				list2.add(false); // 조회수 1증가를 시키지 않는다.
 				// list를 매개변수로 넘겨 처리한다.
-//				request.setAttribute("reviewDTO", service.execute(list2));
-				service.execute(no2);
+				request.setAttribute("reviewDTO", service.execute(list2));
 				// jsp 이름을 만들어 내고 밑에서 forward 시킨다.
 				jsp = Beans.getJsp(command);
 				System.out.println(jsp);

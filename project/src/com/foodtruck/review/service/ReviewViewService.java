@@ -27,15 +27,15 @@ public class ReviewViewService implements ServiceInterface {
 		
 		// 담아온 no isView를 꺼내준다.
 		// reviewDTO 객체를 만든다.
-		int no =(int) list.get(0);
+		int rno =(int) list.get(0);
 		boolean isView = (boolean) list.get(1);
 		ReviewDTO reviewDTO = null;
 		
 		// view로 들어왔을 때는 hit를 1 올린다. update인 경우에는 안 올린다.
-		if(isView) reviewDAO.increase(no);
+		if(isView) reviewDAO.increase(rno);
 	
 		// dao에서 담아온다.
-		reviewDTO = reviewDAO.view(no);
+		reviewDTO = reviewDAO.view(rno);
 
 		return reviewDTO;
 	}

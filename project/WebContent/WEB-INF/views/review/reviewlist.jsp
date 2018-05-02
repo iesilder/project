@@ -11,24 +11,19 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
-	$(document)
-			.ready(
+	$(document).ready(
 					function() {
 						// 	alert("OK");
-						$("#review").click(
+						$("#data").click(
 										function() {
 											//         $(this).hide();
 											var no = $(this).find("td:first").text();
 											// 		alert("click");
 											// 		alert(no);
-											location = "reviewview.do"
-// 													"rno="	+ rno
-// 													+ "&page=${pageObject.page}"
-// 													+ '&rowPerPage=${(empty param.rowPerPage)?"10":param.rowPerPage}';
+											location = "reviewview.do?rno="	+ rno
+													+ "&page=${pageObject.page}"
+													+ '&rowPerPage=${(empty param.rowPerPage)?"10":param.rowPerPage}';
 										});
-// 						$("#write").click(function() {
-// 							location = "reviewwrite.do";
-// 						});
 					});
 </script>
 <!-- <link rel="stylesheet" href="../css/board.css" /> -->
@@ -89,13 +84,12 @@
           </a><br>
         </div>
         <div class="col-md-5">
-<table>
-<tr>
-<td>${reviewDTO.rno }</td>
-</tr>
-</table>
 
-<%--         <p>${reviewDTO.rno }</p> --%>
+
+
+        
+
+
           <a style="font-size: 40px; text-decoration: none; color: black;">"${reviewDTO.fname }"&ensp;</a>
           <a style="text-decoration: none; color: black">행사날짜 :</a>${reviewDTO.festdate }<br>
           <a style="font-size: 12px; text-decoration: none; color: black;">행사지역 : </a>${reviewDTO.festloc }<br>
@@ -104,7 +98,7 @@
           <a style="color: red; font-size:40px;text-decoration: none;">${reviewDTO.starscore }&emsp;&emsp;</a>
           <a style="font-size: 50px;text-decoration: none; ">${reviewDTO.score } ${reviewDTO.writedate }</a><br>
           
-          <a class="btn btn-primary" id="review" >리뷰 자세히 보러가기
+          <a class="btn btn-primary" href="reviewview.do?rno=${reviewDTO.rno}">리뷰 자세히 보러가기
             <span class="glyphicon glyphicon-chevron-right"></span>
           </a>
         </div>
