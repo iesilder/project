@@ -1,7 +1,7 @@
 package com.foodtruck.data.controller;
 
 import java.io.IOException;
-import java.util.List;
+//import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.foodtruck.util.Beans;
-import com.foodtruck.util.ServiceInterface;
+//import com.foodtruck.util.ServiceInterface;
 
 /**
  * Servlet implementation class DataController
@@ -39,7 +39,7 @@ public class DataController extends HttpServlet {
 		// 기본으로는 forward 시킨 jsp 파일명을 저장한다. 앞에 redirect:이라고 붙이면 redirect 시킨 uri를 저장한다.
 		String jsp = "";
 		// 실행할 Service를 담는 객체 선언
-		ServiceInterface service = null;
+//		ServiceInterface service = null;
 //		List<Object> list = null;
 		System.out.println(command);
 
@@ -49,7 +49,7 @@ public class DataController extends HttpServlet {
 		case "/data/MongodbDataPrint.do":
 			//데이터를 가져오기 위한 service 객체 
 			
-			service = Beans.getService(command);
+//			service = Beans.getService(command);
 //			try {
 //				list = (List<Object>) service.execute(null);
 //			} catch (Exception e) {

@@ -24,8 +24,8 @@ pageContext.setAttribute("absUri", request.getContextPath());
 <a class="dropdown-item" href="${absUri }/data/HuffGravityModelPrint.do">상관관계분석</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <a class="dropdown-item" href="${absUri }/data/agelm.do">회귀분석(나이)</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <a class="dropdown-item" href="${absUri }/data/daylm.do">회귀분석(요일)</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<a class="dropdown-item" href="${absUri }/data/timelm.do">회귀분석(시간대)</a></br>
-<br><h3 class="mid">회귀분석(요일)</h3>
+<a class="dropdown-item" href="${absUri }/data/timelm.do">회귀분석(시간대)</a>
+<br><br><h3 class="mid">회귀분석(요일)</h3>
 <div align="center">
 
 	<h3 class="mid">요일에 따른 총매출량(회귀분석)</h3>
