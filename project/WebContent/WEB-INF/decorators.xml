@@ -18,7 +18,6 @@
 		<pattern>/fest/FestMngr</pattern>
 		<pattern>/fest/FestTruck</pattern>
 		<pattern>/fest/FestCust</pattern>
-		<pattern>/review</pattern>
 		<pattern>/data</pattern>
 
 	</decorator>

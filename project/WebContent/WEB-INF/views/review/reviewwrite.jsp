@@ -14,10 +14,11 @@ $(document).ready(function(){
 // 	alert("OK");
 	// 버튼 이벤트 처리
 	$("#cancel").click(function(){
-		history.back();
+		window.close();
 	});
 	$("#save").click(function(){
-		location = "reviewwrite.do"
+		setTimeout('window.close()',2000);
+// 		window.close();
 		
 	});
 });

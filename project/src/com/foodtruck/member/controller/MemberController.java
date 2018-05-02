@@ -58,7 +58,7 @@ public class MemberController extends HttpServlet {
 			jsp = Beans.getJsp(command);
 			System.out.println(jsp);
 			break;
-		// 로그인 폼
+		// 로그아웃
 		case "/member/logout.do":
 			// 로그아웃 처리
 			request.getSession().invalidate();
@@ -158,6 +158,32 @@ public class MemberController extends HttpServlet {
 				System.out.println(jsp);
 				break;
 			
+			// 회원 정보 수정
+			case "/member/update.do":
+//				HttpSession httpSession = request.getSession();
+//				String id = (String)httpSession.getAttribute("id");
+				MemberDTO memberDTO1 = new MemberDTO(
+						request.getParameter("id"),
+						null,
+						request.getParameter("name"),
+						request.getParameter("birthDate"),
+						null,
+						request.getParameter("mobile"),
+						request.getParameter("email"),
+						request.getParameter("address"),
+						request.getParameter("add2"),
+						null, null, 1);
+				System.out.println(request);
+				System.out.println("memberDTO1: " +memberDTO1);
+				service = Beans.getService(command);
+				System.out.println(service);
+				service.execute(memberDTO1);
+				jsp = request.getContextPath()+"/member/view.do";
+				System.out.println(jsp);
+				
+				break;
+				
+				
 			default:
 				System.out.println("존재하지 않는 자원을 요청");
 				jsp="/WEB-INF/views/error/404.jsp";
