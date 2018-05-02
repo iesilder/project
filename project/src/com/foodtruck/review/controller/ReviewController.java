@@ -31,21 +31,15 @@ public class ReviewController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println(getClass().getName() + ".doGet()");
 		String command = Beans.getURI(request);
 		// 기본으로는 forward 시킨 jsp 파일명을 저장한다. 앞에 redirect:이라고 붙이면 redirect 시킨 uri를 저장한다.
 		String jsp = "";
 		// 실행할 Service를 담는 객체 선언
 		ServiceInterface service = null;
-		System.out.println(command);
-		System.out.println("둥가둥가~~~~~~~~~~~~~");
-
 		try {
 			switch (command) {
 			// 리스트
 			case "/review/reviewlist.do":
-				System.out.println("리뷰스타트둥가둥가");
-
 				// 리스트에 뿌릴 데이터를 가져오자. - BoardListService가 필요하다.
 				service = Beans.getService(command);
 				int page = 1;
@@ -61,37 +55,24 @@ public class ReviewController extends HttpServlet {
 				if(rowPerPageStr != null && rowPerPageStr != "")
 					rowPerPage = Integer.parseInt(rowPerPageStr);
 				// 페이지 처리를 하기 위한 객체 생성  -> 다른 데이터는 자동 계산 된다.
-				
-
 				PageObject2 pageObject 	= new PageObject2(DBUtil.getConnection(), "reviewboard",
-						page, rowPerPage, 10, searchKey, searchWord);
-				System.out.println(pageObject);
-				
+						page, rowPerPage, 10, searchKey, searchWord);		
 				// 처리를해서 DB에 있는 데이터를 받아와서 request에 담아 둔다.
 				request.setAttribute("list", service.execute(pageObject));
 				request.setAttribute("pageObject", pageObject);
-				System.out.println(request.getAttribute("list"));
 				// jsp 이름을 만들어 내고 밑에서 forward 시킨다.
-				jsp = Beans.getJsp(command);
-				System.out.println(jsp);
-				System.out.println("둥가둥가1");
-				
-
-				
+				jsp = Beans.getJsp(command);				
 				break;
+				
 			// 글쓰기 폼 - get
 			case "/review/reviewwrite.do":
 				// jsp 이름을 만들어 내고 밑에서 forward 시킨다.
-				System.out.println("글쓰기컨트롤레어왔어요~");
 				jsp = Beans.getJsp(command);
-				System.out.println(jsp);
 				break;
 
 			// 글보기 - get
 			case "/review/reviewview.do":
-				System.out.println("리뷰보기스타뜨뜨뜨뜨뜨");
 				int rno = Integer.parseInt(request.getParameter("rno").trim());
-				
 				service = Beans.getService(command); // BoardViewService
 				// service를 실행해서 DB에서 BoardDTO를 가져와서 request에 담는다.
 				// 넘길 때 ArrayList로 캐스팅해서 사용하므로 0: (int)no, 1: (boolean)isViews
@@ -102,7 +83,6 @@ public class ReviewController extends HttpServlet {
 				request.setAttribute("reviewDTO", service.execute(list));
 				// jsp 이름을 만들어 내고 밑에서 forward 시킨다.
 				jsp = Beans.getJsp(command);
-				System.out.println(jsp);
 				break;
 
 			// 글수정 폼
@@ -128,16 +108,12 @@ public class ReviewController extends HttpServlet {
 
 			// 리스트
 			case "/review/reviewdelete.do":
-				System.out.println("delete에 오신걸 화녕해");
 				// 삭제 처리할 서비스를 가져오자. - BoardDeleteService가 필요하다.
 				service = Beans.getService(command);
-				System.out.println(service);
 				// 처리를해서 DB에 있는 데이터를 받아와서 request에 담아 둔다.
-				
 				service.execute(Integer.parseInt(request.getParameter("rno")));
 				// jsp 이름을 만들어 내고 밑에서 forward 시킨다.
 				jsp = "redirect:reviewlist.do";
-				System.out.println(jsp);
 				break;
 
 			default:
@@ -145,9 +121,8 @@ public class ReviewController extends HttpServlet {
 				jsp = "/WEB-INF/views/error/404.jsp";
 				break;
 			}
-			System.out.println("outer switch");
 			if (jsp.indexOf("redirect:") == -1) { // redirect: 존재하지 않는다.
-				System.out.println("forward Process :" + jsp);
+//				System.out.println("forward Process :" + jsp);
 				// jsp쪽으로 이동한다.
 				request.getRequestDispatcher(jsp).forward(request, response);
 			}
@@ -180,12 +155,7 @@ public class ReviewController extends HttpServlet {
 			switch (command) {
 			// 글쓰기 처리
 			case "/review/reviewwrite.do":
-				System.out.println("dopost에 write로넘어왔다!");
 				// 넘어오는 데이터를 BoardDTO에 담는다.
-				String i = request.getParameter("starscore");
-				String i2 = request.getParameter("content");
-				System.out.println(i);
-				System.out.println(i2);
 				ReviewDTO reviewDTO = new ReviewDTO(
 						0, request.getParameter("content"),
 						request.getParameter("starscore"),
@@ -195,35 +165,18 @@ public class ReviewController extends HttpServlet {
 //						request.getParameter("id"));
 				// 처리할 서비스를 받아온다. - BoardWriteService
 				service = Beans.getService(command);
-				System.out.println(service);
-				
-				System.out.println(reviewDTO);
 				service.execute(reviewDTO);
-//				System.out.println(reviewDTO);
-//				System.out.println(reviewDTO);
-//				System.out.println(reviewDTO);
-//				System.out.println(reviewDTO);
-				jsp = "reviewlist.do"; // 현재위치이므로 /board/list.do 가 아니다.
-				System.out.println(jsp);
+				jsp = "reviewwrite.do"; // 현재위치이므로 /board/list.do 가 아니다.
 				break;
-				
-				
-				
-				
-				
 				
 			// 글수정
 			case "/review/reviewupdate.do":
-				
 				ReviewDTO reviewDTO2 = new ReviewDTO(
 						0,
 						request.getParameter("content"),
 						request.getParameter("starscore"),
 						request.getParameter("id"),
 						Integer.parseInt(request.getParameter("score1")));
-//						(Integer.parseInt(request.getParameter("no")),
-//						request.getParameter("title"), request.getParameter("content"), request.getParameter("id"),
-//						null, 0); // hit는 int이므로 0을 넣어야 한다.
 				service = Beans.getService(command);
 				System.out.println(service);
 				// 실행해서 수정처리
