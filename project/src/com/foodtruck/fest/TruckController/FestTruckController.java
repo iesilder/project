@@ -202,8 +202,8 @@ public class FestTruckController extends HttpServlet {
 				service.execute(festTruckDTO2);
 				// 현재위치에 있는 리스트: 상대주소
 				// 끝나면 글보기로 자동 이동한다.
-				viewJSP = "TruckView.do?truckno=" + festTruckDTO2.getTruckno() + "$page=" + request.getParameter("page")
-						+ "$rowPerPage=" + request.getParameter("rowPerPage");
+				viewJSP = "TruckView.do?truckno=" + festTruckDTO2.getTruckno() + "&page=" + request.getParameter("page")
+						+ "&rowPerPage=" + request.getParameter("rowPerPage");
 				System.out.println(viewJSP);
 				break;
 

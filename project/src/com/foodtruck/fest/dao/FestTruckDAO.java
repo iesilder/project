@@ -221,6 +221,7 @@ public class FestTruckDAO {
 			pstmt.setInt(7, festTruckDTO.getReadyfood());
 			pstmt.setString(8, festTruckDTO.getMngrname());
 			pstmt.setString(9, festTruckDTO.getMngrtel());
+			pstmt.setInt(10, festTruckDTO.getTruckno());
 			// 5. 실행 -> select: executeQuery()
 			// insert, update, delete:executeUpdate()
 			pstmt.executeUpdate();

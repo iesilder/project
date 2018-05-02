@@ -59,7 +59,7 @@ $(document).ready(function(){
                 <p class="help-block"></p>
               </div>
             </div>
-                 <div class="control-group form-group" >
+              <div class="control-group form-group" >
               <div class="controls" >
                 <label>푸드트럭명:</label>
                 <input type="text" class="form-control" name="truckname" id="truckname" placeholder="행사기관명을 입력하세요." readonly="readonly"  value="${FestTruckDTO.truckname }" />
@@ -144,28 +144,27 @@ $(document).ready(function(){
               </div>
             </div>
         </div>
-
-      </div>
+        </div>
 
       <!-- /.row -->
-	</div>
 	      <hr style="border: solid #dedede; border-width: 2px 0 0;">
     
     <!-- /.container -->
     <div class="container" align="left">
 		<table>
-		<tfoot>
-			<tr>
-				<td colspan="2">
-						<button class="btn btn-success">수정</button>
-						<button type="reset" class="btn btn-warning">새로고침</button>
-						<button type="button" id="cancel" class="btn btn-danger">취소</button>
-				</td>
-			</tr>
-		</tfoot>
+			<tfoot>
+				<tr>
+					<td colspan="2">
+							<button class="btn btn-success">수정</button>
+							<button type="reset" class="btn btn-warning">새로고침</button>
+							<button type="button" id="cancel" class="btn btn-danger">취소</button>
+					</td>
+				</tr>
+			</tfoot>
 		</table>
 	</div>
 	       <hr style="border: solid white; border-width: 2px 0 0;">
+	 </div>
     </form>
     </div>
  

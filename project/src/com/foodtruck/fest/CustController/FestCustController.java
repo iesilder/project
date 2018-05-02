@@ -193,8 +193,8 @@ public class FestCustController extends HttpServlet {
 				service.execute(festCustDTO2);
 				// 현재위치에 있는 리스트: 상대주소
 				// 끝나면 글보기로 자동 이동한다.
-				viewJSP = "FestCustView.do?custno=" + festCustDTO2.getCustno() + "$page=" + request.getParameter("page")
-						+ "$rowPerPage=" + request.getParameter("rowPerPage");
+				viewJSP = "FestCustView.do?custno=" + festCustDTO2.getCustno() + "&page=" + request.getParameter("page")
+						+ "&rowPerPage=" + request.getParameter("rowPerPage");
 				System.out.println(viewJSP);
 				break;
 
