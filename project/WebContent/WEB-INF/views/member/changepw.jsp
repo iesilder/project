@@ -18,32 +18,32 @@
          // 새 암호와 새암호 확인이 같아야한다.
 $(document).ready(function(){
         $("#change").click(function(){
-           if($("#newPassword").val() != $("#confirmNewPassword").val()){
+           if($("#newpw").val() != $("#confirmNewpw").val()){
               alert("새암호와 새암호확인은 같아야 합니다.");
-              $("password").val("");
-              $("#newPassword").val("");
-              $("#confirmNewPassword").val("");
-              $("#password").focus();
+              $("#pw").val("");
+              $("#newpw").val("");
+              $("#confirmNewpw").val("");
+              $("#pw").focus();
               return false; // submit을 무시 시킨다. 반드시 submit 호출을한 함수에서 return false한다.
            }
            
          // db 비밀번호와 일치하는 지 확인한다.
-           $.get("checkpw.do",{ password: $("#pw").val()})
+           $.get("checkpw.do",{ pw: $("#pw").val()})
          .done(function(data) {
             alert(data);
             if(data==1){
 //                $("#checkPwd").html("1");
                if(confirm("비밀번호를 변경하시겠습니까?")){
-                  $("#changePwdForm").attr("action","changedpw.do");
-                    $("#changePwdForm").submit();
+                  $("#changePwForm").attr("action","changedpw.do");
+                    $("#changePwForm").submit();
                     alert("변경되었습니다. 마이페이지로 이동합니다.");
                     return true;
                }               
             }
             else{   
                alert("비밀번호가 틀립니다. 확인 후 다시 시도하세요.");
-               $("#password").val("");   
-               $("#password").focus();
+               $("#pw").val("");   
+               $("#pw").focus();
             }
             
          });
@@ -64,25 +64,25 @@ $(document).ready(function(){
    <div class="page-header">
       <h2>비밀번호 변경</h2>
       <p>보안을 위하여 3개월마다 비밀번호를 변경해주세요.</p>
-      <p>이전에 사용한 적 없는 비밀번호가 안전합니다.</p>
+      <p>공사중입니다.</p>
    </div>
    
      <form method="post" id="changePwdForm">
       <div class="form-group">
-       <label for="password">현재 비밀번호</label>
-       <input type="password" class="form-control" id="password" name="pw" required="required" placeholder="현재 비밀번호" />
+       <label for="pw">현재 비밀번호</label>
+       <input type="password" class="form-control" id="pw" name="pw" required="required" placeholder="현재 비밀번호" />
        </div>
        <div id="checkPwd"></div>
        
         <div class="form-group">
-       <label for="password">새 비밀번호</label>
+       <label for="pw">새 비밀번호</label>
        
-       <input type="password" class="form-control" id="newPassword" name="pw" required="required" placeholder="새 비밀번호" />
+       <input type="password" class="form-control" id="newpw" name="pw" required="required" placeholder="새 비밀번호" />
        </div>
        
         <div class="form-group">
-       <label for="password">새비밀번호 확인</label>
-       <input type="password" class="form-control" id="confirmNewPassword" name="pw" required="required" placeholder="새 비밀번호 확인" />
+       <label for="pw">새비밀번호 확인</label>
+       <input type="password" class="form-control" id="confirmNewpw" name="pw" required="required" placeholder="새 비밀번호 확인" />
        </div>
       
         <div class="form-group text-center">

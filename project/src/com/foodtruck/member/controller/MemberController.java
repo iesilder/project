@@ -52,18 +52,18 @@ public class MemberController extends HttpServlet {
 				throw new ServletException(e);
 			}
 			return;
-			//비밀번호 변경시 확인
+			//비밀번호 변경시 확인 Ajax
 		case "/member/checkpw.do":
 			System.out.println("비밀번호중복체크 ajax");
             HttpSession session = request.getSession();
             // 아이디에 맞는 비밀번호를 확인해야 한다.
             String id1 = (String)session.getAttribute("id");
-            String pw = request.getParameter("password");
+            String pw = request.getParameter("pw");
             System.out.println("세션에 저장된 id:" + id1);
-            System.out.println("changePwd.jsp에서 받은 현재비밀번호: "+pw);
-            System.out.println();
+            System.out.println("changepw.jsp에서 받은 현재비밀번호: "+pw);
             try {                  
-               if((boolean) Beans.getService(command).execute(new MemberDTO(id1, pw))) {            
+               if((boolean) Beans.getService(command).execute(new MemberDTO(id1, pw))) {
+            	   System.out.println("checkpw.do" + id1 + pw);
                   response.getWriter().print(1);
                }else {
                   response.getWriter().print(0);
@@ -97,7 +97,7 @@ public class MemberController extends HttpServlet {
 			try {
 			MemberDTO memberDTO=(MemberDTO)Beans.getService(command).execute(id3);
 			request.setAttribute("memberDTO", memberDTO);
-			System.out.println(memberDTO);
+			System.out.println("컨트롤러에서" +memberDTO);
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
@@ -108,7 +108,7 @@ public class MemberController extends HttpServlet {
 		case "/member/changepw.do":
 			HttpSession httpSession2 = request.getSession();
 			String id4 = (String)httpSession2.getAttribute("id");
-			System.out.println(httpSession2);
+			System.out.println("왔나?"+httpSession2);
 			try {
 				MemberDTO memberDTO=(MemberDTO)Beans.getService(command).execute(id4);
 				System.out.println(id4);
@@ -242,7 +242,7 @@ public class MemberController extends HttpServlet {
 				
 				break;
 				
-			case "/member/changedpw.do":
+			case "/member/changepw.do":
 //				HttpSession httpSession = request.getSession();
 //				String id = (String)httpSession.getAttribute("id");
 				MemberDTO memberDTO3 = new MemberDTO(
