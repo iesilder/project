@@ -36,6 +36,13 @@ public class MemberDTO {
 		this.idupdate = idupdate;
 		this.gradeno = gradeno;
 	}
+	
+//비밀번호 변경
+	public MemberDTO(String id, String pw) {
+	super();
+	this.id = id;
+	this.pw = pw;
+}
 
 	public String getId() {
 		return id;

@@ -20,17 +20,11 @@ public class ReviewListService implements ServiceInterface {
 	@Override
 	public List<ReviewDTO> execute(Object obj) throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println(getClass().getName()+".execute()");
-		
 		// list이므로 obj는 필요 없다.
-		
 		// list객체 생성
 		List<ReviewDTO> list = null;
-		
 		// DAO에서 list를 받아온다.
 		list = ReviewDAO.list((PageObject2) obj);
-		System.out.println("값 잘넘어오나?");
-		System.out.println(list);
 		return list;
 
 	}

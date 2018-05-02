@@ -14,7 +14,7 @@ public class ReviewDTO {
 	
 
 	//리스트
-	public ReviewDTO( int rno,int score, int hit, String content, String fname, String festdate, String maindish, String festloc, 	String starscore) {
+	public ReviewDTO( int rno,int score, int hit, String content, String fname, String festdate, String maindish, String festloc, 	String starscore, String id) {
 		this.rno =rno;
 		this.score = score;
 		this.hit = hit;
@@ -24,15 +24,18 @@ public class ReviewDTO {
 		this.maindish = maindish;
 		this.festloc = festloc;
 		this.starscore = starscore;
+		this.id = id;
 	}
 	
 	//\글쓰기
-public ReviewDTO(int rno,  String content, String starscore, int score) {
+public ReviewDTO(int rno,  String content, String starscore,String id, int score) {
 		this.rno = rno;
 //		this.id = id;
 		this.content = content;
 		this.starscore = starscore;
+		this.id = id;
 		this.score = score;
+		
 
 	}
 
