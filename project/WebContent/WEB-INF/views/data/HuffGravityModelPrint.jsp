@@ -33,6 +33,7 @@ pageContext.setAttribute("absUri", request.getContextPath());
 	<iframe class="mid" src="http://127.0.0.1:7776/foodtruck.html" width="50%" height="400px" frameborder="0"></iframe>
 	<br><br><br>
 	<img alt="상관분석" src="../../../img/dataimg/cor.png" width="50%" height="50%"/>
+	<br><br><br>
 
 </div>
 
