@@ -73,12 +73,7 @@ $(document).ready(function(){
          	</ul>
           <a class="btn btn-primary" href="FestView.do">행사 자세히 보러가기
             <span class="glyphicon glyphicon-chevron-right"></span>
-          </a><br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
+          </a>
         </div>
         </c:forEach>
               <hr>
