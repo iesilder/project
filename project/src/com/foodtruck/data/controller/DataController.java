@@ -29,7 +29,7 @@ public class DataController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	@SuppressWarnings("unchecked")
+//	@SuppressWarnings("unchecked")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -40,7 +40,7 @@ public class DataController extends HttpServlet {
 		String jsp = "";
 		// 실행할 Service를 담는 객체 선언
 		ServiceInterface service = null;
-		List<Object> list = null;
+//		List<Object> list = null;
 		System.out.println(command);
 
 		
@@ -50,19 +50,19 @@ public class DataController extends HttpServlet {
 			//데이터를 가져오기 위한 service 객체 
 			
 			service = Beans.getService(command);
-			try {
-				list = (List<Object>) service.execute(null);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-			// 가져온 데이터를 꺼낸다.
-			List<String> key = (List<String>) list.get(0);
-			List<Double> vale = (List<Double>) list.get(1);
-			
-			request.setAttribute("key", key);
-			request.setAttribute("value", vale);
+//			try {
+//				list = (List<Object>) service.execute(null);
+//			} catch (Exception e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//			
+//			// 가져온 데이터를 꺼낸다.
+//			List<String> key = (List<String>) list.get(0);
+//			List<Double> vale = (List<Double>) list.get(1);
+//			
+//			request.setAttribute("key", key);
+//			request.setAttribute("value", vale);
 			
 			jsp = Beans.getJsp(command);
 			System.out.println(jsp);

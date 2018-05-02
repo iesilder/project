@@ -65,7 +65,7 @@ public class DataDAO {
 //		
 //	}// end of Mongodb()
 	
-	public List<Object> MongodbGetValues() {
+	public List<Object> MongodbGetValues() throws Exception{
 		//mongodb에서 데이터를 가져오기
 		MongoDatabase mongoDatabase = MongoDBUtil.getConnection("seoulpopulation");
 		MongoCollection<Document> mongoCollection = mongoDatabase.getCollection("salesData");
