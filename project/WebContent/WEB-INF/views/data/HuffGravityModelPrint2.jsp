@@ -10,21 +10,6 @@
 <body>
 <h1>상권분석</h1>
 <h3 class="mid">상관관계 분석</h3>
-
-<div style="border: 1px solid gold; float: center; width: 50%;">
-	<iframe class="mid" src="http://127.0.0.1:7776/foodtruck.html" width="50%" height="400px" frameborder="0"></iframe>
-
-</div>
-<div style="border: 1px solid red; float: center; width: 50%;">
-	<img alt="상관분석" src="../../../img/cor.png" width="50%" height="50%"/>
-
-</div>
-<div style="border: 1px solid blue; float: center; width: 50%;">
-	<img alt="회귀분석" src="../../../img/agelm1.png"width="50%" height="50%"/>
-
-</div>
-
-
 <div align="center">
 
 	<h3 class="mid">상관관계 분석</h3>
