@@ -73,7 +73,12 @@ $(document).ready(function(){
          	</ul>
           <a class="btn btn-primary" href="../../fest/FestTruck/FestTruckView.do">푸드트럭 자세히 보러가기
 	            <span class="glyphicon glyphicon-chevron-right"></span></a>
-        </div>
+        </div><br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
         </c:forEach>
               <hr>
         
