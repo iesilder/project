@@ -62,8 +62,8 @@ public class MemberController extends HttpServlet {
             System.out.println("세션에 저장된 id:" + id1);
             System.out.println("changepw.jsp에서 받은 현재비밀번호: "+pw);
             try {                  
-               if((boolean) Beans.getService(command).execute(pw)) {
-            	   System.out.println("checkpw.do" + id1 + pw);
+               if((boolean) Beans.getService(command).execute(new MemberDTO(id1, pw))) {
+            	   
                   response.getWriter().print(1);
                }else {
                   response.getWriter().print(0);
