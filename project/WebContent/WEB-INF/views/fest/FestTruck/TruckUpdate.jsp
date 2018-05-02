@@ -38,14 +38,14 @@ $(document).ready(function(){
 
       <!-- Page Heading/Breadcrumbs -->
       <h1 class="mt-4 mb-3">푸드트럭 정보 수정
-        <small>관리자용</small>
+        <small>푸드트럭용</small>
       </h1>
 
       <ol class="breadcrumb" >
         <li class="breadcrumb-item">
-          <a href="../../main/main.do">메인</a>
+          <a href="../../main/main.do"  style="color:#4a4b4c;">메인</a>
         </li>
-        <li class="breadcrumb-item active">푸드트럭수정-관리자</li>
+        <li class="breadcrumb-item active">푸드트럭수정-푸드트럭</li>
       </ol>
 
       <!-- Contact Form -->
