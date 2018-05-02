@@ -15,7 +15,7 @@ import com.foodtruck.util.ServiceInterface;
 import com.webjjang.util.PageObject2;
 
 /*
- * 20180426 - 홍다운 소비자 신청서 폼 등록, 수정, 삭제 처리 컨트롤러
+ * 20180426 - 홍다운 행사일정 관련 폼 등록, 수정, 삭제 처리 컨트롤러
  * */
 
 /**
