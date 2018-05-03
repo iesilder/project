@@ -30,17 +30,17 @@ pageContext.setAttribute("absUri", request.getContextPath());
 
 	<h3 class="mid">시간때에 따른 총매출량(회귀분석)</h3>
 	<br><br><br>
-	<img alt="회귀분석" src="../../../img/dataimg/timelm1.png"width="50%" height="50%"/>
+	<img alt="회귀분석" src="../../../img/timelm1.png"width="50%" height="50%"/>
 	<br><br><br>
-	<img alt="회귀분석" src="../../../img/dataimg/timelm2.png"width="50%" height="50%"/>
+	<img alt="회귀분석" src="../../../img/timelm2.png"width="50%" height="50%"/>
 	<br><br><br>
-	<img alt="회귀분석" src="../../../img/dataimg/timelm3.png"width="50%" height="50%"/>
+	<img alt="회귀분석" src="../../../img/timelm3.png"width="50%" height="50%"/>
 	<br><br><br>
-	<img alt="회귀분석" src="../../../img/dataimg/timelm4.png"width="50%" height="50%"/>
+	<img alt="회귀분석" src="../../../img/timelm4.png"width="50%" height="50%"/>
 	<br><br><br>
-	<img alt="회귀분석" src="../../../img/dataimg/timelm5.png"width="50%" height="50%"/>
+	<img alt="회귀분석" src="../../../img/timelm5.png"width="50%" height="50%"/>
 	<br><br><br>
-	<img alt="회귀분석" src="../../../img/dataimg/timelm6.png"width="50%" height="50%"/>
+	<img alt="회귀분석" src="../../../img/timelm6.png"width="50%" height="50%"/>
 	<br><br><br>
 	
 </div>

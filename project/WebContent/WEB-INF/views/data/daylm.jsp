@@ -30,19 +30,19 @@ pageContext.setAttribute("absUri", request.getContextPath());
 
 	<h3 class="mid">요일에 따른 총매출량(회귀분석)</h3>
 	<br><br><br>
-	<img alt="회귀분석" src="../../../img/dataimg/daylm1.png"width="50%" height="50%"/>
+	<img alt="회귀분석" src="../../../img/daylm1.png"width="50%" height="50%"/>
 	<br><br><br>
-	<img alt="회귀분석" src="../../../img/dataimg/daylm2.png"width="50%" height="50%"/>
+	<img alt="회귀분석" src="../../../img/daylm2.png"width="50%" height="50%"/>
 	<br><br><br>
-	<img alt="회귀분석" src="../../../img/dataimg/daylm3.png"width="50%" height="50%"/>
+	<img alt="회귀분석" src="../../../img/daylm3.png"width="50%" height="50%"/>
 	<br><br><br>
-	<img alt="회귀분석" src="../../../img/dataimg/daylm4.png"width="50%" height="50%"/>
+	<img alt="회귀분석" src="../../../img/daylm4.png"width="50%" height="50%"/>
 	<br><br><br>
-	<img alt="회귀분석" src="../../../img/dataimg/daylm5.png"width="50%" height="50%"/>
+	<img alt="회귀분석" src="../../../img/daylm5.png"width="50%" height="50%"/>
 	<br><br><br>
-	<img alt="회귀분석" src="../../../img/dataimg/daylm6.png"width="50%" height="50%"/>
+	<img alt="회귀분석" src="../../../img/daylm6.png"width="50%" height="50%"/>
 	<br><br><br>
-	<img alt="회귀분석" src="../../../img/dataimg/daylm7.png"width="50%" height="50%"/>
+	<img alt="회귀분석" src="../../../img/daylm7.png"width="50%" height="50%"/>
 	<br><br><br>
 	
 </div>
