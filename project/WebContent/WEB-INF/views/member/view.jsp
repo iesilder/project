@@ -105,7 +105,6 @@ getDate();
       });
    });
 
-   function goReplace(str) { location.replace(str); }
 
    
    
@@ -118,6 +117,13 @@ getDate();
 //       })
 //    });
 
+</script>
+<script>
+$(document).ready(function() {
+	$("#sorry").click(function() {
+		alert("공 사 중");
+	});
+});
 </script>
 </head>
 
@@ -196,8 +202,9 @@ getDate();
 </form> 		
  <form id="withdraw.do" method="post" action="../member/withdraw.do" >
          <div class="form-group" align="right" >
-         	<button type="button" class="btn btn-warning"  >회원 탈퇴(공사중)</button>
+         	 <button type="button" class="btn btn-warning"  id="sorry" >회원 탈퇴(공사중)</button>
          </div>
+        
 </form>
 </div>
    </div>
