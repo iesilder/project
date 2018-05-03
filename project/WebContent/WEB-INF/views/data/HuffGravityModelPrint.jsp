@@ -30,7 +30,7 @@ pageContext.setAttribute("absUri", request.getContextPath());
 
 	<h3 class="mid">상관관계 분석</h3>
 	<br><br><br>
-	<iframe class="mid" src="http://127.0.0.1:7776/foodtruck.html" width="50%" height="400px" frameborder="0"></iframe>
+	<iframe class="mid" src="http://192.168.137.75:7776/foodtruck.html" width="50%" height="400px" frameborder="0"></iframe>
 	<br><br><br>
 	<img alt="상관분석" src="../../../img/cor.png" width="50%" height="50%"/>
 	<br><br><br>
