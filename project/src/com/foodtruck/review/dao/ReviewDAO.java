@@ -28,7 +28,7 @@ public class ReviewDAO {
 			con = DBUtil.getConnection();
 			// 3. sql
 			// 1) 원래 데이터를 순서에 맞게 가져온다.
-			String sql = "select rno,festloc,festdate,concat(substr(content,1,10),'..........') content,fname,fmemberboard.maindish,starscore,score,reviewboard.hit,"
+			String sql = "select rno,festloc,festdate,concat(substr(content,1,25),'.......') content,fname,fmemberboard.maindish,starscore,score,reviewboard.hit,"
 					+ "replace(reviewboard.id, substr(reviewboard.id,1,3),'***') id from (reviewboard left outer join fest on reviewboard.festno = fest.FESTNO)"
 					+ " left outer join fmemberboard on FMEMBERBOARD.FNO=reviewboard.fno order by rno desc" ;
 			sql = " select rownum rnum,rno,festloc,content,festdate,fname,maindish,starscore,score,hit,id from (" + sql + ")";
@@ -78,9 +78,8 @@ public class ReviewDAO {
 			// 1.드라이버 확인 //2.연결
 			con = DBUtil.getConnection();
 			// 3. sql 작성 - 변하는 데이터 대신 ?를 사용한다.
-			String sql = "select rno,score,re.hit hit,re.id id,fname,fm.maindish maindish,festloc,content,"
-					+ "writedate,festdate,starscore"
-					+ " from fest,reviewboard re,fmemberboard fm where rno = ? ";
+			String sql = "select rno,score,re.hit hit,re.id id,fname,fm.maindish maindish,festloc,content,writedate,festdate,starscore"
+					+ " from (reviewboard re left outer join fest on re.festno = fest.FESTNO)  left outer join fmemberboard fm on FM.FNO=re.fno where rno = ? ";
 			// 4. 처리 객체 생성
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, rno); // 첫번재 ?에 no를 int로 세팅

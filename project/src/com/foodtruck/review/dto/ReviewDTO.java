@@ -11,6 +11,9 @@ public class ReviewDTO {
 	private int rno, score, hit;
 	private String  id, content, writedate, starscore, fname, maindish, festloc, festdate;
 
+	public ReviewDTO() {
+		
+	}
 	
 
 	//리스트

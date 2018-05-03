@@ -6,15 +6,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
 	$(document).ready(function() {
 		// 	alert("OK");
@@ -29,7 +30,7 @@
 </script>
 </head>
 <body>
-	<h1 style="margin: 100px;">&emsp;&emsp;&emsp;리뷰 작성란</h1>
+	<h1 style="margin: 20px; margin-left:3.5cm; font-style: oblique;">&emsp;&emsp;리뷰 쓰기</h1>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			var i = 1;
@@ -91,27 +92,30 @@
 		});
 	</script>
 	<form action="reviewwrite.do" method="post" style="margin: auto;">
-		<input type="hidden" id="starImg" name="starscore" value="★">
-		<input type="hidden" id="show" name="score1" value="1"> <input
-			type="hidden" name="id" value="<%=memberid%>">
-		<h3 style="margin: auto;">평점</h3>
-		<button id="bt1" type="button">+</button>
-		<button id="bt2" type="button">-</button>
-		<a style="color: red; font-size: 50px; text-decoration: none;" id="s">★</a>
-		<a id="star"
-			style="color: red; font-size: 50px; text-decoration: none;"></a>
 		<table class="table">
 			<tbody>
 				<tr>
-					<th>내용</th>
-					<td><textarea rows="5" cols="60" name="content"></textarea></td>
+					<th style="margin-left: 10px; font-size: 20px;">&emsp;리뷰내용</th>
+					<td><textarea rows="10" cols="40" name="content" style="border-color: purple;"></textarea></td>
 					<td><input type="hidden" name="id" value="admin" /></td>
 				<tr />
 			</tbody>
+			</table>
+		<input type="hidden" id="starImg" name="starscore" value="★">
+		<input type="hidden" id="show" name="score1" value="1"> <input
+			type="hidden" name="id" value="<%=memberid%>">
+		<a style="margin-left: 30px; font-size: 20px;text-decoration: none; color: black;">평점</a>
+		<button id="bt1" type="button" style="margin-left: 30px; font-size: 20px" class="btn btn-primary btn-sm" >+</button>
+		<button id="bt2" type="button" style="font-size: 20px" class="btn btn-primary btn-sm" >-</button>&emsp;&emsp;
+		<a style="color: red; font-size: 50px; text-decoration: none;" id="s">★</a>
+		<a id="star"
+			style="color: red; font-size: 50px; text-decoration: none;"></a>
+			<br><br><br><br>
+		<table>
 			<tfoot>
 				<tr>
 					<td colspan="2">
-						<button type="submit" class="btn btn-success" id="save">등록</button>
+						<button type="submit" class="btn btn-success" id="save" style="margin-left: 5cm;">등록</button>
 						<button class="btn btn-warning" type="reset">새로고침</button>
 						<button class="btn btn-danger" type="button" id="cancel">취소</button>
 					</td>
