@@ -197,8 +197,8 @@ $('document').ready(function() {
 					}
 				%>
 				<a style="color: red; font-size: 40px; text-decoration: none;">${reviewDTO.starscore }&emsp;&emsp;</a>
-				<a style="font-size: 50px; text-decoration: none;">${reviewDTO.score }
-					${reviewDTO.writedate }</a><br>
+<%-- 				<a style="font-size: 50px; text-decoration: none;">${reviewDTO.score } --%>
+<%-- 					${reviewDTO.writedate }</a><br> --%>
 
 				<%
 					if (gradeno >= 1) {
