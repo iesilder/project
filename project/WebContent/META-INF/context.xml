@@ -23,7 +23,7 @@
 		loginTimeout = "10"
 		maxWait = "500"
 		username = "0000"
-		password = "0000"
+		password = "958465"
 		testOnBorrow = "true"
 		maxActive="50" 
 		maxIdle = "20"
