@@ -88,8 +88,10 @@
 
 	<form action="reviewupdate.do" method="post" style="margin: auto;">
 		<input type="hidden" id="starImg" name="starscore" value="★">
-		<input type="hidden" id="show" name="score1" value="1"> <input
-			type="hidden" id="show1" name="rno" value="${reviewDTO.rno}">
+		<input type="hidden" id="show" name="score1" value="1"> 
+	    <input type="hidden" name="rno" value="${reviewDTO.rno}" /> 
+	    <input type="hidden" name="page" value="${param.page }">
+	    <input type="hidden" name="rowPerPage" value="${param.rowPerPage }">
 		<h3 style="margin: auto;">평점</h3>
 		<button id="bt1" type="button">+</button>
 		<button id="bt2" type="button">-</button>
@@ -99,9 +101,9 @@
 		<table class="table">
 			<tbody>
 				<tr>
-					<th>내용"${reviewDTO.rno}"</th>
+					<th>내용</th>
 					<td><textarea rows="5" cols="60" name="content"></textarea></td>
-					<td><input type="hidden" name="id" value="admin" /></td>
+					<td><input type="hidden" name="content" value="${reviewDTO.content}" /></td>
 				<tr />
 
 			</tbody>

@@ -21,14 +21,14 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script type="text/javascript">
 $('document').ready(function() {
- var area0 = ["시/도 선택","서울특별시","인천광역시","대전광역시","광주광역시","대구광역시","울산광역시","부산광역시","경기도","강원도","충청북도","충청남도","전라북도","전라남도","경상북도","경상남도","제주도"];
+ var area0 = ["서울특별시","인천광역시","대전광역시","광주광역시","대구광역시","울산광역시","부산광역시","경기도","강원도","충청북도","충청남도","전라북도","전라남도","경상북도","경상남도","제주도"];
   
  
  
  var area1 = ["강남구","강동구","강북구","강서구","관악구","광진구","구로구","금천구","노원구","도봉구","동대문구","동작구","마포구","서대문구","서초구","성동구","성북구","송파구","양천구","영등포구","용산구","은평구","종로구","중구","중랑구"];
    var area2 = ["계양구","남구","남동구","동구","부평구","서구","연수구","중구","강화군","옹진군"];
    var area3 = ["대덕구","동구","서구","유성구","중구"];
-   var area4 = ["광산구","남구","동구",     "북구","서구"];
+   var area4 = ["광산구","남구","동구","북구","서구"];
    var area5 = ["남구","달서구","동구","북구","서구","수성구","중구","달성군"];
    var area6 = ["남구","동구","북구","중구","울주군"];
    var area7 = ["강서구","금정구","남구","동구","동래구","부산진구","북구","사상구","사하구","서구","수영구","연제구","영도구","중구","해운대구","기장군"];
@@ -116,24 +116,23 @@ $('document').ready(function() {
 			</table></li>
 	</ol>
 	<!-- Project One -->
-	<div class="row">
 	<table>
 	<tr><td>
 				<select style="margin-left: 0.5cm; width: 12cm" name="sido1" id="sido1">
-							<option value="key1">--시 선택--</option>
+							<option value="key1">--시/도 선택--</option>
 <%-- 							<c:forEach items="${list }" var="BDTO"> --%>
-								<option value=""></option>
 <%-- 							</c:forEach> --%>
 					</select>
 				<select style="margin-left: 0.5cm; width: 12cm" >
-							<option value="key1">--구 선택--</option>
+							<option value="key1">--구/군 선택--</option>
 <%-- 							<c:forEach items="${list }" var="BDTO"> --%>
-								<option value=""></option>
 <%-- 							</c:forEach> --%>
 					</select>
 					<button>검색</button>
 					</td></tr>
 			</table>
+	<div class="row" style="border-bottom: 5px solid red; border-bottom-style: 5px solid black;">
+	
 			
 			
 		<c:forEach items="${list }" var="reviewDTO">

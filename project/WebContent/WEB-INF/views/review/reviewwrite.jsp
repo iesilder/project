@@ -1,5 +1,10 @@
+<%@page import="com.foodtruck.review.service.ReviewListService"%>
+<%@page import="java.util.List"%>
+<%@page import="com.foodtruck.review.dto.ReviewDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	
 <%
 	String memberid = (String) session.getAttribute("id");
 %>
@@ -95,6 +100,33 @@
 		<table class="table">
 			<tbody>
 				<tr>
+					<th style="margin-left: 10px; font-size: 20px;">&emsp;회사명</th>
+					<td><textarea rows="1" cols="20" name="content" style="border-color: purple;"readonly="readonly"></textarea>
+					<select>						
+					<c:forEach items="${list }" var="reviewDTO">
+					<option value="${reviewDTO.fname }">--회사명--</option>
+					
+					</c:forEach>
+					</select>
+					</td>
+					<td><input type="hidden" name="id" value="admin" /></td>
+					</tr><tr>
+					
+					<th style="margin-left: 10px; font-size: 20px;">&emsp;행사장소</th>
+					<td><textarea rows="1" cols="20" name="content" style="border-color: purple;" readonly="readonly"></textarea></td>
+					<td><input type="hidden" name="id" value="admin" /></td>
+					</tr><tr>
+					
+					<th style="margin-left: 10px; font-size: 20px;">&emsp;주요메뉴</th>
+					<td><textarea rows="1" cols="20" name="content" style="border-color: purple;"readonly="readonly"></textarea></td>
+					<td><input type="hidden" name="id" value="admin" /></td>
+					</tr><tr>
+					
+					<th style="margin-left: 10px; font-size: 20px;">&emsp;행사날짜</th>
+					<td><textarea rows="1" cols="20" name="content" style="border-color: purple;"readonly="readonly"></textarea></td>
+					<td><input type="hidden" name="id" value="admin" /></td>
+					</tr><tr>
+					
 					<th style="margin-left: 10px; font-size: 20px;">&emsp;리뷰내용</th>
 					<td><textarea rows="10" cols="40" name="content" style="border-color: purple;"></textarea></td>
 					<td><input type="hidden" name="id" value="admin" /></td>

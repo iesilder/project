@@ -7,17 +7,21 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>리뷰 글보기</title>
 <meta charset="utf-8">
-<meta name="reviewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style type="text/css">
+.1,#1 {border: 10px solid red;}
+  
+  
+  </style>
+  
 <script>
 	$(document).ready(function() {
 		$("#update").click(function() {
-			alert("공 사 중");
+			location = "reviewupdate.do?rno=" + $("#td_rno").text();
 		});
 		$("#delete").click(function() {
 			if (confirm("정말 삭제하시겠습니까?"))
@@ -43,7 +47,8 @@
 	</form>
 	<div class="container">
 		<h1>리뷰 글보기</h1>
-		<table class="table">
+		<table class="table table-bordered"  >
+			
 			<tbody>
 				<!-- 데이터를 출력한다. -->
 				<tr>
@@ -51,7 +56,7 @@
 					<td id="td_rno">${reviewDTO.rno}</td>
 				</tr>
 				<tr>
-					<th>아이디</th>
+					<th class="1" id="1" >아이디</th>
 					<td>${reviewDTO.id}</td>
 				</tr>
 				<tr>
@@ -86,17 +91,17 @@
 					<th>내용</th>
 					<td>${reviewDTO.content}</td>
 				</tr>
-			</tbody>
-			<tfoot>
-				<tr>
-					<td colspan="2">
+			</tbody><tr></tr>
+						</table>
+						<table>
+						
+						<tr><td><br>
 						<button id="update" class="btn btn-primary">수정</button>
 						<button id="delete" class="btn btn-danger">삭제</button>
 						<button id="list" class="btn btn-success">리스트</button>
 					</td>
 				</tr>
 
-			</tfoot>
 		</table>
 	</div>
 </body>

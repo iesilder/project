@@ -1,6 +1,7 @@
 package com.foodtruck.review.service;
 
-import java.util.ArrayList;
+
+import java.util.List;
 
 import com.foodtruck.review.dao.ReviewDAO;
 import com.foodtruck.review.dto.ReviewDTO;
@@ -15,28 +16,27 @@ public class ReviewUpdateService implements ServiceInterface {
 		// TODO Auto-generated method stub
 		this.reviewDAO = (ReviewDAO) obj;
 	}
-
-	public Integer execute(Object obj, int rno) throws Exception {
-		System.out.println("ReviewUpdateService.excute()");
-		// 객체 생성하고 호출
-		
-		@SuppressWarnings("unchecked")
-		ArrayList<Object> list = (ArrayList<Object>) obj;
-		
-		rno =(int) list.get(0);
-		boolean isView = (boolean) list.get(1);
-		ReviewDTO reviewDTO = null; 
-		
-		
-		reviewDTO = reviewDAO.update(reviewDTO,rno);
-		System.out.println(reviewDTO);
-		return rno;
-		
-	}
-
 	@Override
-	public Object execute(Object obj) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public Integer execute(Object obj) throws Exception {
+		System.out.println("ReviewUpdateService.execute()");
+		// 객체 생성하고 호출
+
+		System.out.println(obj);
+		System.out.println(obj);
+		System.out.println(obj);
+		System.out.println(obj);
+		ReviewDTO reviewDTO =(ReviewDTO) obj;
+		
+		int no =reviewDTO.getRno();
+		System.out.println(no);
+		System.out.println(no);
+		System.out.println(no);
+		System.out.println(no);
+		System.out.println(no);
+		
+		reviewDAO.update(reviewDTO,no);
+		return 1;
+		
 	}
+
 }

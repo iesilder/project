@@ -169,8 +169,9 @@ public class ReviewDAO {
 	}
 
 	// 게시판 글수정 처리
-	public ReviewDTO update(ReviewDTO ReviewDTO, int rno) {
+	public ReviewDTO update(ReviewDTO reviewDTO, int no) {
 		// 오라클에서 데이터를 가져와서 채우는 프로그램 작성.
+		System.out.println("dao의 update입니다");
 		// 필요한 객체 선언
 		Connection con = null; // 연결 객체
 		PreparedStatement pstmt = null; // 처리문 객체
@@ -181,10 +182,10 @@ public class ReviewDAO {
 			String sql = "update reviewboard set content=?,starscore=?,score=? where rno = ? ";
 			// 4. 처리 객체 생성
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(4, rno);
-			pstmt.setString(1, ReviewDTO.getContent()); // 두번재 ?에 content 세팅
-			pstmt.setString(2, ReviewDTO.getStarscore()); // 네번재 ?에 no 세팅
-			pstmt.setInt(3, ReviewDTO.getScore()); // 네번재 ?에 no 세팅
+			pstmt.setInt(4, no);
+			pstmt.setString(1, reviewDTO.getContent()); // 두번재 ?에 content 세팅
+			pstmt.setString(2, reviewDTO.getStarscore()); // 네번재 ?에 no 세팅
+			pstmt.setInt(3, reviewDTO.getScore()); // 네번재 ?에 no 세팅
 			// 5. 처리 객체 실행 -> select: executeQuery(), 그 외: executeUpdate()
 			pstmt.executeUpdate();
 			// 6. 표시 -> 오류가 없으면 정상처리
@@ -198,7 +199,7 @@ public class ReviewDAO {
 				e.printStackTrace();
 			}
 		}
-		return ReviewDTO;
+		return reviewDTO;
 	}
 
 	// 게시판 글삭제 처리
